@@ -218,6 +218,8 @@ nlu:
       - [five to eight](hour)
       - [fifteen to midnight](hour)
       - [twenty-five to twenty](hour)
+      - [three to eight](hour)
+      - [twelve to 8](hour)
 
   - intent: inform_categories
     examples: |
@@ -258,8 +260,10 @@ nlu:
       - I have to [cut my hair](task) at [16:20](hour) and add in [personal](category)
       - Add in my [free time](category) to [play guitar](task) from [19:00](hour)
       - I would [go to the bank](task) at [ten past half](hour), add to [private](category)
-      - at [ten to ten](hour) add to the list [send an email to Mike](task) and add to [work]{"entity": "category", "value": "9wzi-asso"}
+      - at [ten to seven](hour) add to the list [send an email to Mike](task) and add to [work]{"entity": "category", "value": "9wzi-asso"}
       - [clean the bathroom](task) at [twenty to ten](hour), set as [private](category)
+      - at [five to eleven](hour) sign [to go to gym](task)
+      - at [three past six](hour) I must [bring my children at home](task)
 
   - synonym: 9wzi-peqs
     examples: |
@@ -283,4 +287,6 @@ nlu:
       - personal
       - private
 
-  - regex: 24_format_hour
+  - regex: hour
+    examples: |
+      - /(?:\S+\s)?\S*(to|past|:)\S*(?:\s\S+)?$/gm
