@@ -289,4 +289,4 @@ nlu:
 
   - regex: hour
     examples: |
-      - /(?:\S+\s)?\S*(to|past|:)\S*(?:\s\S+)?$/gm
+      - (?:\S+\s)?\S*(to|past|:)\S*(?:\s\S+)?$
