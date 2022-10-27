@@ -8,6 +8,11 @@ intents:
   - mood_great
   - mood_unhappy
   - bot_challenge
+  - todo_list
+  - inform_task
+
+entities:
+  - task
 
 responses:
   utter_greet:
