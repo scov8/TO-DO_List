@@ -229,7 +229,7 @@ nlu:
       - Set at [five past six](hour) to [repair the door](task) at [home](category)
       - At [eleven o'clock](hour) I want to [go to bed](task)
       - I have to [cut my hair](task) at [16:20](hour) and add in [personal](category)
-      - Add in [my free time](category)
+      - Add in my [free time](category) to [play guitar](task) from [19:00](hour)
 
   - synonym: 9wzi-peqs
     examples: |
@@ -240,3 +240,10 @@ nlu:
     examples: |
       - office 
       - work
+      - studio
+
+  - synonym: 9wzi-pppp
+    examples: |
+      - hobby
+      - free time
+      - freetime
