@@ -9,7 +9,7 @@
 – Insert a new activity in the to do list
 – Remove an activity from the to do list
 
-■ OPTIONAL features
+■ OPTIONAL features:
 
 – Manage multiple users
 – (*) Manage multiple categories of to do list
