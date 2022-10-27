@@ -6,11 +6,11 @@
 ■ The dialogue systems must allow the user to:
 
 - Look the activities in the to do list
-– Insert a new activity in the to do list
-– Remove an activity from the to do list
+- Insert a new activity in the to do list
+- Remove an activity from the to do list
 
 ■ OPTIONAL features:
 
-– Manage multiple users
-– (*) Manage multiple categories of to do list
-– Update an activity in the to do list
+- Manage multiple users
+- (*) Manage multiple categories of to do list
+- Update an activity in the to do list
