@@ -16,6 +16,7 @@ intents:
 entities:
   - task
   - category
+  - hour
 
 responses:
   utter_greet:

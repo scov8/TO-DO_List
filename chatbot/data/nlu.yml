@@ -1,218 +1,242 @@
 version: "2.0"
 
 nlu:
-- intent: greet
-  examples: |
-    - hey
-    - hello
-    - hi
-    - hello there
-    - good morning
-    - good evening
-    - moin
-    - hey there
-    - let's go
-    - hey dude
-    - goodmorning
-    - goodevening
-    - good afternoon
+  - intent: greet
+    examples: |
+      - hey
+      - hello
+      - hi
+      - hello there
+      - good morning
+      - good evening
+      - morning
+      - hey there
+      - let's go
+      - hey dude
+      - good morning
+      - good evening
+      - good afternoon
 
-- intent: goodbye
-  examples: |
-    - good afternoon
-    - cu
-    - good by
-    - cee you later
-    - good night
-    - bye
-    - goodbye
-    - have a nice day
-    - see you around
-    - bye bye
-    - see you later
+  - intent: goodbye
+    examples: |
+      - good afternoon
+      - cu
+      - good by
+      - cee you later
+      - good night
+      - bye
+      - goodbye
+      - have a nice day
+      - see you around
+      - bye bye
+      - see you later
 
-- intent: affirm
-  examples: |
-    - yes
-    - y
-    - indeed
-    - of course
-    - that sounds good
-    - correct
+  - intent: affirm
+    examples: |
+      - yes
+      - y
+      - indeed
+      - of course
+      - that sounds good
+      - correct
 
-- intent: deny
-  examples: |
-    - no
-    - n
-    - never
-    - I don't think so
-    - don't like that
-    - no way
-    - not really
+  - intent: deny
+    examples: |
+      - no
+      - n
+      - never
+      - I don't think so
+      - don't like that
+      - no way
+      - not really
 
-- intent: mood_great
-  examples: |
-    - perfect
-    - great
-    - amazing
-    - feeling like a king
-    - wonderful
-    - I am feeling very good
-    - I am great
-    - I am amazing
-    - I am going to save the world
-    - super stoked
-    - extremely good
-    - so so perfect
-    - so good
-    - so perfect
+  - intent: mood_great
+    examples: |
+      - perfect
+      - great
+      - amazing
+      - feeling like a king
+      - wonderful
+      - I am feeling very good
+      - I am great
+      - I am amazing
+      - I am going to save the world
+      - super stoked
+      - extremely good
+      - so so perfect
+      - so good
+      - so perfect
 
-- intent: mood_unhappy
-  examples: |
-    - my day was horrible
-    - I am sad
-    - I don't feel very well
-    - I am disappointed
-    - super sad
-    - I'm so sad
-    - sad
-    - very sad
-    - unhappy
-    - not good
-    - not very good
-    - extremly sad
-    - so saad
-    - so sad
+  - intent: mood_unhappy
+    examples: |
+      - my day was horrible
+      - I am sad
+      - I don't feel very well
+      - I am disappointed
+      - super sad
+      - I'm so sad
+      - sad
+      - very sad
+      - unhappy
+      - not good
+      - not very good
+      - extremely sad
+      - so sad
+      - so sad
 
-- intent: bot_challenge
-  examples: |
-    - are you a bot?
-    - are you a human?
-    - am I talking to a bot?
-    - am I talking to a human?
+  - intent: bot_challenge
+    examples: |
+      - are you a bot?
+      - are you a human?
+      - am I talking to a bot?
+      - am I talking to a human?
 
-- intent: inform_task
-  examples: |
-    - [wake up](task) 
-    - [have lunch](task)
-    - [have dinner](task)
-    - [hang out](task)
-    - [make a todo list](task)
-    - [make a to do list](task)
-    - [make a todolist](task)
-    - [make a cake](task)
-    - [start playing piano](task)
-    - [start studing](task)
-    - [call my son](task)
-    - [call my daughter](task)
-    - [call my wife](task)
-    - [call my mom](task)
-    - [call my father](task)
-    - [call the boss](task)
-    - [call the professor](task)
-    - [bring at home](task)
-    - [mailing my teacher](task)
-    - [try Skype](task)
-    - [destroy the paper on the table](task)
-    - [destroy the evidence](task)
-    - [put the pen on the table](task)
-    - [put the umbrella in the car](task)
-    - [put the book in the bag](task)
-    - [turn on the ligth](task)
-    - [turn the ligth on](task)
-    - [turn the chicken](task)
-    - [cook dinner](task)
-    - [cook the fish](task)
-    - [cook the dinner](task)
-    - [clean house](task)
-    - [clean the pc](task)
-    - [search on google](task)
-    - [search in the room](task)
-    - [search in the garden](task)
-    - [open the door](task)
-    - [open the house](task)
-    - [open the bottle](task)
-    - [open the box](task)
-    - [close the box](task)
-    - [close the window](task)
-    - [close the door](task)
-    - [close the house](task)
-    - [take the children](task)
-    - [take the child](task)
-    - [go shopping](task)
-    - [go running](task)
-    - [go at the gym](task)
-    - [go play football](task)
-    - [go out](task)
-    - [go to university](task)
-    - [go home](task)
-    - [go to stadium](task)
-    - [go for a run](task)
-    - [go to school](task)
-    - [go to bed](task)
-    - [stop running](task)
-    - [stop studing](task)
-    - [stop play](task)
-    - [stop playing piano](task)
-    - [stop clean the room](task)
-    - [check the classroom](task)
-    - [check if the ligths are off](task)
-    - [check if the lights are on](task)
-    - [check if the garage is closed](task)
-    - [send an email to prof](task)
-    - [send an email to James](task)
-    - [send an email to Veronica](task)
-    - [email the prof](task)
-    
-- intent: inform_hour 
-  examples: |
-    - [midday](hour)
-    - [noontime](hour)
-    - [midnight](hour)
-    - [half-night](hour)
-    - [7:00](hour)
-    - [17:10](hour)
-    - [24:37](hour)
-    - [1:59](hour)
-    - [16:22](hour)
-    - [19:12](hour)
-    - [3:51](hour)
-    - [seven](hour)
-    - [six past ten](hour)
-    - [nine o'clock](hour)
-    - [eleven to twenty](hour)
-    - [quarter to nine](hour)
-    - [half past nine](hour)
-    - [five minutes](hour)
-    - [half hour](hour)
-    - [twenty minutes](hour)
-    - [ten minutes](hour)
-    - [15 minutes](hour)
-    - [25 minutes](hour)
-    - [3 minutes](hour)
-    
-- intent: inform_categories
-  examples: |
-    - [work](category)
-    - [course](category)
-    - [sport](category)
-    - [personal](category)
-    - [house](category)
-    - [hobby](category)
- 
-- intent: add_task
-  examples: |
-    - remind me to [send an email to prof](task) at [eleven to twenty](hour)
-    - Remind to [send an email to prof](task) at [eleven to twenty](hour)
-    - Remind to [send an email to prof](task) at [eleven to twenty](hour)
-    - add to the list [send an email to prof](task) at [eleven to twenty](hour)
-    - Add to the to-do list [send an email to prof](task) at [eleven to twenty](hour)
-    - I need you to remind me [send an email to prof](task) at [eleven to twenty](hour)
-    - I need a reminder for [send an email to prof](task) at [eleven to twenty](hour)
-    - could 
-    - Good morning i am in [Boston](location) i need a [home]{"entity": "category", "value": "9wzi-peqs"}
+  - intent: inform_task
+    examples: |
+      - [wake up](task) 
+      - [have lunch](task)
+      - [have dinner](task)
+      - [hang out](task)
+      - [make a todo list](task)
+      - [make a to do list](task)
+      - [make a todolist](task)
+      - [make a cake](task)
+      - [start playing piano](task)
+      - [start studying](task)
+      - [call my son](task)
+      - [call my daughter](task)
+      - [call my wife](task)
+      - [call my mom](task)
+      - [call my father](task)
+      - [call the boss](task)
+      - [call the professor](task)
+      - [bring at home](task)
+      - [mailing my teacher](task)
+      - [try Skype](task)
+      - [destroy the paper on the table](task)
+      - [destroy the evidence](task)
+      - [put the pen on the table](task)
+      - [put the umbrella in the car](task)
+      - [put the book in the bag](task)
+      - [turn on the light](task)
+      - [turn the light on](task)
+      - [turn the chicken](task)
+      - [cook dinner](task)
+      - [cook the fish](task)
+      - [cook the dinner](task)
+      - [clean house](task)
+      - [clean the pc](task)
+      - [search on google](task)
+      - [search in the room](task)
+      - [search in the garden](task)
+      - [open the door](task)
+      - [open the house](task)
+      - [open the bottle](task)
+      - [open the box](task)
+      - [close the box](task)
+      - [close the window](task)
+      - [close the door](task)
+      - [close the house](task)
+      - [take the children](task)
+      - [take the child](task)
+      - [go shopping](task)
+      - [go running](task)
+      - [go at the gym](task)
+      - [go play football](task)
+      - [go out](task)
+      - [go to university](task)
+      - [go home](task)
+      - [go to stadium](task)
+      - [go for a run](task)
+      - [go to school](task)
+      - [go to bed](task)
+      - [stop running](task)
+      - [stop studying](task)
+      - [stop play](task)
+      - [stop playing piano](task)
+      - [stop clean the room](task)
+      - [check the classroom](task)
+      - [check if the lights are off](task)
+      - [check if the lights are on](task)
+      - [check if the garage is closed](task)
+      - [send an email to prof](task)
+      - [send an email to James](task)
+      - [send an email to Veronica](task)
+      - [email the prof](task)
 
-- synonym: 9wzi-peqs
-  examples: |
-    - home 
-    - house
+  - intent: inform_hour
+    examples: |
+      - [midday](hour)
+      - [noontime](hour)
+      - [midnight](hour)
+      - [half-night](hour)
+      - [7:00](hour)
+      - [17:10](hour)
+      - [1:59](hour)
+      - [16:22](hour)
+      - [19:12](hour)
+      - [3:51](hour)
+      - [seven](hour)
+      - [six past ten](hour)
+      - [nine o'clock](hour)
+      - [two o'clock](hour)
+      - [eleven o'clock](hour)
+      - [9 o'clock](hour)
+      - [eleven to twenty](hour)
+      - [quarter to nine](hour)
+      - [half past nine](hour)
+      - [five minutes](hour)
+      - [half hour](hour)
+      - [twenty minutes](hour)
+      - [ten minutes](hour)
+      - [15 minutes](hour)
+      - [25 minutes](hour)
+      - [3 minutes](hour)
+      - [fourteen o'clock](hour)
+      - [00:51](hour)
+      - [13 o'clock](hour)
+
+  - intent: inform_categories
+    examples: |
+      - [work](category)
+      - [course](category)
+      - [sport](category)
+      - [personal](category)
+      - [house](category)
+      - [hobby](category)
+
+  - intent: add_task
+    examples: |
+      - please add to the to-do list [close the window](task) at [20:30](hour)
+      - [open the box](task) at [eleven o' clock](hour)
+      - add to the list [go to stadium](task)
+      - remind me to [send an email to mum](task)
+      - remind me to [turn the light off](task)
+      - [check if the garage is closed](task) at [midnight](hour)
+      - I need remind that I [turn the light on](task)
+      - remind me to [send an email to prof](task) at [eleven to twenty](hour) and add to [work](category)
+      - Remind to [send an email to prof](task) at [eleven to twenty](hour) and add to [work](category)
+      - add to the list [send an email to prof](task) at [eleven to twenty](hour) and add to [work](category)
+      - Add to the to-do list [send an email to prof](task) at [eleven to twenty](hour) and add to [work](category)
+      - I need you to remind me [send an email to prof](task) at [eleven to twenty](hour) and add to [work](category)
+      - I need a reminder for [send an email to prof](task) at [eleven to twenty](hour) and add to [work](category)
+      - [send an email to prof](task) at [eleven to twenty](hour) and add to [work](category)
+      - remind me at [eleven to twenty](hour) to [send an email to prof](task) and add to [work](category)
+      - at [eleven to twenty](hour) add to the list [send an email to prof](task) and add to [work](category)
+      - in [home](category) at [12:00](hour) I must [cook the lunch](task)
+      - in [hobby](category) at [12:10](hour) [meet the journalist](task)
+      - set at [20:30](hour) as [house](category) to [clean the garden](task)
+      - Set at [five past six](hour) to [repair the door](task) at [home](category)
+      - At [eleven o'clock](hour) I want to [go to bed](task)
+      - I have to [cut my hair](task) at [16:20](hour) and add in [personal](category)
+      - Add in [my free time](category)
+
+  - synonym: 9wzi-peqs
+    examples: |
+      - home 
+      - house
+
+  - synonym: 9wzi-asso
+    examples: |
+      - office 
+      - work
