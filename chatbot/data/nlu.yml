@@ -49,6 +49,8 @@ nlu:
       - don't like that
       - no way
       - not really
+      - IDC
+      - idc
 
   - intent: mood_great
     examples: |
@@ -212,6 +214,10 @@ nlu:
       - [13 o'clock](hour)
       - [twenty past six](hour)
       - [one hour](hour)
+      - [eleven to nine](hour)
+      - [five to eight](hour)
+      - [fifteen to midnight](hour)
+      - [twenty-five to twenty](hour)
 
   - intent: inform_categories
     examples: |
@@ -276,3 +282,5 @@ nlu:
     examples: |
       - personal
       - private
+
+  - regex: 24_format_hour
