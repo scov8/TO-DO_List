@@ -48,10 +48,14 @@ class ActionSubmit(Action):
         print("\nHour:",hour)
         print("Category:",category)
         print("Task:",task)
-        
-        dispatcher.utter_message(text=hour)
-        dispatcher.utter_message(text=category)
-        dispatcher.utter_message(text=task)
+
+        print(type(hour))
+        print(type(category))
+        print(type(task))
+
         dispatcher.utter_message(text=f"This is the address: {hour} {category} {task}") 
+        dispatcher.utter_message(text= f"{hour}")
+        dispatcher.utter_message(text= f"{category}")
+        dispatcher.utter_message(text= f"{task}")
 
         return [SlotSet("hour", hour),SlotSet("category", category),SlotSet("category", category)]
