@@ -8,6 +8,7 @@ intents:
   - mood_great
   - mood_unhappy
   - bot_challenge
+  - thankyou
   - inform_task
   - inform_hour
   - inform_categories
@@ -18,9 +19,50 @@ entities:
   - category
   - hour
 
+actions:
+  - action_submit # sta in Submit form
+  - utter_greet
+  - utter_goodbye
+  - utter_noworries
+  - utter_did_that_help
+  - utter_cheer_up
+  - utter_happy
+  - utter_iamabot
+  - utter_thanks
+  - utter_get_started
+  - utter_add_task_without_hour_and_category
+
+# if you leave out influence_conversation or set it to true,
+# hat slot will influence the next action prediction, unless it has slot type any
+slots:
+  task:
+    type: text
+    influence_conversation: false
+  category:
+    type: text
+    influence_conversation: false # se influenza la conversazione bisogna inserire una storia
+  hour:
+    type: text
+    influence_conversation: false
+
+forms:
+  task_form:
+    required_slots:
+      task:
+        - type: from_entity
+          entity: task
+      category:
+        - type: from_entity
+          entity: category
+      hour:
+        - type: from_entity
+          entity: hour
+
 responses:
   utter_greet:
-    - text: "Hey! How are you?"
+    - text: "Hey! How are you? :)"
+    - text: "Hi. What are you looking for?"
+    - text: "Hello! What can I help you remind today?"
 
   utter_cheer_up:
     - text: "Here is something to cheer you up:"
@@ -33,19 +75,26 @@ responses:
     - text: "Great, carry on!"
 
   utter_goodbye:
-    - text: "Bye"
+    - text: "Bye :("
+    - text: "Talk to you later!"
+    - text: "Have a good day."
+    - text: "Until next time!"
 
   utter_iamabot:
     - text: "I am a bot, powered by Rasa."
 
+  utter_noworries:
+    - text: "My pleasure."
+    - text: "You are welcome!"
+
+  utter_thanks:
+    - text: "Ok. Your todo task is {task} at {hour} in {category}.Thank you!"
+
+  utter_get_started:
+    - text: "I can help you to create a To-Do List. What do I have to remind you to do?"
+
   utter_add_task_without_hour_and_category:
     - text: "I need also hour and category"
-
-  utter_add_task_without_hour:
-    - text: "I need also hour"
-
-  utter_add_task_without_category:
-    - text: "I need also category"
 
 session_config:
   session_expiration_time: 60

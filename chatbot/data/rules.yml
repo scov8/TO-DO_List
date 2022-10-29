@@ -16,32 +16,19 @@ rules:
       - intent: greet
       - action: utter_greet
 
-  - rule: Ask if not written hour and category
-    condition:
-      - slot_was_set:
-          - task: true
-          - hour: false
-          - category: false
+  - rule: Activate form
     steps:
       - intent: add_task
-      - action: utter_add_task_without_hour_and_category
+      - action: task_form
+      - active_loop: task_form
 
-  - rule: Ask if not written category
+  - rule: Submit form
     condition:
-      - slot_was_set:
-          - task: true
-          - hour: true
-          - category: false
+      - active_loop: task_form
     steps:
-      - intent: add_task
-      - action: utter_add_task_without_category
-
-  - rule: Ask if not written hour
-    condition:
+      - action: task_form
+      - active_loop: null
       - slot_was_set:
-          - task: true
-          - hour: false
-          - category: true
-    steps:
-      - intent: add_task
-      - action: utter_add_task_without_hour
+          - requested_slot: null
+      - action: utter_thanks
+      - action: action_submit

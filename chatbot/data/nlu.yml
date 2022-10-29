@@ -51,6 +51,33 @@ nlu:
       - not really
       - IDC
       - idc
+      - not today
+      - no thanks
+      - no thank you
+      - uh no
+      - noope
+      - nope
+      - n
+      - do you have something else
+      - no this does not work for me
+
+  - intent: thankyou
+    examples: |
+      - Thanks
+      - Thank you
+      - Thank you so much
+      - Thanks bot
+      - Thanks for that
+      - cheers
+      - cheers bro
+      - ok thanks!
+      - perfect thank you
+      - thanks a bunch for everything
+      - thanks for the help
+      - thanks a lot
+      - amazing, thanks
+      - cool, thanks
+      - cool thank you
 
   - intent: mood_great
     examples: |
