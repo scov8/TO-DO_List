@@ -1,13 +1,47 @@
 version: "2.0"
 
 rules:
+  - rule: Say goodbye anytime the user says goodbye
+    steps:
+      - intent: goodbye
+      - action: utter_goodbye
 
-- rule: Say goodbye anytime the user says goodbye
-  steps:
-  - intent: goodbye
-  - action: utter_goodbye
+  - rule: Say 'I am a bot' anytime the user challenges
+    steps:
+      - intent: bot_challenge
+      - action: utter_iamabot
 
-- rule: Say 'I am a bot' anytime the user challenges
-  steps:
-  - intent: bot_challenge
-  - action: utter_iamabot
+  - rule: Say `hello` whenever the user sends a message with intent `greet`
+    steps:
+      - intent: greet
+      - action: utter_greet
+
+  - rule: Ask if not written hour and category
+    condition:
+      - slot_was_set:
+          - task: true
+          - hour: false
+          - category: false
+    steps:
+      - intent: add_task
+      - action: utter_add_task_without_hour_and_category
+
+  - rule: Ask if not written category
+    condition:
+      - slot_was_set:
+          - task: true
+          - hour: true
+          - category: false
+    steps:
+      - intent: add_task
+      - action: utter_add_task_without_category
+
+  - rule: Ask if not written hour
+    condition:
+      - slot_was_set:
+          - task: true
+          - hour: false
+          - category: true
+    steps:
+      - intent: add_task
+      - action: utter_add_task_without_hour
