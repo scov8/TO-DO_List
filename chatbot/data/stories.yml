@@ -15,8 +15,8 @@ stories:
       - intent: mood_unhappy
       - action: utter_cheer_up
       - action: utter_did_that_help
-      - intent: affirm
-      - action: utter_happy
+      #- intent: affirm
+      #- action: utter_happy
 
   - story: sad path 2
     steps:
@@ -25,8 +25,8 @@ stories:
       - intent: mood_unhappy
       - action: utter_cheer_up
       - action: utter_did_that_help
-      - intent: deny
-      - action: utter_goodbye
+      #- intent: deny
+      #- action: utter_goodbye
 
   - story: story_thankyou
     steps:
@@ -42,6 +42,8 @@ stories:
           - category
       - action: full_task_form
       - action: full_task_submit
+      - intent: affirm
+      - action: action_add_to_db
 
   - story: add task with hour without category
     steps:
@@ -55,6 +57,8 @@ stories:
       - intent: inform_category
       - action: category_form
       - action: category_submit
+      - intent: affirm
+      - action: action_add_to_db
 
   - story: add task with category without hour
     steps:
@@ -68,6 +72,8 @@ stories:
       - intent: inform_hour
       - action: hour_form
       - action: hour_submit
+      - intent: affirm
+      - action: action_add_to_db
 
   - story: add task only
     steps:
@@ -81,3 +87,5 @@ stories:
       - intent: inform_hour_and_category
       - action: hour_and_category_form
       - action: hour_and_category_submit
+      - intent: affirm
+      - action: action_add_to_db

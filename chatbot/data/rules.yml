@@ -133,3 +133,13 @@ rules:
       - slot_was_set:
           - requested_slot: null
       - action: hour_and_category_submit
+
+  - rule: Clean the slots every time the user deny the task
+    steps:
+      - intent: deny
+      - action: action_reset_slot
+
+  - rule: Clean the slots and add to DB every time the user confirm the task
+    steps:
+      - intent: affirm
+      - action: action_add_to_db

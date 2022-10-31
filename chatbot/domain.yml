@@ -31,6 +31,8 @@ actions:
   - category_submit
   - hour_submit
   - hour_and_category_submit
+  - action_reset_slot
+  - action_add_to_db
   - utter_greet
   - utter_goodbye
   - utter_noworries

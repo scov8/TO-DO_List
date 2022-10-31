@@ -7,7 +7,7 @@ from typing import Any, Text, Dict, List
 
 from rasa_sdk import Action, Tracker
 from rasa_sdk.executor import CollectingDispatcher
-from rasa_sdk.events import SlotSet
+from rasa_sdk.events import SlotSet, AllSlotsReset
 
 class FullTaskSubmit(Action):
     
@@ -22,16 +22,12 @@ class FullTaskSubmit(Action):
         category = tracker.get_slot("category")
         task = tracker.get_slot("task")
 
-        print("Sono in FullTaskSubmit:")
-
-        print("\nHour:",hour)
+        print("\n\nSono in FullTaskSubmit:")
+        print("Hour:",hour)
         print("Category:",category)
         print("Task:",task)
 
-        dispatcher.utter_message(text=f"This is the address: {hour} {category} {task}") 
-        dispatcher.utter_message(text= f"{hour}")
-        dispatcher.utter_message(text= f"{category}")
-        dispatcher.utter_message(text= f"{task}")
+        dispatcher.utter_message(text=f"Thanks, your task is: \"{task}\" at {hour} in the category \"{category}\"\nWould you like to confirm?") 
 
         return []
 
@@ -44,14 +40,15 @@ class TaskWithHourSubmit(Action):
             tracker: Tracker,
             domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
         
-        print('Sono in TaskWithHourSubmit')
+        print('\nSono in TaskWithHourSubmit')
         
         hour = tracker.get_slot("hour")
         task = tracker.get_slot("task")
 
-        print("\nHour:",hour)
+        print("Hour:",hour)
         print("Task:",task)
-        
+
+        dispatcher.utter_message(text=f"Your task is \"{task}\" at {hour}, but you missed the category!\nPlease write here the category or modify the hour") 
         
         return[]
 
@@ -68,11 +65,12 @@ class TaskWithCategorySubmit(Action):
         category = tracker.get_slot("category")
         task = tracker.get_slot("task")
         
-        print("Sono in TaskWithCategorySubmit:")
+        print("\nSono in TaskWithCategorySubmit:")
         
         print("Category:",category)
         print("Task:",task)
 
+        dispatcher.utter_message(text=f"Your task is \"{task}\" in the category {category}, but you missed the hour!\nPlease write here the hour or modify the category") 
 
         return []
 
@@ -87,10 +85,10 @@ class TaskOnlySubmit(Action):
 
         task = tracker.get_slot("task")
 
-        print("Sono in TaskOnlySubmit:")
-        
+        print("\nSono in TaskOnlySubmit:")
         print("Task:",task)
 
+        dispatcher.utter_message(text=f"Your task is \"{task}\", but you missed the hour and the category!\nPlease write here the hour and the category") 
 
         return []
 
@@ -102,10 +100,19 @@ class HourSubmit(Action):
     def run(self, dispatcher: CollectingDispatcher,
             tracker: Tracker,
             domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
-
+            
         hour = tracker.get_slot("hour")
+        category = tracker.get_slot("category")
+        task = tracker.get_slot("task")
 
-        print("Sono in HourSubmit:")
+        if(category is not None and task is not None):
+            dispatcher.utter_message(text=f"Thanks, your task is: \"{task}\" at {hour} in the category \"{category}\"\nWould you like to confirm?")
+        elif (category is None and task is not None):
+            dispatcher.utter_message(text=f"Ok I updated your hour in {hour}, please tell me the category now (or change again the hour)!")
+        else:
+            dispatcher.utter_message(text=f"You tell me only the hour, what do you want?")
+
+        print("\nSono in HourSubmit:")
         print("Hour:",hour)
 
         return []
@@ -119,9 +126,19 @@ class CategorySubmit(Action):
             tracker: Tracker,
             domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
 
+        hour = tracker.get_slot("hour")
         category = tracker.get_slot("category")
+        task = tracker.get_slot("task")
 
-        print("Sono in CategorySubmit:")
+        if(hour is not None and task is not None):
+            dispatcher.utter_message(text=f"Thanks, your task is: \"{task}\" at {hour} in the category \"{category}\"\nWould you like to confirm?")
+        elif (hour is None and task is not None):
+            dispatcher.utter_message(text=f"Ok I updated your category in {category}, please tell me the hour now (or change again the category)!")
+        else:
+            dispatcher.utter_message(text=f"You tell me only the category and hour, what do you want?")
+
+
+        print("\nSono in CategorySubmit:")
         print("Category:",category)
 
         return []
@@ -135,12 +152,55 @@ class HourAndCategorySubmit(Action):
             tracker: Tracker,
             domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
 
-        category = tracker.get_slot("category")
         hour = tracker.get_slot("hour")
+        category = tracker.get_slot("category")
+        task = tracker.get_slot("task")
 
-        print("Sono in HourAndCategorySubmit:")
+        if(task is not None):
+            dispatcher.utter_message(text=f"Thanks, your task is: \"{task}\" at {hour} in the category \"{category}\"\nWould you like to confirm?")
+        else:
+            dispatcher.utter_message(text=f"You tell me only the category and hour, what do you want?")
+
+        print("\nSono in HourAndCategorySubmit:")
         
         print("Category:",category)
         print("Hour:",hour)
 
         return []
+
+class ResetSlot(Action):
+
+    def name(self):
+        return "action_reset_slot"
+
+    def run(self, dispatcher, tracker, domain):
+        print("reset slot")
+        hour = tracker.get_slot("hour")
+        category = tracker.get_slot("category")
+        task = tracker.get_slot("task")
+
+        if(task is not None and hour is not None and category is not None):
+            dispatcher.utter_message("Ok I deleted your task!")
+        else:
+            dispatcher.utter_message("What?")
+
+        return [SlotSet("task", None),SlotSet("category", None),SlotSet("hour", None)]
+    
+class AddToDb(Action):
+
+    def name(self):
+        return "action_add_to_db"
+
+    def run(self, dispatcher, tracker, domain):
+        print("add to db")
+        hour = tracker.get_slot("hour")
+        category = tracker.get_slot("category")
+        task = tracker.get_slot("task")
+
+        if(task is not None and hour is not None and category is not None):
+            dispatcher.utter_message("Ok I added your task!")
+            #fare query al db
+        else:
+            dispatcher.utter_message("What?")
+
+        return [SlotSet("task", None),SlotSet("category", None),SlotSet("hour", None)]
