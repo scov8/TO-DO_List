@@ -125,6 +125,10 @@ nlu:
       - [have lunch](task)
       - [have dinner](task)
       - [hang out](task)
+      - [play guitar](task)
+      - [play football](task)
+      - [do a magic trick](task)
+      - [take my pills](task)
       - [make a todo list](task)
       - [make a to do list](task)
       - [make a todolist](task)
@@ -247,7 +251,7 @@ nlu:
       - [three to eight](hour)
       - [twelve to 8](hour)
 
-  - intent: inform_categories
+  - intent: inform_category
     examples: |
       - [work](category)
       - [course](category)
@@ -256,19 +260,62 @@ nlu:
       - [house](category)
       - [hobby](category)
 
-  - intent: add_task
+  - intent: inform_hour_and_category
     examples: |
-      - please add to the to-do list [close the window](task) at [20:30](hour)
-      - [open the box](task) at [eleven o' clock](hour)
+      - at [8:00](hour) and category [personal](category)
+      - add to category [work](category) at [9 past 11](hour)
+      - [personal](category) and [10:30](hour)
+      - [20 past 11](hour) and [work](category)
+      - at [eleven to twenty](hour) and add to [work](category)
+      - in [home](category) at [12:00](hour)
+      - Add in [personal](category) from [12:00](hour)
+      - Set at [five past six](hour) at category [home](category)
+      - in [sport](category) at [8:45](hour)
+      - please add it in [work](category) and this time: [9.35](hour)
+      - [13:40](hour), [house](category)
+      - attach in [hobby](category) at [22:00](hour)
+      - set into [studio](category) at time [23:30](hour)
+      - [14:38](hour), I'd like you to add in [work](category) category
+      - i want that at [7:00](hour) and i want to add it in [work](category)
+      - add it in [house](category) and the deadline is at [midnight](hour)
+      - insert it in [work](category) with a deadline at [3 o'clock](hour)
+      - insert in in [course](category) at [6:00](hour)
+      - the deadline is [midnight](hour) and the category is [sport](category)
+      - expire it at [8:30](hour) and add it in in [personal](category)
+      - the deadline is: [3 o'clock](hour); and the category is [personal](category)
+      - i want it at [five o'clock](hour). add it in [work](category)
+      - assign it at category [sport](category) and expire it at [midday](hour)
+
+  - intent: add_task_only
+    examples: |
       - add to the list [go to stadium](task)
       - remind me to [send an email to mum](task)
       - remind me to [turn the light off](task)
       - can you remind me to [open the house](task)
       - could you remind me to [go at the gym](task)
-      - can you remind me to [play piano](task) at [eleven to twenty](hour)
-      - could you remind me to [go at the gym](task) at [ten to nine](hour)
-      - [check if the garage is closed](task) at [midnight](hour)
       - I need remind that I [turn the light on](task)
+      - I should [send an email to prof](task)
+      - I must [go for a run](task)
+      - add to the list [bring at home](task)
+      - can u remind me to [send an email to Veronica](task)
+      - please add to the to-do list [go to gym](task)
+      - could you remind me to [search on google](task)
+      - I have to [cut my hair](task)
+      - I would [go to the bank](task)
+      - add to the list [open the bottle](task)
+      - add to the list [cook dinner](task)
+      - add to the list [send an email to Mike](task)
+      - remind me  to [send an email to prof](task)
+      - I want to [go to bed](task)
+      - could you remind me to [play guitar](task)
+      - I would [play football](task)
+      - remind me  to [do a magic trick](task)
+      - I have to [take my pills](task)
+      - I must  [call my wife](task)
+      - I want to [call my mom](task)
+
+  - intent: add_task_full
+    examples: |
       - remind me to [send an email to prof](task) at [eleven to twenty](hour) and add to [work](category)
       - Remind to [send an email to prof](task) at [eleven to twenty](hour) and add to [work](category)
       - add to the list [send an email to prof](task) at [eleven to twenty](hour) and add to [work](category)
@@ -282,14 +329,75 @@ nlu:
       - in [hobby](category) at [12:10](hour) [meet the journalist](task)
       - set at [20:30](hour) as [house](category) to [clean the garden](task)
       - Set at [five past six](hour) to [repair the door](task) at [home](category)
-      - At [eleven o'clock](hour) I want to [go to bed](task)
       - I have to [cut my hair](task) at [16:20](hour) and add in [personal](category)
       - Add in my [free time](category) to [play guitar](task) from [19:00](hour)
       - I would [go to the bank](task) at [ten past half](hour), add to [private](category)
       - at [ten to seven](hour) add to the list [send an email to Mike](task) and add to [work]{"entity": "category", "value": "9wzi-asso"}
       - [clean the bathroom](task) at [twenty to ten](hour), set as [private](category)
+      - please add to the to-do list [go to gym](task) and add to [work](category) at [20.35] (hour)
+      - add to the list [go to work](task) and add to [work](category) at [midnight](hour)
+      - [play the piano](task) and add to [work](category) at [7 past 10](hour)
+      - [do my homework](task) and add to [personal](category) at [10 to 19](hour)
+      - remind me at [10 to 23](hour) to [ask the question](task) and add to [hobby](category)
+      - Add in [work](category) to [send message](task) from [8:00](hour)
+      - Add in [personal](category) to [cook the lunch](task) from [12:00](hour)
+      - in [work](category) at [10 past 12](hour) I must [take a break](task)
+
+  - intent: add_task_with_category
+    examples: |
+      - please add to the to-do list [close the window](task) and add to [personal](category)
+      - [open the box](task), set as [home](category)
+      - Sign as (hobby)[category] add to the list [go to stadium](task)
+      - I must [go to the stadium](task) and attach to [sport](category) list
+      - remind to [send an email to prof](task) and attach to [work](category)
+      - add to the list [send an email to prof](task) and add to [work](category)
+      - Add to the to-do list [send an email to prof](task), add to [work](category)
+      - I need you to remind me [send an email to housemate](task) and add to [work](category)
+      - I need a reminder for [mailing my colleague](task) and add to [work](category)
+      - [mailing email to prof](task) and add to [office](category)
+      - remind me  to [send an email to prof](task) and add to [work](category)
+      - add [send an email to prof](task) to [work](category) category
+      - in [home](category) I must [cook the lunch](task)
+      - in [hobby](category) [meet the journalist](task)
+      - set as [house](category) to [clean the garden](task)
+      - Sign to [repair the door](task) at [home](category)
+      - I have to [cut my hair](task) and add in [personal](category)
+      - Add in my [free time](category) to [play guitar](task)
+      - I'd like [go to the bank](task), add to [private](category)
+      - add to the list [send an email to Mike](task) and add to [work]{"entity": "category", "value": "9wzi-asso"}
+      - [clean the bathroom](task), set as [private](category)
+      - sign to [go to gym](task) as [sport](category)
+      - I must [bring my children at home](task) and attach in [personal](category)
+      - [work](category), [meet the boss](task)
+      - can you add to [studio](category) that I'd like [to play the piano](task) for the party?
+
+  - intent: add_task_with_hour
+    examples: |
+      - please add to the to-do list [close the window](task) at [20:30](hour)
+      - [open the box](task) at [eleven o' clock](hour)
+      - can you remind me to [play piano](task) at [eleven to twenty](hour)
+      - could you remind me to [go at the gym](task) at [ten to nine](hour)
+      - [check if the garage is closed](task) at [midnight](hour)
+      - At [eleven o'clock](hour) I want to [go to bed](task)
       - at [five to eleven](hour) sign to [go to gym](task)
       - at [three past six](hour) I must [bring my children at home](task)
+      - remind me to [send an email to prof](task) at [midnight](hour)
+      - Remind to [send an email to prof](task) at [ten to twenty](hour)
+      - add to the list [send an email to prof](task) at [eleven](hour)
+      - Add to the to-do list [send an email to prof](task) at [eleven to twenty](hour)
+      - I need you to remind me [send an email to prof](task) at [10:10](hour)
+      - I need a reminder for [send an email to prof](task) at [eleven to twenty](hour)
+      - please add a reminder for [go to the gym](task) at [15:00](hour)
+      - can you add to the to do list [go to the bank](task) at [16](hour)
+      - i want a reminder for [buy groceries](task) at [19:30](hour)
+      - remind me to [go to church](task) at [eleven to twenty](hour)
+      - could you please add a reminder for [checking my bank account](task) at [12:55](hour)
+      - i want to add in my to do list a reminder for [play guitar](task) at [noontime](hour)
+      - At [10](hour) I want to [play ukulele](task)
+      - at [five to eleven](hour) please sign to [make a cake](task)
+      - please at [2 o'clock](hour) i would like to [go swimming](task)
+      - could you remind me at [midday](hour) to [brush my teeth](task)
+      - i want a reminder at [2:30](hour) to [go to the gym](task)
 
   - synonym: 9wzi-peqs
     examples: |
@@ -315,4 +423,4 @@ nlu:
 
   - regex: hour
     examples: |
-      - ([0-1]?[0-9]|2[0-3])(| )(:|to|past)(| )[0-5][0-9]$
+      - ([0-1]?[0-9]|2[0-3])(| )(:|to|past)(| )[0-5][0-9]

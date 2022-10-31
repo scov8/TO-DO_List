@@ -15,20 +15,70 @@ rules:
     steps:
       - intent: greet
       - action: utter_greet
-
-  - rule: Activate form
+  # FULL TASK
+  - rule: Activate full task form
     steps:
-      - intent: add_task
-      - action: task_form
-      - active_loop: task_form
+      - intent: add_task_full
+      - action: full_task_form
+      - active_loop: full_task_form
 
-  - rule: Submit form
+  - rule: Submit full task form
     condition:
-      - active_loop: task_form
+      - active_loop: full_task_form
     steps:
-      - action: task_form
+      - action: full_task_form
       - active_loop: null
       - slot_was_set:
           - requested_slot: null
-      - action: utter_thanks
-      - action: action_submit
+      - action: full_task_submit
+
+  # CATEGORY AND TASK
+  - rule: Activate task with category form
+    steps:
+      - intent: add_task_with_category
+      - action: task_with_category_form
+      - active_loop: task_with_category_form
+
+  - rule: Submit task with category
+    condition:
+      - active_loop: task_with_category_form
+    steps:
+      - action: task_with_category_form
+      - active_loop: null
+      - slot_was_set:
+          - requested_slot: null
+      - action: task_with_category_submit
+
+  # HOUR AND TASK
+  - rule: Activate task with hour
+    steps:
+      - intent: add_task_with_hour
+      - action: task_with_hour_form
+      - active_loop: task_with_hour_form
+
+  - rule: Submit task with hour
+    condition:
+      - active_loop: task_with_hour_form
+    steps:
+      - action: task_with_hour_form
+      - active_loop: null
+      - slot_was_set:
+          - requested_slot: null
+      - action: task_with_hour_submit
+
+  # HOUR AND CATEGORY
+  - rule: Activate task only form
+    steps:
+      - intent: add_task_only
+      - action: task_only_form
+      - active_loop: task_only_form
+
+  - rule: Submit task only form
+    condition:
+      - active_loop: task_only_form
+    steps:
+      - action: task_only_form
+      - active_loop: null
+      - slot_was_set:
+          - requested_slot: null
+      - action: task_only_submit

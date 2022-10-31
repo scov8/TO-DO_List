@@ -38,18 +38,17 @@ pipeline:
     max_ngram: 4
   - name: DIETClassifier
     epochs: 100
-  - name: ResponseSelector
-  - name: CRFEntityExtractor
+  - name: CRFEntityExtractor #new
+  - name: SklearnIntentClassifier
+    epochs: 100
+    constrain_similarities: true
   - name: EntitySynonymMapper
-  - name: SklearnIntentClassifier #new
+  - name: ResponseSelector
     epochs: 100
     constrain_similarities: true
   - name: FallbackClassifier
     threshold: 0.3
     ambiguity_trashold: 0.1
-  - name: ResponseSelector
-    epochs: 100
-    constrain_similarities: true
 
 # Configuration for Rasa Core.
 # https://rasa.com/docs/rasa/core/policies/

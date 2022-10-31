@@ -3,40 +3,17 @@
 #
 # See this guide on how to implement these action:
 # https://rasa.com/docs/rasa/custom-actions
-
-
-# This is a simple example for a custom action which utters "Hello World!"
-
-# from typing import Any, Text, Dict, List
-#
-# from rasa_sdk import Action, Tracker
-# from rasa_sdk.executor import CollectingDispatcher
-#
-#
-# class ActionHelloWorld(Action):
-#
-#     def name(self) -> Text:
-#         return "action_hello_world"
-#
-#     def run(self, dispatcher: CollectingDispatcher,
-#             tracker: Tracker,
-#             domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
-#
-#         dispatcher.utter_message(text="Hello World!")
-#
-#         return []
-
 from typing import Any, Text, Dict, List
 
 from rasa_sdk import Action, Tracker
 from rasa_sdk.executor import CollectingDispatcher
 from rasa_sdk.events import SlotSet
 
-class ActionSubmit(Action):
+class FullTaskSubmit(Action):
     
     def name(self) -> Text:
-        return "action_submit"
-    
+        return "full_task_submit"
+
     def run(self, dispatcher: CollectingDispatcher,
             tracker: Tracker,
             domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
@@ -45,17 +22,74 @@ class ActionSubmit(Action):
         category = tracker.get_slot("category")
         task = tracker.get_slot("task")
 
+        print("Sono in FullTaskSubmit:")
+
         print("\nHour:",hour)
         print("Category:",category)
         print("Task:",task)
-
-        print(type(hour))
-        print(type(category))
-        print(type(task))
 
         dispatcher.utter_message(text=f"This is the address: {hour} {category} {task}") 
         dispatcher.utter_message(text= f"{hour}")
         dispatcher.utter_message(text= f"{category}")
         dispatcher.utter_message(text= f"{task}")
 
-        return [SlotSet("hour", hour),SlotSet("category", category),SlotSet("category", category)]
+        return []
+
+class TaskWithHourSubmit(Action):
+
+    def name(self) -> Text:
+        return "task_with_hour_submit"
+    
+    def run(self, dispatcher: CollectingDispatcher,
+            tracker: Tracker,
+            domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
+        
+        print('Sono in TaskWithHourSubmit')
+        
+        hour = tracker.get_slot("hour")
+        task = tracker.get_slot("task")
+
+        print("\nHour:",hour)
+        print("Task:",task)
+        
+        
+        return[]
+
+
+class TaskWithCategorySubmit(Action):
+
+    def name(self) -> Text:
+        return "task_with_category_submit"
+
+    def run(self, dispatcher: CollectingDispatcher,
+            tracker: Tracker,
+            domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
+
+        category = tracker.get_slot("category")
+        task = tracker.get_slot("task")
+        
+        print("Sono in TaskWithCategorySubmit:")
+        
+        print("Category:",category)
+        print("Task:",task)
+
+
+        return []
+
+class TaskOnlySubmit(Action):
+
+    def name(self) -> Text:
+        return "task_only_submit"
+
+    def run(self, dispatcher: CollectingDispatcher,
+            tracker: Tracker,
+            domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
+
+        task = tracker.get_slot("task")
+
+        print("Sono in TaskOnlySubmit:")
+        
+        print("Task:",task)
+
+
+        return []

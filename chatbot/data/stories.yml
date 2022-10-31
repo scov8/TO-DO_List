@@ -18,26 +18,63 @@ stories:
       - intent: affirm
       - action: utter_happy
 
-  # - story: sad path 2
-  #   steps:
-  #   - intent: greet
-  #   - action: utter_greet
-  #   - intent: mood_unhappy
-  #   - action: utter_cheer_up
-  #   - action: utter_did_that_help
-  #   - intent: deny
-  #   - action: utter_goodbye
+  - story: sad path 2
+    steps:
+      - intent: greet
+      - action: utter_greet
+      - intent: mood_unhappy
+      - action: utter_cheer_up
+      - action: utter_did_that_help
+      - intent: deny
+      - action: utter_goodbye
 
   - story: story_thankyou
     steps:
       - intent: thankyou
       - action: utter_noworries
-#  - story: story request task
-#    steps:
-#      - intent: greet
-#      - action: utter_greet
-#      - action: utter_get_started
-#      - intent: add_task
-#      - action: utter_thanks
-#      - intent: goodbye
-#      - action: utter_goodbye
+
+  - story: add full task
+    steps:
+      - intent: add_task_full
+      - slot_was_set:
+          - task
+          - hour
+          - category
+      - action: full_task_form
+      - action: full_task_submit
+
+  - story: add task with hour without category
+    steps:
+      - intent: add_task_with_hour
+      - slot_was_set:
+          - task
+          - hour
+          - category: null
+      - action: task_with_hour_form
+      - action: task_with_hour_submit
+      - intent: inform_category
+      - action: category_submit
+
+  - story: add task with category without hour
+    steps:
+      - intent: add_task_with_category
+      - slot_was_set:
+          - task
+          - category
+          - hour: null
+      - action: task_with_category_form
+      - action: task_with_category_submit
+      - intent: inform_hour
+      - action: hour_submit
+
+  - story: add task only
+    steps:
+      - intent: add_task_only
+      - slot_was_set:
+          - task
+          - hour: null
+          - category: null
+      - action: task_only_form
+      - action: task_only_submit
+      - intent: inform_hour_and_category
+      - action: hour_and_category_submit
