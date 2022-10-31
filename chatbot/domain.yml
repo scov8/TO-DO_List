@@ -88,6 +88,25 @@ forms:
         - type: from_entity
           entity: task
 
+  category_form:
+    required_slots:
+      category:
+        - type: from_entity
+          entity: category
+  hour_form:
+    required_slots:
+      hour:
+        - type: from_entity
+          entity: hour
+  hour_and_category_form:
+    required_slots:
+      hour:
+        - type: from_entity
+          entity: hour
+      category:
+        - type: from_entity
+          entity: category
+
 responses:
   utter_greet:
     - text: "Hey! How are you? :)"

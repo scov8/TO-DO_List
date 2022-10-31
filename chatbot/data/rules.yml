@@ -66,14 +66,14 @@ rules:
           - requested_slot: null
       - action: task_with_hour_submit
 
-  # HOUR AND CATEGORY
-  - rule: Activate task only form
+  # TASK ONLY
+  - rule: Activate add task only form
     steps:
       - intent: add_task_only
       - action: task_only_form
       - active_loop: task_only_form
 
-  - rule: Submit task only form
+  - rule: Submit add task only form
     condition:
       - active_loop: task_only_form
     steps:
@@ -82,3 +82,54 @@ rules:
       - slot_was_set:
           - requested_slot: null
       - action: task_only_submit
+
+  # HOUR ONLY
+  - rule: Activate hour only form
+    steps:
+      - intent: inform_hour
+      - action: hour_form
+      - active_loop: hour_form
+
+  - rule: Submit hour only form
+    condition:
+      - active_loop: hour_form
+    steps:
+      - action: hour_form
+      - active_loop: null
+      - slot_was_set:
+          - requested_slot: null
+      - action: hour_submit
+
+  # CATEGORY ONLY
+  - rule: Activate category only form
+    steps:
+      - intent: inform_category
+      - action: category_form
+      - active_loop: category_form
+
+  - rule: Submit category only form
+    condition:
+      - active_loop: category_form
+    steps:
+      - action: category_form
+      - active_loop: null
+      - slot_was_set:
+          - requested_slot: null
+      - action: category_submit
+
+  # CATEGORY AND HOUR ONLY
+  - rule: Activate hour and category only form
+    steps:
+      - intent: inform_hour_and_category
+      - action: hour_and_category_form
+      - active_loop: hour_and_category_form
+
+  - rule: Submit category only form
+    condition:
+      - active_loop: hour_and_category_form
+    steps:
+      - action: hour_and_category_form
+      - active_loop: null
+      - slot_was_set:
+          - requested_slot: null
+      - action: hour_and_category_submit

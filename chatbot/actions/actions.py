@@ -93,3 +93,54 @@ class TaskOnlySubmit(Action):
 
 
         return []
+
+class HourSubmit(Action):
+
+    def name(self) -> Text:
+        return "hour_submit"
+
+    def run(self, dispatcher: CollectingDispatcher,
+            tracker: Tracker,
+            domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
+
+        hour = tracker.get_slot("hour")
+
+        print("Sono in HourSubmit:")
+        print("Hour:",hour)
+
+        return []
+
+class CategorySubmit(Action):
+
+    def name(self) -> Text:
+        return "category_submit"
+
+    def run(self, dispatcher: CollectingDispatcher,
+            tracker: Tracker,
+            domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
+
+        category = tracker.get_slot("category")
+
+        print("Sono in CategorySubmit:")
+        print("Category:",category)
+
+        return []
+
+class HourAndCategorySubmit(Action):
+
+    def name(self) -> Text:
+        return "hour_and_category_submit"
+
+    def run(self, dispatcher: CollectingDispatcher,
+            tracker: Tracker,
+            domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
+
+        category = tracker.get_slot("category")
+        hour = tracker.get_slot("hour")
+
+        print("Sono in HourAndCategorySubmit:")
+        
+        print("Category:",category)
+        print("Hour:",hour)
+
+        return []
