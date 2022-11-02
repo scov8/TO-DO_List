@@ -285,13 +285,11 @@ nlu:
       - [add to the list](purpose) [cook dinner](task)
       - [add to the list](purpose) [send an email to Mike](task)
       - [remind me to](purpose) [send an email to prof](task)
-      - [I want to](purpose) [go to bed](task)
       - [could you remind me to](purpose) [play guitar](task)
       - [I would](purpose) [play football](task)
       - [remind me](purpose)  to [do a magic trick](task)
       - [I have to](purpose) [take my pills](task)
       - [I must](purpose) [call my wife](task)
-      - [I want to](purpose) [call my mom](task)
       - [please add to the to-do list](purpose) [close the window](task) and add to [personal](category)
       - [open the box](task), set as [home](category)
       - Sign as (hobby)[category] [add to the list](purpose) [go to stadium](task)
@@ -322,7 +320,6 @@ nlu:
       - [can you remind me to](purpose) [play piano](task) at [eleven to twenty](time)
       - [could you remind me to](purpose) [go at the gym](task) at [ten to nine](time)
       - [check if the garage is closed](task) at [midnight](time)
-      - At [eleven o'clock](time) [I want](purpose) to [go to bed](task)
       - at [five to eleven](time) [sign](purpose) to [go to gym](task)
       - at [three past six](time) [I must](purpose) [bring my children at home](task)
       - [remind me to](purpose) [send an email to prof](task) at [midnight](time)
@@ -337,7 +334,6 @@ nlu:
       - [remind me](purpose) to [go to church](task) at [eleven to twenty](time)
       - could you please [add a reminder](purpose) for [checking my bank account](task) at [12:55](time)
       - [i want to add](purpose) in my to do list a reminder for [play guitar](task) at [noontime](time)
-      - At [10](time) [I want](purpose) to [play ukulele](task)
       - at [five to eleven](time) please [sign](purpose) to [make a cake](task)
       - please at [2 o'clock](time) [i would like](purpose) to [go swimming](task)
       - [could you remind](purpose) me at [midday](time) to [brush my teeth](task)
@@ -411,7 +407,6 @@ nlu:
       - I need to insert in the to-do list
       - i want a reminder for
       - i want a reminder at
-      - I want to
       - I want to add
       - I want to insert
       - I want to append

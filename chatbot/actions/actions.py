@@ -20,17 +20,10 @@ class TaskSubmit(Action):
             tracker: Tracker,
             domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
 
-        time = tracker.get_slot("time")
-        time = time[-1] if isinstance(time, list) else time
-
+        time = tracker.get_slot("time")[-1]
         category = tracker.get_slot("category")
-        category = category[-1] if isinstance(category, list) else category
-        
         task = tracker.get_slot("task")
-        task = task[-1] if isinstance(task, list) else task
-        
         purpose = tracker.get_slot("purpose")
-        purpose = purpose[-1] if isinstance(purpose, list) else purpose
 
         print("\n\nSono in TaskSubmit:")
         print("time:",time)
@@ -38,12 +31,12 @@ class TaskSubmit(Action):
         print("Task:",task)
         print("Purpose:",purpose)
 
-        if(purpose=="purpose-add"):
-            dispatcher.utter_message(text=f"Thanks, you want to add a new task, and the task is: \"{task}\" at {time} in the category \"{category}\"\nWould you like to confirm?") 
-        if(purpose=="purpose-del"):
-            dispatcher.utter_message(text=f"Oh no, you want to delete a task, and the task is: \"{task}\" at {time} in the category \"{category}\"\nWould you like to confirm?") 
-        if(purpose=="purpose-update"):
-            dispatcher.utter_message(text=f"Ok, you want to modify a task, and the task is: \"{task}\" at {time} in the category \"{category}\"\nTell me the new task, category or time?") 
+        if (purpose == "purpose-add"):
+            dispatcher.utter_message(text = f"Thanks, you want to add a new task, and the task is: \"{task}\" at {time} in the category \"{category}\"\nWould you like to confirm?") 
+        if (purpose == "purpose-del"):
+            dispatcher.utter_message(text = f"Oh no, you want to delete a task, and the task is: \"{task}\" at {time} in the category \"{category}\"\nWould you like to confirm?") 
+        if (purpose == "purpose-update"):
+            dispatcher.utter_message(text = f"Ok, you want to modify a task, and the task is: \"{task}\" at {time} in the category \"{category}\"\nTell me the new task, category or time?") 
 
         return []
 
@@ -58,7 +51,7 @@ class ResetSlot(Action):
         category = tracker.get_slot("category")
         task = tracker.get_slot("task")
 
-        if(task is not None and time is not None and category is not None):
+        if (task is not None and time is not None and category is not None):
             dispatcher.utter_message("Ok I deleted your task!")
         else:
             dispatcher.utter_message("What?")
@@ -99,19 +92,13 @@ class AddToDb(Action):
 
         time = tracker.get_slot("time")
         time = time[-1] if isinstance(time, list) else time
-
         category = tracker.get_slot("category")
-        category = category[-1] if isinstance(category, list) else category
-        
         task = tracker.get_slot("task")
-        task = task[-1] if isinstance(task, list) else task
-        
         purpose = tracker.get_slot("purpose")
-        purpose = purpose[-1] if isinstance(purpose, list) else purpose
-        
+
         self.__find_purpose(purpose, task, time, category, conn)
 
-        if(task is not None and time is not None and category is not None):
+        if (task is not None and time is not None and category is not None):
             dispatcher.utter_message("Ok I added your task!")
             #fare query al db
         else:

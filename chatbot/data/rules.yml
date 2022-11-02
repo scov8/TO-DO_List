@@ -32,8 +32,6 @@ rules:
       - slot_was_set:
           - requested_slot: null
       - action: task_submit
-      - action: utter_overview
-      - action: utter_confirm_request
 
   - rule: Clean the slots every time the user deny the task
     steps:

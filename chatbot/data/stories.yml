@@ -44,8 +44,6 @@ stories:
           - purpose: purpose-add
       - action: task_form
       - action: task_submit
-      - action: utter_overview
-      - action: utter_confirm_request
       - intent: affirm
       - action: action_add_to_db
 
@@ -59,8 +57,6 @@ stories:
           - purpose: purpose-add
       - action: task_form
       - action: task_submit
-      - action: utter_overview
-      - action: utter_confirm_request
       - intent: deny
       - action: action_reset_slot
 
@@ -75,8 +71,6 @@ stories:
           - purpose: purpose-del
       - action: task_form
       - action: task_submit
-      - action: utter_overview
-      - action: utter_confirm_request
       - intent: affirm
       - action: action_add_to_db
 
@@ -90,10 +84,22 @@ stories:
           - purpose: purpose-del
       - action: task_form
       - action: task_submit
-      - action: utter_overview
-      - action: utter_confirm_request
       - intent: deny
       - action: action_reset_slot
+
+  # view area
+  - story: view tasks
+    steps:
+      - intent: manage_task
+      - slot_was_set:
+          - task
+          - time
+          - category
+          - purpose: purpose-view
+      - action: task_form
+      - action: task_submit
+      - intent: affirm
+      - action: action_add_to_db
 
   #  - story: del task and reject
   #  steps:
@@ -105,7 +111,6 @@ stories:
   #        - purpose: purpose-update
   #    - action: task_form
   #    - action: task_submit
-  #    - action: utter_overview
   #    - action: utter_confirm_request
   #    - intent: deny
   #    - action: action_reset_slot

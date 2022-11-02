@@ -32,7 +32,6 @@ actions:
   - utter_cheer_up
   - utter_happy
   - utter_iamabot
-  - utter_overview
   - utter_get_started
 
 # if you leave out influence_conversation or set it to true,
@@ -96,8 +95,6 @@ responses:
     - text: "My pleasure."
     - text: "You are welcome!"
 
-  utter_overview:
-    - text: "Ok. You want to {purpose} and your todo task is {task} at {time} in {category}!"
 
   utter_get_started:
     - text: "I can help you to create a To-Do List. What do I have to remind you to do?"
@@ -113,9 +110,6 @@ responses:
 
   utter_ask_purpose:
     - text: "You missed what do you want with this task, please tell me now if you want to add, modify or delete!"
-
-  utter_confirm_request:
-    - text: "Would you like to confirm?"
 
 session_config:
   session_expiration_time: 60
