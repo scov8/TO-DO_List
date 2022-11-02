@@ -18,23 +18,23 @@ class TaskSubmit(Action):
             tracker: Tracker,
             domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
 
-        hour = tracker.get_slot("hour")
-        category = tracker.get_slot("category")
-        task = tracker.get_slot("task")
-        purpose = tracker.get_slot("purpose")
+        time = tracker.get_slot("time")[-1]
+        category = tracker.get_slot("category")[-1]
+        task = tracker.get_slot("task")[-1]
+        purpose = tracker.get_slot("purpose")[-1]
 
         print("\n\nSono in TaskSubmit:")
-        print("Hour:",hour)
+        print("time:",time)
         print("Category:",category)
         print("Task:",task)
         print("Purpose:",purpose)
 
         if(purpose=="purpose-add"):
-            dispatcher.utter_message(text=f"Thanks, you want to add a new task, and the task is: \"{task}\" at {hour} in the category \"{category}\"\nWould you like to confirm?") 
+            dispatcher.utter_message(text=f"Thanks, you want to add a new task, and the task is: \"{task}\" at {time} in the category \"{category}\"\nWould you like to confirm?") 
         if(purpose=="purpose-del"):
-            dispatcher.utter_message(text=f"Oh no, you want to delete a task, and the task is: \"{task}\" at {hour} in the category \"{category}\"\nWould you like to confirm?") 
+            dispatcher.utter_message(text=f"Oh no, you want to delete a task, and the task is: \"{task}\" at {time} in the category \"{category}\"\nWould you like to confirm?") 
         if(purpose=="purpose-update"):
-            dispatcher.utter_message(text=f"Ok, you want to modify a task, and the task is: \"{task}\" at {hour} in the category \"{category}\"\nTell me the new task, category or hour?") 
+            dispatcher.utter_message(text=f"Ok, you want to modify a task, and the task is: \"{task}\" at {time} in the category \"{category}\"\nTell me the new task, category or time?") 
 
         return []
 
@@ -45,16 +45,16 @@ class ResetSlot(Action):
 
     def run(self, dispatcher, tracker, domain):
         print("reset slot")
-        hour = tracker.get_slot("hour")
+        time = tracker.get_slot("time")
         category = tracker.get_slot("category")
         task = tracker.get_slot("task")
 
-        if(task is not None and hour is not None and category is not None):
+        if(task is not None and time is not None and category is not None):
             dispatcher.utter_message("Ok I deleted your task!")
         else:
             dispatcher.utter_message("What?")
 
-        return [SlotSet("task", None),SlotSet("category", None),SlotSet("hour", None)]
+        return [SlotSet("task", None),SlotSet("category", None),SlotSet("time", None),SlotSet("purpose", None)]
     
 class AddToDb(Action):
 
@@ -63,14 +63,14 @@ class AddToDb(Action):
 
     def run(self, dispatcher, tracker, domain):
         print("add to db")
-        hour = tracker.get_slot("hour")
+        time = tracker.get_slot("time")
         category = tracker.get_slot("category")
         task = tracker.get_slot("task")
 
-        if(task is not None and hour is not None and category is not None):
+        if(task is not None and time is not None and category is not None):
             dispatcher.utter_message("Ok I added your task!")
             #fare query al db
         else:
             dispatcher.utter_message("What?")
 
-        return [SlotSet("task", None),SlotSet("category", None),SlotSet("hour", None)]
+        return [SlotSet("task", None),SlotSet("category", None),SlotSet("time", None),SlotSet("purpose", None)]

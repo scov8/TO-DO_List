@@ -10,15 +10,14 @@ intents:
   - bot_challenge
   - thankyou
   - inform_task
-  - inform_hour
   - inform_category
-  - inform_hour_and_category
+  - inform_time_and_category
   - manage_task
 
 entities:
   - task
   - category
-  - hour
+  - time
   - purpose
 
 actions:
@@ -44,12 +43,13 @@ slots:
   category:
     type: text
     influence_conversation: false # se un VALORE influenza la conversazione bisogna inserire una storia
-  hour:
-    type: text
+  time:
+    type: any
     influence_conversation: false
   purpose:
     type: text
     influence_conversation: false # da settare a true
+
 forms:
   task_form:
     required_slots:
@@ -59,12 +59,12 @@ forms:
       category:
         - type: from_entity
           entity: category
-      hour:
-        - type: from_entity
-          entity: hour
       purpose:
         - type: from_entity
           entity: purpose
+      time:
+        - type: from_entity
+          entity: time
 
 responses:
   utter_greet:
@@ -96,13 +96,13 @@ responses:
     - text: "You are welcome!"
 
   utter_overview:
-    - text: "Ok. You want to {purpose} and your todo task is {task} at {hour} in {category}!"
+    - text: "Ok. You want to {purpose} and your todo task is {task} at {time} in {category}!"
 
   utter_get_started:
     - text: "I can help you to create a To-Do List. What do I have to remind you to do?"
 
-  utter_ask_hour:
-    - text: "You missed hour, please tell me now!"
+  utter_ask_time:
+    - text: "You missed time, please tell me now!"
 
   utter_ask_category:
     - text: "You missed category, please tell me now!"

@@ -38,7 +38,7 @@ stories:
       - intent: manage_task
       - slot_was_set:
           - task
-          - hour
+          - time
           - category
           - purpose
       - action: task_form
@@ -53,7 +53,7 @@ stories:
       - intent: manage_task
       - slot_was_set:
           - task
-          - hour
+          - time
           - category
           - purpose
       - action: task_form

@@ -39,6 +39,9 @@ pipeline:
   - name: DIETClassifier
     epochs: 100
   - name: CRFEntityExtractor #new
+  - name: "DucklingEntityExtractor"
+    url: "http://localhost:8000"
+    dimensions: ["time"]
   - name: SklearnIntentClassifier
   #    epochs: 100
   #    constrain_similarities: true
