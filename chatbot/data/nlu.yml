@@ -124,6 +124,7 @@ nlu:
       - [add](purpose)
       - [modify](purpose)
       - [delete](purpose)
+      - [view](purpose)
 
   - intent: inform_task
     examples: |
@@ -467,6 +468,12 @@ nlu:
       - I have to
       - set at
       - I must
+      - add something
+      - insert something
+      - append something
+      - remind me something
+      - remind something
+      - sign something
 
   - synonym: purpose-update
     examples: |
@@ -512,6 +519,13 @@ nlu:
       - I'd like to alter
       - I'd like to correct
       - I'd like to revise
+      - change something
+      - modify something
+      - update something
+      - edit something
+      - alter something
+      - correct something
+      - revise something
 
   - synonym: purpose-del
     examples: |
@@ -610,6 +624,19 @@ nlu:
       - Could you take out the insertion of
       - Could you cut out the insertion of
       - Could you erase the insertion of
+      - delete something
+      - cancel something
+      - zap something
+      - eliminate something
+      - remove something
+      - stamp out something
+      - dele something
+      - kill something
+      - nullish something
+      - unpublish something
+      - take out something
+      - cut out something
+      - erase something
 
   - regex: time
     examples: |

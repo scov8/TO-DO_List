@@ -13,6 +13,7 @@ intents:
   - inform_category
   - inform_time_and_category
   - manage_task
+  - inform_action
 
 entities:
   - task
@@ -48,7 +49,7 @@ slots:
     influence_conversation: false
   purpose:
     type: text
-    influence_conversation: false # da settare a true
+    influence_conversation: true
 
 forms:
   task_form:

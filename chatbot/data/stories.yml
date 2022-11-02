@@ -33,6 +33,7 @@ stories:
       - intent: thankyou
       - action: utter_noworries
 
+  # add area
   - story: add task and confirm
     steps:
       - intent: manage_task
@@ -40,7 +41,7 @@ stories:
           - task
           - time
           - category
-          - purpose
+          - purpose: purpose-add
       - action: task_form
       - action: task_submit
       - action: utter_overview
@@ -55,10 +56,56 @@ stories:
           - task
           - time
           - category
-          - purpose
+          - purpose: purpose-add
       - action: task_form
       - action: task_submit
       - action: utter_overview
       - action: utter_confirm_request
       - intent: deny
       - action: action_reset_slot
+
+  # dell area
+  - story: del task and confirm
+    steps:
+      - intent: manage_task
+      - slot_was_set:
+          - task
+          - time
+          - category
+          - purpose: purpose-del
+      - action: task_form
+      - action: task_submit
+      - action: utter_overview
+      - action: utter_confirm_request
+      - intent: affirm
+      - action: action_add_to_db
+
+  - story: del task and reject
+    steps:
+      - intent: manage_task
+      - slot_was_set:
+          - task
+          - time
+          - category
+          - purpose: purpose-del
+      - action: task_form
+      - action: task_submit
+      - action: utter_overview
+      - action: utter_confirm_request
+      - intent: deny
+      - action: action_reset_slot
+
+  #  - story: del task and reject
+  #  steps:
+  #    - intent: manage_task
+  #    - slot_was_set:
+  #        - task
+  #        - time
+  #        - category
+  #        - purpose: purpose-update
+  #    - action: task_form
+  #    - action: task_submit
+  #    - action: utter_overview
+  #    - action: utter_confirm_request
+  #    - intent: deny
+  #    - action: action_reset_slot

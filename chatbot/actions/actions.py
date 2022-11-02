@@ -7,7 +7,7 @@ from typing import Any, Text, Dict, List
 
 from rasa_sdk import Action, Tracker
 from rasa_sdk.executor import CollectingDispatcher
-from rasa_sdk.events import SlotSet, AllSlotsReset
+from rasa_sdk.events import SlotSet
 
 import sqlite3
 
@@ -20,10 +20,17 @@ class TaskSubmit(Action):
             tracker: Tracker,
             domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
 
-        time = tracker.get_slot("time")[-1]
-        category = tracker.get_slot("category")[-1]
-        task = tracker.get_slot("task")[-1]
-        purpose = tracker.get_slot("purpose")[-1]
+        time = tracker.get_slot("time")
+        time = time[-1] if isinstance(time, list) else time
+
+        category = tracker.get_slot("category")
+        category = category[-1] if isinstance(category, list) else category
+        
+        task = tracker.get_slot("task")
+        task = task[-1] if isinstance(task, list) else task
+        
+        purpose = tracker.get_slot("purpose")
+        purpose = purpose[-1] if isinstance(purpose, list) else purpose
 
         print("\n\nSono in TaskSubmit:")
         print("time:",time)
@@ -78,7 +85,7 @@ class AddToDb(Action):
             print("curs",curs)
             conn.commit()
         elif (purpose == "purpose-update"):
-            query = 'UPDATE ToDoList SET (task, time, category)VALUES (:1, :2, :3)'
+            query = 'UPDATE ToDoList SET task=?, time=?, category=? where task=:1, time=:2, category=:3)'
             curs = conn.cursor()
             curs.execute(query, [task, time, category])
             print("curs",curs)
@@ -87,47 +94,28 @@ class AddToDb(Action):
             raise Exception('Invalid operation')
 
     def run(self, dispatcher, tracker, domain):
-        print("add to db")
-
         conn = sqlite3.connect('../chatbot.db')
         print("connessione al db:", conn)
 
-        time = tracker.get_slot("time")[-1]
-        category = tracker.get_slot("category")[-1]
-        task = tracker.get_slot("task")[-1]
-        purpose = tracker.get_slot("purpose")[-1]
+        time = tracker.get_slot("time")
+        time = time[-1] if isinstance(time, list) else time
 
+        category = tracker.get_slot("category")
+        category = category[-1] if isinstance(category, list) else category
+        
+        task = tracker.get_slot("task")
+        task = task[-1] if isinstance(task, list) else task
+        
+        purpose = tracker.get_slot("purpose")
+        purpose = purpose[-1] if isinstance(purpose, list) else purpose
+        
         self.__find_purpose(purpose, task, time, category, conn)
 
         if(task is not None and time is not None and category is not None):
             dispatcher.utter_message("Ok I added your task!")
             #fare query al db
-            
         else:
             dispatcher.utter_message("What?")
 
         conn.close()
         return [SlotSet("task", None),SlotSet("category", None),SlotSet("time", None),SlotSet("purpose", None)]
-
-
-
-        #####ESEMPIO###
-        
-
-'''
-
-;
-
-conn.execute("INSERT INTO COMPANY (ID,NAME,AGE,ADDRESS,SALARY) \
-      VALUES (2, 'Allen', 25, 'Texas', 15000.00 )");
-
-conn.execute("INSERT INTO COMPANY (ID,NAME,AGE,ADDRESS,SALARY) \
-      VALUES (3, 'Teddy', 23, 'Norway', 20000.00 )");
-
-conn.execute("INSERT INTO COMPANY (ID,NAME,AGE,ADDRESS,SALARY) \
-      VALUES (4, 'Mark', 25, 'Rich-Mond ', 65000.00 )");
-
-
-print "Records created successfully";
-conn.close()
-'''
