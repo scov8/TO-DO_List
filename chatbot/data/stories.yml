@@ -33,59 +33,32 @@ stories:
       - intent: thankyou
       - action: utter_noworries
 
-  - story: add full task
+  - story: add task and confirm
     steps:
-      - intent: add_task_full
+      - intent: manage_task
       - slot_was_set:
           - task
           - hour
           - category
-      - action: full_task_form
-      - action: full_task_submit
+          - purpose
+      - action: task_form
+      - action: task_submit
+      - action: utter_overview
+      - action: utter_confirm_request
       - intent: affirm
       - action: action_add_to_db
 
-  - story: add task with hour without category
+  - story: add task and reject
     steps:
-      - intent: add_task_with_hour
+      - intent: manage_task
       - slot_was_set:
           - task
           - hour
-          - category: null
-      - action: task_with_hour_form
-      - action: task_with_hour_submit
-      - intent: inform_category
-      - action: category_form
-      - action: category_submit
-      - intent: affirm
-      - action: action_add_to_db
-
-  - story: add task with category without hour
-    steps:
-      - intent: add_task_with_category
-      - slot_was_set:
-          - task
           - category
-          - hour: null
-      - action: task_with_category_form
-      - action: task_with_category_submit
-      - intent: inform_hour
-      - action: hour_form
-      - action: hour_submit
-      - intent: affirm
-      - action: action_add_to_db
-
-  - story: add task only
-    steps:
-      - intent: add_task_only
-      - slot_was_set:
-          - task
-          - hour: null
-          - category: null
-      - action: task_only_form
-      - action: task_only_submit
-      - intent: inform_hour_and_category
-      - action: hour_and_category_form
-      - action: hour_and_category_submit
-      - intent: affirm
-      - action: action_add_to_db
+          - purpose
+      - action: task_form
+      - action: task_submit
+      - action: utter_overview
+      - action: utter_confirm_request
+      - intent: deny
+      - action: action_reset_slot

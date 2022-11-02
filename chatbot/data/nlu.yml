@@ -119,6 +119,12 @@ nlu:
       - am I talking to a bot?
       - am I talking to a human?
 
+  - intent: inform_action
+    examples: |
+      - [add](purpose)
+      - [modify](purpose)
+      - [delete](purpose)
+
   - intent: inform_task
     examples: |
       - [wake up](task) 
@@ -286,140 +292,378 @@ nlu:
       - i want it at [five o'clock](hour). add it in [work](category)
       - assign it at category [sport](category) and expire it at [midday](hour)
 
-  - intent: add_task_only
+  - intent: manage_task
     examples: |
-      - add to the list [go to stadium](task)
-      - remind me to [send an email to mum](task)
-      - remind me to [turn the light off](task)
-      - can you remind me to [open the house](task)
-      - could you remind me to [go at the gym](task)
-      - I need remind that I [turn the light on](task)
-      - I should [send an email to prof](task)
-      - I must [go for a run](task)
-      - add to the list [bring at home](task)
-      - can u remind me to [send an email to Veronica](task)
-      - please add to the to-do list [go to gym](task)
-      - could you remind me to [search on google](task)
-      - I have to [cut my hair](task)
-      - I would [go to the bank](task)
-      - add to the list [open the bottle](task)
-      - add to the list [cook dinner](task)
-      - add to the list [send an email to Mike](task)
-      - remind me  to [send an email to prof](task)
-      - I want to [go to bed](task)
-      - could you remind me to [play guitar](task)
-      - I would [play football](task)
-      - remind me  to [do a magic trick](task)
-      - I have to [take my pills](task)
-      - I must  [call my wife](task)
-      - I want to [call my mom](task)
-
-  - intent: add_task_full
-    examples: |
-      - remind me to [send an email to prof](task) at [eleven to twenty](hour) and add to [work](category)
-      - Remind to [send an email to prof](task) at [eleven to twenty](hour) and add to [work](category)
-      - add to the list [send an email to prof](task) at [eleven to twenty](hour) and add to [work](category)
-      - Add to the to-do list [send an email to prof](task) at [eleven to twenty](hour) and add to [work](category)
-      - I need you to remind me [send an email to prof](task) at [eleven to twenty](hour) and add to [work](category)
-      - I need a reminder for [send an email to prof](task) at [eleven to twenty](hour) and add to [work](category)
-      - [send an email to prof](task) at [eleven to twenty](hour) and add to [work](category)
-      - remind me at [eleven to twenty](hour) to [send an email to prof](task) and add to [work](category)
-      - at [eleven to twenty](hour) add to the list [send an email to prof](task) and add to [work](category)
-      - in [home](category) at [12:00](hour) I must [cook the lunch](task)
+      - [remind me to](purpose) [send an email to prof](task) at [eleven to twenty](hour) and add to [work](category)
+      - [Remind to](purpose) [send an email to prof](task) at [eleven to twenty](hour) and add to [work](category)
+      - [add to the list](purpose) [send an email to prof](task) at [eleven to twenty](hour) and add to [work](category)
+      - [Add to the to-do list](purpose) [send an email to prof](task) at [eleven to twenty](hour) and add to [work](category)
+      - [I need you to remind me](purpose) [send an email to prof](task) at [eleven to twenty](hour) and add to [work](category)
+      - [I need a reminder for](purpose) [send an email to prof](task) at [eleven to twenty](hour) and add to [work](category)
+      - [send an email to prof](task) at [eleven to twenty](hour) and [add](purpose) to [work](category)
+      - [remind me](purpose) at [eleven to twenty](hour) to [send an email to prof](task) and add to [work](category)
+      - at [eleven to twenty](hour) [add to the list](purpose) [send an email to prof](task) and add to [work](category)
+      - in [home](category) at [12:00](hour) [I must](purpose) [cook the lunch](task)
       - in [hobby](category) at [12:10](hour) [meet the journalist](task)
-      - set at [20:30](hour) as [house](category) to [clean the garden](task)
-      - Set at [five past six](hour) to [repair the door](task) at [home](category)
-      - I have to [cut my hair](task) at [16:20](hour) and add in [personal](category)
-      - Add in my [free time](category) to [play guitar](task) from [19:00](hour)
-      - I would [go to the bank](task) at [ten past half](hour), add to [private](category)
-      - at [ten to seven](hour) add to the list [send an email to Mike](task) and add to [work]{"entity": "category", "value": "9wzi-asso"}
+      - [set at](purpose) [20:30](hour) as [house](category) to [clean the garden](task)
+      - [Set at](purpose) [five past six](hour) to [repair the door](task) at [home](category)
+      - [I have to](purpose) [cut my hair](task) at [16:20](hour) and add in [personal](category)
+      - [Add](purpose) in my [free time](category) to [play guitar](task) from [19:00](hour)
+      - [I would](purpose) [go to the bank](task) at [ten past half](hour), add to [private](category)
+      - at [ten to seven](hour) [add to the list](purpose) [send an email to Mike](task) and add to [work]{"entity": "category", "value": "category-work"}
       - [clean the bathroom](task) at [twenty to ten](hour), set as [private](category)
-      - please add to the to-do list [go to gym](task) and add to [work](category) at [20.35] (hour)
-      - add to the list [go to work](task) and add to [work](category) at [midnight](hour)
-      - [play the piano](task) and add to [work](category) at [7 past 10](hour)
-      - [do my homework](task) and add to [personal](category) at [10 to 19](hour)
-      - remind me at [10 to 23](hour) to [ask the question](task) and add to [hobby](category)
-      - Add in [work](category) to [send message](task) from [8:00](hour)
-      - Add in [personal](category) to [cook the lunch](task) from [12:00](hour)
-      - in [work](category) at [10 past 12](hour) I must [take a break](task)
-
-  - intent: add_task_with_category
-    examples: |
-      - please add to the to-do list [close the window](task) and add to [personal](category)
+      - [please add to the to-do list](purpose) [go to gym](task) and add to [work](category) at [20.35] (hour)
+      - [add to the list](purpose) [go to work](task) and add to [work](category) at [midnight](hour)
+      - [play the piano](task) and [add to](purpose) [work](category) at [7 past 10](hour)
+      - [do my homework](task) and [add to](purpose) [personal](category) at [10 to 19](hour)
+      - [remind me](purpose) at [10 to 23](hour) to [ask the question](task) and add to [hobby](category)
+      - [Add](purpose) in [work](category) to [send message](task) from [8:00](hour)
+      - [Add](purpose) in [personal](category) to [cook the lunch](task) from [12:00](hour)
+      - in [work](category) at [10 past 12](hour) [I must](purpose) [take a break](task)
+      - [add to the list](purpose) [go to stadium](task)
+      - [remind me to](purpose) [send an email to mum](task)
+      - [remind me to](purpose) [turn the light off](task)
+      - [can you remind me to](purpose) [open the house](task)
+      - [could you remind me to](purpose) [go at the gym](task)
+      - [I need remind that I](purpose) [turn the light on](task)
+      - [I should](purpose) [send an email to prof](task)
+      - [I must](purpose) [go for a run](task)
+      - [add to the list](purpose) [bring at home](task)
+      - [can u remind me](purpose) to [send an email to Veronica](task)
+      - [please add to the to-do list](purpose) [go to gym](task)
+      - [could you remind me to](purpose) [search on google](task)
+      - [I have to](purpose) [cut my hair](task)
+      - [I would](purpose) [go to the bank](task)
+      - [add to the list](purpose) [open the bottle](task)
+      - [add to the list](purpose) [cook dinner](task)
+      - [add to the list](purpose) [send an email to Mike](task)
+      - [remind me to](purpose) [send an email to prof](task)
+      - [I want to](purpose) [go to bed](task)
+      - [could you remind me to](purpose) [play guitar](task)
+      - [I would](purpose) [play football](task)
+      - [remind me](purpose)  to [do a magic trick](task)
+      - [I have to](purpose) [take my pills](task)
+      - [I must](purpose) [call my wife](task)
+      - [I want to](purpose) [call my mom](task)
+      - [please add to the to-do list](purpose) [close the window](task) and add to [personal](category)
       - [open the box](task), set as [home](category)
-      - Sign as (hobby)[category] add to the list [go to stadium](task)
-      - I must [go to the stadium](task) and attach to [sport](category) list
-      - remind to [send an email to prof](task) and attach to [work](category)
-      - add to the list [send an email to prof](task) and add to [work](category)
-      - Add to the to-do list [send an email to prof](task), add to [work](category)
-      - I need you to remind me [send an email to housemate](task) and add to [work](category)
-      - I need a reminder for [mailing my colleague](task) and add to [work](category)
+      - Sign as (hobby)[category] [add to the list](purpose) [go to stadium](task)
+      - [I must](purpose) [go to the stadium](task) and attach to [sport](category) list
+      - [remind to](purpose) [send an email to prof](task) and attach to [work](category)
+      - [add to the list](purpose) [send an email to prof](task) and add to [work](category)
+      - [Add to the to-do list](purpose) [send an email to prof](task), add to [work](category)
+      - [I need you to remind me](purpose) [send an email to housemate](task) and add to [work](category)
+      - [I need a reminder for](purpose) [mailing my colleague](task) and add to [work](category)
       - [mailing email to prof](task) and add to [office](category)
-      - remind me  to [send an email to prof](task) and add to [work](category)
-      - add [send an email to prof](task) to [work](category) category
-      - in [home](category) I must [cook the lunch](task)
+      - [remind me to](purpose) [send an email to prof](task) and add to [work](category)
+      - [add](purpose) [send an email to prof](task) to [work](category) category
+      - in [home](category) [I must](purpose) [cook the lunch](task)
       - in [hobby](category) [meet the journalist](task)
       - set as [house](category) to [clean the garden](task)
-      - Sign to [repair the door](task) at [home](category)
-      - I have to [cut my hair](task) and add in [personal](category)
+      - [Sign to](purpose) [repair the door](task) at [home](category)
+      - [I have to](purpose) [cut my hair](task) and add in [personal](category)
       - Add in my [free time](category) to [play guitar](task)
-      - I'd like [go to the bank](task), add to [private](category)
-      - add to the list [send an email to Mike](task) and add to [work]{"entity": "category", "value": "9wzi-asso"}
+      - [I'd like](purpose) [go to the bank](task), add to [private](category)
+      - [add to the list](purpose) [send an email to Mike](task) and add to [work]{"entity": "category", "value": "category-work"}
       - [clean the bathroom](task), set as [private](category)
-      - sign to [go to gym](task) as [sport](category)
-      - I must [bring my children at home](task) and attach in [personal](category)
+      - [sign to](purpose) [go to gym](task) as [sport](category)
+      - [I must](purpose) [bring my children at home](task) and attach in [personal](category)
       - [work](category), [meet the boss](task)
-      - can you add to [studio](category) that I'd like [to play the piano](task) for the party?
-
-  - intent: add_task_with_hour
-    examples: |
-      - please add to the to-do list [close the window](task) at [20:30](hour)
+      - [can you add to](purpose) [studio](category) that I'd like [to play the piano](task) for the party?
+      - [please add to the to-do list](purpose) [close the window](task) at [20:30](hour)
       - [open the box](task) at [eleven o' clock](hour)
-      - can you remind me to [play piano](task) at [eleven to twenty](hour)
-      - could you remind me to [go at the gym](task) at [ten to nine](hour)
+      - [can you remind me to](purpose) [play piano](task) at [eleven to twenty](hour)
+      - [could you remind me to](purpose) [go at the gym](task) at [ten to nine](hour)
       - [check if the garage is closed](task) at [midnight](hour)
-      - At [eleven o'clock](hour) I want to [go to bed](task)
-      - at [five to eleven](hour) sign to [go to gym](task)
-      - at [three past six](hour) I must [bring my children at home](task)
-      - remind me to [send an email to prof](task) at [midnight](hour)
-      - Remind to [send an email to prof](task) at [ten to twenty](hour)
-      - add to the list [send an email to prof](task) at [eleven](hour)
-      - Add to the to-do list [send an email to prof](task) at [eleven to twenty](hour)
-      - I need you to remind me [send an email to prof](task) at [10:10](hour)
-      - I need a reminder for [send an email to prof](task) at [eleven to twenty](hour)
-      - please add a reminder for [go to the gym](task) at [15:00](hour)
-      - can you add to the to do list [go to the bank](task) at [16](hour)
-      - i want a reminder for [buy groceries](task) at [19:30](hour)
-      - remind me to [go to church](task) at [eleven to twenty](hour)
-      - could you please add a reminder for [checking my bank account](task) at [12:55](hour)
-      - i want to add in my to do list a reminder for [play guitar](task) at [noontime](hour)
-      - At [10](hour) I want to [play ukulele](task)
-      - at [five to eleven](hour) please sign to [make a cake](task)
-      - please at [2 o'clock](hour) i would like to [go swimming](task)
-      - could you remind me at [midday](hour) to [brush my teeth](task)
-      - i want a reminder at [2:30](hour) to [go to the gym](task)
+      - At [eleven o'clock](hour) [I want](purpose) to [go to bed](task)
+      - at [five to eleven](hour) [sign](purpose) to [go to gym](task)
+      - at [three past six](hour) [I must](purpose) [bring my children at home](task)
+      - [remind me to](purpose) [send an email to prof](task) at [midnight](hour)
+      - [Remind to](purpose) [send an email to prof](task) at [ten to twenty](hour)
+      - [add to the list](purpose) [send an email to prof](task) at [eleven](hour)
+      - [Add to the to-do list](purpose) [send an email to prof](task) at [eleven to twenty](hour)
+      - [I need you to remind me](purpose) [send an email to prof](task) at [10:10](hour)
+      - [I need a reminder](purpose) for [send an email to prof](task) at [eleven to twenty](hour)
+      - please [add a reminder](purpose) for [go to the gym](task) at [15:00](hour)
+      - [can you add](purpose) to the to do list [go to the bank](task) at [16](hour)
+      - [i want a reminder](purpose) for [buy groceries](task) at [19:30](hour)
+      - [remind me](purpose) to [go to church](task) at [eleven to twenty](hour)
+      - could you please [add a reminder](purpose) for [checking my bank account](task) at [12:55](hour)
+      - [i want to add](purpose) in my to do list a reminder for [play guitar](task) at [noontime](hour)
+      - At [10](hour) [I want](purpose) to [play ukulele](task)
+      - at [five to eleven](hour) please [sign](purpose) to [make a cake](task)
+      - please at [2 o'clock](hour) [i would like](purpose) to [go swimming](task)
+      - [could you remind](purpose) me at [midday](hour) to [brush my teeth](task)
+      - [i want a reminder](purpose) at [2:30](hour) to [go to the gym](task)
 
-  - synonym: 9wzi-peqs
+  - synonym: category-home
     examples: |
       - home 
       - house
 
-  - synonym: 9wzi-asso
+  - synonym: category-work
     examples: |
       - office 
       - work
       - studio
 
-  - synonym: 9wzi-pppp
+  - synonym: category-free
     examples: |
       - hobby
       - free time
       - freetime
 
-  - synonym: 9wzi-tttt
+  - synonym: category-priv
     examples: |
       - personal
       - private
+
+  - synonym: purpose-add
+    examples: |
+      - I'd like to add
+      - I need remind that I
+      - remember me to
+      - remember me at
+      - remember me for
+      - remind me to
+      - remind me at
+      - remind me for
+      - could you remind me to
+      - could you remind me at
+      - could you remind me for
+      - could you add 
+      - could you insert
+      - could you append
+      - could you attach
+      - could you put in
+      - could you remember me to
+      - could you please add a reminder for
+      - could you please insert in the ti do list
+      - could you please append to the list
+      - please add to the to do list
+      - please add to the to-do list
+      - please add to the todo list
+      - please add in the 
+      - please remind me of
+      - please remind me to
+      - please insert
+      - please append
+      - please attach
+      - please put in
+      - please sign to
+      - please sign at
+      - please sign for
+      - please remember me to
+      - remind to
+      - remind at
+      - remind for
+      - I need a reminder for
+      - I need you to remind me
+      - I need to add in the todo list
+      - I need to append in the to do list
+      - I need to insert in the to-do list
+      - i want a reminder for
+      - i want a reminder at
+      - I want to
+      - I want to add
+      - I want to insert
+      - I want to append
+      - I want to remember to
+      - i would like to add in the list
+      - I would like to insert in the list
+      - I'd like to insert
+      - I would like to append in the list
+      - I'd like to append
+      - I would like to add a reminder in the list
+      - I have to add
+      - I have to insert
+      - I have to attach
+      - I have to put in
+      - I have to remember to
+      - I have to append to the list
+      - I must add
+      - I must add at
+      - I must add for
+      - I must insert in the todo list
+      - I must append to the list
+      - I must remember to 
+      - can you remind
+      - can you remind me to 
+      - Can you add
+      - Can you add to 
+      - Can you add at
+      - Can you add to the to do list
+      - Can you insert
+      - Can you put in
+      - Can you append
+      - add
+      - insert
+      - append
+      - remind me
+      - put in
+      - attach
+      - remind
+      - attach to the list
+      - add to the list
+      - put in the list
+      - append to the list
+      - insert in the list
+      - Add in my todo list
+      - Insert in my list
+      - Append in my to do list
+      - Put in my to-do list
+      - Attach in my list
+      - sign to
+      - sign at
+      - sign for
+      - add to the list
+      - Add to the to-do list
+      - I have to
+      - set at
+      - I must
+
+  - synonym: purpose-update
+    examples: |
+      - Modify
+      - Update
+      - Change
+      - Edit
+      - Alter
+      - Correct
+      - Revise
+      - Please modify
+      - Please change
+      - Please edit
+      - Please update
+      - Please alter
+      - Please correct
+      - Please revise
+      - I must modify
+      - I must update
+      - I must change
+      - I must edit
+      - I must alter
+      - I must correct
+      - I must revise
+      - I have to modify
+      - I have to update
+      - I have to change
+      - I have to edit
+      - I have to alter
+      - I have to correct
+      - I have to revise
+      - Could you modify
+      - Could you change
+      - Could you edit
+      - Could you update
+      - Could you alter
+      - Could you correct
+      - Could you revise
+      - I'd like to change
+      - I'd like to modify
+      - I'd like to update
+      - I'd like to edit
+      - I'd like to alter
+      - I'd like to correct
+      - I'd like to revise
+
+  - synonym: purpose-del
+    examples: |
+      - Delete
+      - Cancel
+      - Zap
+      - Eliminate
+      - Remove
+      - Stamp out
+      - Dele
+      - Kill
+      - Nullish
+      - Unpublish
+      - Take out
+      - I don't want anymore
+      - Cut out
+      - Burn the following task
+      - Erase
+      - Please delete
+      - Please cancel
+      - Please zap
+      - Please eliminate
+      - Please remove
+      - Please stamp out
+      - Please dele
+      - Please kill
+      - Please nullish
+      - Please unpublish
+      - Please take out
+      - Please cut out
+      - Please burn the following task
+      - Please erase
+      - I must delete
+      - I must cancel
+      - I must zap
+      - I must eliminate
+      - I must remove
+      - I must stamp out
+      - I must dele
+      - I must kill
+      - I must nullish
+      - I must unpublish
+      - I must take out
+      - I must cut out
+      - I must burn the following task
+      - I must erase
+      - I have to delete
+      - I have to cancel
+      - I have to zap
+      - I have to eliminate
+      - I have to remove
+      - I have to stamp out
+      - I have to dele
+      - I have to kill
+      - I have to nullish
+      - I have to unpublish
+      - I have to take out
+      - I have to cut out
+      - I have to erase
+      - Could you delete
+      - Could you cancel
+      - Could you zap
+      - Could you eliminate
+      - Could you remove
+      - Could you stamp out
+      - Could you dele
+      - Could you kill
+      - Could you nullish
+      - Could you unpublish
+      - Could you take out
+      - Could you cut out
+      - Could you erase
+      - I'd like to delete
+      - I'd like to cancel
+      - I'd like to zap
+      - I'd like to eliminate
+      - I'd like to remove
+      - I'd like to stamp out
+      - I'd like to dele
+      - I'd like to kill
+      - I'd like to nullish
+      - I'd like to unpublish
+      - I'd like to take out
+      - I'd like to cut out
+      - I'd like to erase
+      - Could you delete the insertion of
+      - Could you cancel the insertion of
+      - Could you zap the insertion of
+      - Could you eliminate the insertion of
+      - Could you remove the insertion of
+      - Could you stamp out the insertion of
+      - Could you dele the insertion of
+      - Could you kill the insertion of
+      - Could you nullish the insertion of
+      - Could you unpublish the insertion of
+      - Could you take out the insertion of
+      - Could you cut out the insertion of
+      - Could you erase the insertion of
 
   - regex: hour
     examples: |

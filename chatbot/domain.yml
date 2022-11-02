@@ -13,24 +13,16 @@ intents:
   - inform_hour
   - inform_category
   - inform_hour_and_category
-  - add_task_only
-  - add_task_full
-  - add_task_with_category
-  - add_task_with_hour
+  - manage_task
 
 entities:
   - task
   - category
   - hour
+  - purpose
 
 actions:
-  - full_task_submit
-  - task_with_category_submit
-  - task_with_hour_submit
-  - task_only_submit
-  - category_submit
-  - hour_submit
-  - hour_and_category_submit
+  - task_submit
   - action_reset_slot
   - action_add_to_db
   - utter_greet
@@ -40,7 +32,7 @@ actions:
   - utter_cheer_up
   - utter_happy
   - utter_iamabot
-  - utter_thanks
+  - utter_overview
   - utter_get_started
 
 # if you leave out influence_conversation or set it to true,
@@ -55,9 +47,11 @@ slots:
   hour:
     type: text
     influence_conversation: false
-
+  purpose:
+    type: text
+    influence_conversation: false # da settare a true
 forms:
-  full_task_form:
+  task_form:
     required_slots:
       task:
         - type: from_entity
@@ -68,46 +62,9 @@ forms:
       hour:
         - type: from_entity
           entity: hour
-  task_with_category_form:
-    required_slots:
-      task:
+      purpose:
         - type: from_entity
-          entity: task
-      category:
-        - type: from_entity
-          entity: category
-  task_with_hour_form:
-    required_slots:
-      task:
-        - type: from_entity
-          entity: task
-      hour:
-        - type: from_entity
-          entity: hour
-  task_only_form:
-    required_slots:
-      task:
-        - type: from_entity
-          entity: task
-
-  category_form:
-    required_slots:
-      category:
-        - type: from_entity
-          entity: category
-  hour_form:
-    required_slots:
-      hour:
-        - type: from_entity
-          entity: hour
-  hour_and_category_form:
-    required_slots:
-      hour:
-        - type: from_entity
-          entity: hour
-      category:
-        - type: from_entity
-          entity: category
+          entity: purpose
 
 responses:
   utter_greet:
@@ -138,11 +95,26 @@ responses:
     - text: "My pleasure."
     - text: "You are welcome!"
 
-  utter_thanks:
-    - text: "Ok. Your todo task is {task} at {hour} in {category}.Thank you!"
+  utter_overview:
+    - text: "Ok. You want to {purpose} and your todo task is {task} at {hour} in {category}!"
 
   utter_get_started:
     - text: "I can help you to create a To-Do List. What do I have to remind you to do?"
+
+  utter_ask_hour:
+    - text: "You missed hour, please tell me now!"
+
+  utter_ask_category:
+    - text: "You missed category, please tell me now!"
+
+  utter_ask_task:
+    - text: "You missed task name, please tell me now!"
+
+  utter_ask_purpose:
+    - text: "You missed what do you want with this task, please tell me now if you want to add, modify or delete!"
+
+  utter_confirm_request:
+    - text: "Would you like to confirm?"
 
 session_config:
   session_expiration_time: 60
