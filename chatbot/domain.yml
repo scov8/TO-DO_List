@@ -14,12 +14,15 @@ intents:
   - manage_task
   - inform_action
   - view_task
+  - inform_person
+  - change_person
 
 entities:
   - task
   - category
   - time
   - purpose
+  - PERSON
 
 actions:
   - task_submit
@@ -34,10 +37,14 @@ actions:
   - utter_happy
   - utter_iamabot
   - utter_get_started
+  - utter_hello_user
 
 # if you leave out influence_conversation or set it to true,
 # hat slot will influence the next action prediction, unless it has slot type any
 slots:
+  PERSON:
+    type: text
+    influence_conversation: false
   task:
     type: text
     influence_conversation: false
@@ -66,11 +73,11 @@ forms:
       time:
         - type: from_entity
           entity: time
-  action_form:
+  person_form:
     required_slots:
-      purpose:
+      PERSON:
         - type: from_entity
-          entity: purpose
+          entity: PERSON
 
 responses:
   utter_greet:
@@ -115,6 +122,12 @@ responses:
 
   utter_ask_purpose:
     - text: "You missed what do you want with this task, please tell me now if you want to add, modify or delete!"
+
+  utter_hello_user:
+    - text: "Hi {PERSON}"
+
+  utter_ask_PERSON:
+    - text: "You missed your username, please tell me now!"
 
 session_config:
   session_expiration_time: 60

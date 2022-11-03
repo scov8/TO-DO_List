@@ -33,6 +33,22 @@ rules:
           - requested_slot: null
       - action: task_submit
 
+  - rule: Activate user form
+    steps:
+      - intent: change_person
+      - action: person_form
+      - active_loop: person_form
+
+  - rule: Submit user form
+    condition:
+      - active_loop: person_form
+    steps:
+      - action: person_form
+      - active_loop: null
+      - slot_was_set:
+          - requested_slot: null
+      - action: utter_hello_user
+
   - rule: Clean the slots every time the user deny the task
     steps:
       - intent: deny

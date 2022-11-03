@@ -213,6 +213,40 @@ nlu:
       - [house](category)
       - [hobby](category)
 
+  - intent: inform_person
+    examples: |
+      - [Pio](PERSON)
+      - [Ciro](PERSON)
+      - [Alessia](PERSON)
+      - [Antonio](PERSON)
+      - [Luca](PERSON)
+      - [Lucia](PERSON)
+      - [Antonia](PERSON)
+      - [Luisa](PERSON)
+      - [Valentina](PERSON)
+      - [Lucrezia](PERSON)
+      - [Luciano](PERSON)
+      - [Nisha](PERSON)
+      - [Patrizia](PERSON)
+      - [Ada](PERSON)
+      - [Geraldino](PERSON)
+      - [Matteo](PERSON)
+      - [Alfredo](PERSON)
+      - [Massimo](PERSON)
+
+  - intent: change_person
+    examples: |
+      - change to [Pio](PERSON)
+      - switch to [Ciro](PERSON)
+      - change the user to [Alessia](PERSON)
+      - switch to user [Antonio](PERSON)
+      - i'm [Luca](PERSON)
+      - i am [Patrizia](PERSON)
+      - please change to [Valentina](PERSON)
+      - user to [Luciano](PERSON)
+      - my username is [Ada](PERSON)
+      - my user is [Alfredo](PERSON)
+
   - intent: view_task
     examples: |
       - i have to do something
