@@ -11,9 +11,9 @@ intents:
   - thankyou
   - inform_task
   - inform_category
-  - inform_time_and_category
   - manage_task
   - inform_action
+  - view_task
 
 entities:
   - task
@@ -25,6 +25,7 @@ actions:
   - task_submit
   - action_reset_slot
   - action_add_to_db
+  - action_view_list
   - utter_greet
   - utter_goodbye
   - utter_noworries
@@ -94,7 +95,6 @@ responses:
   utter_noworries:
     - text: "My pleasure."
     - text: "You are welcome!"
-
 
   utter_get_started:
     - text: "I can help you to create a To-Do List. What do I have to remind you to do?"

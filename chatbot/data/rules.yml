@@ -42,3 +42,8 @@ rules:
     steps:
       - intent: affirm
       - action: action_add_to_db
+
+  - rule: Show the to-do list when the user want
+    steps:
+      - intent: view_task
+      - action: action_view_list

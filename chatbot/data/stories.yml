@@ -60,6 +60,33 @@ stories:
       - intent: deny
       - action: action_reset_slot
 
+    # update area
+  - story: update task and confirm
+    steps:
+      - intent: manage_task
+      - slot_was_set:
+          - task
+          - time
+          - category
+          - purpose: purpose-update
+      - action: task_form
+      - action: task_submit
+      - intent: affirm
+      - action: action_add_to_db
+
+  - story: update task and reject
+    steps:
+      - intent: manage_task
+      - slot_was_set:
+          - task
+          - time
+          - category
+          - purpose: purpose-update
+      - action: task_form
+      - action: task_submit
+      - intent: deny
+      - action: action_reset_slot
+
   # dell area
   - story: del task and confirm
     steps:
@@ -90,27 +117,5 @@ stories:
   # view area
   - story: view tasks
     steps:
-      - intent: manage_task
-      - slot_was_set:
-          - task
-          - time
-          - category
-          - purpose: purpose-view
-      - action: task_form
-      - action: task_submit
-      - intent: affirm
-      - action: action_add_to_db
-
-  #  - story: del task and reject
-  #  steps:
-  #    - intent: manage_task
-  #    - slot_was_set:
-  #        - task
-  #        - time
-  #        - category
-  #        - purpose: purpose-update
-  #    - action: task_form
-  #    - action: task_submit
-  #    - action: utter_confirm_request
-  #    - intent: deny
-  #    - action: action_reset_slot
+      - intent: view_task
+      - action: action_view_list

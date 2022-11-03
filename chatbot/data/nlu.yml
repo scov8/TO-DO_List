@@ -213,60 +213,59 @@ nlu:
       - [house](category)
       - [hobby](category)
 
-  - intent: inform_time_and_category
+  - intent: view_task
     examples: |
-      - at [8:00](time) and category [personal](category)
-      - add to category [work](category) at [9 past 11](time)
-      - [personal](category) and [10:30](time)
-      - [20 past 11](time) and [work](category)
-      - at [eleven to twenty](time) and add to [work](category)
-      - in [home](category) at [12:00](time)
-      - Add in [personal](category) from [12:00](time)
-      - Set at [five past six](time) at category [home](category)
-      - in [sport](category) at [8:45](time)
-      - please add it in [work](category) and this time: [9.35](time)
-      - [13:40](time), [house](category)
-      - attach in [hobby](category) at [22:00](time)
-      - set into [studio](category) at time [23:30](time)
-      - [14:38](time), I'd like you to add in [work](category) category
-      - i want that at [7:00](time) and i want to add it in [work](category)
-      - add it in [house](category) and the deadline is at [midnight](time)
-      - insert it in [work](category) with a deadline at [3 o'clock](time)
-      - insert in in [course](category) at [6:00](time)
-      - the deadline is [midnight](time) and the category is [sport](category)
-      - expire it at [8:30](time) and add it in in [personal](category)
-      - the deadline is: [3 o'clock](time); and the category is [personal](category)
-      - i want it at [five o'clock](time). add it in [work](category)
-      - assign it at category [sport](category) and expire it at [midday](time)
+      - i have to do something
+      - i must do something?
+      - show me all the to-do list
+      - show me all the list
+      - can you show me the list?
+      - can i view the list?
+      - give me all the tasks in the list
+      - show me all task
+      - let me see all
+      - what i must to do today
+      - show me all
+      - what i must do?
+      - what i'll do?
+      - what am i going to do?
+      - do i have anything to do today?
+      - i want to see my to do list
+      - please show me the todo list
+      - is there something in my to-do list?
+      - What kinds of task I have to do today?
+      - let me see what I have to do
+      - i should do something?
+      - what i do today?
 
   - intent: manage_task
     examples: |
-      - [remind me to](purpose) [send an email to prof](task) at [eleven to twenty](time) and add to [work](category)
-      - [Remind to](purpose) [send an email to prof](task) at [eleven to twenty](time) and add to [work](category)
-      - [add to the list](purpose) [send an email to prof](task) at [eleven to twenty](time) and add to [work](category)
-      - [Add to the to-do list](purpose) [send an email to prof](task) at [eleven to twenty](time) and add to [work](category)
-      - [I need you to remind me](purpose) [send an email to prof](task) at [eleven to twenty](time) and add to [work](category)
-      - [I need a reminder for](purpose) [send an email to prof](task) at [eleven to twenty](time) and add to [work](category)
-      - [send an email to prof](task) at [eleven to twenty](time) and [add](purpose) to [work](category)
-      - [remind me](purpose) at [eleven to twenty](time) to [send an email to prof](task) and add to [work](category)
-      - at [eleven to twenty](time) [add to the list](purpose) [send an email to prof](task) and add to [work](category)
-      - in [home](category) at [12:00](time) [I must](purpose) [cook the lunch](task)
-      - in [hobby](category) at [12:10](time) [meet the journalist](task)
-      - [set at](purpose) [20:30](time) as [house](category) to [clean the garden](task)
-      - [Set at](purpose) [five past six](time) to [repair the door](task) at [home](category)
-      - [I have to](purpose) [cut my hair](task) at [16:20](time) and add in [personal](category)
-      - [Add](purpose) in my [free time](category) to [play guitar](task) from [19:00](time)
-      - [I would](purpose) [go to the bank](task) at [ten past half](time), add to [private](category)
-      - at [ten to seven](time) [add to the list](purpose) [send an email to Mike](task) and add to [work]{"entity": "category", "value": "category-work"}
-      - [clean the bathroom](task) at [twenty to ten](time), set as [private](category)
-      - [please add to the to-do list](purpose) [go to gym](task) and add to [work](category) at [20.35] (time)
-      - [add to the list](purpose) [go to work](task) and add to [work](category) at [midnight](time)
-      - [play the piano](task) and [add to](purpose) [work](category) at [7 past 10](time)
-      - [do my homework](task) and [add to](purpose) [personal](category) at [10 to 19](time)
-      - [remind me](purpose) at [10 to 23](time) to [ask the question](task) and add to [hobby](category)
-      - [Add](purpose) in [work](category) to [send message](task) from [8:00](time)
-      - [Add](purpose) in [personal](category) to [cook the lunch](task) from [12:00](time)
-      - in [work](category) at [10 past 12](time) [I must](purpose) [take a break](task)
+      - [remind me to](purpose) [send an email to prof](task) at eleven to twenty and add to [work](category)
+      - [Remind to](purpose) [send an email to prof](task) at eleven to twenty and add to [work](category)
+      - [add to the list](purpose) [send an email to prof](task) at eleven to twenty and add to [work](category)
+      - [Add to the to-do list](purpose) [send an email to prof](task) at eleven to twenty and add to [work](category)
+      - [I need you to remind me](purpose) [send an email to prof](task) at eleven to twenty and add to [work](category)
+      - [I need a reminder for](purpose) [send an email to prof](task) at eleven to twenty and add to [work](category)
+      - [send an email to prof](task) at eleven to twenty and [add](purpose) to [work](category)
+      - [remind me](purpose) at eleven to twenty to [send an email to prof](task) and add to [work](category)
+      - at eleven to twenty [add to the list](purpose) [send an email to prof](task) and add to [work](category)
+      - in [home](category) at 12:00 [I must](purpose) [cook the lunch](task)
+      - in [hobby](category) at 12:10 [meet the journalist](task)
+      - [set at](purpose) 20:30 as [house](category) to [clean the garden](task)
+      - [Set at](purpose) five past six to [repair the door](task) at [home](category)
+      - [I have to](purpose) [cut my hair](task) at 16:20 and add in [personal](category)
+      - [Add](purpose) in my [free time](category) to [play guitar](task) from 19:00
+      - [I would](purpose) [go to the bank](task) at ten past half, add to [private](category)
+      - at ten to seven [add to the list](purpose) [send an email to Mike](task) and add to [work]{"entity": "category", "value": "category-work"}
+      - [clean the bathroom](task) at twenty to ten, set as [private](category)
+      - [please add to the to-do list](purpose) [go to gym](task) and add to [work](category) at 20.35
+      - [add to the list](purpose) [go to work](task) and add to [work](category) at midnight
+      - [play the piano](task) and [add to](purpose) [work](category) at 7 past 10
+      - [do my homework](task) and [add to](purpose) [personal](category) at 10 to 19
+      - [remind me](purpose) at 10 to 23 to [ask the question](task) and add to [hobby](category)
+      - [Add](purpose) in [work](category) to [send message](task) from 8:00
+      - [Add](purpose) in [personal](category) to [cook the lunch](task) from 12:00
+      - in [work](category) at 10 past 12 [I must](purpose) [take a break](task)
       - [add to the list](purpose) [go to stadium](task)
       - [remind me to](purpose) [send an email to mum](task)
       - [remind me to](purpose) [turn the light off](task)
@@ -315,29 +314,29 @@ nlu:
       - [I must](purpose) [bring my children at home](task) and attach in [personal](category)
       - [work](category), [meet the boss](task)
       - [can you add to](purpose) [studio](category) that I'd like [to play the piano](task) for the party?
-      - [please add to the to-do list](purpose) [close the window](task) at [20:30](time)
-      - [open the box](task) at [eleven o' clock](time)
-      - [can you remind me to](purpose) [play piano](task) at [eleven to twenty](time)
-      - [could you remind me to](purpose) [go at the gym](task) at [ten to nine](time)
-      - [check if the garage is closed](task) at [midnight](time)
-      - at [five to eleven](time) [sign](purpose) to [go to gym](task)
-      - at [three past six](time) [I must](purpose) [bring my children at home](task)
-      - [remind me to](purpose) [send an email to prof](task) at [midnight](time)
-      - [Remind to](purpose) [send an email to prof](task) at [ten to twenty](time)
-      - [add to the list](purpose) [send an email to prof](task) at [eleven](time)
-      - [Add to the to-do list](purpose) [send an email to prof](task) at [eleven to twenty](time)
-      - [I need you to remind me](purpose) [send an email to prof](task) at [10:10](time)
-      - [I need a reminder](purpose) for [send an email to prof](task) at [eleven to twenty](time)
-      - please [add a reminder](purpose) for [go to the gym](task) at [15:00](time)
-      - [can you add](purpose) to the to do list [go to the bank](task) at [16](time)
-      - [i want a reminder](purpose) for [buy groceries](task) at [19:30](time)
-      - [remind me](purpose) to [go to church](task) at [eleven to twenty](time)
-      - could you please [add a reminder](purpose) for [checking my bank account](task) at [12:55](time)
-      - [i want to add](purpose) in my to do list a reminder for [play guitar](task) at [noontime](time)
-      - at [five to eleven](time) please [sign](purpose) to [make a cake](task)
-      - please at [2 o'clock](time) [i would like](purpose) to [go swimming](task)
-      - [could you remind](purpose) me at [midday](time) to [brush my teeth](task)
-      - [i want a reminder](purpose) at [2:30](time) to [go to the gym](task)
+      - [please add to the to-do list](purpose) [close the window](task) at 20:30
+      - [open the box](task) at eleven o' clock
+      - [can you remind me to](purpose) [play piano](task) at eleven to twenty
+      - [could you remind me to](purpose) [go at the gym](task) at ten to nine
+      - [check if the garage is closed](task) at midnight
+      - at five to eleven [sign](purpose) to [go to gym](task)
+      - at three past six [I must](purpose) [bring my children at home](task)
+      - [remind me to](purpose) [send an email to prof](task) at midnight
+      - [Remind to](purpose) [send an email to prof](task) at ten to twenty
+      - [add to the list](purpose) [send an email to prof](task) at eleven
+      - [Add to the to-do list](purpose) [send an email to prof](task) at eleven to twenty
+      - [I need you to remind me](purpose) [send an email to prof](task) at 10:10
+      - [I need a reminder](purpose) for [send an email to prof](task) at [eleven to twenty
+      - please [add a reminder](purpose) for [go to the gym](task) at 15:00
+      - [can you add](purpose) to the to do list [go to the bank](task) at 16
+      - [i want a reminder](purpose) for [buy groceries](task) at 19:30
+      - [remind me](purpose) to [go to church](task) at eleven to twenty
+      - could you please [add a reminder](purpose) for [checking my bank account](task) at 12:55
+      - [i want to add](purpose) in my to do list a reminder for [play guitar](task) at noontime
+      - at five to eleven please [sign](purpose) to [make a cake](task)
+      - please at 2 o'clock [i would like](purpose) to [go swimming](task)
+      - [could you remind](purpose) me at midday to [brush my teeth](task)
+      - [i want a reminder](purpose) at 2:30 to [go to the gym](task)
 
   - synonym: category-home
     examples: |
