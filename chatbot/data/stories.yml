@@ -73,9 +73,6 @@ stories:
       - action: task_submit
       - intent: affirm
       - action: action_add_to_db
-
-  - story: update task and reject
-    steps:
       - intent: manage_task
       - slot_was_set:
           - task
@@ -84,8 +81,21 @@ stories:
           - purpose: purpose-update
       - action: task_form
       - action: task_submit
-      - intent: deny
-      - action: action_reset_slot
+      - intent: affirm
+      - action: action_add_to_db
+
+  # - story: update task and reject
+  #   steps:
+  ##     - intent: manage_task
+  #     - slot_was_set:
+  #         - task
+  #         - time
+  #        - category
+  #        - purpose: purpose-update
+  #    - action: task_form
+  #    - action: task_submit
+  #    - intent: deny
+  #    - action: action_reset_slot
 
   # dell area
   - story: del task and confirm

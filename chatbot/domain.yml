@@ -66,6 +66,11 @@ forms:
       time:
         - type: from_entity
           entity: time
+  action_form:
+    required_slots:
+      purpose:
+        - type: from_entity
+          entity: purpose
 
 responses:
   utter_greet:

@@ -260,8 +260,8 @@ nlu:
       - [clean the bathroom](task) at twenty to ten, set as [private](category)
       - [please add to the to-do list](purpose) [go to gym](task) and add to [work](category) at 20.35
       - [add to the list](purpose) [go to work](task) and add to [work](category) at midnight
-      - [play the piano](task) and [add to](purpose) [work](category) at 7 past 10
-      - [do my homework](task) and [add to](purpose) [personal](category) at 10 to 19
+      - [play the piano](task) and [add](purpose) to [work](category) at 7 past 10
+      - [do my homework](task) and [add](purpose) to [personal](category) at 10 to 19
       - [remind me](purpose) at 10 to 23 to [ask the question](task) and add to [hobby](category)
       - [Add](purpose) in [work](category) to [send message](task) from 8:00
       - [Add](purpose) in [personal](category) to [cook the lunch](task) from 12:00

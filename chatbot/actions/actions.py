@@ -12,6 +12,11 @@ from dateutil.parser import parse
 
 import sqlite3
 
+update = False
+old_time = None
+old_category = None
+old_task = None
+
 class TaskSubmit(Action):
     
     def name(self) -> Text:
@@ -40,7 +45,7 @@ class TaskSubmit(Action):
         if (purpose == "purpose-del"):
             dispatcher.utter_message(text = f"Oh no, you want to delete a task, and the task is: \"{task}\" at {hour} of {date}  in the category \"{category}\"\nWould you like to confirm?") 
         if (purpose == "purpose-update"):
-            dispatcher.utter_message(text = f"Ok, you want to modify a task, and the task is: \"{task}\" at {hour} of {date}  in the category \"{category}\"\nTell me the new task, category or time?") 
+            dispatcher.utter_message(text = f"Ok, you want to modify a task, and the task is: \"{task}\" at {hour} of {date}  in the category \"{category}\"\nWould you like to confirm?") 
 
         return []
 
@@ -67,30 +72,45 @@ class AddToDb(Action):
     def name(self):
         return "action_add_to_db"
     
-    def __find_purpose(self, purpose, task, time, category, conn):
+    def __find_purpose(self, dispatcher, purpose, task, time, category, conn):
+        global update, old_time, old_category, old_task
+
         query = ""
-        if (purpose == "purpose-add"):
+        if(update is True):
+            query = 'UPDATE ToDoList SET task=:1, time=:2, category=:3 WHERE task=:4 AND time=:5 AND category=:6'
+            curs = conn.cursor()
+            curs.execute(query, [task, time, category, old_task, old_time, old_category])
+            conn.commit()
+            update = False
+            if(curs.rowcount==0):
+                dispatcher.utter_message("Oh no, you insert a non-existing entry")
+            else:
+                dispatcher.utter_message("Ok, i modified your task")
+        elif (purpose == "purpose-add"):
             query = 'INSERT INTO ToDoList (task, time, category)VALUES (:1, :2, :3)'
             curs = conn.cursor()
             curs.execute(query, [task, time, category])
             print("curs",curs)
             conn.commit()
+            dispatcher.utter_message("Ok i added your task")
         elif (purpose == "purpose-del"):
             query = 'DELETE FROM ToDoList WHERE task=:1 AND time=:2 AND category=:3'
             curs = conn.cursor()
             curs.execute(query, [task, time, category])
             print("curs",curs)
             conn.commit()
-        elif (purpose == "purpose-update"):
-            query = 'UPDATE ToDoList SET task=?, time=?, category=? where task=:1, time=:2, category=:3)'
-            curs = conn.cursor()
-            curs.execute(query, [task, time, category])
-            print("curs",curs)
-            conn.commit()
+            dispatcher.utter_message("Ok i deleted your task")
+        elif (purpose == "purpose-update" and update is False):
+            old_time = time
+            old_category = category
+            old_task = task
+            update = True
+            dispatcher.utter_message("Ok tell me what do you want to modify")
         else:
             raise Exception('Invalid operation')
 
     def run(self, dispatcher, tracker, domain):
+        global update
         conn = sqlite3.connect('../chatbot.db')
         print("connessione al db:", conn)
 
@@ -99,16 +119,13 @@ class AddToDb(Action):
         task = tracker.get_slot("task")
         purpose = tracker.get_slot("purpose")
 
-        self.__find_purpose(purpose, task, time, category, conn)
-
-        if (task is not None and time is not None and category is not None):
-            dispatcher.utter_message("Ok I added your task!")
-            #fare query al db
-        else:
-            dispatcher.utter_message("What?")
+        self.__find_purpose(dispatcher, purpose, task, time, category, conn)
 
         conn.close()
-        return [SlotSet("task", None),SlotSet("category", None),SlotSet("time", None),SlotSet("purpose", None)]
+        if (purpose == 'purpose-update' and update is True):
+            return []
+        else:
+            return [SlotSet("task", None),SlotSet("category", None),SlotSet("time", None),SlotSet("purpose", None)]
 
 
 class ViewList(Action):
