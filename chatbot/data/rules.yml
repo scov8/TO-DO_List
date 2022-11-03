@@ -12,6 +12,7 @@ rules:
       - action: utter_iamabot
 
   - rule: Say `hello` whenever the user sends a message with intent `greet`
+    conversation_start: true
     steps:
       - intent: greet
       - action: utter_greet
@@ -55,10 +56,10 @@ rules:
       - intent: deny
       - action: action_reset_slot
 
-  - rule: Clean the slots and add to DB every time the user confirm the task
+  - rule: Affirm response
     steps:
       - intent: affirm
-      - action: action_add_to_db
+      - action: action_affirm
 
   - rule: Show the to-do list when the user want
     steps:

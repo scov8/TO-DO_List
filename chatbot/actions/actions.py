@@ -13,6 +13,7 @@ from dateutil.parser import parse
 import sqlite3
 
 update = False
+askReminder=False
 old_time = None
 old_category = None
 old_task = None
@@ -73,7 +74,7 @@ class AddToDb(Action):
         return "action_add_to_db"
     
     def __find_purpose(self, dispatcher, purpose, task, time, category, user, conn):
-        global update, old_time, old_category, old_task
+        global update, old_time, old_category, old_task, askReminder
 
         query = ""
         if(update is True):
@@ -92,7 +93,8 @@ class AddToDb(Action):
             curs.execute(query, [user, task, time, category])
             print("curs",curs)
             conn.commit()
-            dispatcher.utter_message("Ok i added your task")
+            dispatcher.utter_message("Ok i added your task, do you want a reminder?")
+            askReminder=True
         elif (purpose == "purpose-del"):
             query = 'DELETE FROM ToDoList WHERE task=:1 AND time=:2 AND category=:3 AND user=:4'
             curs = conn.cursor()
@@ -123,11 +125,32 @@ class AddToDb(Action):
         self.__find_purpose(dispatcher, purpose, task, time, category, user, conn)
 
         conn.close()
-        if (purpose == 'purpose-update' and update is True):
+        if ((purpose == 'purpose-update' and update is True) or purpose == 'purpose-insert' ):
             return []
         else:
             return [SlotSet("task", None),SlotSet("category", None),SlotSet("time", None),SlotSet("purpose", None)]
 
+class AddReminder(Action):
+    def name(self):
+        return "action_add_reminder"
+
+    def run(self, dispatcher, tracker, domain):
+        conn = sqlite3.connect('../chatbot.db')
+        print("connessione al db:", conn)
+
+        user = tracker.get_slot("PERSON")
+        time = tracker.get_slot("time")
+        category = tracker.get_slot("category")
+        task = tracker.get_slot("task")
+
+        query = 'UPDATE ToDoList SET reminder=True WHERE task=:1 AND time=:2 AND category=:3 AND USER=:4'
+        curs = conn.cursor()
+        curs.execute(query, [task, time, category, user])
+        conn.commit()
+
+        conn.close()
+
+        return [SlotSet("task", None),SlotSet("category", None),SlotSet("time", None),SlotSet("purpose", None)]
 
 class ViewList(Action):
 
@@ -157,3 +180,21 @@ class ViewList(Action):
             dispatcher.utter_message(text = f"{out}\n")
 
         return []
+
+class Affirm(Action):
+    def name(self):
+        return "action_affirm"
+
+    def run(self, dispatcher, tracker, domain):
+        global askReminder
+
+        if(askReminder==False):
+            addToDb=AddToDb()
+            addToDb.run()
+        else:
+            addReminder=AddReminder()
+            addReminder.run()
+            askReminder=False
+
+        return []
+
