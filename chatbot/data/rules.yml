@@ -33,6 +33,7 @@ rules:
           - requested_slot: null
       - action: task_submit
 
+  # change the accoutn
   - rule: Activate user form
     steps:
       - intent: change_person

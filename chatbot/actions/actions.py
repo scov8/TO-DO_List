@@ -148,7 +148,8 @@ class ViewList(Action):
 
         conn.close()
 
-        dispatcher.utter_message(text = f"Ok, there are {len(selectResult)} in your To-Do List:\n") 
+        tmp =  'task' if len(selectResult) < 2 else 'tasks'
+        dispatcher.utter_message(text = f"Ok, there are {len(selectResult)} {tmp} in your To-Do List:\n") 
         for ii in selectResult:
             out = "- " + str(ii[0]) + " at " + str(parse(str(ii[1])).time()) 
             out += " of "+ str(parse(str(ii[1])).date()) 

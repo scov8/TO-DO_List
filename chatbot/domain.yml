@@ -45,6 +45,7 @@ slots:
   PERSON:
     type: text
     influence_conversation: false
+    auto_fill: false
   task:
     type: text
     influence_conversation: false
