@@ -150,6 +150,8 @@ class AddReminder(Action):
 
         conn.close()
 
+        dispatcher.utter_message("Ok I added also a reminder!")
+
         return [SlotSet("task", None),SlotSet("category", None),SlotSet("time", None),SlotSet("purpose", None)]
 
 class ViewList(Action):
@@ -163,7 +165,7 @@ class ViewList(Action):
 
         user = tracker.get_slot("PERSON")
 
-        query = 'SELECT task, time, category FROM ToDoList WHERE user=:1 ORDER BY time ASC'
+        query = 'SELECT task, time, category, reminder FROM ToDoList WHERE user=:1 ORDER BY time ASC'
         curs = conn.cursor()
         curs.execute(query, [user])
         conn.commit()
@@ -176,7 +178,8 @@ class ViewList(Action):
         for ii in selectResult:
             out = "- " + str(ii[0]) + " at " + str(parse(str(ii[1])).time()) 
             out += " of "+ str(parse(str(ii[1])).date()) 
-            out += " for " +str(ii[2])
+            out += " for " + str(ii[2])
+            out += " and the reminder is ON " if (ii[3] == 1 or ii[3] is True) else " and the reminder is OFF"
             dispatcher.utter_message(text = f"{out}\n")
 
         return []
@@ -190,10 +193,10 @@ class Affirm(Action):
 
         if(askReminder==False):
             addToDb=AddToDb()
-            addToDb.run()
+            addToDb.run(dispatcher, tracker, domain)
         else:
             addReminder=AddReminder()
-            addReminder.run()
+            addReminder.run(dispatcher, tracker, domain)
             askReminder=False
 
         return []
