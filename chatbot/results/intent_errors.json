@@ -1,10 +1,34 @@
 [
   {
-    "text": "good afternoon",
-    "intent": "goodbye",
+    "text": "yes",
+    "intent": "affirm",
     "intent_prediction": {
-      "name": "greet",
-      "confidence": 0.34698767509155976
+      "name": "deny",
+      "confidence": 0.25729012521571587
+    }
+  },
+  {
+    "text": "Correct",
+    "intent": "inform_action",
+    "intent_prediction": {
+      "name": "affirm",
+      "confidence": 0.28031780673461254
+    }
+  },
+  {
+    "text": "Nullish",
+    "intent": "inform_action",
+    "intent_prediction": {
+      "name": "inform_person",
+      "confidence": 0.47624249810313884
+    }
+  },
+  {
+    "text": "Unpublish",
+    "intent": "inform_action",
+    "intent_prediction": {
+      "name": "inform_person",
+      "confidence": 0.47624249810313884
     }
   }
 ]

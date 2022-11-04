@@ -1,69 +1,4 @@
 {
-  "view_task": {
-    "precision": 1.0,
-    "recall": 1.0,
-    "f1-score": 1.0,
-    "support": 22,
-    "confused_with": {}
-  },
-  "inform_task": {
-    "precision": 1.0,
-    "recall": 1.0,
-    "f1-score": 1.0,
-    "support": 82,
-    "confused_with": {}
-  },
-  "deny": {
-    "precision": 1.0,
-    "recall": 1.0,
-    "f1-score": 1.0,
-    "support": 16,
-    "confused_with": {}
-  },
-  "greet": {
-    "precision": 0.9166666666666666,
-    "recall": 1.0,
-    "f1-score": 0.9565217391304348,
-    "support": 11,
-    "confused_with": {}
-  },
-  "inform_person": {
-    "precision": 1.0,
-    "recall": 1.0,
-    "f1-score": 1.0,
-    "support": 18,
-    "confused_with": {}
-  },
-  "mood_unhappy": {
-    "precision": 1.0,
-    "recall": 1.0,
-    "f1-score": 1.0,
-    "support": 13,
-    "confused_with": {}
-  },
-  "inform_category": {
-    "precision": 1.0,
-    "recall": 1.0,
-    "f1-score": 1.0,
-    "support": 6,
-    "confused_with": {}
-  },
-  "inform_action": {
-    "precision": 1.0,
-    "recall": 1.0,
-    "f1-score": 1.0,
-    "support": 4,
-    "confused_with": {}
-  },
-  "goodbye": {
-    "precision": 1.0,
-    "recall": 0.9090909090909091,
-    "f1-score": 0.9523809523809523,
-    "support": 11,
-    "confused_with": {
-      "greet": 1
-    }
-  },
   "mood_great": {
     "precision": 1.0,
     "recall": 1.0,
@@ -71,18 +6,35 @@
     "support": 14,
     "confused_with": {}
   },
-  "affirm": {
+  "inform_action": {
+    "precision": 1.0,
+    "recall": 0.9888888888888889,
+    "f1-score": 0.9944134078212291,
+    "support": 270,
+    "confused_with": {
+      "inform_person": 2,
+      "affirm": 1
+    }
+  },
+  "goodbye": {
     "precision": 1.0,
     "recall": 1.0,
     "f1-score": 1.0,
-    "support": 6,
+    "support": 10,
     "confused_with": {}
   },
-  "bot_challenge": {
+  "inform_task": {
     "precision": 1.0,
     "recall": 1.0,
     "f1-score": 1.0,
-    "support": 4,
+    "support": 132,
+    "confused_with": {}
+  },
+  "inform_person": {
+    "precision": 0.9,
+    "recall": 1.0,
+    "f1-score": 0.9473684210526316,
+    "support": 18,
     "confused_with": {}
   },
   "thankyou": {
@@ -92,11 +44,55 @@
     "support": 15,
     "confused_with": {}
   },
+  "affirm": {
+    "precision": 0.8333333333333334,
+    "recall": 0.8333333333333334,
+    "f1-score": 0.8333333333333334,
+    "support": 6,
+    "confused_with": {
+      "deny": 1
+    }
+  },
+  "deny": {
+    "precision": 0.9411764705882353,
+    "recall": 1.0,
+    "f1-score": 0.9696969696969697,
+    "support": 16,
+    "confused_with": {}
+  },
+  "view_task": {
+    "precision": 1.0,
+    "recall": 1.0,
+    "f1-score": 1.0,
+    "support": 22,
+    "confused_with": {}
+  },
+  "greet": {
+    "precision": 1.0,
+    "recall": 1.0,
+    "f1-score": 1.0,
+    "support": 11,
+    "confused_with": {}
+  },
+  "mood_unhappy": {
+    "precision": 1.0,
+    "recall": 1.0,
+    "f1-score": 1.0,
+    "support": 13,
+    "confused_with": {}
+  },
   "manage_task": {
     "precision": 1.0,
     "recall": 1.0,
     "f1-score": 1.0,
-    "support": 97,
+    "support": 117,
+    "confused_with": {}
+  },
+  "bot_challenge": {
+    "precision": 1.0,
+    "recall": 1.0,
+    "f1-score": 1.0,
+    "support": 4,
     "confused_with": {}
   },
   "change_person": {
@@ -106,17 +102,24 @@
     "support": 10,
     "confused_with": {}
   },
-  "accuracy": 0.9969604863221885,
+  "inform_category": {
+    "precision": 1.0,
+    "recall": 1.0,
+    "f1-score": 1.0,
+    "support": 6,
+    "confused_with": {}
+  },
+  "accuracy": 0.9939759036144579,
   "macro avg": {
-    "precision": 0.9944444444444444,
-    "recall": 0.9939393939393939,
-    "f1-score": 0.9939268461007591,
-    "support": 329
+    "precision": 0.9783006535947713,
+    "recall": 0.9881481481481482,
+    "f1-score": 0.9829874754602775,
+    "support": 664
   },
   "weighted avg": {
-    "precision": 0.9972137791286728,
-    "recall": 0.9969604863221885,
-    "f1-score": 0.9969541933332075,
-    "support": 329
+    "precision": 0.9943656980864635,
+    "recall": 0.9939759036144579,
+    "f1-score": 0.9940653662738413,
+    "support": 664
   }
 }
