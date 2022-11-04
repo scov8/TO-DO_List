@@ -25,11 +25,11 @@ stories:
 - story: presentation (./tests/test_stories.yml)
   steps:
   - intent: inform_person  # predicted: change_person: I'm  [Mike](PERSON)
-  - action: utter_hello_user  # predicted: action_view_list
+  - action: utter_hello_user  # predicted: person_form
 - story: add task (./tests/test_stories.yml)
   steps:
   - intent: inform_person  # predicted: change_person: I'm  [Mike](PERSON)
-  - action: utter_hello_user  # predicted: action_view_list
+  - action: utter_hello_user  # predicted: person_form
   - intent: manage_task
     entities:
     - task: send an email to mum
@@ -49,7 +49,7 @@ stories:
 - story: create a task but don't add it (./tests/test_stories.yml)
   steps:
   - intent: inform_person  # predicted: change_person: I'm  [Jane](PERSON)
-  - action: utter_hello_user  # predicted: action_view_list
+  - action: utter_hello_user  # predicted: person_form
   - intent: manage_task
     entities:
     - task: go to gym
@@ -67,7 +67,7 @@ stories:
 - story: update a task (./tests/test_stories.yml)
   steps:
   - intent: inform_person  # predicted: change_person: I'm  [Jane](PERSON)
-  - action: utter_hello_user  # predicted: action_view_list
+  - action: utter_hello_user  # predicted: person_form
   - intent: manage_task
   - action: task_form
   - action: task_submit
