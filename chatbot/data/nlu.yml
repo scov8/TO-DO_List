@@ -206,6 +206,10 @@ nlu:
       - [see a film](task)
       - [see a series](task)
       - [see a cartoon](task)
+      - [send a message on twitter](task)
+      - [drive the trunk](task)
+      - [read a book](task)
+      - [write my book](task)
 
   - intent: inform_category
     examples: |

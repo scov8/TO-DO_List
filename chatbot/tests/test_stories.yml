@@ -43,14 +43,14 @@ stories:
       - action: utter_iamabot
 
   - story: presentation
-    step:
+    steps:
       - user: |
           I'm  Mike
         intent: inform_person
       - action: utter_hello_user
 
   - story: add task
-    step:
+    steps:
       - user: |
           I'm  Mike
         intent: inform_person
@@ -64,6 +64,47 @@ stories:
           yes
         intent: affirm
       - action: action_affirm
+      - user: |
+          y
+        intent: affirm
+      - action: action_affirm
+
+  - story: create a task but don't add it
+    steps:
+      - user: |
+          I'm  Jane
+        intent: inform_person
+      - action: utter_hello_user
+      - user: |
+          remind me to [go to gym]{"entity": "task"} at [12 o'clock]{"entity": "time"} for [home]{"entity": "category"}
+        intent: manage_task
+      - action: task_form
+      - action: task_submit
+      - user: |
+          no
+        intent: deny
+      - action: action_reset_slot
+
+  - story: update a task
+    steps:
+      - user: |
+          I'm  Jane
+        intent: inform_person
+      - action: utter_hello_user
+      - user: |
+          modify send an email to mum at 12 for work
+        intent: manage_task
+      - action: task_form
+      - action: task_submit
+      - user: |
+          yes
+        intent: affirm
+      - action: action_affirm
+      - user: |
+          at 13:00
+        intent: manage_task
+      - action: task_form
+      - action: task_submit
       - user: |
           y
         intent: affirm
