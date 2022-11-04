@@ -1,16 +1,9 @@
 {
-  "purpose": {
-    "precision": 0.9866220735785953,
-    "recall": 0.9866220735785953,
-    "f1-score": 0.9866220735785953,
-    "support": 299,
-    "confused_with": {}
-  },
   "task": {
     "precision": 1.0,
-    "recall": 0.9935275080906149,
-    "f1-score": 0.9967532467532468,
-    "support": 618,
+    "recall": 0.9984177215189873,
+    "f1-score": 0.9992082343626286,
+    "support": 632,
     "confused_with": {}
   },
   "PERSON": {
@@ -18,6 +11,13 @@
     "recall": 1.0,
     "f1-score": 1.0,
     "support": 28,
+    "confused_with": {}
+  },
+  "purpose": {
+    "precision": 0.9912490055688147,
+    "recall": 0.9968,
+    "f1-score": 0.9940167530913443,
+    "support": 1250,
     "confused_with": {}
   },
   "category": {
@@ -28,21 +28,21 @@
     "confused_with": {}
   },
   "micro avg": {
-    "precision": 0.995995995995996,
-    "recall": 0.9920239282153539,
-    "f1-score": 0.994005994005994,
-    "support": 1003
+    "precision": 0.9944275582573455,
+    "recall": 0.9974593495934959,
+    "f1-score": 0.9959411466260781,
+    "support": 1968
   },
   "macro avg": {
-    "precision": 0.9966555183946488,
-    "recall": 0.9950373954173025,
-    "f1-score": 0.9958438300829605,
-    "support": 1003
+    "precision": 0.9978122513922036,
+    "recall": 0.9988044303797469,
+    "f1-score": 0.9983062468634932,
+    "support": 1968
   },
   "weighted avg": {
-    "precision": 0.996011964107677,
-    "recall": 0.9920239282153539,
-    "f1-score": 0.9940114720772747,
-    "support": 1003
+    "precision": 0.9944416956102736,
+    "recall": 0.9974593495934959,
+    "f1-score": 0.9959453991267082,
+    "support": 1968
   }
 }

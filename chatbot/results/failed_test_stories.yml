@@ -1,5 +1,23 @@
 version: "2.0"
 stories:
+- story: update a task but deny the modify (./tests/test_stories.yml)
+  steps:
+  - intent: inform_person  # predicted: change_person: [I'm](purpose)  [Jane](purpose)[Jane](PERSON)
+  - action: utter_hello_user  # predicted: action_view_list
+  - intent: manage_task
+    entities:
+    - task: send an email to mum
+    - category: work
+  - slot_was_set:
+    - task: send an email to mum
+  - slot_was_set:
+    - category: work
+  - slot_was_set:
+    - time: six past ten
+  - action: task_form
+  - action: task_submit
+  - intent: deny
+  - action: action_reset_slot
 - story: happy path 1 (./tests/test_stories.yml)
   steps:
   - intent: greet  # predicted: nlu_fallback: hello there!
@@ -24,11 +42,11 @@ stories:
   - action: utter_iamabot
 - story: presentation (./tests/test_stories.yml)
   steps:
-  - intent: inform_person  # predicted: change_person: I'm  [Mike](PERSON)
+  - intent: inform_person  # predicted: nlu_fallback: [I'm](purpose)  [Mike](purpose)[Mike](PERSON)
   - action: utter_hello_user  # predicted: action_view_list
 - story: add task (./tests/test_stories.yml)
   steps:
-  - intent: inform_person  # predicted: change_person: I'm  [Mike](PERSON)
+  - intent: inform_person  # predicted: nlu_fallback: [I'm](purpose)  [Mike](purpose)[Mike](PERSON)
   - action: utter_hello_user  # predicted: action_view_list
   - intent: manage_task
     entities:
@@ -48,7 +66,7 @@ stories:
   - action: action_affirm
 - story: create a task but don't add it (./tests/test_stories.yml)
   steps:
-  - intent: inform_person  # predicted: change_person: I'm  [Jane](PERSON)
+  - intent: inform_person  # predicted: change_person: [I'm](purpose)  [Jane](purpose)[Jane](PERSON)
   - action: utter_hello_user  # predicted: action_view_list
   - intent: manage_task
     entities:
@@ -66,15 +84,53 @@ stories:
   - action: action_reset_slot
 - story: update a task (./tests/test_stories.yml)
   steps:
-  - intent: inform_person  # predicted: change_person: I'm  [Jane](PERSON)
+  - intent: inform_person  # predicted: change_person: [I'm](purpose)  [Jane](purpose)[Jane](PERSON)
   - action: utter_hello_user  # predicted: action_view_list
   - intent: manage_task
+    entities:
+    - task: send an email to mum
+    - category: work
+  - slot_was_set:
+    - task: send an email to mum
+  - slot_was_set:
+    - category: work
+  - slot_was_set:
+    - time: '12'
   - action: task_form
   - action: task_submit
   - intent: affirm
   - action: action_affirm
   - intent: manage_task
+    entities: []
+  - slot_was_set:
+    - time: 13:00
   - action: task_form
   - action: task_submit
   - intent: affirm
   - action: action_affirm
+- story: update a task, set the new update but deny the modify (./tests/test_stories.yml)
+  steps:
+  - intent: inform_person  # predicted: change_person: [I'm](purpose)  [Jane](purpose)[Jane](PERSON)
+  - action: utter_hello_user  # predicted: action_view_list
+  - intent: manage_task
+    entities:
+    - task: send an email to mum
+    - category: work
+  - slot_was_set:
+    - task: send an email to mum
+  - slot_was_set:
+    - category: work
+  - slot_was_set:
+    - time: six o'clock
+  - action: task_form
+  - action: task_submit
+  - intent: affirm
+  - action: action_affirm
+  - intent: manage_task
+    entities: []
+  - slot_was_set:
+    - time: ten to ten
+  - action: task_form
+  - action: task_submit
+  - intent: deny
+  - action: action_reset_slot

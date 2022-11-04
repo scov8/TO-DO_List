@@ -4,7 +4,31 @@
     "intent": "goodbye",
     "intent_prediction": {
       "name": "greet",
-      "confidence": 0.4222275967651069
+      "confidence": 0.356318492537866
+    }
+  },
+  {
+    "text": "Correct",
+    "intent": "inform_action",
+    "intent_prediction": {
+      "name": "affirm",
+      "confidence": 0.3917175234131934
+    }
+  },
+  {
+    "text": "Nullish",
+    "intent": "inform_action",
+    "intent_prediction": {
+      "name": "inform_person",
+      "confidence": 0.4461149796450467
+    }
+  },
+  {
+    "text": "Unpublish",
+    "intent": "inform_action",
+    "intent_prediction": {
+      "name": "inform_person",
+      "confidence": 0.4461149796450467
     }
   }
 ]

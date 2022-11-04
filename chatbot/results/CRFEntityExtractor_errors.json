@@ -1,67 +1,15 @@
 [
   {
-    "text": "see a film",
+    "text": "Correct",
     "entities": [
       {
         "start": 0,
-        "end": 10,
-        "value": "see a film",
-        "entity": "task"
+        "end": 7,
+        "value": "Correct",
+        "entity": "purpose"
       }
     ],
     "predicted_entities": []
-  },
-  {
-    "text": "I need a reminder for send an email to prof at eleven to twenty and add to work",
-    "entities": [
-      {
-        "start": 0,
-        "end": 21,
-        "value": "I need a reminder for",
-        "entity": "purpose"
-      },
-      {
-        "start": 22,
-        "end": 43,
-        "value": "send an email to prof",
-        "entity": "task"
-      },
-      {
-        "start": 75,
-        "end": 79,
-        "value": "work",
-        "entity": "category"
-      }
-    ],
-    "predicted_entities": [
-      {
-        "entity": "purpose",
-        "start": 0,
-        "end": 17,
-        "confidence_entity": 0.9665233006435792,
-        "value": "I need a reminder",
-        "extractor": "CRFEntityExtractor"
-      },
-      {
-        "entity": "task",
-        "start": 22,
-        "end": 43,
-        "confidence_entity": 0.9967704040976758,
-        "value": "send an email to prof",
-        "extractor": "CRFEntityExtractor"
-      },
-      {
-        "entity": "category",
-        "start": 75,
-        "end": 79,
-        "confidence_entity": 0.9855027342855938,
-        "value": "category-work",
-        "extractor": "CRFEntityExtractor",
-        "processors": [
-          "EntitySynonymMapper"
-        ]
-      }
-    ]
   },
   {
     "text": "send an email to prof at eleven to twenty and add to work",
@@ -90,7 +38,7 @@
         "entity": "task",
         "start": 0,
         "end": 21,
-        "confidence_entity": 0.9971950728330103,
+        "confidence_entity": 0.9968001721318668,
         "value": "send an email to prof",
         "extractor": "CRFEntityExtractor"
       },
@@ -98,7 +46,7 @@
         "entity": "category",
         "start": 53,
         "end": 57,
-        "confidence_entity": 0.9855027342949076,
+        "confidence_entity": 0.9860067623935196,
         "value": "category-work",
         "extractor": "CRFEntityExtractor",
         "processors": [
@@ -134,7 +82,7 @@
         "entity": "task",
         "start": 0,
         "end": 14,
-        "confidence_entity": 0.9969610212510105,
+        "confidence_entity": 0.9967828243673007,
         "value": "play the piano",
         "extractor": "CRFEntityExtractor"
       },
@@ -142,7 +90,7 @@
         "entity": "category",
         "start": 26,
         "end": 30,
-        "confidence_entity": 0.9844765494190855,
+        "confidence_entity": 0.9840857634106315,
         "value": "category-work",
         "extractor": "CRFEntityExtractor",
         "processors": [
@@ -178,7 +126,7 @@
         "entity": "task",
         "start": 0,
         "end": 14,
-        "confidence_entity": 0.9617735319732438,
+        "confidence_entity": 0.9671040136631454,
         "value": "do my homework",
         "extractor": "CRFEntityExtractor"
       },
@@ -186,7 +134,7 @@
         "entity": "category",
         "start": 26,
         "end": 34,
-        "confidence_entity": 0.9749283491954496,
+        "confidence_entity": 0.9718743453572553,
         "value": "category-priv",
         "extractor": "CRFEntityExtractor",
         "processors": [
@@ -216,7 +164,7 @@
         "entity": "purpose",
         "start": 0,
         "end": 18,
-        "confidence_entity": 0.831729533904281,
+        "confidence_entity": 0.8655342756568407,
         "value": "can u remind me to",
         "extractor": "CRFEntityExtractor"
       },
@@ -224,7 +172,7 @@
         "entity": "task",
         "start": 19,
         "end": 44,
-        "confidence_entity": 0.9811919839898137,
+        "confidence_entity": 0.9797864881470024,
         "value": "send an email to Veronica",
         "extractor": "CRFEntityExtractor"
       }
@@ -251,7 +199,7 @@
         "entity": "purpose",
         "start": 0,
         "end": 3,
-        "confidence_entity": 0.6613835627512273,
+        "confidence_entity": 0.7589993136646385,
         "value": "purpose-add",
         "extractor": "CRFEntityExtractor",
         "processors": [
@@ -262,7 +210,7 @@
         "entity": "category",
         "start": 10,
         "end": 19,
-        "confidence_entity": 0.8764445641457901,
+        "confidence_entity": 0.8705521687692228,
         "value": "category-free",
         "extractor": "CRFEntityExtractor",
         "processors": [
@@ -273,7 +221,7 @@
         "entity": "task",
         "start": 23,
         "end": 34,
-        "confidence_entity": 0.9896728125363726,
+        "confidence_entity": 0.9887277019312066,
         "value": "play guitar",
         "extractor": "CRFEntityExtractor"
       }
@@ -306,7 +254,7 @@
         "entity": "purpose",
         "start": 0,
         "end": 14,
-        "confidence_entity": 0.5222516976970081,
+        "confidence_entity": 0.6605951419706593,
         "value": "purpose-add",
         "extractor": "CRFEntityExtractor",
         "processors": [
@@ -317,7 +265,7 @@
         "entity": "category",
         "start": 15,
         "end": 21,
-        "confidence_entity": 0.7623582199532151,
+        "confidence_entity": 0.7915015671658742,
         "value": "category-work",
         "extractor": "CRFEntityExtractor",
         "processors": [
@@ -328,8 +276,116 @@
         "entity": "task",
         "start": 39,
         "end": 53,
-        "confidence_entity": 0.9500436701122369,
+        "confidence_entity": 0.9359511684986762,
         "value": "play the piano",
+        "extractor": "CRFEntityExtractor"
+      }
+    ]
+  },
+  {
+    "text": "I need a reminder for send an email to prof at [eleven to twenty",
+    "entities": [
+      {
+        "start": 0,
+        "end": 17,
+        "value": "I need a reminder",
+        "entity": "purpose"
+      },
+      {
+        "start": 22,
+        "end": 43,
+        "value": "send an email to prof",
+        "entity": "task"
+      }
+    ],
+    "predicted_entities": [
+      {
+        "entity": "purpose",
+        "start": 0,
+        "end": 21,
+        "confidence_entity": 0.5295663098795385,
+        "value": "purpose-add",
+        "extractor": "CRFEntityExtractor",
+        "processors": [
+          "EntitySynonymMapper"
+        ]
+      },
+      {
+        "entity": "task",
+        "start": 22,
+        "end": 43,
+        "confidence_entity": 0.9966373496612174,
+        "value": "send an email to prof",
+        "extractor": "CRFEntityExtractor"
+      }
+    ]
+  },
+  {
+    "text": "please add a reminder for go to the gym at 15:00",
+    "entities": [
+      {
+        "start": 7,
+        "end": 21,
+        "value": "add a reminder",
+        "entity": "purpose"
+      },
+      {
+        "start": 26,
+        "end": 39,
+        "value": "go to the gym",
+        "entity": "task"
+      }
+    ],
+    "predicted_entities": [
+      {
+        "entity": "purpose",
+        "start": 0,
+        "end": 21,
+        "confidence_entity": 0.6779811364925009,
+        "value": "please add a reminder",
+        "extractor": "CRFEntityExtractor"
+      },
+      {
+        "entity": "task",
+        "start": 26,
+        "end": 39,
+        "confidence_entity": 0.9988104768635612,
+        "value": "go to the gym",
+        "extractor": "CRFEntityExtractor"
+      }
+    ]
+  },
+  {
+    "text": "can you add to the to do list go to the bank at 16",
+    "entities": [
+      {
+        "start": 0,
+        "end": 11,
+        "value": "can you add",
+        "entity": "purpose"
+      },
+      {
+        "start": 30,
+        "end": 44,
+        "value": "go to the bank",
+        "entity": "task"
+      }
+    ],
+    "predicted_entities": [
+      {
+        "entity": "purpose",
+        "start": 0,
+        "end": 18,
+        "confidence_entity": 0.548814442489012,
+        "value": "can you add to the",
+        "extractor": "CRFEntityExtractor"
+      },
+      {
+        "entity": "task",
+        "start": 30,
+        "end": 44,
+        "confidence_entity": 0.9932892137405046,
+        "value": "go to the bank",
         "extractor": "CRFEntityExtractor"
       }
     ]
@@ -355,7 +411,7 @@
         "entity": "purpose",
         "start": 0,
         "end": 12,
-        "confidence_entity": 0.7203476089160177,
+        "confidence_entity": 0.7306406247976858,
         "value": "purpose-add",
         "extractor": "CRFEntityExtractor",
         "processors": [
@@ -366,8 +422,43 @@
         "entity": "task",
         "start": 13,
         "end": 25,
-        "confidence_entity": 0.986107663459627,
+        "confidence_entity": 0.9810680859775015,
         "value": "go to church",
+        "extractor": "CRFEntityExtractor"
+      }
+    ]
+  },
+  {
+    "text": "could you please add a reminder for checking my bank account at 12:55",
+    "entities": [
+      {
+        "start": 17,
+        "end": 31,
+        "value": "add a reminder",
+        "entity": "purpose"
+      },
+      {
+        "start": 36,
+        "end": 60,
+        "value": "checking my bank account",
+        "entity": "task"
+      }
+    ],
+    "predicted_entities": [
+      {
+        "entity": "purpose",
+        "start": 0,
+        "end": 31,
+        "confidence_entity": 0.6465611031947669,
+        "value": "could you please add a reminder",
+        "extractor": "CRFEntityExtractor"
+      },
+      {
+        "entity": "task",
+        "start": 36,
+        "end": 60,
+        "confidence_entity": 0.859528190254525,
+        "value": "checking my bank account",
         "extractor": "CRFEntityExtractor"
       }
     ]
@@ -393,7 +484,7 @@
         "entity": "purpose",
         "start": 0,
         "end": 19,
-        "confidence_entity": 0.6884626400490974,
+        "confidence_entity": 0.6884925055135447,
         "value": "could you remind me",
         "extractor": "CRFEntityExtractor"
       },
@@ -401,7 +492,7 @@
         "entity": "task",
         "start": 33,
         "end": 47,
-        "confidence_entity": 0.9263513549380821,
+        "confidence_entity": 0.9335723632709872,
         "value": "brush my teeth",
         "extractor": "CRFEntityExtractor"
       }
