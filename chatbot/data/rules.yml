@@ -16,6 +16,12 @@ rules:
       - intent: greet
       - action: utter_greet
 
+  # nlu fallback
+  - rule: Ask to repeat every time doesn't understand
+    steps:
+      - intent: nlu_fallback
+      - action: utter_pls_repeat
+
   # TASK
   - rule: Activate full task form
     steps:

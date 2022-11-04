@@ -1,18 +1,10 @@
 [
   {
-    "text": "good afternoon",
-    "intent": "goodbye",
-    "intent_prediction": {
-      "name": "greet",
-      "confidence": 0.356318492537866
-    }
-  },
-  {
     "text": "Correct",
     "intent": "inform_action",
     "intent_prediction": {
       "name": "affirm",
-      "confidence": 0.3917175234131934
+      "confidence": 0.4264891111420727
     }
   },
   {
@@ -20,7 +12,7 @@
     "intent": "inform_action",
     "intent_prediction": {
       "name": "inform_person",
-      "confidence": 0.4461149796450467
+      "confidence": 0.45489419498678463
     }
   },
   {
@@ -28,7 +20,7 @@
     "intent": "inform_action",
     "intent_prediction": {
       "name": "inform_person",
-      "confidence": 0.4461149796450467
+      "confidence": 0.45489419498678463
     }
   }
 ]

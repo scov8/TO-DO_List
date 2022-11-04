@@ -156,3 +156,87 @@ stories:
     steps:
       - intent: view_task
       - action: action_view_list
+
+  - story: full conversation n1 # reminder on
+    steps:
+      - intent: greet
+      - action: utter_greet
+      - intent: mood_great
+      - action: utter_happy
+      - intent: inform_person
+      - action: utter_hello_user
+      - intent: manage_task
+      - action: task_form
+      - action: task_submit
+      - intent: affirm
+      - action: action_affirm
+      - intent: affirm
+      - action: action_affirm
+      - intent: thankyou
+      - action: utter_noworries
+      - intent: goodbye
+      - action: utter_goodbye
+
+  - story: full conversation n2 # reminder off
+    steps:
+      - intent: greet
+      - action: utter_greet
+      - intent: mood_great
+      - action: utter_happy
+      - intent: inform_person
+      - action: utter_hello_user
+      - intent: manage_task
+      - action: task_form
+      - action: task_submit
+      - intent: affirm
+      - action: action_affirm
+      - intent: deny
+      - action: action_reset_slot
+      - intent: thankyou
+      - action: utter_noworries
+      - intent: goodbye
+      - action: utter_goodbye
+
+  - story: full conversation n3 # show task and add reminder on
+    steps:
+      - intent: greet
+      - action: utter_greet
+      - intent: mood_great
+      - action: utter_happy
+      - intent: inform_person
+      - action: utter_hello_user
+      - intent: view_task
+      - action: action_view_list
+      - intent: manage_task
+      - action: task_form
+      - action: task_submit
+      - intent: affirm
+      - action: action_affirm
+      - intent: affirm
+      - action: action_affirm
+      - intent: thankyou
+      - action: utter_noworries
+      - intent: goodbye
+      - action: utter_goodbye
+
+  - story: full conversation n4 # show task and add reminder off
+    steps:
+      - intent: greet
+      - action: utter_greet
+      - intent: mood_great
+      - action: utter_happy
+      - intent: inform_person
+      - action: utter_hello_user
+      - intent: view_task
+      - action: action_view_list
+      - intent: manage_task
+      - action: task_form
+      - action: task_submit
+      - intent: affirm
+      - action: action_affirm
+      - intent: deny
+      - action: action_reset_slot
+      - intent: thankyou
+      - action: utter_noworries
+      - intent: goodbye
+      - action: utter_goodbye

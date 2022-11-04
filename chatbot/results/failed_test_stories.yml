@@ -3,7 +3,7 @@ stories:
 - story: update a task but deny the modify (./tests/test_stories.yml)
   steps:
   - intent: inform_person  # predicted: change_person: [I'm](purpose)  [Jane](purpose)[Jane](PERSON)
-  - action: utter_hello_user  # predicted: action_view_list
+  - action: utter_hello_user  # predicted: action_default_fallback
   - intent: manage_task
     entities:
     - task: send an email to mum
@@ -18,6 +18,48 @@ stories:
   - action: task_submit
   - intent: deny
   - action: action_reset_slot
+- story: delete a story (./tests/test_stories.yml)
+  steps:
+  - intent: inform_person  # predicted: change_person: I am [Luigi](PERSON)
+  - action: utter_hello_user  # predicted: action_default_fallback
+  - intent: manage_task
+    entities:
+    - task: send an email to mum
+    - category: work
+  - slot_was_set:
+    - task: send an email to mum
+  - slot_was_set:
+    - category: work
+  - slot_was_set:
+    - time: six past ten
+  - action: task_form
+  - action: task_submit
+  - intent: affirm
+  - action: action_affirm
+- story: delete a story and deny it (./tests/test_stories.yml)
+  steps:
+  - intent: inform_person  # predicted: change_person: I am [Luigi](PERSON)
+  - action: utter_hello_user  # predicted: action_default_fallback
+  - intent: manage_task
+    entities:
+    - task: send an email to mum
+    - category: work
+  - slot_was_set:
+    - task: send an email to mum
+  - slot_was_set:
+    - category: work
+  - slot_was_set:
+    - time: six past ten
+  - action: task_form
+  - action: task_submit
+  - intent: deny
+  - action: action_reset_slot
+- story: show all task (./tests/test_stories.yml)
+  steps:
+  - intent: inform_person  # predicted: change_person: I am [Mike](PERSON)
+  - action: utter_hello_user  # predicted: action_default_fallback
+  - intent: view_task
+  - action: action_view_list
 - story: happy path 1 (./tests/test_stories.yml)
   steps:
   - intent: greet  # predicted: nlu_fallback: hello there!
@@ -42,12 +84,12 @@ stories:
   - action: utter_iamabot
 - story: presentation (./tests/test_stories.yml)
   steps:
-  - intent: inform_person  # predicted: nlu_fallback: [I'm](purpose)  [Mike](purpose)[Mike](PERSON)
-  - action: utter_hello_user  # predicted: action_view_list
+  - intent: inform_person  # predicted: change_person: [I'm](purpose)  [Mike](purpose)[Mike](PERSON)
+  - action: utter_hello_user  # predicted: action_default_fallback
 - story: add task (./tests/test_stories.yml)
   steps:
-  - intent: inform_person  # predicted: nlu_fallback: [I'm](purpose)  [Mike](purpose)[Mike](PERSON)
-  - action: utter_hello_user  # predicted: action_view_list
+  - intent: inform_person  # predicted: change_person: [I'm](purpose)  [Mike](purpose)[Mike](PERSON)
+  - action: utter_hello_user  # predicted: action_default_fallback
   - intent: manage_task
     entities:
     - task: send an email to mum
@@ -67,7 +109,7 @@ stories:
 - story: create a task but don't add it (./tests/test_stories.yml)
   steps:
   - intent: inform_person  # predicted: change_person: [I'm](purpose)  [Jane](purpose)[Jane](PERSON)
-  - action: utter_hello_user  # predicted: action_view_list
+  - action: utter_hello_user  # predicted: action_default_fallback
   - intent: manage_task
     entities:
     - task: go to gym
@@ -85,7 +127,7 @@ stories:
 - story: update a task (./tests/test_stories.yml)
   steps:
   - intent: inform_person  # predicted: change_person: [I'm](purpose)  [Jane](purpose)[Jane](PERSON)
-  - action: utter_hello_user  # predicted: action_view_list
+  - action: utter_hello_user  # predicted: action_default_fallback
   - intent: manage_task
     entities:
     - task: send an email to mum
@@ -111,7 +153,7 @@ stories:
 - story: update a task, set the new update but deny the modify (./tests/test_stories.yml)
   steps:
   - intent: inform_person  # predicted: change_person: [I'm](purpose)  [Jane](purpose)[Jane](PERSON)
-  - action: utter_hello_user  # predicted: action_view_list
+  - action: utter_hello_user  # predicted: action_default_fallback
   - intent: manage_task
     entities:
     - task: send an email to mum

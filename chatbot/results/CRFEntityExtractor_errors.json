@@ -38,7 +38,7 @@
         "entity": "task",
         "start": 0,
         "end": 21,
-        "confidence_entity": 0.9968001721318668,
+        "confidence_entity": 0.996560212257517,
         "value": "send an email to prof",
         "extractor": "CRFEntityExtractor"
       },
@@ -46,7 +46,7 @@
         "entity": "category",
         "start": 53,
         "end": 57,
-        "confidence_entity": 0.9860067623935196,
+        "confidence_entity": 0.9854223846086583,
         "value": "category-work",
         "extractor": "CRFEntityExtractor",
         "processors": [
@@ -82,7 +82,7 @@
         "entity": "task",
         "start": 0,
         "end": 14,
-        "confidence_entity": 0.9967828243673007,
+        "confidence_entity": 0.9975302191281833,
         "value": "play the piano",
         "extractor": "CRFEntityExtractor"
       },
@@ -90,7 +90,7 @@
         "entity": "category",
         "start": 26,
         "end": 30,
-        "confidence_entity": 0.9840857634106315,
+        "confidence_entity": 0.9865567428551362,
         "value": "category-work",
         "extractor": "CRFEntityExtractor",
         "processors": [
@@ -126,7 +126,7 @@
         "entity": "task",
         "start": 0,
         "end": 14,
-        "confidence_entity": 0.9671040136631454,
+        "confidence_entity": 0.968003046702578,
         "value": "do my homework",
         "extractor": "CRFEntityExtractor"
       },
@@ -134,7 +134,7 @@
         "entity": "category",
         "start": 26,
         "end": 34,
-        "confidence_entity": 0.9718743453572553,
+        "confidence_entity": 0.9771197100907099,
         "value": "category-priv",
         "extractor": "CRFEntityExtractor",
         "processors": [
@@ -164,7 +164,7 @@
         "entity": "purpose",
         "start": 0,
         "end": 18,
-        "confidence_entity": 0.8655342756568407,
+        "confidence_entity": 0.8685716898821577,
         "value": "can u remind me to",
         "extractor": "CRFEntityExtractor"
       },
@@ -172,7 +172,7 @@
         "entity": "task",
         "start": 19,
         "end": 44,
-        "confidence_entity": 0.9797864881470024,
+        "confidence_entity": 0.9768276688556854,
         "value": "send an email to Veronica",
         "extractor": "CRFEntityExtractor"
       }
@@ -199,7 +199,7 @@
         "entity": "purpose",
         "start": 0,
         "end": 3,
-        "confidence_entity": 0.7589993136646385,
+        "confidence_entity": 0.7519202115912527,
         "value": "purpose-add",
         "extractor": "CRFEntityExtractor",
         "processors": [
@@ -210,7 +210,7 @@
         "entity": "category",
         "start": 10,
         "end": 19,
-        "confidence_entity": 0.8705521687692228,
+        "confidence_entity": 0.8583963514151163,
         "value": "category-free",
         "extractor": "CRFEntityExtractor",
         "processors": [
@@ -221,7 +221,7 @@
         "entity": "task",
         "start": 23,
         "end": 34,
-        "confidence_entity": 0.9887277019312066,
+        "confidence_entity": 0.9906148110135706,
         "value": "play guitar",
         "extractor": "CRFEntityExtractor"
       }
@@ -254,7 +254,7 @@
         "entity": "purpose",
         "start": 0,
         "end": 14,
-        "confidence_entity": 0.6605951419706593,
+        "confidence_entity": 0.6435972266146606,
         "value": "purpose-add",
         "extractor": "CRFEntityExtractor",
         "processors": [
@@ -265,7 +265,7 @@
         "entity": "category",
         "start": 15,
         "end": 21,
-        "confidence_entity": 0.7915015671658742,
+        "confidence_entity": 0.7827946230162706,
         "value": "category-work",
         "extractor": "CRFEntityExtractor",
         "processors": [
@@ -276,7 +276,7 @@
         "entity": "task",
         "start": 39,
         "end": 53,
-        "confidence_entity": 0.9359511684986762,
+        "confidence_entity": 0.9517124006549897,
         "value": "play the piano",
         "extractor": "CRFEntityExtractor"
       }
@@ -303,7 +303,7 @@
         "entity": "purpose",
         "start": 0,
         "end": 21,
-        "confidence_entity": 0.5295663098795385,
+        "confidence_entity": 0.5304135419924372,
         "value": "purpose-add",
         "extractor": "CRFEntityExtractor",
         "processors": [
@@ -314,7 +314,7 @@
         "entity": "task",
         "start": 22,
         "end": 43,
-        "confidence_entity": 0.9966373496612174,
+        "confidence_entity": 0.9963656052742098,
         "value": "send an email to prof",
         "extractor": "CRFEntityExtractor"
       }
@@ -341,7 +341,7 @@
         "entity": "purpose",
         "start": 0,
         "end": 21,
-        "confidence_entity": 0.6779811364925009,
+        "confidence_entity": 0.649469760620941,
         "value": "please add a reminder",
         "extractor": "CRFEntityExtractor"
       },
@@ -349,7 +349,7 @@
         "entity": "task",
         "start": 26,
         "end": 39,
-        "confidence_entity": 0.9988104768635612,
+        "confidence_entity": 0.9989264708029811,
         "value": "go to the gym",
         "extractor": "CRFEntityExtractor"
       }
@@ -376,7 +376,7 @@
         "entity": "purpose",
         "start": 0,
         "end": 18,
-        "confidence_entity": 0.548814442489012,
+        "confidence_entity": 0.5885511158772153,
         "value": "can you add to the",
         "extractor": "CRFEntityExtractor"
       },
@@ -384,7 +384,7 @@
         "entity": "task",
         "start": 30,
         "end": 44,
-        "confidence_entity": 0.9932892137405046,
+        "confidence_entity": 0.9928494184797777,
         "value": "go to the bank",
         "extractor": "CRFEntityExtractor"
       }
@@ -411,7 +411,7 @@
         "entity": "purpose",
         "start": 0,
         "end": 12,
-        "confidence_entity": 0.7306406247976858,
+        "confidence_entity": 0.703223271469133,
         "value": "purpose-add",
         "extractor": "CRFEntityExtractor",
         "processors": [
@@ -422,7 +422,7 @@
         "entity": "task",
         "start": 13,
         "end": 25,
-        "confidence_entity": 0.9810680859775015,
+        "confidence_entity": 0.977744147689467,
         "value": "go to church",
         "extractor": "CRFEntityExtractor"
       }
@@ -449,7 +449,7 @@
         "entity": "purpose",
         "start": 0,
         "end": 31,
-        "confidence_entity": 0.6465611031947669,
+        "confidence_entity": 0.6459370080093819,
         "value": "could you please add a reminder",
         "extractor": "CRFEntityExtractor"
       },
@@ -457,7 +457,7 @@
         "entity": "task",
         "start": 36,
         "end": 60,
-        "confidence_entity": 0.859528190254525,
+        "confidence_entity": 0.8511146742521161,
         "value": "checking my bank account",
         "extractor": "CRFEntityExtractor"
       }
@@ -484,7 +484,7 @@
         "entity": "purpose",
         "start": 0,
         "end": 19,
-        "confidence_entity": 0.6884925055135447,
+        "confidence_entity": 0.6908426756087221,
         "value": "could you remind me",
         "extractor": "CRFEntityExtractor"
       },
@@ -492,7 +492,7 @@
         "entity": "task",
         "start": 33,
         "end": 47,
-        "confidence_entity": 0.9335723632709872,
+        "confidence_entity": 0.9484509725997801,
         "value": "brush my teeth",
         "extractor": "CRFEntityExtractor"
       }

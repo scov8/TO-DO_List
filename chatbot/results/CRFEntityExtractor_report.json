@@ -6,18 +6,11 @@
     "support": 632,
     "confused_with": {}
   },
-  "PERSON": {
-    "precision": 1.0,
-    "recall": 1.0,
-    "f1-score": 1.0,
-    "support": 28,
-    "confused_with": {}
-  },
   "purpose": {
-    "precision": 0.9912490055688147,
-    "recall": 0.9968,
-    "f1-score": 0.9940167530913443,
-    "support": 1250,
+    "precision": 0.9913860610806577,
+    "recall": 0.9968503937007874,
+    "f1-score": 0.9941107184923439,
+    "support": 1270,
     "confused_with": {}
   },
   "category": {
@@ -27,22 +20,29 @@
     "support": 58,
     "confused_with": {}
   },
+  "PERSON": {
+    "precision": 1.0,
+    "recall": 1.0,
+    "f1-score": 1.0,
+    "support": 28,
+    "confused_with": {}
+  },
   "micro avg": {
-    "precision": 0.9944275582573455,
-    "recall": 0.9974593495934959,
-    "f1-score": 0.9959411466260781,
-    "support": 1968
+    "precision": 0.9944834503510531,
+    "recall": 0.9974849094567404,
+    "f1-score": 0.9959819186338523,
+    "support": 1988
   },
   "macro avg": {
-    "precision": 0.9978122513922036,
-    "recall": 0.9988044303797469,
-    "f1-score": 0.9983062468634932,
-    "support": 1968
+    "precision": 0.9978465152701644,
+    "recall": 0.9988170288049437,
+    "f1-score": 0.9983297382137432,
+    "support": 1988
   },
   "weighted avg": {
-    "precision": 0.9944416956102736,
-    "recall": 0.9974593495934959,
-    "f1-score": 0.9959453991267082,
-    "support": 1968
+    "precision": 0.9944971315756717,
+    "recall": 0.9974849094567404,
+    "f1-score": 0.9959860244479166,
+    "support": 1988
   }
 }

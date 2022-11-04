@@ -150,3 +150,46 @@ stories:
           n
         intent: deny
       - action: action_reset_slot
+
+  - story: delete a story
+    steps:
+      - user: |
+          I am Luigi
+        intent: inform_person
+      - action: utter_hello_user
+      - user: |
+          delete [send an email to mum]{"entity": "task"} at [six past ten]{"entity": "time"} for [work]{"entity": "category"}
+        intent: manage_task
+      - action: task_form
+      - action: task_submit
+      - user: |
+          yes
+        intent: affirm
+      - action: action_affirm
+
+  - story: delete a story and deny it
+    steps:
+      - user: |
+          I am Luigi
+        intent: inform_person
+      - action: utter_hello_user
+      - user: |
+          delete [send an email to mum]{"entity": "task"} at [six past ten]{"entity": "time"} for [work]{"entity": "category"}
+        intent: manage_task
+      - action: task_form
+      - action: task_submit
+      - user: |
+          no
+        intent: deny
+      - action: action_reset_slot
+
+  - story: show all task
+    steps:
+      - user: |
+          I am Mike
+        intent: inform_person
+      - action: utter_hello_user
+      - user: |
+          Show all
+        intent: view_task
+      - action: action_view_list

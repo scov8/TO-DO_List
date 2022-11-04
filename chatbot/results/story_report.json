@@ -1,81 +1,21 @@
 {
-  "[work](category)": {
-    "precision": 0.0,
-    "recall": 0.0,
-    "f1-score": 0.0,
-    "support": 4
-  },
-  "[12 o'clock](time)": {
-    "precision": 0.0,
-    "recall": 0.0,
-    "f1-score": 0.0,
+  "action_view_list": {
+    "precision": 1.0,
+    "recall": 1.0,
+    "f1-score": 1.0,
     "support": 1
-  },
-  "action_affirm": {
-    "precision": 1.0,
-    "recall": 1.0,
-    "f1-score": 1.0,
-    "support": 5
-  },
-  "deny": {
-    "precision": 1.0,
-    "recall": 1.0,
-    "f1-score": 1.0,
-    "support": 3
   },
   "[six past ten](time)": {
     "precision": 0.0,
     "recall": 0.0,
     "f1-score": 0.0,
-    "support": 1
-  },
-  "utter_hello_user": {
-    "precision": 0.0,
-    "recall": 0.0,
-    "f1-score": 0.0,
-    "support": 6
-  },
-  "inform_person": {
-    "precision": 0.0,
-    "recall": 0.0,
-    "f1-score": 0.0,
-    "support": 6
-  },
-  "utter_iamabot": {
-    "precision": 1.0,
-    "recall": 1.0,
-    "f1-score": 1.0,
-    "support": 1
-  },
-  "action_listen": {
-    "precision": 1.0,
-    "recall": 1.0,
-    "f1-score": 1.0,
-    "support": 28
-  },
-  "None": {
-    "precision": 0.0,
-    "recall": 0.0,
-    "f1-score": 0.0,
-    "support": 30
-  },
-  "action_reset_slot": {
-    "precision": 1.0,
-    "recall": 1.0,
-    "f1-score": 1.0,
     "support": 3
   },
-  "[send an email to mum](task)": {
+  "manage_task": {
     "precision": 1.0,
     "recall": 1.0,
     "f1-score": 1.0,
-    "support": 4
-  },
-  "[go to gym](task)": {
-    "precision": 1.0,
-    "recall": 1.0,
-    "f1-score": 1.0,
-    "support": 1
+    "support": 9
   },
   "utter_happy": {
     "precision": 1.0,
@@ -83,31 +23,31 @@
     "f1-score": 1.0,
     "support": 2
   },
-  "[home](category)": {
-    "precision": 0.0,
-    "recall": 0.0,
-    "f1-score": 0.0,
-    "support": 1
-  },
-  "utter_goodbye": {
+  "task_form": {
     "precision": 1.0,
     "recall": 1.0,
     "f1-score": 1.0,
-    "support": 2
+    "support": 9
   },
-  "greet": {
+  "None": {
     "precision": 0.0,
     "recall": 0.0,
     "f1-score": 0.0,
-    "support": 2
+    "support": 37
   },
-  "[13:00](time)": {
+  "[12:00](time)": {
     "precision": 0.0,
     "recall": 0.0,
     "f1-score": 0.0,
     "support": 1
   },
-  "utter_greet": {
+  "task_submit": {
+    "precision": 1.0,
+    "recall": 1.0,
+    "f1-score": 1.0,
+    "support": 9
+  },
+  "utter_goodbye": {
     "precision": 1.0,
     "recall": 1.0,
     "f1-score": 1.0,
@@ -119,35 +59,11 @@
     "f1-score": 0.0,
     "support": 1
   },
-  "[six o'clock](time)": {
-    "precision": 0.0,
-    "recall": 0.0,
-    "f1-score": 0.0,
-    "support": 1
-  },
-  "task_form": {
+  "action_affirm": {
     "precision": 1.0,
     "recall": 1.0,
     "f1-score": 1.0,
-    "support": 7
-  },
-  "task_submit": {
-    "precision": 1.0,
-    "recall": 1.0,
-    "f1-score": 1.0,
-    "support": 7
-  },
-  "manage_task": {
-    "precision": 1.0,
-    "recall": 1.0,
-    "f1-score": 1.0,
-    "support": 7
-  },
-  "mood_great": {
-    "precision": 1.0,
-    "recall": 1.0,
-    "f1-score": 1.0,
-    "support": 2
+    "support": 6
   },
   "goodbye": {
     "precision": 0.0,
@@ -155,11 +71,101 @@
     "f1-score": 0.0,
     "support": 2
   },
+  "mood_great": {
+    "precision": 1.0,
+    "recall": 1.0,
+    "f1-score": 1.0,
+    "support": 2
+  },
+  "[six o'clock](time)": {
+    "precision": 0.0,
+    "recall": 0.0,
+    "f1-score": 0.0,
+    "support": 1
+  },
+  "greet": {
+    "precision": 0.0,
+    "recall": 0.0,
+    "f1-score": 0.0,
+    "support": 2
+  },
+  "[work](category)": {
+    "precision": 0.0,
+    "recall": 0.0,
+    "f1-score": 0.0,
+    "support": 6
+  },
+  "affirm": {
+    "precision": 1.0,
+    "recall": 1.0,
+    "f1-score": 1.0,
+    "support": 6
+  },
+  "utter_greet": {
+    "precision": 1.0,
+    "recall": 1.0,
+    "f1-score": 1.0,
+    "support": 2
+  },
+  "deny": {
+    "precision": 1.0,
+    "recall": 1.0,
+    "f1-score": 1.0,
+    "support": 4
+  },
+  "[13:00](time)": {
+    "precision": 0.0,
+    "recall": 0.0,
+    "f1-score": 0.0,
+    "support": 1
+  },
   "[ten to ten](time)": {
     "precision": 0.0,
     "recall": 0.0,
     "f1-score": 0.0,
     "support": 1
+  },
+  "view_task": {
+    "precision": 1.0,
+    "recall": 1.0,
+    "f1-score": 1.0,
+    "support": 1
+  },
+  "utter_iamabot": {
+    "precision": 1.0,
+    "recall": 1.0,
+    "f1-score": 1.0,
+    "support": 1
+  },
+  "[12 o'clock](time)": {
+    "precision": 0.0,
+    "recall": 0.0,
+    "f1-score": 0.0,
+    "support": 1
+  },
+  "[go to gym](task)": {
+    "precision": 1.0,
+    "recall": 1.0,
+    "f1-score": 1.0,
+    "support": 1
+  },
+  "inform_person": {
+    "precision": 0.0,
+    "recall": 0.0,
+    "f1-score": 0.0,
+    "support": 9
+  },
+  "utter_hello_user": {
+    "precision": 0.0,
+    "recall": 0.0,
+    "f1-score": 0.0,
+    "support": 9
+  },
+  "action_listen": {
+    "precision": 1.0,
+    "recall": 1.0,
+    "f1-score": 1.0,
+    "support": 36
   },
   "[12](time)": {
     "precision": 0.0,
@@ -167,39 +173,45 @@
     "f1-score": 0.0,
     "support": 1
   },
-  "[12:00](time)": {
+  "action_reset_slot": {
+    "precision": 1.0,
+    "recall": 1.0,
+    "f1-score": 1.0,
+    "support": 4
+  },
+  "[home](category)": {
     "precision": 0.0,
     "recall": 0.0,
     "f1-score": 0.0,
     "support": 1
   },
-  "affirm": {
+  "[send an email to mum](task)": {
     "precision": 1.0,
     "recall": 1.0,
     "f1-score": 1.0,
-    "support": 5
+    "support": 6
   },
   "micro avg": {
-    "precision": 0.9186046511627907,
-    "recall": 0.572463768115942,
-    "f1-score": 0.7053571428571429,
-    "support": 138
+    "precision": 0.9181818181818182,
+    "recall": 0.5706214689265536,
+    "f1-score": 0.7038327526132404,
+    "support": 177
   },
   "macro avg": {
-    "precision": 0.5,
-    "recall": 0.5,
-    "f1-score": 0.5,
-    "support": 138
+    "precision": 0.53125,
+    "recall": 0.53125,
+    "f1-score": 0.53125,
+    "support": 177
   },
   "weighted avg": {
-    "precision": 0.572463768115942,
-    "recall": 0.572463768115942,
-    "f1-score": 0.572463768115942,
-    "support": 138
+    "precision": 0.5706214689265536,
+    "recall": 0.5706214689265536,
+    "f1-score": 0.5706214689265536,
+    "support": 177
   },
   "conversation_accuracy": {
     "accuracy": 0.0,
     "correct": 0,
-    "total": 10
+    "total": 13
   }
 }

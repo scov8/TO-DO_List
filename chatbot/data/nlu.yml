@@ -19,7 +19,6 @@ nlu:
 
   - intent: goodbye
     examples: |
-      - good afternoon
       - cu
       - good by
       - cee you later
@@ -230,6 +229,7 @@ nlu:
       - [sign something](purpose)
       - [modify](purpose)
       - [Update](purpose)
+      - [upgrade](purpose)
       - [Change](purpose)
       - [Edit](purpose)
       - [Alter](purpose)
@@ -239,11 +239,13 @@ nlu:
       - [Please change](purpose)
       - [Please edit](purpose)
       - [Please update](purpose)
+      - [Please upgrade](purpose)
       - [Please alter](purpose)
       - [Please correct](purpose)
       - [Please revise](purpose)
       - [I must modify](purpose)
       - [I must update](purpose)
+      - [I must upgrade](purpose)
       - [I must change](purpose)
       - [I must edit](purpose)
       - [I must alter](purpose)
@@ -251,6 +253,7 @@ nlu:
       - [I must revise](purpose)
       - [I have to modify](purpose)
       - [I have to update](purpose)
+      - [I have to upgrade](purpose)
       - [I have to change](purpose)
       - [I have to edit](purpose)
       - [I have to alter](purpose)
@@ -260,12 +263,14 @@ nlu:
       - [Could you change](purpose)
       - [Could you edit](purpose)
       - [Could you update](purpose)
+      - [Could you upgrade](purpose)
       - [Could you alter](purpose)
       - [Could you correct](purpose)
       - [Could you revise](purpose)
       - [I'd like to change](purpose)
       - [I'd like to modify](purpose)
       - [I'd like to update](purpose)
+      - [I'd like to upgrade](purpose)
       - [I'd like to edit](purpose)
       - [I'd like to alter](purpose)
       - [I'd like to correct](purpose)
@@ -273,6 +278,7 @@ nlu:
       - [change something](purpose)
       - [modify something](purpose)
       - [update something](purpose)
+      - [upgrade something](purpose)
       - [edit something](purpose)
       - [alter something](purpose)
       - [correct something](purpose)
@@ -775,6 +781,7 @@ nlu:
     examples: |
       - Modify
       - Update
+      - upgrade
       - Change
       - Edit
       - Alter
@@ -784,11 +791,13 @@ nlu:
       - Please change
       - Please edit
       - Please update
+      - Please upgrade
       - Please alter
       - Please correct
       - Please revise
       - I must modify
       - I must update
+      - I must upgrade
       - I must change
       - I must edit
       - I must alter
@@ -796,6 +805,7 @@ nlu:
       - I must revise
       - I have to modify
       - I have to update
+      - I have to upgrade
       - I have to change
       - I have to edit
       - I have to alter
@@ -805,12 +815,14 @@ nlu:
       - Could you change
       - Could you edit
       - Could you update
+      - Could you upgrade
       - Could you alter
       - Could you correct
       - Could you revise
       - I'd like to change
       - I'd like to modify
       - I'd like to update
+      - I'd like to upgrade
       - I'd like to edit
       - I'd like to alter
       - I'd like to correct
@@ -818,6 +830,7 @@ nlu:
       - change something
       - modify something
       - update something
+      - upgrade something
       - edit something
       - alter something
       - correct something

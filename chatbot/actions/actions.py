@@ -7,20 +7,21 @@ from typing import Any, Text, Dict, List
 
 from rasa_sdk import Action, Tracker
 from rasa_sdk.executor import CollectingDispatcher
-from rasa_sdk.events import SlotSet, ReminderScheduled, ReminderCancelled
+from rasa_sdk.events import SlotSet #, ReminderScheduled, ReminderCancelled
 from dateutil.parser import parse
-import datetime 
 
 import sqlite3
 
 update = False
-askReminder=False
+askReminder = False
 old_time = None
 old_category = None
 old_task = None
 
 class TaskSubmit(Action):
-    
+    """
+    A class for 
+    """
     def name(self) -> Text:
         return "task_submit"
 
@@ -199,12 +200,12 @@ class Affirm(Action):
     def run(self, dispatcher, tracker, domain):
         global askReminder
 
-        if(askReminder==False):
-            addToDb=AddToDb()
+        if (askReminder is False):
+            addToDb = AddToDb()
             addToDb.run(dispatcher, tracker, domain)
         else:
-            askReminder=False
-            addReminder=AddReminder()
+            askReminder = False
+            addReminder = AddReminder()
             addReminder.run(dispatcher, tracker, domain)
             
         return []
