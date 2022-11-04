@@ -1,0 +1,26 @@
+version: "2.0"
+nlu:
+- intent: greet
+  examples: |
+    - Hi
+- intent: change_person
+  examples: |
+    - I'm Mike
+- intent: view_task
+  examples: |
+    - show all
+- intent: manage_task
+  examples: |
+    - [remind me to]{"entity": "purpose", "value": "purpose-add"} [turn off the pc](task) at 23:00 for [work]{"entity": "category", "value": "category-work"}
+    - [modify]{"entity": "purpose", "value": "purpose-update"} [turn off the pc](task) at 23:00 for [work]{"entity": "category", "value": "category-work"}
+    - at 14:19
+    - [delete]{"entity": "purpose", "value": "purpose-del"} [turn off the pc](task) at 14:19 for [office]{"entity": "category", "value": "category-work"}
+- intent: affirm
+  examples: |
+    - y
+- intent: deny
+  examples: |
+    - n
+- intent: goodbye
+  examples: |
+    - bye

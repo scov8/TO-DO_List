@@ -1,0 +1,176 @@
+version: "2.0"
+stories:
+  - story: interactive_story_1
+    steps:
+      - intent: greet
+      - action: utter_greet
+      - intent: change_person
+        entities:
+          - PERSON: Mike
+      - action: person_form
+      - active_loop: person_form
+      - slot_was_set:
+          - PERSON: Mike
+      - slot_was_set:
+          - requested_slot: null
+      - active_loop: null
+      - action: utter_hello_user
+      - intent: view_task
+      - action: action_view_list
+      - intent: manage_task
+        entities:
+          - purpose: purpose-add
+          - task: turn off the pc
+          - category: category-work
+          - time: "2022-11-04T23:00:00.000-07:00"
+      - slot_was_set:
+          - task: turn off the pc
+      - slot_was_set:
+          - category: category-work
+      - slot_was_set:
+          - time: "2022-11-04T23:00:00.000-07:00"
+      - slot_was_set:
+          - purpose: purpose-add
+      - action: task_form
+      - active_loop: task_form
+      - slot_was_set:
+          - task: turn off the pc
+      - slot_was_set:
+          - category: category-work
+      - slot_was_set:
+          - purpose: purpose-add
+      - slot_was_set:
+          - time: "2022-11-04T23:00:00.000-07:00"
+      - slot_was_set:
+          - task: turn off the pc
+      - slot_was_set:
+          - category: category-work
+      - slot_was_set:
+          - purpose: purpose-add
+      - slot_was_set:
+          - time: "2022-11-04T23:00:00.000-07:00"
+      - slot_was_set:
+          - requested_slot: null
+      - active_loop: null
+      - action: task_submit
+      - intent: affirm
+      - action: action_affirm
+      - intent: affirm
+      - action: action_affirm
+      - intent: view_task
+      - action: action_view_list
+      - intent: manage_task
+        entities:
+          - purpose: purpose-update
+          - task: turn off the pc
+          - time: "2022-11-04T23:00:00.000-07:00"
+          - category: category-work
+      - slot_was_set:
+          - task: turn off the pc
+      - slot_was_set:
+          - category: category-work
+      - slot_was_set:
+          - time: "2022-11-04T23:00:00.000-07:00"
+      - slot_was_set:
+          - purpose: purpose-update
+      - action: task_form
+      - active_loop: task_form
+      - slot_was_set:
+          - task: turn off the pc
+      - slot_was_set:
+          - category: category-work
+      - slot_was_set:
+          - purpose: purpose-update
+      - slot_was_set:
+          - time: "2022-11-04T23:00:00.000-07:00"
+      - slot_was_set:
+          - task: turn off the pc
+      - slot_was_set:
+          - category: category-work
+      - slot_was_set:
+          - purpose: purpose-update
+      - slot_was_set:
+          - time: "2022-11-04T23:00:00.000-07:00"
+      - slot_was_set:
+          - requested_slot: null
+      - active_loop: null
+      - action: task_submit
+      - intent: affirm
+      - action: action_affirm
+      - intent: manage_task
+        entities:
+          - time: "2022-11-04T14:19:00.000-07:00"
+      - slot_was_set:
+          - time: "2022-11-04T14:19:00.000-07:00"
+      - action: task_form
+      - active_loop: task_form
+      - slot_was_set:
+          - task: turn off the pc
+      - slot_was_set:
+          - category: category-work
+      - slot_was_set:
+          - purpose: purpose-update
+      - slot_was_set:
+          - time: "2022-11-04T14:19:00.000-07:00"
+      - slot_was_set:
+          - time: "2022-11-04T14:19:00.000-07:00"
+      - slot_was_set:
+          - requested_slot: null
+      - active_loop: null
+      - action: task_submit
+      - intent: affirm
+      - action: action_affirm
+      - intent: deny
+      - action: action_reset_slot
+      - slot_was_set:
+          - task: null
+      - slot_was_set:
+          - category: null
+      - slot_was_set:
+          - time: null
+      - slot_was_set:
+          - purpose: null
+      - intent: view_task
+      - action: action_view_list
+      - intent: manage_task
+        entities:
+          - purpose: purpose-del
+          - task: turn off the pc
+          - time: "2022-11-04T14:19:00.000-07:00"
+          - category: category-work
+      - slot_was_set:
+          - task: turn off the pc
+      - slot_was_set:
+          - category: category-work
+      - slot_was_set:
+          - time: "2022-11-04T14:19:00.000-07:00"
+      - slot_was_set:
+          - purpose: purpose-del
+      - action: task_form
+      - active_loop: task_form
+      - slot_was_set:
+          - task: turn off the pc
+      - slot_was_set:
+          - category: category-work
+      - slot_was_set:
+          - purpose: purpose-del
+      - slot_was_set:
+          - time: "2022-11-04T14:19:00.000-07:00"
+      - slot_was_set:
+          - task: turn off the pc
+      - slot_was_set:
+          - category: category-work
+      - slot_was_set:
+          - purpose: purpose-del
+      - slot_was_set:
+          - time: "2022-11-04T14:19:00.000-07:00"
+      - slot_was_set:
+          - requested_slot: null
+      - active_loop: null
+      - action: task_submit
+      - intent: affirm
+      - action: action_affirm
+      - intent: view_task
+      - action: action_view_list
+      - intent: goodbye
+      - action: utter_goodbye
