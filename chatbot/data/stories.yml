@@ -341,7 +341,7 @@ stories:
       - action: utter_goodbye
 
   - story: full conversation n1 # change person and view
-   steps:
+    steps:
       - intent: greet
       - action: utter_greet
       - intent: inform_person
