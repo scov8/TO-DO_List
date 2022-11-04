@@ -2,7 +2,7 @@ version: "2.0"
 stories:
 - story: update a task, set the new update but deny the modify (./tests/test_stories.yml)
   steps:
-  - intent: inform_person  # predicted: nlu_fallback: [I'm](purpose)  [Jane](purpose)[Jane](PERSON)
+  - intent: inform_person  # predicted: change_person: [I'm](purpose)  [Jane](purpose)[Jane](PERSON)
   - action: utter_hello_user  # predicted: person_form
   - intent: manage_task
     entities:
@@ -16,7 +16,7 @@ stories:
     - time: six o'clock
   - action: task_form
   - action: task_submit
-  - intent: affirm  # predicted: nlu_fallback: yes
+  - intent: affirm
   - action: action_affirm
   - intent: manage_task
     entities: []
@@ -28,7 +28,7 @@ stories:
   - action: action_reset_slot
 - story: update a task but deny the modify (./tests/test_stories.yml)
   steps:
-  - intent: inform_person  # predicted: nlu_fallback: [I'm](purpose)  [Jane](purpose)[Jane](PERSON)
+  - intent: inform_person  # predicted: change_person: [I'm](purpose)  [Jane](purpose)[Jane](PERSON)
   - action: utter_hello_user  # predicted: person_form
   - intent: manage_task
     entities:
@@ -60,7 +60,7 @@ stories:
     - time: six past ten
   - action: task_form
   - action: task_submit
-  - intent: affirm  # predicted: nlu_fallback: yes
+  - intent: affirm
   - action: action_affirm
 - story: delete a story and deny it (./tests/test_stories.yml)
   steps:
@@ -82,7 +82,7 @@ stories:
   - action: action_reset_slot
 - story: show all task (./tests/test_stories.yml)
   steps:
-  - intent: inform_person  # predicted: nlu_fallback: I am [Mike](PERSON)
+  - intent: inform_person  # predicted: change_person: I am [Mike](PERSON)
   - action: utter_hello_user  # predicted: person_form
   - intent: view_task
   - action: action_view_list
@@ -110,11 +110,11 @@ stories:
   - action: utter_iamabot
 - story: presentation (./tests/test_stories.yml)
   steps:
-  - intent: inform_person  # predicted: nlu_fallback: [I'm](purpose)  [Mike](purpose)[Mike](PERSON)
+  - intent: inform_person  # predicted: change_person: [I'm](purpose)  [Mike](purpose)[Mike](PERSON)
   - action: utter_hello_user  # predicted: person_form
 - story: add task (./tests/test_stories.yml)
   steps:
-  - intent: inform_person  # predicted: nlu_fallback: [I'm](purpose)  [Mike](purpose)[Mike](PERSON)
+  - intent: inform_person  # predicted: change_person: [I'm](purpose)  [Mike](purpose)[Mike](PERSON)
   - action: utter_hello_user  # predicted: person_form
   - intent: manage_task
     entities:
@@ -128,13 +128,13 @@ stories:
     - time: 12:00
   - action: task_form
   - action: task_submit
-  - intent: affirm  # predicted: nlu_fallback: yes
+  - intent: affirm
   - action: action_affirm
-  - intent: affirm  # predicted: nlu_fallback: y
+  - intent: affirm
   - action: action_affirm
 - story: create a task but don't add it (./tests/test_stories.yml)
   steps:
-  - intent: inform_person  # predicted: nlu_fallback: [I'm](purpose)  [Jane](purpose)[Jane](PERSON)
+  - intent: inform_person  # predicted: change_person: [I'm](purpose)  [Jane](purpose)[Jane](PERSON)
   - action: utter_hello_user  # predicted: person_form
   - intent: manage_task
     entities:
@@ -152,7 +152,7 @@ stories:
   - action: action_reset_slot
 - story: update a task (./tests/test_stories.yml)
   steps:
-  - intent: inform_person  # predicted: nlu_fallback: [I'm](purpose)  [Jane](purpose)[Jane](PERSON)
+  - intent: inform_person  # predicted: change_person: [I'm](purpose)  [Jane](purpose)[Jane](PERSON)
   - action: utter_hello_user  # predicted: person_form
   - intent: manage_task
     entities:
@@ -166,7 +166,7 @@ stories:
     - time: '12'
   - action: task_form
   - action: task_submit
-  - intent: affirm  # predicted: nlu_fallback: yes
+  - intent: affirm
   - action: action_affirm
   - intent: manage_task
     entities: []
@@ -174,13 +174,13 @@ stories:
     - time: 13:00
   - action: task_form
   - action: task_submit
-  - intent: affirm  # predicted: nlu_fallback: y
+  - intent: affirm
   - action: action_affirm
-  - intent: affirm  # predicted: nlu_fallback: y
+  - intent: affirm
   - action: action_affirm
 - story: update a task and deny reminder (./tests/test_stories.yml)
   steps:
-  - intent: inform_person  # predicted: nlu_fallback: [I'm](purpose)  [Jane](purpose)[Jane](PERSON)
+  - intent: inform_person  # predicted: change_person: [I'm](purpose)  [Jane](purpose)[Jane](PERSON)
   - action: utter_hello_user  # predicted: person_form
   - intent: manage_task
     entities:
@@ -194,7 +194,7 @@ stories:
     - time: '12'
   - action: task_form
   - action: task_submit
-  - intent: affirm  # predicted: nlu_fallback: yes
+  - intent: affirm
   - action: action_affirm
   - intent: manage_task
     entities: []
@@ -202,7 +202,7 @@ stories:
     - time: 13:00
   - action: task_form
   - action: task_submit
-  - intent: affirm  # predicted: nlu_fallback: y
+  - intent: affirm
   - action: action_affirm
   - intent: deny
   - action: action_reset_slot

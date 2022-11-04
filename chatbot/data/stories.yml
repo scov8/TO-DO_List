@@ -301,8 +301,6 @@ stories:
           - purpose: purpose-update
       - action: task_form
       - action: task_submit
-      - intent: view_task
-      - action: action_view_list
       - intent: affirm
       - action: action_affirm
       - intent: affirm

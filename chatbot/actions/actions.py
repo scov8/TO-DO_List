@@ -34,7 +34,6 @@ class TaskSubmit(Action):
         task = tracker.get_slot("task")
         purpose = tracker.get_slot("purpose")
 
-        print("\n\nSono in TaskSubmit:")
         print("time:",time)
         print("Category:",category)
         print("Task:",task)
@@ -78,41 +77,50 @@ class AddToDb(Action):
         
     def name(self):
         return "action_add_to_db"
+
+    def __execute_query(self, conn, query, **kwargs):
+        global update
+        task = kwargs.get('task')
+        time = kwargs.get('time')
+        category = kwargs.get('category')
+        user = kwargs.get('user')
+
+        curs = conn.cursor()
+        if (update is True):
+            global old_time, old_category, old_task
+            curs.execute(query, [task, time, category, user, old_task, old_time, old_category])
+        else:
+            curs.execute(query, [user, task, time, category])
+        conn.commit()
+        return curs
     
     def __find_purpose(self, dispatcher, purpose, task, time, category, user, conn):
-        global update, old_time, old_category, old_task, askReminder
+        global update, askReminder
 
         query = ""
-        if(update is True):
-            query = 'UPDATE ToDoList SET task=:1, time=:2, category=:3, reminder=False WHERE task=:4 AND time=:5 AND category=:6 AND USER=:7'
-            curs = conn.cursor()
-            curs.execute(query, [task, time, category, old_task, old_time, old_category, user])
-            conn.commit()
+        if (update is True):
+            query = 'UPDATE ToDoList SET task=:1, time=:2, category=:3, reminder=False WHERE USER=:4 AND task=:5 AND time=:6 AND category=:7'
+            curs = self.__execute_query(conn, query, task=task, time=time, category=category, user=user)
             update = False
-            if(curs.rowcount==0):
+            if (curs.rowcount == 0):
                 dispatcher.utter_message("Oh no, you insert a non-existing entry")
             else:
                 dispatcher.utter_message("Ok, i modified your task, do you want a reminder?")
                 askReminder=True
         elif (purpose == "purpose-add"):
             query = 'INSERT INTO ToDoList (user, task, time, category)VALUES (:1, :2, :3, :4)'
-            curs = conn.cursor()
-            curs.execute(query, [user, task, time, category])
-            print("curs",curs)
-            conn.commit()
+            curs = self.__execute_query(conn, query, task=task, time=time, category=category, user=user)
             dispatcher.utter_message("Ok i added your task, do you want a reminder?")
             askReminder=True
         elif (purpose == "purpose-del"):
-            query = 'DELETE FROM ToDoList WHERE task=:1 AND time=:2 AND category=:3 AND user=:4'
-            curs = conn.cursor()
-            curs.execute(query, [task, time, category,user])
-            print("curs",curs)
-            conn.commit()
-            if(curs.rowcount==0):
+            query = 'DELETE FROM ToDoList WHERE user=:1 AND task=:2 AND time=:3 AND category=:4'
+            curs = self.__execute_query(conn, query, task=task, time=time, category=category, user=user)
+            if( curs.rowcount == 0):
                 dispatcher.utter_message("Oh no, you insert a non-existing entry")
             else:
                 dispatcher.utter_message("Ok i deleted your task")
         elif (purpose == "purpose-update" and update is False):
+            global old_time, old_category, old_task
             old_time = time
             old_category = category
             old_task = task
@@ -124,7 +132,7 @@ class AddToDb(Action):
     def run(self, dispatcher, tracker, domain):
         global update
         conn = sqlite3.connect('../chatbot.db')
-        print("connessione al db:", conn)
+        print("Connection to db:", conn)
 
         user = tracker.get_slot("PERSON")
         time = tracker.get_slot("time")
@@ -146,7 +154,7 @@ class AddReminder(Action):
 
     def run(self, dispatcher, tracker, domain):
         conn = sqlite3.connect('../chatbot.db')
-        print("connessione al db:", conn)
+        print("Connection to db:", conn)
 
         user = tracker.get_slot("PERSON")
         time = tracker.get_slot("time")
@@ -173,7 +181,7 @@ class ViewList(Action):
 
     def run(self, dispatcher, tracker, domain):
         conn = sqlite3.connect('../chatbot.db')
-        print("connessione al db:", conn)
+        print("Connection to db:", conn)
 
         user = tracker.get_slot("PERSON")
 

@@ -1,26 +1,50 @@
 {
+  "utter_iamabot": {
+    "precision": 1.0,
+    "recall": 1.0,
+    "f1-score": 1.0,
+    "support": 1
+  },
+  "mood_great": {
+    "precision": 1.0,
+    "recall": 1.0,
+    "f1-score": 1.0,
+    "support": 2
+  },
+  "utter_happy": {
+    "precision": 1.0,
+    "recall": 1.0,
+    "f1-score": 1.0,
+    "support": 2
+  },
   "inform_person": {
     "precision": 0.0,
     "recall": 0.0,
     "f1-score": 0.0,
     "support": 10
   },
+  "[six o'clock](time)": {
+    "precision": 0.0,
+    "recall": 0.0,
+    "f1-score": 0.0,
+    "support": 1
+  },
   "affirm": {
-    "precision": 0.0,
-    "recall": 0.0,
-    "f1-score": 0.0,
-    "support": 9
-  },
-  "[work](category)": {
-    "precision": 0.0,
-    "recall": 0.0,
-    "f1-score": 0.0,
-    "support": 7
-  },
-  "view_task": {
     "precision": 1.0,
     "recall": 1.0,
     "f1-score": 1.0,
+    "support": 9
+  },
+  "action_affirm": {
+    "precision": 1.0,
+    "recall": 1.0,
+    "f1-score": 1.0,
+    "support": 9
+  },
+  "[ten to ten](time)": {
+    "precision": 0.0,
+    "recall": 0.0,
+    "f1-score": 0.0,
     "support": 1
   },
   "[12:00](time)": {
@@ -29,7 +53,13 @@
     "f1-score": 0.0,
     "support": 1
   },
-  "task_submit": {
+  "[six past ten](time)": {
+    "precision": 0.0,
+    "recall": 0.0,
+    "f1-score": 0.0,
+    "support": 3
+  },
+  "task_form": {
     "precision": 1.0,
     "recall": 1.0,
     "f1-score": 1.0,
@@ -41,29 +71,17 @@
     "f1-score": 1.0,
     "support": 1
   },
-  "manage_task": {
+  "action_reset_slot": {
     "precision": 1.0,
     "recall": 1.0,
     "f1-score": 1.0,
-    "support": 11
+    "support": 5
   },
-  "[12 o'clock](time)": {
+  "greet": {
     "precision": 0.0,
     "recall": 0.0,
     "f1-score": 0.0,
-    "support": 1
-  },
-  "utter_happy": {
-    "precision": 1.0,
-    "recall": 1.0,
-    "f1-score": 1.0,
     "support": 2
-  },
-  "action_affirm": {
-    "precision": 1.0,
-    "recall": 1.0,
-    "f1-score": 1.0,
-    "support": 9
   },
   "action_view_list": {
     "precision": 1.0,
@@ -77,11 +95,29 @@
     "f1-score": 0.0,
     "support": 1
   },
+  "bot_challenge": {
+    "precision": 0.0,
+    "recall": 0.0,
+    "f1-score": 0.0,
+    "support": 1
+  },
   "action_listen": {
     "precision": 1.0,
     "recall": 1.0,
     "f1-score": 1.0,
     "support": 43
+  },
+  "task_submit": {
+    "precision": 1.0,
+    "recall": 1.0,
+    "f1-score": 1.0,
+    "support": 11
+  },
+  "utter_hello_user": {
+    "precision": 0.0,
+    "recall": 0.0,
+    "f1-score": 0.0,
+    "support": 10
   },
   "None": {
     "precision": 0.0,
@@ -89,58 +125,22 @@
     "f1-score": 0.0,
     "support": 43
   },
-  "task_form": {
-    "precision": 1.0,
-    "recall": 1.0,
-    "f1-score": 1.0,
-    "support": 11
-  },
-  "action_reset_slot": {
-    "precision": 1.0,
-    "recall": 1.0,
-    "f1-score": 1.0,
-    "support": 5
-  },
-  "[six o'clock](time)": {
-    "precision": 0.0,
-    "recall": 0.0,
-    "f1-score": 0.0,
-    "support": 1
-  },
-  "utter_greet": {
-    "precision": 1.0,
-    "recall": 1.0,
-    "f1-score": 1.0,
-    "support": 2
-  },
   "[13:00](time)": {
     "precision": 0.0,
     "recall": 0.0,
     "f1-score": 0.0,
     "support": 2
   },
-  "utter_iamabot": {
+  "manage_task": {
     "precision": 1.0,
     "recall": 1.0,
     "f1-score": 1.0,
-    "support": 1
+    "support": 11
   },
-  "[ten to ten](time)": {
-    "precision": 0.0,
-    "recall": 0.0,
-    "f1-score": 0.0,
-    "support": 1
-  },
-  "mood_great": {
+  "utter_goodbye": {
     "precision": 1.0,
     "recall": 1.0,
     "f1-score": 1.0,
-    "support": 2
-  },
-  "[12](time)": {
-    "precision": 0.0,
-    "recall": 0.0,
-    "f1-score": 0.0,
     "support": 2
   },
   "goodbye": {
@@ -149,35 +149,35 @@
     "f1-score": 0.0,
     "support": 2
   },
-  "utter_goodbye": {
+  "view_task": {
+    "precision": 1.0,
+    "recall": 1.0,
+    "f1-score": 1.0,
+    "support": 1
+  },
+  "[work](category)": {
+    "precision": 0.0,
+    "recall": 0.0,
+    "f1-score": 0.0,
+    "support": 7
+  },
+  "utter_greet": {
     "precision": 1.0,
     "recall": 1.0,
     "f1-score": 1.0,
     "support": 2
   },
-  "deny": {
-    "precision": 1.0,
-    "recall": 1.0,
-    "f1-score": 1.0,
-    "support": 5
-  },
-  "[six past ten](time)": {
-    "precision": 0.0,
-    "recall": 0.0,
-    "f1-score": 0.0,
-    "support": 3
-  },
-  "greet": {
-    "precision": 0.0,
-    "recall": 0.0,
-    "f1-score": 0.0,
-    "support": 2
-  },
-  "bot_challenge": {
+  "[12 o'clock](time)": {
     "precision": 0.0,
     "recall": 0.0,
     "f1-score": 0.0,
     "support": 1
+  },
+  "[12](time)": {
+    "precision": 0.0,
+    "recall": 0.0,
+    "f1-score": 0.0,
+    "support": 2
   },
   "[send an email to mum](task)": {
     "precision": 1.0,
@@ -185,28 +185,28 @@
     "f1-score": 1.0,
     "support": 7
   },
-  "utter_hello_user": {
-    "precision": 0.0,
-    "recall": 0.0,
-    "f1-score": 0.0,
-    "support": 10
+  "deny": {
+    "precision": 1.0,
+    "recall": 1.0,
+    "f1-score": 1.0,
+    "support": 5
   },
   "micro avg": {
-    "precision": 0.912,
-    "recall": 0.5428571428571428,
-    "f1-score": 0.6805970149253731,
+    "precision": 0.917910447761194,
+    "recall": 0.5857142857142857,
+    "f1-score": 0.7151162790697675,
     "support": 210
   },
   "macro avg": {
-    "precision": 0.5,
-    "recall": 0.5,
-    "f1-score": 0.5,
+    "precision": 0.53125,
+    "recall": 0.53125,
+    "f1-score": 0.53125,
     "support": 210
   },
   "weighted avg": {
-    "precision": 0.5428571428571428,
-    "recall": 0.5428571428571428,
-    "f1-score": 0.5428571428571428,
+    "precision": 0.5857142857142857,
+    "recall": 0.5857142857142857,
+    "f1-score": 0.5857142857142857,
     "support": 210
   },
   "conversation_accuracy": {
