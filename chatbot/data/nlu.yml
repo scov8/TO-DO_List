@@ -517,7 +517,6 @@ nlu:
       - [sell clothes](task)
       - [run a marathon](task)
       - [running a marathon](task)
-      - [delete useless files](task)
       - [finding my old shoes](task)
       - [closing all the windows in my house](task)
       - [giving John his present](task)
@@ -712,9 +711,15 @@ nlu:
       - [Add in the list](purpose) [searching keys](task) at 9:00 and attach in [personal](category)
       - [Insert](purpose) [having supper](task) at 21:30 
       - Please [insert](purpose) [running a marathon](task) at 14:00
-      - [Remind to](purpose) [delete useless files from my computer](task) at 16:00 and attach in [work](category)
       - [Insert](purpose) [finding my old shoes](task) at 13:25 and attach in [personal](category)
       - [Insert](purpose) [closing all the windows in my house](task) and attach in [house](category)
+      - [remind me to]{"entity": "purpose", "value": "purpose-add"} [turn off the pc](task) at 23:00 for [work]{"entity": "category", "value": "category-work"}
+      - [modify]{"entity": "purpose", "value": "purpose-update"} [turn off the pc](task) at 23:00 for [work]{"entity": "category", "value": "category-work"}
+      - at 14:19
+      - at 23:59
+      - at two to ten
+      - at 4 o'clock
+      - [delete]{"entity": "purpose", "value": "purpose-del"} [turn off the pc](task) at 14:19 for [office]{"entity": "category", "value": "category-work"}
 
   - synonym: category-home
     examples: |
