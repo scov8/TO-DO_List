@@ -84,7 +84,7 @@ class AddToDb(Action):
 
         query = ""
         if(update is True):
-            query = 'UPDATE ToDoList SET task=:1, time=:2, category=:3 WHERE task=:4 AND time=:5 AND category=:6 AND USER=:7'
+            query = 'UPDATE ToDoList SET task=:1, time=:2, category=:3, reminder=False WHERE task=:4 AND time=:5 AND category=:6 AND USER=:7'
             curs = conn.cursor()
             curs.execute(query, [task, time, category, old_task, old_time, old_category, user])
             conn.commit()
@@ -92,7 +92,8 @@ class AddToDb(Action):
             if(curs.rowcount==0):
                 dispatcher.utter_message("Oh no, you insert a non-existing entry")
             else:
-                dispatcher.utter_message("Ok, i modified your task")
+                dispatcher.utter_message("Ok, i modified your task, do you want a reminder?")
+                askReminder=True
         elif (purpose == "purpose-add"):
             query = 'INSERT INTO ToDoList (user, task, time, category)VALUES (:1, :2, :3, :4)'
             curs = conn.cursor()
@@ -134,7 +135,7 @@ class AddToDb(Action):
         self.__find_purpose(dispatcher, purpose, task, time, category, user, conn)
 
         conn.close()
-        if ((purpose == 'purpose-update' and update is True) or purpose == 'purpose-insert' ):
+        if (purpose == 'purpose-update' or purpose == 'purpose-insert' ):
             return []
         else:
             return [SlotSet("task", None),SlotSet("category", None),SlotSet("time", None),SlotSet("purpose", None)]
@@ -164,7 +165,9 @@ class AddReminder(Action):
         return [SlotSet("task", None),SlotSet("category", None),SlotSet("time", None),SlotSet("purpose", None)]
 
 class ViewList(Action):
-
+    """
+    A class to see the list of to-do list
+    """
     def name(self):
         return "action_view_list"
 

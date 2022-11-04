@@ -65,7 +65,7 @@ stories:
       - action: action_reset_slot
 
   # UPDATE area
-  - story: update task, confirm starter task and confirm modify
+  - story: update task, confirm starter task, confirm modify and add reminder
     steps:
       - intent: manage_task
       - slot_was_set:
@@ -87,6 +87,33 @@ stories:
       - action: task_submit
       - intent: affirm
       - action: action_affirm
+      - intent: affirm
+      - action: action_affirm
+
+  - story: update task, confirm starter task, confirm modify but not a reminder
+    steps:
+      - intent: manage_task
+      - slot_was_set:
+          - task
+          - time
+          - category
+          - purpose: purpose-update
+      - action: task_form
+      - action: task_submit
+      - intent: affirm
+      - action: action_affirm
+      - intent: manage_task
+      - slot_was_set:
+          - task
+          - time
+          - category
+          - purpose: purpose-update
+      - action: task_form
+      - action: task_submit
+      - intent: affirm
+      - action: action_affirm
+      - intent: deny
+      - action: action_reset_slot
 
   - story: update task, confirm start and deny the modify
     steps:
@@ -161,11 +188,15 @@ stories:
     steps:
       - intent: greet
       - action: utter_greet
-      - intent: mood_great
-      - action: utter_happy
       - intent: inform_person
+      - action: person_form
       - action: utter_hello_user
       - intent: manage_task
+      - slot_was_set:
+          - task
+          - time
+          - category
+          - purpose: purpose-add
       - action: task_form
       - action: task_submit
       - intent: affirm
@@ -181,11 +212,15 @@ stories:
     steps:
       - intent: greet
       - action: utter_greet
-      - intent: mood_great
-      - action: utter_happy
       - intent: inform_person
+      - action: person_form
       - action: utter_hello_user
       - intent: manage_task
+      - slot_was_set:
+          - task
+          - time
+          - category
+          - purpose: purpose-add
       - action: task_form
       - action: task_submit
       - intent: affirm
@@ -201,13 +236,17 @@ stories:
     steps:
       - intent: greet
       - action: utter_greet
-      - intent: mood_great
-      - action: utter_happy
       - intent: inform_person
+      - action: person_form
       - action: utter_hello_user
       - intent: view_task
       - action: action_view_list
       - intent: manage_task
+      - slot_was_set:
+          - task
+          - time
+          - category
+          - purpose: purpose-add
       - action: task_form
       - action: task_submit
       - intent: affirm
@@ -223,13 +262,17 @@ stories:
     steps:
       - intent: greet
       - action: utter_greet
-      - intent: mood_great
-      - action: utter_happy
       - intent: inform_person
+      - action: person_form
       - action: utter_hello_user
       - intent: view_task
       - action: action_view_list
       - intent: manage_task
+      - slot_was_set:
+          - task
+          - time
+          - category
+          - purpose: purpose-add
       - action: task_form
       - action: task_submit
       - intent: affirm
@@ -240,3 +283,86 @@ stories:
       - action: utter_noworries
       - intent: goodbye
       - action: utter_goodbye
+
+  - story: full conversation n5 # update, show, confirm, activate reminder
+    steps:
+      - intent: greet
+      - action: utter_greet
+      - intent: inform_person
+      - action: person_form
+      - action: utter_hello_user
+      - intent: view_task
+      - action: action_view_list
+      - intent: manage_task
+      - slot_was_set:
+          - task
+          - time
+          - category
+          - purpose: purpose-update
+      - action: task_form
+      - action: task_submit
+      - intent: view_task
+      - action: action_view_list
+      - intent: affirm
+      - action: action_affirm
+      - intent: affirm
+      - action: action_affirm
+      - intent: thankyou
+      - action: utter_noworries
+      - intent: goodbye
+      - action: utter_goodbye
+
+  - story: full conversation n6 # update, show, confirm, deactivate reminder
+    steps:
+      - intent: greet
+      - action: utter_greet
+      - intent: inform_person
+      - action: person_form
+      - action: utter_hello_user
+      - intent: view_task
+      - action: action_view_list
+      - intent: manage_task
+      - slot_was_set:
+          - task
+          - time
+          - category
+          - purpose: purpose-update
+      - action: task_form
+      - action: task_submit
+      - intent: view_task
+      - action: action_view_list
+      - intent: affirm
+      - action: action_affirm
+      - intent: deny
+      - action: action_reset_slot
+      - intent: thankyou
+      - action: utter_noworries
+      - intent: goodbye
+      - action: utter_goodbye
+
+  - story: full conversation n1 # change person and view
+    steps:
+      - intent: greet
+      - action: utter_greet
+      - intent: inform_person
+      - action: person_form
+      - action: utter_hello_user
+      - intent: view_task
+      - action: action_view_list
+      - intent: change_person
+      - action: person_form
+      - action: utter_hello_user
+      - intent: view_task
+      - action: action_view_list
+      - intent: thankyou
+      - action: utter_noworries
+      - intent: goodbye
+      - action: utter_goodbye
+
+  - story: Presentation
+    steps:
+      - intent: greet
+      - action: utter_greet
+      - intent: inform_person
+      - action: person_form
+      - action: utter_hello_user

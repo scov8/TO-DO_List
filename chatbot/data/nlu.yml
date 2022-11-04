@@ -109,7 +109,6 @@ nlu:
       - not very good
       - extremely sad
       - so sad
-      - so sad
 
   - intent: bot_challenge
     examples: |
@@ -392,6 +391,7 @@ nlu:
       - [take out something](purpose)
       - [cut out something](purpose)
       - [erase something](purpose)
+      - [I must](purpose)
 
   - intent: inform_task
     examples: |
@@ -477,6 +477,56 @@ nlu:
       - [drive the trunk](task)
       - [read a book](task)
       - [write my book](task)
+      - [take the medicine](task)
+      - [buy milk](task)
+      - [buy bread](task)
+      - [buy garden tools](task)
+      - [clean furnace](task)
+      - [check the garage door](task)
+      - [pick up the children at school](task)
+      - [call the electrician](task)
+      - [call the plumber](task)
+      - [relocate the meeting](task)
+      - [buy a gift for my son's birthday](task)
+      - [make the christmas tree](task)
+      - [download the program](task)
+      - [go to the stadium](task)
+      - [bring the pc with me at Mark's house](task)
+      - [watch an episode of GOT](task)
+      - [post a story on Instagram](task)
+      - [call Jane](task)
+      - [buy a new shirt](task)
+      - [invite John to the party](task)
+      - [plan my uncle's party](task)
+      - [clean the dishes](task)
+      - [send a message to Emily](task)
+      - [making a call](task)
+      - [sending a message](task)
+      - [doing laundry](task)
+      - [posting a tweet](task)
+      - [calling Mary](task)
+      - [buying flowers](task)
+      - [playing guitar](task)
+      - [searching keys](task)
+      - [having dinner](task)
+      - [having supper](task)
+      - [water the plant](task)
+      - [Cooking meat](task)
+      - [doing my homework](task)
+      - [explain the plan](task)
+      - [sell clothes](task)
+      - [run a marathon](task)
+      - [running a marathon](task)
+      - [delete useless files](task)
+      - [finding my old shoes](task)
+      - [closing all the windows in my house](task)
+      - [giving John his present](task)
+      - [buy Nutella](task)
+      - [recharging headphones](task)
+      - [complete the puzzle](task)
+      - [take documents to the bank](task)
+      - [bring documents to the bank](task)
+      - [having a meeting](task)
 
   - intent: inform_category
     examples: |
@@ -645,6 +695,26 @@ nlu:
       - please at 2 o'clock [i would like](purpose) to [go swimming](task)
       - [could you remind](purpose) me at midday to [brush my teeth](task)
       - [i want a reminder](purpose) at 2:30 to [go to the gym](task)
+      - remind me to [clean the dishes](task) at 14:00 for [home](category)
+      - [I must](purpose) [post a story on Instagram](task) at seven o'clock
+      - [I need to](purpose) [call Jane](task) at 3:00 for [office](category)
+      - at 9:00 [I go to](purpose) [buy a new shirt](task)
+      - [I should](purpose) [invite John to the party](task)
+      - [Remind to](purpose) [plan my uncle's party](task)
+      - [I need you to remind me](purpose) [clean the dishes](task)
+      - [Remind me to] [send a message to Emily](task) for [work](category)
+      - At 9:00 [I have to](purpose) [send a message to Emily](task) and add to [work]{"entity": "category", "value": "category-work"}
+      - [i want to add](purpose) [making a call](task) at 12:00 
+      - [I should](purpose) [doing laundry](task)
+      - [Add to the to-do list](purpose) [posting a tweet](task) at 9:17 and add to [work]{"entity": "category", "value": "category-work"}
+      - Could you [add in the list](purpose) [calling Mary](task) and insert it in [personal](category)
+      - Please [add in the list](purpose) [playing guitar](task)
+      - [Add in the list](purpose) [searching keys](task) at 9:00 and attach in [personal](category)
+      - [Insert](purpose) [having supper](task) at 21:30 
+      - Please [insert](purpose) [running a marathon](task) at 14:00
+      - [Remind to](purpose) [delete useless files from my computer](task) at 16:00 and attach in [work](category)
+      - [Insert](purpose) [finding my old shoes](task) at 13:25 and attach in [personal](category)
+      - [Insert](purpose) [closing all the windows in my house](task) and attach in [house](category)
 
   - synonym: category-home
     examples: |
@@ -776,6 +846,7 @@ nlu:
       - remind me something
       - remind something
       - sign something
+      - I should
 
   - synonym: purpose-update
     examples: |

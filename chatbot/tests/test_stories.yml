@@ -109,6 +109,39 @@ stories:
           y
         intent: affirm
       - action: action_affirm
+      - user: |
+          y
+        intent: affirm
+      - action: action_affirm
+
+  - story: update a task and deny reminder
+    steps:
+      - user: |
+          I'm  Jane
+        intent: inform_person
+      - action: utter_hello_user
+      - user: |
+          modify [send an email to mum]{"entity": "task"} at [12]{"entity": "time"} for [work]{"entity": "category"}
+        intent: manage_task
+      - action: task_form
+      - action: task_submit
+      - user: |
+          yes
+        intent: affirm
+      - action: action_affirm
+      - user: |
+          at [13:00]{"entity": "time"}
+        intent: manage_task
+      - action: task_form
+      - action: task_submit
+      - user: |
+          y
+        intent: affirm
+      - action: action_affirm
+      - user: |
+          n
+        intent: deny
+      - action: action_reset_slot
 
   - story: update a task, set the new update but deny the modify
     steps:
