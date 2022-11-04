@@ -156,8 +156,6 @@ stories:
     steps:
       - intent: view_task
       - action: action_view_list
-<<<<<<< Updated upstream
-=======
 
   - story: full conversation n1 # reminder on
     steps:
@@ -341,4 +339,3 @@ stories:
       - intent: inform_person
       - action: person_form
       - action: utter_hello_user
->>>>>>> Stashed changes
