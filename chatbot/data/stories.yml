@@ -8,33 +8,20 @@ stories:
       - intent: mood_great
       - action: utter_happy
 
-  - story: sad path 1
-    steps:
-      - intent: greet
-      - action: utter_greet
-      - intent: mood_unhappy
-      - action: utter_cheer_up
-      - action: utter_did_that_help
-      #- intent: affirm
-      #- action: utter_happy
-
-  - story: sad path 2
-    steps:
-      - intent: greet
-      - action: utter_greet
-      - intent: mood_unhappy
-      - action: utter_cheer_up
-      - action: utter_did_that_help
-      #- intent: deny
-      #- action: utter_goodbye
-
   - story: story_thankyou
     steps:
       - intent: thankyou
       - action: utter_noworries
 
-  # add area
-  - story: add task and confirm
+  # CHANGE user
+  - story: change user
+    steps:
+      - intent: change_person
+      - action: person_form
+      - action: utter_hello_user
+
+  # ADD area
+  - story: add task, confirm adding and add a reminder
     steps:
       - intent: manage_task
       - slot_was_set:
@@ -48,6 +35,21 @@ stories:
       - action: action_affirm
       - intent: affirm
       - action: action_affirm
+
+  - story: add task, confirm adding but doesn't want a reminder
+    steps:
+      - intent: manage_task
+      - slot_was_set:
+          - task
+          - time
+          - category
+          - purpose: purpose-add
+      - action: task_form
+      - action: task_submit
+      - intent: affirm
+      - action: action_affirm
+      - intent: deny
+      - action: action_reset_slot
 
   - story: add task and reject
     steps:
@@ -62,8 +64,8 @@ stories:
       - intent: deny
       - action: action_reset_slot
 
-    # update area
-  - story: update task and confirm
+  # UPDATE area
+  - story: update task, confirm starter task and confirm modify
     steps:
       - intent: manage_task
       - slot_was_set:
@@ -86,7 +88,43 @@ stories:
       - intent: affirm
       - action: action_affirm
 
-  # dell area
+  - story: update task, confirm start and deny the modify
+    steps:
+      - intent: manage_task
+      - slot_was_set:
+          - task
+          - time
+          - category
+          - purpose: purpose-update
+      - action: task_form
+      - action: task_submit
+      - intent: affirm
+      - action: action_affirm
+      - intent: manage_task
+      - slot_was_set:
+          - task
+          - time
+          - category
+          - purpose: purpose-update
+      - action: task_form
+      - action: task_submit
+      - intent: deny
+      - action: action_reset_slot
+
+  - story: update task but deny start
+    steps:
+      - intent: manage_task
+      - slot_was_set:
+          - task
+          - time
+          - category
+          - purpose: purpose-update
+      - action: task_form
+      - action: task_submit
+      - intent: deny
+      - action: action_reset_slot
+
+  # DEL area
   - story: del task and confirm
     steps:
       - intent: manage_task
@@ -113,37 +151,7 @@ stories:
       - intent: deny
       - action: action_reset_slot
 
-  - story: add task and enable reminder
-    steps:
-      - intent: manage_task
-      - slot_was_set:
-          - task
-          - time
-          - category
-          - purpose: purpose-add
-      - action: task_form
-      - action: task_submit
-      - intent: affirm
-      - action: action_affirm
-      - intent: affirm
-      - action: action_affirm
-
-  - story: add task and disable reminder
-    steps:
-      - intent: manage_task
-      - slot_was_set:
-          - task
-          - time
-          - category
-          - purpose: purpose-add
-      - action: task_form
-      - action: task_submit
-      - intent: affirm
-      - action: action_affirm
-      - intent: deny
-      - action: action_reset_slot
-
-  # view area
+  # VIEW area
   - story: view tasks
     steps:
       - intent: view_task

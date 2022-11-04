@@ -57,15 +57,19 @@ class ResetSlot(Action):
         return "action_reset_slot"
 
     def run(self, dispatcher, tracker, domain):
+        global update,askReminder
         print("reset slot")
         time = tracker.get_slot("time")
         category = tracker.get_slot("category")
         task = tracker.get_slot("task")
 
         if (task is not None and time is not None and category is not None):
-            dispatcher.utter_message("Ok I deleted your task!")
+            dispatcher.utter_message("Ok")
         else:
             dispatcher.utter_message("What?")
+
+        update = False
+        askReminder=False
 
         return [SlotSet("task", None),SlotSet("category", None),SlotSet("time", None),SlotSet("purpose", None)]
     
@@ -102,13 +106,16 @@ class AddToDb(Action):
             curs.execute(query, [task, time, category,user])
             print("curs",curs)
             conn.commit()
-            dispatcher.utter_message("Ok i deleted your task")
+            if(curs.rowcount==0):
+                dispatcher.utter_message("Oh no, you insert a non-existing entry")
+            else:
+                dispatcher.utter_message("Ok i deleted your task")
         elif (purpose == "purpose-update" and update is False):
             old_time = time
             old_category = category
             old_task = task
             update = True
-            dispatcher.utter_message("Ok tell me what do you want to modify")
+            dispatcher.utter_message("Ok tell me what do you want to modify (tell me only category, hour or task)")
         else:
             raise Exception('Invalid operation')
 
@@ -196,9 +203,9 @@ class Affirm(Action):
             addToDb=AddToDb()
             addToDb.run(dispatcher, tracker, domain)
         else:
+            askReminder=False
             addReminder=AddReminder()
             addReminder.run(dispatcher, tracker, domain)
-            askReminder=False
-
+            
         return []
 

@@ -203,6 +203,9 @@ nlu:
       - [send an email to James](task)
       - [send an email to Veronica](task)
       - [email the prof](task)
+      - [see a film](task)
+      - [see a series](task)
+      - [see a cartoon](task)
 
   - intent: inform_category
     examples: |
