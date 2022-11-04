@@ -91,6 +91,7 @@ responses:
   utter_cheer_up:
     - text: "Here is something to cheer you up:"
       image: "https://i.imgur.com/nGF1K8f.jpg"
+    - text: "Don't be sad you are great ;-)"
 
   utter_did_that_help:
     - text: "Did that help you?"
@@ -99,6 +100,7 @@ responses:
     - text: "Great, carry on!"
 
   utter_goodbye:
+    - text: Bye {PERSON}
     - text: "Bye :("
     - text: "Talk to you later!"
     - text: "Have a good day."
@@ -106,6 +108,10 @@ responses:
 
   utter_iamabot:
     - text: "I am a bot, powered by Rasa."
+    - text: "I am a bot developed to destroy PSG."
+
+  utter_pls_repeat:
+    - text: "Sorry, I have not understand. Can you repeat?"
 
   utter_noworries:
     - text: "My pleasure."
