@@ -72,7 +72,7 @@ class ResetSlot(Action):
         task = tracker.get_slot("task")
 
         if (task is not None and time is not None and category is not None):
-            dispatcher.utter_message("Ok")
+            dispatcher.utter_message("Ok.")
         else:
             dispatcher.utter_message("What?")
 
@@ -111,9 +111,9 @@ class AddToDb(Action):
             curs = self.__execute_query(conn, query, task=task, time=time, category=category, user=user)
             update = False
             if (curs.rowcount == 0):
-                dispatcher.utter_message("Oh no, you insert a non-existing entry")
+                dispatcher.utter_message("Oh no, you insert a non-existing entry.")
             else:
-                dispatcher.utter_message("Ok, i modified your task, do you want a reminder?")
+                dispatcher.utter_message("Ok, I modified your task, do you want a reminder?")
                 askReminder=True
         elif (purpose == "purpose-add"):
             query = 'INSERT INTO ToDoList (user, task, time, category)VALUES (:1, :2, :3, :4)'
@@ -124,16 +124,16 @@ class AddToDb(Action):
             query = 'DELETE FROM ToDoList WHERE user=:1 AND task=:2 AND time=:3 AND category=:4'
             curs = self.__execute_query(conn, query, task=task, time=time, category=category, user=user)
             if( curs.rowcount == 0):
-                dispatcher.utter_message("Oh no, you insert a non-existing entry")
+                dispatcher.utter_message("Oh no, you insert a non-existing entry.")
             else:
-                dispatcher.utter_message("Ok i deleted your task")
+                dispatcher.utter_message("Ok I deleted your task.")
         elif (purpose == "purpose-update" and update is False):
             global old_time, old_category, old_task
             old_time = time
             old_category = category
             old_task = task
             update = True
-            dispatcher.utter_message("Ok tell me what do you want to modify (tell me only category, hour or task)")
+            dispatcher.utter_message("Ok tell me what do you want to modify (tell me only category, hour or task).")
         else:
             raise Exception('Invalid operation')
 

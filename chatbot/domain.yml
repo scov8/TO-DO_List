@@ -91,7 +91,7 @@ responses:
   utter_cheer_up:
     - text: "Here is something to cheer you up:"
       image: "https://i.imgur.com/nGF1K8f.jpg"
-    - text: "Don't be sad you are great ;-)"
+    - text: "Don't be sad, you are great ;-)"
 
   utter_did_that_help:
     - text: "Did that help you?"
@@ -100,7 +100,7 @@ responses:
     - text: "Great, carry on!"
 
   utter_goodbye:
-    - text: Bye {PERSON}
+    - text: "Bye {PERSON}"
     - text: "Bye :("
     - text: "Talk to you later!"
     - text: "Have a good day."
@@ -116,27 +116,30 @@ responses:
   utter_noworries:
     - text: "My pleasure."
     - text: "You are welcome!"
+    - text: "I like to help you!"
 
   utter_get_started:
     - text: "I can help you to create a To-Do List. What do I have to remind you to do?"
+    - text: "How can I help you to manage your To-Do List?"
 
   utter_ask_time:
-    - text: "You missed time, please tell me now!"
+    - text: "You missed time, please can you tell me now!"
 
   utter_ask_category:
-    - text: "You missed category, please tell me now!"
+    - text: "You missed category, please can you tell me now!"
 
   utter_ask_task:
-    - text: "You missed task name, please tell me now!"
+    - text: "You missed task name, please can you tell me now!"
 
   utter_ask_purpose:
-    - text: "You missed what do you want with this task, please tell me now if you want to add, modify or delete!"
+    - text: "You missed what do you want with this task, please can you tell me now if you want to add, modify or delete!"
 
   utter_hello_user:
     - text: "Hi {PERSON}"
+    - text: "Welcome {PERSON}"
 
   utter_ask_PERSON:
-    - text: "You missed your username, please tell me now!"
+    - text: "You missed your username, please can you tell me now!"
 
 session_config:
   session_expiration_time: 60

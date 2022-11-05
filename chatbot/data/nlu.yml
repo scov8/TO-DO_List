@@ -4,8 +4,10 @@ nlu:
   - intent: greet
     examples: |
       - hey
+      - hei
       - hello
       - hi
+      - hii
       - hello there
       - good morning
       - good evening
@@ -34,6 +36,8 @@ nlu:
     examples: |
       - yes
       - y
+      - yep
+      - obviously
       - indeed
       - of course
       - that sounds good
@@ -54,7 +58,7 @@ nlu:
       - no thanks
       - no thank you
       - uh no
-      - nope
+      - nopeee
       - nope
       - do you have something else
       - no this does not work for me
@@ -569,6 +573,8 @@ nlu:
       - user to [Luciano](PERSON)
       - my username is [Ada](PERSON)
       - my user is [Alfredo](PERSON)
+      - my name is [Luca](PERSON)
+      - people call me [Pio](PERSON)
 
   - intent: view_task
     examples: |
@@ -720,6 +726,14 @@ nlu:
       - at two to ten
       - at 4 o'clock
       - [delete]{"entity": "purpose", "value": "purpose-del"} [turn off the pc](task) at 14:19 for [office]{"entity": "category", "value": "category-work"}
+      - [remind me to]{"entity": "purpose", "value": "purpose-add"} [send an email to Jim](task) at 23:00 for [work]{"entity": "category", "value": "category-work"}
+      - [update]{"entity": "purpose", "value": "purpose-update"} [add a book in my library](task) at 13:10 for [work]{"entity": "category", "value": "category-work"}
+      - add to [home]{"entity": "category", "value": "category-home"}
+      - [delete]{"entity": "purpose", "value": "purpose-del"} [add a book in my library](task) at 13:10 for [home]{"entity": "category", "value": "category-home"}
+      - [remind me to]{"entity": "purpose", "value": "purpose-add"} [call Ronnie](task) at 14:12 for [hobby]{"entity": "category", "value": "category-free"}
+      - [remind me to]{"entity": "purpose", "value": "purpose-add"} [make the nativity scene](task) at 16:00 for [home]{"entity": "category", "value": "category-home"}
+      - [i must]{"entity": "purpose", "value": "purpose-add"} [build a toy for the children in the house](task) before the 22:00 and add to [work]{"entity": "category", "value": "category-work"}
+      - [i have to]{"entity": "purpose", "value": "purpose-add"} [do cognitive robot project](task) at 15 o'clock for [home]{"entity": "category", "value": "category-home"}
 
   - synonym: category-home
     examples: |
