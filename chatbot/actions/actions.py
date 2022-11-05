@@ -33,6 +33,7 @@ class TaskSubmit(Action):
         category = tracker.get_slot("category")
         task = tracker.get_slot("task")
         purpose = tracker.get_slot("purpose")
+        user = tracker.get_slot("PERSON")
 
         print("time:",time)
         print("Category:",category)
@@ -41,6 +42,10 @@ class TaskSubmit(Action):
 
         hour = str(parse(str(time)).time())
         date = str(parse(str(time)).date())
+
+        if(user is None):
+            dispatcher.utter_message(text = f"You must tell me first your name!") 
+            return []
 
         if (purpose == "purpose-add"):
             dispatcher.utter_message(text = f"Thanks, you want to add a new task, and the task is: \"{task}\" at {hour} of {date} in the category \"{category}\"\nWould you like to confirm?") 
@@ -184,6 +189,10 @@ class ViewList(Action):
         print("Connection to db:", conn)
 
         user = tracker.get_slot("PERSON")
+
+        if(user is None):
+            dispatcher.utter_message(text = f"You must tell me first your name!") 
+            return []
 
         query = 'SELECT task, time, category, reminder FROM ToDoList WHERE user=:1 ORDER BY time ASC'
         curs = conn.cursor()
