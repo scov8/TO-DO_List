@@ -45,14 +45,17 @@ class TaskSubmit(Action):
 
         if(user is None):
             dispatcher.utter_message(text = f"You must tell me first your name!") 
-            return []
+            return [SlotSet("task", None),SlotSet("category", None),SlotSet("time", None),SlotSet("purpose", None)]
 
         if (purpose == "purpose-add"):
             dispatcher.utter_message(text = f"Thanks, you want to add a new task, and the task is: \"{task}\" at {hour} of {date} in the category \"{category}\"\nWould you like to confirm?") 
-        if (purpose == "purpose-del"):
+        elif (purpose == "purpose-del"):
             dispatcher.utter_message(text = f"Oh no, you want to delete a task, and the task is: \"{task}\" at {hour} of {date}  in the category \"{category}\"\nWould you like to confirm?") 
-        if (purpose == "purpose-update"):
+        elif (purpose == "purpose-update"):
             dispatcher.utter_message(text = f"Ok, you want to modify a task, and the task is: \"{task}\" at {hour} of {date}  in the category \"{category}\"\nWould you like to confirm?") 
+        else:
+            dispatcher.utter_message(text = f"I don't understand the purpose, please tell me now!") 
+            return [SlotSet("purpose", None)]
 
         return []
 
