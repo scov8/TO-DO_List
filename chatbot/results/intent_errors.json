@@ -4,7 +4,7 @@
     "intent": "inform_action",
     "intent_prediction": {
       "name": "affirm",
-      "confidence": 0.4367650252016553
+      "confidence": 0.3108790596645636
     }
   },
   {
@@ -12,7 +12,7 @@
     "intent": "inform_action",
     "intent_prediction": {
       "name": "inform_person",
-      "confidence": 0.4715464290340275
+      "confidence": 0.47176915777580275
     }
   },
   {
@@ -20,7 +20,7 @@
     "intent": "inform_action",
     "intent_prediction": {
       "name": "inform_person",
-      "confidence": 0.4715464290340275
+      "confidence": 0.47176915777580275
     }
   }
 ]

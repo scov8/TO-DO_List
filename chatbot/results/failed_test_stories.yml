@@ -16,7 +16,7 @@ stories:
     - time: six o'clock
   - action: task_form
   - action: task_submit
-  - intent: affirm
+  - intent: affirm  # predicted: nlu_fallback: yes
   - action: action_affirm
   - intent: manage_task
     entities: []
@@ -60,7 +60,7 @@ stories:
     - time: six past ten
   - action: task_form
   - action: task_submit
-  - intent: affirm
+  - intent: affirm  # predicted: nlu_fallback: yes
   - action: action_affirm
 - story: delete a story and deny it (./tests/test_stories.yml)
   steps:
@@ -86,15 +86,9 @@ stories:
   - action: utter_hello_user  # predicted: person_form
   - intent: view_task
   - action: action_view_list
-- story: happy path 1 (./tests/test_stories.yml)
-  steps:
-  - intent: greet  # predicted: nlu_fallback: hello there!
-  - action: utter_greet
-  - intent: mood_great
-  - action: utter_happy
 - story: happy path 2 (./tests/test_stories.yml)
   steps:
-  - intent: greet  # predicted: nlu_fallback: hello there!
+  - intent: greet
   - action: utter_greet
   - intent: mood_great
   - action: utter_happy
@@ -104,10 +98,6 @@ stories:
   steps:
   - intent: goodbye  # predicted: nlu_fallback: bye-bye!
   - action: utter_goodbye
-- story: bot challenge (./tests/test_stories.yml)
-  steps:
-  - intent: bot_challenge  # predicted: nlu_fallback: are you a bot?
-  - action: utter_iamabot
 - story: presentation (./tests/test_stories.yml)
   steps:
   - intent: inform_person  # predicted: change_person: [I'm](purpose)  [Mike](purpose)[Mike](PERSON)
@@ -128,7 +118,7 @@ stories:
     - time: 12:00
   - action: task_form
   - action: task_submit
-  - intent: affirm
+  - intent: affirm  # predicted: nlu_fallback: yes
   - action: action_affirm
   - intent: affirm
   - action: action_affirm
@@ -166,7 +156,7 @@ stories:
     - time: '12'
   - action: task_form
   - action: task_submit
-  - intent: affirm
+  - intent: affirm  # predicted: nlu_fallback: yes
   - action: action_affirm
   - intent: manage_task
     entities: []
@@ -194,7 +184,7 @@ stories:
     - time: '12'
   - action: task_form
   - action: task_submit
-  - intent: affirm
+  - intent: affirm  # predicted: nlu_fallback: yes
   - action: action_affirm
   - intent: manage_task
     entities: []
