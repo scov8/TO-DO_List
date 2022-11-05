@@ -8,6 +8,9 @@ nlu:
       - hello
       - hi
       - hii
+      - hei bot
+      - Hello bot
+      - Where's my favourite bot?
       - hello there
       - good morning
       - good evening
@@ -33,6 +36,7 @@ nlu:
       - bye bye
       - bye-bye
       - see you later
+      - see you
 
   - intent: affirm
     examples: |
@@ -90,6 +94,8 @@ nlu:
       - amazing
       - feeling like a king
       - wonderful
+      - I'm fine
+      - i feel good
       - I am feeling very good
       - I am great
       - I am amazing
@@ -545,7 +551,6 @@ nlu:
   - intent: inform_person
     examples: |
       - [Pio](PERSON)
-      - [Ciro](PERSON)
       - [Alessia](PERSON)
       - [Antonio](PERSON)
       - [Luca](PERSON)
@@ -554,7 +559,6 @@ nlu:
       - [Luisa](PERSON)
       - [Valentina](PERSON)
       - [Lucrezia](PERSON)
-      - [Luciano](PERSON)
       - [Nisha](PERSON)
       - [Patrizia](PERSON)
       - [Ada](PERSON)
@@ -566,7 +570,9 @@ nlu:
   - intent: change_person
     examples: |
       - change to [Pio](PERSON)
-      - switch to [Ciro](PERSON)
+      - switch to Ciro
+      - switch with Thomas
+      - change with Luke
       - change the user to [Alessia](PERSON)
       - change to user [Alessia](PERSON)
       - switch to user [Antonio](PERSON)
@@ -574,7 +580,7 @@ nlu:
       - i'm [Luca](PERSON)
       - i am [Patrizia](PERSON)
       - please change to [Valentina](PERSON)
-      - user to [Luciano](PERSON)
+      - user to Luciano
       - my username is [Ada](PERSON)
       - my user is [Alfredo](PERSON)
       - my name is [Luca](PERSON)
@@ -587,11 +593,12 @@ nlu:
       - people call me Luigi
       - switch to user Michel
       - user to Mike
-      - please change to  Luigi
+      - please change to Luigi
 
   - intent: view_task
     examples: |
       - i have to do something
+      - maybe you can show me my tasks
       - i must do something?
       - show me all the to-do list
       - show me all the list
@@ -613,6 +620,7 @@ nlu:
       - let me see what I have to do
       - i should do something?
       - what i do today?
+      - what do i have on my to-do list?
 
   - intent: manage_task
     examples: |

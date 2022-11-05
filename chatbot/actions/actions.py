@@ -51,15 +51,15 @@ class TaskSubmit(Action):
         # If the user want to manage a task but did not tell his own name
         if(user is None):
             dispatcher.utter_message(text = f"You must tell me first your name!") 
-            return [SlotSet("task", None),SlotSet("category", None),SlotSet("time", None),SlotSet("purpose", None)]
+            return [SlotSet("task", None), SlotSet("category", None), SlotSet("time", None), SlotSet("purpose", None)]
 
         # based on the action to be taken the corresponding message will be sent to chat to notify the user of the action to be taken
         if (purpose == "purpose-add"):
-            dispatcher.utter_message(text = f"Thanks, you want to add a new task, and the task is: \"{task}\" at {hour} of {date} in the category \"{category}\"\nWould you like to confirm?") 
+            dispatcher.utter_message(text = f"Thanks, you want to add a new task and it is: \"{task}\" at {hour} of {date} in the category \"{category}\".\nWould you like to confirm?") 
         elif (purpose == "purpose-del"):
-            dispatcher.utter_message(text = f"Oh no, you want to delete a task, and the task is: \"{task}\" at {hour} of {date}  in the category \"{category}\"\nWould you like to confirm?") 
+            dispatcher.utter_message(text = f"Oh no, you want to delete the task: \"{task}\" at {hour} of {date}  in the category \"{category}\".\nWould you like to confirm?") 
         elif (purpose == "purpose-update"):
-            dispatcher.utter_message(text = f"Ok, you want to modify a task, and the task is: \"{task}\" at {hour} of {date}  in the category \"{category}\"\nWould you like to confirm?") 
+            dispatcher.utter_message(text = f"Ok, you want to modify the task: \"{task}\" at {hour} of {date}  in the category \"{category}\".\nWould you like to confirm?") 
         else:
             # If a purpose is extracted but is not traceable to any synonym
             dispatcher.utter_message(text = f"I don't understand the purpose, please can you tell me now?") 
@@ -75,6 +75,9 @@ class ResetSlot(Action):
         return "action_reset_slot"
 
     def run(self, dispatcher, tracker, domain):
+        """
+        If the slots are full, empty they.
+        """
         global UPDATE, ASKREMINDER
 
         time = tracker.get_slot("time")
@@ -89,7 +92,7 @@ class ResetSlot(Action):
         UPDATE = False
         ASKREMINDER=False
 
-        return [SlotSet("task", None),SlotSet("category", None),SlotSet("time", None),SlotSet("purpose", None)]
+        return [SlotSet("task", None), SlotSet("category", None), SlotSet("time", None), SlotSet("purpose", None)]
     
 class AddToDb(Action):
     """
@@ -145,7 +148,7 @@ class AddToDb(Action):
         elif (purpose == "purpose-del"):
             query = 'DELETE FROM ToDoList WHERE user=:1 AND task=:2 AND time=:3 AND category=:4'
             curs = self.__execute_query(conn, query, task=task, time=time, category=category, user=user)
-            if( curs.rowcount == 0):
+            if (curs.rowcount == 0):
                 dispatcher.utter_message("Oh no, you insert a non-existing entry.")
             else:
                 dispatcher.utter_message("Ok I deleted your task.")
@@ -180,7 +183,7 @@ class AddToDb(Action):
         if (purpose == 'purpose-update' or purpose == 'purpose-insert'):
             return []
         else:
-            return [SlotSet("task", None),SlotSet("category", None),SlotSet("time", None),SlotSet("purpose", None)]
+            return [SlotSet("task", None), SlotSet("category", None), SlotSet("time", None), SlotSet("purpose", None)]
 
 class AddReminder(Action):
     """
@@ -207,7 +210,7 @@ class AddReminder(Action):
 
         dispatcher.utter_message("Ok I added also a reminder!")
 
-        return [SlotSet("task", None),SlotSet("category", None),SlotSet("time", None),SlotSet("purpose", None)]
+        return [SlotSet("task", None), SlotSet("category", None), SlotSet("time", None), SlotSet("purpose", None)]
 
 class ViewList(Action):
     """

@@ -117,29 +117,30 @@ responses:
     - text: "My pleasure."
     - text: "You are welcome!"
     - text: "I like to help you!"
+    - text: "I'm here to help you. ;)"
 
   utter_get_started:
     - text: "I can help you to create a To-Do List. What do I have to remind you to do?"
     - text: "How can I help you to manage your To-Do List?"
 
+  utter_ask_PERSON:
+    - text: "You missed your name, please can you tell me it?"
+
   utter_ask_time:
-    - text: "You missed time, please can you tell me now?"
+    - text: "You missed time, please can you tell me it?"
 
   utter_ask_category:
-    - text: "You missed category, please can you tell me now?"
+    - text: "You missed category, please can you tell me it?"
 
   utter_ask_task:
-    - text: "You missed task name, please can you tell me now?"
+    - text: "You missed task name, please can you tell me it?"
 
   utter_ask_purpose:
-    - text: "You missed what do you want with this task, please can you tell me now if you want to add, modify or delete?"
+    - text: "You missed what do you want to do with this task, please can you tell me if your purpose is to add, modify or delete?"
 
   utter_hello_user:
     - text: "Hi {PERSON}"
     - text: "Welcome {PERSON}"
-
-  utter_ask_PERSON:
-    - text: "You missed your username, please can you tell me now?"
 
 session_config:
   session_expiration_time: 60
