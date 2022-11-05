@@ -1,4 +1,4 @@
-# TO-DO List
+# TO-DO List Group 8
 ■ Develop a ROS dialogue systems that allows the user to insert and remove activities from a to-do lists. The dialogue system also needs to allow the user to activate a reminder when the deadline is approaching.
 
 ■ Each element in the list is identified by a tag (identifying the activity), a deadline and a category (es: CR course, sport, personal etc) (*).
