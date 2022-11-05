@@ -888,3 +888,174 @@ stories:
       - action: action_affirm
       - intent: affirm
       - action: action_affirm
+
+  - story: interactive_story_4
+    steps:
+      - intent: greet
+      - action: utter_greet
+      - intent: change_person
+        entities:
+          - PERSON: Luigi
+      - action: person_form
+      - active_loop: person_form
+      - slot_was_set:
+          - PERSON: Luigi
+      - slot_was_set:
+          - requested_slot: null
+      - active_loop: null
+      - action: utter_hello_user
+      - intent: change_person
+        entities:
+          - PERSON: Mike
+      - action: person_form
+      - active_loop: person_form
+      - slot_was_set:
+          - PERSON: Luigi
+      - slot_was_set:
+          - PERSON: Mike
+      - slot_was_set:
+          - requested_slot: null
+      - active_loop: null
+      - action: utter_hello_user
+      - intent: change_person
+        entities:
+          - PERSON: Nicholas
+      - action: person_form
+      - active_loop: person_form
+      - slot_was_set:
+          - PERSON: Mike
+      - slot_was_set:
+          - PERSON: Nicholas
+      - slot_was_set:
+          - requested_slot: null
+      - active_loop: null
+      - action: utter_hello_user
+      - intent: change_person
+        entities:
+          - PERSON: Francesco
+      - action: person_form
+      - active_loop: person_form
+      - slot_was_set:
+          - PERSON: Nicholas
+      - slot_was_set:
+          - PERSON: Francesco
+      - slot_was_set:
+          - requested_slot: null
+      - active_loop: null
+      - action: utter_hello_user
+      - intent: change_person
+        entities:
+          - PERSON: Alfred
+      - action: person_form
+      - active_loop: person_form
+      - slot_was_set:
+          - PERSON: Francesco
+      - slot_was_set:
+          - PERSON: Alfred
+      - slot_was_set:
+          - requested_slot: null
+      - active_loop: null
+      - action: utter_hello_user
+      - intent: change_person
+        entities:
+          - PERSON: Luigi
+      - action: person_form
+      - active_loop: person_form
+      - slot_was_set:
+          - PERSON: Alfred
+      - slot_was_set:
+          - PERSON: Luigi
+      - slot_was_set:
+          - requested_slot: null
+      - active_loop: null
+      - action: utter_hello_user
+      - intent: change_person
+        entities:
+          - PERSON: Michel
+      - action: person_form
+      - active_loop: person_form
+      - slot_was_set:
+          - PERSON: Luigi
+      - slot_was_set:
+          - PERSON: Michel
+      - slot_was_set:
+          - requested_slot: null
+      - active_loop: null
+      - action: utter_hello_user
+      - intent: manage_task
+        entities:
+          - purpose: purpose-add
+          - task: go to gym
+          - time: "2022-11-05T14:39:00.000-07:00"
+      - slot_was_set:
+          - task: go to gym
+      - slot_was_set:
+          - time: "2022-11-05T14:39:00.000-07:00"
+      - slot_was_set:
+          - purpose: purpose-add
+      - action: task_form
+      - active_loop: task_form
+      - slot_was_set:
+          - task: go to gym
+      - slot_was_set:
+          - purpose: purpose-add
+      - slot_was_set:
+          - time: "2022-11-05T14:39:00.000-07:00"
+      - slot_was_set:
+          - task: go to gym
+      - slot_was_set:
+          - purpose: purpose-add
+      - slot_was_set:
+          - time: "2022-11-05T14:39:00.000-07:00"
+      - slot_was_set:
+          - requested_slot: category
+      - slot_was_set:
+          - category: category-work
+      - slot_was_set:
+          - category: category-work
+      - slot_was_set:
+          - requested_slot: null
+      - active_loop: null
+      - action: task_submit
+      - intent: affirm
+      - action: action_affirm
+      - intent: deny
+      - action: action_reset_slot
+      - slot_was_set:
+          - task: null
+      - slot_was_set:
+          - category: null
+      - slot_was_set:
+          - time: null
+      - slot_was_set:
+          - purpose: null
+      - intent: change_person
+        entities:
+          - PERSON: Mike
+      - action: person_form
+      - active_loop: person_form
+      - slot_was_set:
+          - PERSON: Michel
+      - slot_was_set:
+          - PERSON: Mike
+      - slot_was_set:
+          - requested_slot: null
+      - active_loop: null
+      - action: utter_hello_user
+      - intent: view_task
+      - action: action_view_list
+      - intent: change_person
+        entities:
+          - PERSON: Luigi
+      - action: person_form
+      - active_loop: person_form
+      - slot_was_set:
+          - PERSON: Mike
+      - slot_was_set:
+          - PERSON: Luigi
+      - slot_was_set:
+          - requested_slot: null
+      - active_loop: null
+      - action: utter_hello_user
+      - intent: goodbye
+      - action: utter_goodbye

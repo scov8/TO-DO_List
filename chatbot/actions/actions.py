@@ -62,7 +62,7 @@ class TaskSubmit(Action):
             dispatcher.utter_message(text = f"Ok, you want to modify a task, and the task is: \"{task}\" at {hour} of {date}  in the category \"{category}\"\nWould you like to confirm?") 
         else:
             # If a purpose is extracted but is not traceable to any synonym
-            dispatcher.utter_message(text = f"I don't understand the purpose, please tell me now!") 
+            dispatcher.utter_message(text = f"I don't understand the purpose, please can you tell me now?") 
             return [SlotSet("purpose", None)]
 
         return []
