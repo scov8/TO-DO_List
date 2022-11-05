@@ -91,30 +91,14 @@ stories:
   - action: utter_hello_user
   - intent: view_task
   - action: action_view_list
-- story: happy path 2 (./tests/test_stories.yml)
-  steps:
-  - intent: greet
-  - action: utter_greet
-  - intent: mood_great
-  - action: utter_happy
-  - intent: goodbye  # predicted: nlu_fallback: bye-bye!
-  - action: utter_goodbye
-- story: say goodbye (./tests/test_stories.yml)
-  steps:
-  - intent: goodbye  # predicted: nlu_fallback: bye-bye!
-  - action: utter_goodbye
-- story: bot challenge (./tests/test_stories.yml)
-  steps:
-  - intent: bot_challenge  # predicted: nlu_fallback: are you a bot?
-  - action: utter_iamabot
 - story: presentation (./tests/test_stories.yml)
   steps:
-  - intent: change_person  # predicted: nlu_fallback: [I'm](purpose)  [Mike](purpose)[Mike](PERSON)
+  - intent: change_person  # predicted: nlu_fallback: I'm  [Mike](PERSON)
   - action: person_form
   - action: utter_hello_user
 - story: add task (./tests/test_stories.yml)
   steps:
-  - intent: change_person  # predicted: nlu_fallback: [I'm](purpose)  [Mike](purpose)[Mike](PERSON)
+  - intent: change_person  # predicted: nlu_fallback: I'm  [Mike](PERSON)
   - action: person_form
   - action: utter_hello_user
   - intent: manage_task
