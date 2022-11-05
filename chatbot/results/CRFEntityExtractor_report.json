@@ -1,4 +1,11 @@
 {
+  "purpose": {
+    "precision": 0.9881744271988174,
+    "recall": 0.9970171513795675,
+    "f1-score": 0.9925760950259837,
+    "support": 1341,
+    "confused_with": {}
+  },
   "task": {
     "precision": 1.0,
     "recall": 0.9989094874591058,
@@ -11,13 +18,6 @@
     "recall": 1.0,
     "f1-score": 1.0,
     "support": 30,
-    "confused_with": {}
-  },
-  "purpose": {
-    "precision": 0.9881744271988174,
-    "recall": 0.9970171513795675,
-    "f1-score": 0.9925760950259837,
-    "support": 1341,
     "confused_with": {}
   },
   "category": {

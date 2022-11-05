@@ -47,6 +47,7 @@ stories:
       - user: |
           I'm  Mike
         intent: change_person
+      - action: person_form
       - action: utter_hello_user
 
   - story: add task
@@ -54,6 +55,7 @@ stories:
       - user: |
           I'm  Mike
         intent: change_person
+      - action: person_form
       - action: utter_hello_user
       - user: |
           remind me to [send an email to mum]{"entity": "task"} at [12:00]{"entity": "time"} for [work]{"entity": "category"}
@@ -74,6 +76,7 @@ stories:
       - user: |
           I'm  Jane
         intent: change_person
+      - action: person_form
       - action: utter_hello_user
       - user: |
           remind me to [go to gym]{"entity": "task"} at [12 o'clock]{"entity": "time"} for [home]{"entity": "category"}
@@ -90,6 +93,7 @@ stories:
       - user: |
           I'm  Jane
         intent: change_person
+      - action: person_form
       - action: utter_hello_user
       - user: |
           modify [send an email to mum]{"entity": "task"} at [12]{"entity": "time"} for [work]{"entity": "category"}
@@ -119,6 +123,7 @@ stories:
       - user: |
           I'm  Jane
         intent: change_person
+      - action: person_form
       - action: utter_hello_user
       - user: |
           modify [send an email to mum]{"entity": "task"} at [12]{"entity": "time"} for [work]{"entity": "category"}
@@ -148,6 +153,7 @@ stories:
       - user: |
           I'm  Jane
         intent: change_person
+      - action: person_form
       - action: utter_hello_user
       - user: |
           modify [send an email to mum]{"entity": "task"} at [six o'clock]{"entity": "time"} for [work]{"entity": "category"}
@@ -173,6 +179,7 @@ stories:
       - user: |
           I'm  Jane
         intent: change_person
+      - action: person_form
       - action: utter_hello_user
       - user: |
           modify [send an email to mum]{"entity": "task"} at [six past ten]{"entity": "time"} for [work]{"entity": "category"}
@@ -189,6 +196,7 @@ stories:
       - user: |
           I am Luigi
         intent: change_person
+      - action: person_form
       - action: utter_hello_user
       - user: |
           delete [send an email to mum]{"entity": "task"} at [six past ten]{"entity": "time"} for [work]{"entity": "category"}
@@ -205,6 +213,7 @@ stories:
       - user: |
           I am Luigi
         intent: change_person
+      - action: person_form
       - action: utter_hello_user
       - user: |
           delete [send an email to mum]{"entity": "task"} at [six past ten]{"entity": "time"} for [work]{"entity": "category"}
@@ -221,6 +230,7 @@ stories:
       - user: |
           I am Mike
         intent: change_person
+      - action: person_form
       - action: utter_hello_user
       - user: |
           Show all
