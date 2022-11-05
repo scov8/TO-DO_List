@@ -22,7 +22,7 @@ rules:
       - intent: nlu_fallback
       - action: utter_pls_repeat
 
-  # TASK
+  # Rule for add a new task; the activate and deactivate form
   - rule: Activate full task form
     steps:
       - intent: manage_task

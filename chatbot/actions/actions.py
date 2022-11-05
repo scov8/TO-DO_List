@@ -12,15 +12,23 @@ from dateutil.parser import parse
 
 import sqlite3
 
-update = False
-askReminder = False
-old_time = None
-old_category = None
-old_task = None
+"""
+Global variable used for:
+- UPDATE:       It is needed to understand whether the user has initiated an update, then to get the user to insert the new data for the change
+- ASKREMINDER:  It is needed to ask the user if they want the reminder after an insert or update
+- OLD_TIME:     When an update is in progress the old value of time is saved
+- OLD_CATEGORY: When an update is in progress the old value of category is saved
+- OLD_TASK:     When an update is in progress the old value of task is saved
+"""
+UPDATE = False      
+ASKREMINDER = False 
+OLD_TIME = None     
+OLD_CATEGORY = None 
+OLD_TASK = None     
 
 class TaskSubmit(Action):
     """
-    A class for 
+    A class for manage the actions of requesting modification, addition, or deletion of a task
     """
     def name(self) -> Text:
         return "task_submit"
@@ -28,25 +36,24 @@ class TaskSubmit(Action):
     def run(self, dispatcher: CollectingDispatcher,
             tracker: Tracker,
             domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
+        """
+        Return the initialized slots after if the user make an update, delete or add
+        """
 
         time = tracker.get_slot("time")
         category = tracker.get_slot("category")
         task = tracker.get_slot("task")
         purpose = tracker.get_slot("purpose")
         user = tracker.get_slot("PERSON")
-
-        print("time:",time)
-        print("Category:",category)
-        print("Task:",task)
-        print("Purpose:",purpose)
-
         hour = str(parse(str(time)).time())
         date = str(parse(str(time)).date())
 
+        # If the user want to manage a task but did not tell his own name
         if(user is None):
             dispatcher.utter_message(text = f"You must tell me first your name!") 
             return [SlotSet("task", None),SlotSet("category", None),SlotSet("time", None),SlotSet("purpose", None)]
 
+        # based on the action to be taken the corresponding message will be sent to chat to notify the user of the action to be taken
         if (purpose == "purpose-add"):
             dispatcher.utter_message(text = f"Thanks, you want to add a new task, and the task is: \"{task}\" at {hour} of {date} in the category \"{category}\"\nWould you like to confirm?") 
         elif (purpose == "purpose-del"):
@@ -54,19 +61,22 @@ class TaskSubmit(Action):
         elif (purpose == "purpose-update"):
             dispatcher.utter_message(text = f"Ok, you want to modify a task, and the task is: \"{task}\" at {hour} of {date}  in the category \"{category}\"\nWould you like to confirm?") 
         else:
+            # If a purpose is extracted but is not traceable to any synonym
             dispatcher.utter_message(text = f"I don't understand the purpose, please tell me now!") 
             return [SlotSet("purpose", None)]
 
         return []
 
 class ResetSlot(Action):
-
+    """
+    A class for resetting all the slots and global variables
+    """
     def name(self):
         return "action_reset_slot"
 
     def run(self, dispatcher, tracker, domain):
-        global update,askReminder
-        print("reset slot")
+        global UPDATE, ASKREMINDER
+
         time = tracker.get_slot("time")
         category = tracker.get_slot("category")
         task = tracker.get_slot("task")
@@ -76,50 +86,62 @@ class ResetSlot(Action):
         else:
             dispatcher.utter_message("What?")
 
-        update = False
-        askReminder=False
+        UPDATE = False
+        ASKREMINDER=False
 
         return [SlotSet("task", None),SlotSet("category", None),SlotSet("time", None),SlotSet("purpose", None)]
     
 class AddToDb(Action):
-        
+    """
+    This class is designed either to add, delete or modify the different task provided by the user
+    and then apply the changes to the DataBase
+    """
     def name(self):
         return "action_add_to_db"
 
     def __execute_query(self, conn, query, **kwargs):
-        global update
+        """
+        Private method used for execute query
+
+        return the cursor of the query
+        """
+        global UPDATE # call the global var
         task = kwargs.get('task')
         time = kwargs.get('time')
         category = kwargs.get('category')
         user = kwargs.get('user')
 
         curs = conn.cursor()
-        if (update is True):
-            global old_time, old_category, old_task
-            curs.execute(query, [task, time, category, user, old_task, old_time, old_category])
+        if (UPDATE is True): # the parameters, if we are updating the task, are different
+            global OLD_TIME, OLD_CATEGORY, OLD_TASK
+            curs.execute(query, [task, time, category, user, OLD_TASK, OLD_TIME, OLD_CATEGORY])
         else:
             curs.execute(query, [user, task, time, category])
         conn.commit()
         return curs
     
     def __find_purpose(self, dispatcher, purpose, task, time, category, user, conn):
-        global update, askReminder
+        """
+        Private method used to split the different operation that the DB can do, based on 
+        the different kind of purpose send by the user
+        """
+        global UPDATE, ASKREMINDER
 
         query = ""
-        if (update is True):
+        if (UPDATE is True):
             query = 'UPDATE ToDoList SET task=:1, time=:2, category=:3, reminder=False WHERE USER=:4 AND task=:5 AND time=:6 AND category=:7'
             curs = self.__execute_query(conn, query, task=task, time=time, category=category, user=user)
-            update = False
+            UPDATE = False
             if (curs.rowcount == 0):
                 dispatcher.utter_message("Oh no, you insert a non-existing entry.")
             else:
                 dispatcher.utter_message("Ok, I modified your task, do you want a reminder?")
-                askReminder=True
+                ASKREMINDER=True
         elif (purpose == "purpose-add"):
             query = 'INSERT INTO ToDoList (user, task, time, category)VALUES (:1, :2, :3, :4)'
             curs = self.__execute_query(conn, query, task=task, time=time, category=category, user=user)
             dispatcher.utter_message("Ok i added your task, do you want a reminder?")
-            askReminder=True
+            ASKREMINDER=True
         elif (purpose == "purpose-del"):
             query = 'DELETE FROM ToDoList WHERE user=:1 AND task=:2 AND time=:3 AND category=:4'
             curs = self.__execute_query(conn, query, task=task, time=time, category=category, user=user)
@@ -127,18 +149,22 @@ class AddToDb(Action):
                 dispatcher.utter_message("Oh no, you insert a non-existing entry.")
             else:
                 dispatcher.utter_message("Ok I deleted your task.")
-        elif (purpose == "purpose-update" and update is False):
-            global old_time, old_category, old_task
-            old_time = time
-            old_category = category
-            old_task = task
-            update = True
+        elif (purpose == "purpose-update" and UPDATE is False):
+            global OLD_TIME, OLD_CATEGORY, OLD_TASK
+            OLD_TIME = time
+            OLD_CATEGORY = category
+            OLD_TASK = task
+            UPDATE = True
             dispatcher.utter_message("Ok tell me what do you want to modify (tell me only category, hour or task).")
         else:
             raise Exception('Invalid operation')
 
     def run(self, dispatcher, tracker, domain):
-        global update
+        """
+        Execute the action 'Add To DB' and after that clean the slots if the user's purpose is to delete a task,
+        otherwise return an empty list
+        """
+        global UPDATE
         conn = sqlite3.connect('../chatbot.db')
         print("Connection to db:", conn)
 
@@ -151,12 +177,15 @@ class AddToDb(Action):
         self.__find_purpose(dispatcher, purpose, task, time, category, user, conn)
 
         conn.close()
-        if (purpose == 'purpose-update' or purpose == 'purpose-insert' ):
+        if (purpose == 'purpose-update' or purpose == 'purpose-insert'):
             return []
         else:
             return [SlotSet("task", None),SlotSet("category", None),SlotSet("time", None),SlotSet("purpose", None)]
 
 class AddReminder(Action):
+    """
+    A class for adding a reminder to the newly entered or edited task
+    """
     def name(self):
         return "action_add_reminder"
 
@@ -202,7 +231,6 @@ class ViewList(Action):
         curs.execute(query, [user])
         conn.commit()
         selectResult = curs.fetchall()
-
         conn.close()
 
         tmp =  'task' if len(selectResult) < 2 else 'tasks'
@@ -217,17 +245,21 @@ class ViewList(Action):
         return []
 
 class Affirm(Action):
+    """
+    A class for manage the action "affirm"
+    """
     def name(self):
         return "action_affirm"
 
     def run(self, dispatcher, tracker, domain):
-        global askReminder
+        global ASKREMINDER
 
-        if (askReminder is False):
+        # If the reminder addition is not to be made then process the addition to the db, otherwise we add the reminder to the added/updated task
+        if (ASKREMINDER is False):
             addToDb = AddToDb()
             addToDb.run(dispatcher, tracker, domain)
         else:
-            askReminder = False
+            ASKREMINDER = False
             addReminder = AddReminder()
             addReminder.run(dispatcher, tracker, domain)
         return []

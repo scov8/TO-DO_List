@@ -46,14 +46,14 @@ stories:
     steps:
       - user: |
           I'm  Mike
-        intent: inform_person
+        intent: change_person
       - action: utter_hello_user
 
   - story: add task
     steps:
       - user: |
           I'm  Mike
-        intent: inform_person
+        intent: change_person
       - action: utter_hello_user
       - user: |
           remind me to [send an email to mum]{"entity": "task"} at [12:00]{"entity": "time"} for [work]{"entity": "category"}
@@ -73,7 +73,7 @@ stories:
     steps:
       - user: |
           I'm  Jane
-        intent: inform_person
+        intent: change_person
       - action: utter_hello_user
       - user: |
           remind me to [go to gym]{"entity": "task"} at [12 o'clock]{"entity": "time"} for [home]{"entity": "category"}
@@ -89,7 +89,7 @@ stories:
     steps:
       - user: |
           I'm  Jane
-        intent: inform_person
+        intent: change_person
       - action: utter_hello_user
       - user: |
           modify [send an email to mum]{"entity": "task"} at [12]{"entity": "time"} for [work]{"entity": "category"}
@@ -118,7 +118,7 @@ stories:
     steps:
       - user: |
           I'm  Jane
-        intent: inform_person
+        intent: change_person
       - action: utter_hello_user
       - user: |
           modify [send an email to mum]{"entity": "task"} at [12]{"entity": "time"} for [work]{"entity": "category"}
@@ -147,7 +147,7 @@ stories:
     steps:
       - user: |
           I'm  Jane
-        intent: inform_person
+        intent: change_person
       - action: utter_hello_user
       - user: |
           modify [send an email to mum]{"entity": "task"} at [six o'clock]{"entity": "time"} for [work]{"entity": "category"}
@@ -172,7 +172,7 @@ stories:
     steps:
       - user: |
           I'm  Jane
-        intent: inform_person
+        intent: change_person
       - action: utter_hello_user
       - user: |
           modify [send an email to mum]{"entity": "task"} at [six past ten]{"entity": "time"} for [work]{"entity": "category"}
@@ -188,7 +188,7 @@ stories:
     steps:
       - user: |
           I am Luigi
-        intent: inform_person
+        intent: change_person
       - action: utter_hello_user
       - user: |
           delete [send an email to mum]{"entity": "task"} at [six past ten]{"entity": "time"} for [work]{"entity": "category"}
@@ -204,7 +204,7 @@ stories:
     steps:
       - user: |
           I am Luigi
-        intent: inform_person
+        intent: change_person
       - action: utter_hello_user
       - user: |
           delete [send an email to mum]{"entity": "task"} at [six past ten]{"entity": "time"} for [work]{"entity": "category"}
@@ -220,7 +220,7 @@ stories:
     steps:
       - user: |
           I am Mike
-        intent: inform_person
+        intent: change_person
       - action: utter_hello_user
       - user: |
           Show all

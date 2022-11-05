@@ -1,10 +1,18 @@
 [
   {
+    "text": "nopeee",
+    "intent": "deny",
+    "intent_prediction": {
+      "name": "inform_person",
+      "confidence": 0.44670083819942885
+    }
+  },
+  {
     "text": "Correct",
     "intent": "inform_action",
     "intent_prediction": {
       "name": "affirm",
-      "confidence": 0.3108790596645636
+      "confidence": 0.439468167496223
     }
   },
   {
@@ -12,7 +20,7 @@
     "intent": "inform_action",
     "intent_prediction": {
       "name": "inform_person",
-      "confidence": 0.47176915777580275
+      "confidence": 0.44670083819942885
     }
   },
   {
@@ -20,7 +28,7 @@
     "intent": "inform_action",
     "intent_prediction": {
       "name": "inform_person",
-      "confidence": 0.47176915777580275
+      "confidence": 0.44670083819942885
     }
   }
 ]
