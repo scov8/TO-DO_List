@@ -1,0 +1,5 @@
+ros_chatbot
+/media/psf/TO-DO_List/ros_chatbot/ros_chatbot_ws/devel/.private/ros_chatbot/cmake.lock /media/psf/TO-DO_List/ros_chatbot/ros_chatbot_ws/devel/./cmake.lock
+/media/psf/TO-DO_List/ros_chatbot/ros_chatbot_ws/devel/.private/ros_chatbot/lib/pkgconfig/ros_chatbot.pc /media/psf/TO-DO_List/ros_chatbot/ros_chatbot_ws/devel/lib/pkgconfig/ros_chatbot.pc
+/media/psf/TO-DO_List/ros_chatbot/ros_chatbot_ws/devel/.private/ros_chatbot/share/ros_chatbot/cmake/ros_chatbotConfig-version.cmake /media/psf/TO-DO_List/ros_chatbot/ros_chatbot_ws/devel/share/ros_chatbot/cmake/ros_chatbotConfig-version.cmake
+/media/psf/TO-DO_List/ros_chatbot/ros_chatbot_ws/devel/.private/ros_chatbot/share/ros_chatbot/cmake/ros_chatbotConfig.cmake /media/psf/TO-DO_List/ros_chatbot/ros_chatbot_ws/devel/share/ros_chatbot/cmake/ros_chatbotConfig.cmake

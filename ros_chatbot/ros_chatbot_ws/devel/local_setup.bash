@@ -1,0 +1,1 @@
+/media/psf/TO-DO_List/ros_chatbot/ros_chatbot_ws/devel/.private/catkin_tools_prebuild/local_setup.bash

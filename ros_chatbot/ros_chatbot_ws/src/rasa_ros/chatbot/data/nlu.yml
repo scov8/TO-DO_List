@@ -1,0 +1,1066 @@
+version: "2.0"
+
+nlu:
+  - intent: greet
+    examples: |
+      - hey
+      - hei
+      - hello
+      - hi
+      - hii
+      - hello there
+      - good morning
+      - good evening
+      - morning
+      - greetings
+      - hey there
+      - let's go
+      - hey dude
+      - good morning
+      - good evening
+      - good afternoon
+
+  - intent: goodbye
+    examples: |
+      - cu
+      - good by
+      - cee you later
+      - good night
+      - bye
+      - goodbye
+      - have a nice day
+      - see you around
+      - bye bye
+      - bye-bye
+      - bye-bye!
+      - bye bye!
+      - see you later
+
+  - intent: affirm
+    examples: |
+      - yes
+      - y
+      - yep
+      - obviously
+      - indeed
+      - of course
+      - that sounds good
+      - correct
+
+  - intent: deny
+    examples: |
+      - no
+      - n
+      - never
+      - I don't think so
+      - don't like that
+      - no way
+      - not really
+      - IDC
+      - idc
+      - not today
+      - no thanks
+      - no thank you
+      - uh no
+      - nopeee
+      - nope
+      - do you have something else
+      - no this does not work for me
+
+  - intent: thankyou
+    examples: |
+      - Thanks
+      - Thank you
+      - Thank you so much
+      - Thanks bot
+      - Thanks for that
+      - cheers
+      - cheers bro
+      - ok thanks!
+      - perfect thank you
+      - thanks a bunch for everything
+      - thanks for the help
+      - thanks a lot
+      - amazing, thanks
+      - cool, thanks
+      - cool thank you
+
+  - intent: mood_great
+    examples: |
+      - perfect
+      - great
+      - amazing
+      - feeling like a king
+      - wonderful
+      - I am feeling very good
+      - I am great
+      - I am amazing
+      - I am going to save the world
+      - super stoked
+      - extremely good
+      - so so perfect
+      - so good
+      - so perfect
+
+  - intent: mood_unhappy
+    examples: |
+      - my day was horrible
+      - I am sad
+      - I don't feel very well
+      - I am disappointed
+      - super sad
+      - I'm so sad
+      - sad
+      - very sad
+      - unhappy
+      - not good
+      - not very good
+      - extremely sad
+      - so sad
+
+  - intent: bot_challenge
+    examples: |
+      - are you a bot?
+      - are you a human?
+      - am I talking to a bot?
+      - am I talking to a human?
+
+  - intent: inform_action
+    examples: |
+      - [add](purpose)
+      - [I'd like to add](purpose)
+      - [I need remind that I](purpose)
+      - [remember me to](purpose)
+      - [remember me at](purpose)
+      - [remember me for](purpose)
+      - [remind me to](purpose)
+      - [remind me at](purpose)
+      - [remind me for](purpose)
+      - [could you remind me to](purpose)
+      - [could you remind me at](purpose)
+      - [could you remind me for](purpose)
+      - [could you add](purpose)
+      - [could you insert](purpose)
+      - [could you append](purpose)
+      - [could you attach](purpose)
+      - [could you put in](purpose)
+      - [could you remember me to](purpose)
+      - [could you please add a reminder for](purpose)
+      - [could you please insert in the ti do list](purpose)
+      - [could you please append to the list](purpose)
+      - [please add to the to do list](purpose)
+      - [please add to the to-do list](purpose)
+      - [please add to the todo list](purpose)
+      - [please add in the](purpose)
+      - [please remind me of](purpose)
+      - [please remind me to](purpose)
+      - [please insert](purpose)
+      - [please append](purpose)
+      - [please attach](purpose)
+      - [please put in](purpose)
+      - [please sign to](purpose)
+      - [please sign at](purpose)
+      - [please sign for](purpose)
+      - [please remember me to](purpose)
+      - [remind to](purpose)
+      - [remind at](purpose)
+      - [remind for](purpose)
+      - [I need a reminder for](purpose)
+      - [I need you to remind me](purpose)
+      - [I need to add in the todo list](purpose)
+      - [I need to append in the to do list](purpose)
+      - [I need to insert in the to-do list](purpose)
+      - [i want a reminder for](purpose)
+      - [i want a reminder at](purpose)
+      - [I want to add](purpose)
+      - [I want to insert](purpose)
+      - [I want to append](purpose)
+      - [I want to remember to](purpose)
+      - [i would like to add in the list](purpose)
+      - [I would like to insert in the list](purpose)
+      - [I'd like to insert](purpose)
+      - [I would like to append in the list](purpose)
+      - [I'd like to append](purpose)
+      - [I would like to add a reminder in the list](purpose)
+      - [I have to add](purpose)
+      - [I have to insert](purpose)
+      - [I have to attach](purpose)
+      - [I have to put in](purpose)
+      - [I have to remember to](purpose)
+      - [I have to append to the list](purpose)
+      - [I must add](purpose)
+      - [I must add at](purpose)
+      - [I must add for](purpose)
+      - [I must insert in the todo list](purpose)
+      - [I must append to the list](purpose)
+      - [I must remember to](purpose)
+      - [can you remind](purpose)
+      - [can you remind me to](purpose)
+      - [Can you add](purpose)
+      - [Can you add to](purpose)
+      - [Can you add at](purpose)
+      - [Can you add to the to do list](purpose)
+      - [Can you insert](purpose)
+      - [Can you put in](purpose)
+      - [Can you append](purpose)
+      - [add](purpose)
+      - [insert(purpose)
+      - [append](purpose)
+      - [remind me](purpose)
+      - [put in](purpose)
+      - [attach](purpose)
+      - [remind](purpose)
+      - [attach to the list](purpose)
+      - [add to the list](purpose)
+      - [put in the list](purpose)
+      - [append to the list](purpose)
+      - [insert in the list](purpose)
+      - [Add in my todo list](purpose)
+      - [Insert in my list](purpose)
+      - [Append in my to do list]purpose)
+      - [Put in my to-do list](purpose)
+      - [Attach in my list](purpose)
+      - [sign to](purpose)
+      - [sign at](purpose)
+      - [sign for](purpose)
+      - [add to the list](purpose)
+      - [Add to the to-do list](purpose)
+      - [I have to](purpose)
+      - [set at](purpose)
+      - [I must](purpose)
+      - [add something](purpose)
+      - [insert something](purpose)
+      - [append something](purpose)
+      - [remind me something](purpose)
+      - [remind something](purpose)
+      - [sign something](purpose)
+      - [modify](purpose)
+      - [Update](purpose)
+      - [upgrade](purpose)
+      - [Change](purpose)
+      - [Edit](purpose)
+      - [Alter](purpose)
+      - [Correct](purpose)
+      - [Revise](purpose)
+      - [Please modify](purpose)
+      - [Please change](purpose)
+      - [Please edit](purpose)
+      - [Please update](purpose)
+      - [Please upgrade](purpose)
+      - [Please alter](purpose)
+      - [Please correct](purpose)
+      - [Please revise](purpose)
+      - [I must modify](purpose)
+      - [I must update](purpose)
+      - [I must upgrade](purpose)
+      - [I must change](purpose)
+      - [I must edit](purpose)
+      - [I must alter](purpose)
+      - [I must correct](purpose)
+      - [I must revise](purpose)
+      - [I have to modify](purpose)
+      - [I have to update](purpose)
+      - [I have to upgrade](purpose)
+      - [I have to change](purpose)
+      - [I have to edit](purpose)
+      - [I have to alter](purpose)
+      - [I have to correct](purpose)
+      - [I have to revise](purpose)
+      - [Could you modify](purpose)
+      - [Could you change](purpose)
+      - [Could you edit](purpose)
+      - [Could you update](purpose)
+      - [Could you upgrade](purpose)
+      - [Could you alter](purpose)
+      - [Could you correct](purpose)
+      - [Could you revise](purpose)
+      - [I'd like to change](purpose)
+      - [I'd like to modify](purpose)
+      - [I'd like to update](purpose)
+      - [I'd like to upgrade](purpose)
+      - [I'd like to edit](purpose)
+      - [I'd like to alter](purpose)
+      - [I'd like to correct](purpose)
+      - [I'd like to revise](purpose)
+      - [change something](purpose)
+      - [modify something](purpose)
+      - [update something](purpose)
+      - [upgrade something](purpose)
+      - [edit something](purpose)
+      - [alter something](purpose)
+      - [correct something](purpose)
+      - [revise something](purpose)
+      - [delete](purpose)
+      - [Delete](purpose)
+      - [Cancel](purpose)
+      - [Zap](purpose)
+      - [Eliminate](purpose)
+      - [Remove](purpose)
+      - [Stamp out](purpose)
+      - [Dele](purpose)
+      - [Kill](purpose)
+      - [Nullish](purpose)
+      - [Unpublish](purpose)
+      - [Take out](purpose)
+      - [I don't want anymore](purpose)
+      - [Cut out](purpose)
+      - [Burn the following task](purpose)
+      - [Erase](purpose)
+      - [Please delete](purpose)
+      - [Please cancel](purpose)
+      - [Please zap](purpose)
+      - [Please eliminate](purpose)
+      - [Please remove](purpose)
+      - [Please stamp out](purpose)
+      - [Please dele](purpose)
+      - [Please kill](purpose)
+      - [Please nullish](purpose)
+      - [Please unpublish](purpose)
+      - [Please take out](purpose)
+      - [Please cut out](purpose)
+      - [Please burn the following task](purpose)
+      - [Please erase](purpose)
+      - [I must delete](purpose)
+      - [I must cancel](purpose)
+      - [I must zap](purpose)
+      - [I must eliminate](purpose)
+      - [I must remove](purpose)
+      - [I must stamp out](purpose)
+      - [I must dele](purpose)
+      - [I must kill](purpose)
+      - [I must nullish](purpose)
+      - [I must unpublish](purpose)
+      - [I must take out](purpose)
+      - [I must cut out](purpose)
+      - [I must burn the following task](purpose)
+      - [I must erase](purpose)
+      - [I have to delete](purpose)
+      - [I have to cancel](purpose)
+      - [I have to zap](purpose)
+      - [I have to eliminate](purpose)
+      - [I have to remove](purpose)
+      - [I have to stamp out](purpose)
+      - [I have to dele](purpose)
+      - [I have to kill](purpose)
+      - [I have to nullish](purpose)
+      - [I have to unpublish](purpose)
+      - [I have to take out](purpose)
+      - [I have to cut out](purpose)
+      - [I have to erase](purpose)
+      - [Could you delete](purpose)
+      - [Could you cancel](purpose)
+      - [Could you zap](purpose)
+      - [Could you eliminate](purpose)
+      - [Could you remove](purpose)
+      - [Could you stamp out](purpose)
+      - [Could you dele](purpose)
+      - [Could you kill](purpose)
+      - [Could you nullish](purpose)
+      - [Could you unpublish](purpose)
+      - [Could you take out](purpose)
+      - [Could you cut out](purpose)
+      - [Could you erase](purpose)
+      - [I'd like to delete](purpose)
+      - [I'd like to cancel](purpose)
+      - [I'd like to zap](purpose)
+      - [I'd like to eliminate](purpose)
+      - [I'd like to remove](purpose)
+      - [I'd like to stamp out](purpose)
+      - [I'd like to dele](purpose)
+      - [I'd like to kill](purpose)
+      - [I'd like to nullish](purpose)
+      - [I'd like to unpublish](purpose)
+      - [I'd like to take out](purpose)
+      - [I'd like to cut out](purpose)
+      - [I'd like to erase](purpose)
+      - [Could you delete the insertion of](purpose)
+      - [Could you cancel the insertion of](purpose)
+      - [Could you zap the insertion of](purpose)
+      - [Could you eliminate the insertion of](purpose)
+      - [Could you remove the insertion of](purpose)
+      - [Could you stamp out the insertion of](purpose)
+      - [Could you dele the insertion of](purpose)
+      - [Could you kill the insertion of](purpose)
+      - [Could you nullish the insertion of](purpose)
+      - [Could you unpublish the insertion of](purpose)
+      - [Could you take out the insertion of](purpose)
+      - [Could you cut out the insertion of](purpose)
+      - [Could you erase the insertion of](purpose)
+      - [delete something](purpose)
+      - [cancel something](purpose)
+      - [zap something](purpose)
+      - [eliminate something](purpose)
+      - [remove something](purpose)
+      - [stamp out something](purpose)
+      - [dele something](purpose)
+      - [kill something](purpose)
+      - [nullish something](purpose)
+      - [unpublish something](purpose)
+      - [take out something](purpose)
+      - [cut out something](purpose)
+      - [erase something](purpose)
+      - [I must](purpose)
+
+  - intent: inform_task
+    examples: |
+      - [wake up](task) 
+      - [have lunch](task)
+      - [have dinner](task)
+      - [hang out](task)
+      - [play guitar](task)
+      - [play football](task)
+      - [do a magic trick](task)
+      - [take my pills](task)
+      - [make a todo list](task)
+      - [make a to do list](task)
+      - [make a todolist](task)
+      - [make a to-do list](task)
+      - [make a cake](task)
+      - [start playing piano](task)
+      - [start studying](task)
+      - [call my son](task)
+      - [call my daughter](task)
+      - [call my wife](task)
+      - [call my mom](task)
+      - [call my father](task)
+      - [call the boss](task)
+      - [call the professor](task)
+      - [bring at home](task)
+      - [mailing my teacher](task)
+      - [try Skype](task)
+      - [destroy the paper on the table](task)
+      - [destroy the evidence](task)
+      - [put the pen on the table](task)
+      - [put the umbrella in the car](task)
+      - [put the book in the bag](task)
+      - [turn on the light](task)
+      - [turn the light on](task)
+      - [turn the chicken](task)
+      - [cook dinner](task)
+      - [cook the fish](task)
+      - [cook the dinner](task)
+      - [clean house](task)
+      - [clean the pc](task)
+      - [search on google](task)
+      - [search in the room](task)
+      - [search in the garden](task)
+      - [open the door](task)
+      - [open the house](task)
+      - [open the bottle](task)
+      - [open the box](task)
+      - [close the box](task)
+      - [close the window](task)
+      - [close the door](task)
+      - [close the house](task)
+      - [take the children](task)
+      - [take the child](task)
+      - [go shopping](task)
+      - [go running](task)
+      - [go at the gym](task)
+      - [go play football](task)
+      - [go out](task)
+      - [go to university](task)
+      - [go home](task)
+      - [go to stadium](task)
+      - [go for a run](task)
+      - [go to school](task)
+      - [go to bed](task)
+      - [stop running](task)
+      - [stop studying](task)
+      - [stop play](task)
+      - [stop playing piano](task)
+      - [stop clean the room](task)
+      - [check the classroom](task)
+      - [check if the lights are off](task)
+      - [check if the lights are on](task)
+      - [check if the garage is closed](task)
+      - [send an email to prof](task)
+      - [send an email to James](task)
+      - [send an email to Veronica](task)
+      - [email the prof](task)
+      - [see a film](task)
+      - [see a series](task)
+      - [see a cartoon](task)
+      - [send a message on twitter](task)
+      - [drive the trunk](task)
+      - [read a book](task)
+      - [write my book](task)
+      - [take the medicine](task)
+      - [buy milk](task)
+      - [buy bread](task)
+      - [buy garden tools](task)
+      - [clean furnace](task)
+      - [check the garage door](task)
+      - [pick up the children at school](task)
+      - [call the electrician](task)
+      - [call the plumber](task)
+      - [relocate the meeting](task)
+      - [buy a gift for my son's birthday](task)
+      - [make the christmas tree](task)
+      - [download the program](task)
+      - [go to the stadium](task)
+      - [bring the pc with me at Mark's house](task)
+      - [watch an episode of GOT](task)
+      - [post a story on Instagram](task)
+      - [call Jane](task)
+      - [buy a new shirt](task)
+      - [invite John to the party](task)
+      - [plan my uncle's party](task)
+      - [clean the dishes](task)
+      - [send a message to Emily](task)
+      - [making a call](task)
+      - [sending a message](task)
+      - [doing laundry](task)
+      - [posting a tweet](task)
+      - [calling Mary](task)
+      - [buying flowers](task)
+      - [playing guitar](task)
+      - [searching keys](task)
+      - [having dinner](task)
+      - [having supper](task)
+      - [water the plant](task)
+      - [Cooking meat](task)
+      - [doing my homework](task)
+      - [explain the plan](task)
+      - [sell clothes](task)
+      - [run a marathon](task)
+      - [running a marathon](task)
+      - [finding my old shoes](task)
+      - [closing all the windows in my house](task)
+      - [giving John his present](task)
+      - [buy Nutella](task)
+      - [recharging headphones](task)
+      - [complete the puzzle](task)
+      - [take documents to the bank](task)
+      - [bring documents to the bank](task)
+      - [having a meeting](task)
+
+  - intent: inform_category
+    examples: |
+      - [work](category)
+      - [course](category)
+      - [sport](category)
+      - [personal](category)
+      - [house](category)
+      - [hobby](category)
+
+  - intent: inform_person
+    examples: |
+      - [Pio](PERSON)
+      - [Alessia](PERSON)
+      - [Antonio](PERSON)
+      - [Luca](PERSON)
+      - [Lucia](PERSON)
+      - [Antonia](PERSON)
+      - [Luisa](PERSON)
+      - [Valentina](PERSON)
+      - [Lucrezia](PERSON)
+      - [Luciano](PERSON)
+      - [Nisha](PERSON)
+      - [Patrizia](PERSON)
+      - [Ada](PERSON)
+      - [Geraldino](PERSON)
+      - [Matteo](PERSON)
+      - [Alfredo](PERSON)
+      - [Massimo](PERSON)
+
+  - intent: change_person
+    examples: |
+      - change to [Pio](PERSON)
+      - switch to [Ciro](PERSON)
+      - change the user to [Alessia](PERSON)
+      - change to user [Alessia](PERSON)
+      - switch to user [Antonio](PERSON)
+      - switch the user to [Antonio](PERSON)
+      - i'm [Luca](PERSON)
+      - i am [Patrizia](PERSON)
+      - please change to [Valentina](PERSON)
+      - user to [Luciano](PERSON)
+      - my username is [Ada](PERSON)
+      - my user is [Alfredo](PERSON)
+      - my name is [Luca](PERSON)
+      - people call me [Pio](PERSON)
+      - i'm Luigi
+      - I am Mike
+      - My name is Nicholas
+      - switch to [Francesco](PERSON)
+      - please change to Alfred
+      - people call me Luigi
+      - switch to user Michel
+      - user to Mike
+      - please change to  Luigi
+      - I'm Mike
+      - change to Jane
+      - I'm [Ciro](PERSON)
+      - change to [Pio](PERSON)
+
+  - intent: view_task
+    examples: |
+      - i have to do something
+      - i must do something?
+      - show me all the to-do list
+      - show me all the list
+      - can you show me the list?
+      - can i view the list?
+      - give me all the tasks in the list
+      - show me all task
+      - let me see all
+      - what i must to do today
+      - show me all
+      - what i must do?
+      - what i'll do?
+      - what am i going to do?
+      - do i have anything to do today?
+      - i want to see my to do list
+      - please show me the todo list
+      - is there something in my to-do list?
+      - What kinds of task I have to do today?
+      - let me see what I have to do
+      - i should do something?
+      - what i do today?
+      - please show my list
+      - show all
+      - what do I have in my to-do list?
+      - what do I have on my to do list?
+      - what have I in my to-do list?
+
+  - intent: manage_task
+    examples: |
+      - [remind me to](purpose) [send an email to prof](task) at eleven to twenty and add to [work](category)
+      - [Remind to](purpose) [send an email to prof](task) at eleven to twenty and add to [work](category)
+      - [add to the list](purpose) [send an email to prof](task) at eleven to twenty and add to [work](category)
+      - [Add to the to-do list](purpose) [send an email to prof](task) at eleven to twenty and add to [work](category)
+      - [I need you to remind me](purpose) [send an email to prof](task) at eleven to twenty and add to [work](category)
+      - [I need a reminder for](purpose) [send an email to prof](task) at eleven to twenty and add to [work](category)
+      - [send an email to prof](task) at eleven to twenty and [add](purpose) to [work](category)
+      - [remind me](purpose) at eleven to twenty to [send an email to prof](task) and add to [work](category)
+      - at eleven to twenty [add to the list](purpose) [send an email to prof](task) and add to [work](category)
+      - in [home](category) at 12:00 [I must](purpose) [cook the lunch](task)
+      - in [hobby](category) at 12:10 [meet the journalist](task)
+      - [set at](purpose) 20:30 as [house](category) to [clean the garden](task)
+      - [Set at](purpose) five past six to [repair the door](task) at [home](category)
+      - [I have to](purpose) [cut my hair](task) at 16:20 and add in [personal](category)
+      - [Add](purpose) in my [free time](category) to [play guitar](task) from 19:00
+      - [I would](purpose) [go to the bank](task) at ten past half, add to [private](category)
+      - at ten to seven [add to the list](purpose) [send an email to Mike](task) and add to [work]{"entity": "category", "value": "category-work"}
+      - [clean the bathroom](task) at twenty to ten, set as [private](category)
+      - [please add to the to-do list](purpose) [go to gym](task) and add to [work](category) at 20.35
+      - [add to the list](purpose) [go to work](task) and add to [work](category) at midnight
+      - [play the piano](task) and [add](purpose) to [work](category) at 7 past 10
+      - [do my homework](task) and [add](purpose) to [personal](category) at 10 to 19
+      - [remind me](purpose) at 10 to 23 to [ask the question](task) and add to [hobby](category)
+      - [Add](purpose) in [work](category) to [send message](task) from 8:00
+      - [Add](purpose) in [personal](category) to [cook the lunch](task) from 12:00
+      - in [work](category) at 10 past 12 [I must](purpose) [take a break](task)
+      - [add to the list](purpose) [go to stadium](task)
+      - [remind me to](purpose) [send an email to mum](task)
+      - [remind me to](purpose) [turn the light off](task)
+      - [can you remind me to](purpose) [open the house](task)
+      - [could you remind me to](purpose) [go at the gym](task)
+      - [I need remind that I](purpose) [turn the light on](task)
+      - [I should](purpose) [send an email to prof](task)
+      - [I must](purpose) [go for a run](task)
+      - [add to the list](purpose) [bring at home](task)
+      - [can u remind me](purpose) to [send an email to Veronica](task)
+      - [please add to the to-do list](purpose) [go to gym](task)
+      - [could you remind me to](purpose) [search on google](task)
+      - [I have to](purpose) [cut my hair](task)
+      - [I would](purpose) [go to the bank](task)
+      - [add to the list](purpose) [open the bottle](task)
+      - [add to the list](purpose) [cook dinner](task)
+      - [add to the list](purpose) [send an email to Mike](task)
+      - [remind me to](purpose) [send an email to prof](task)
+      - [could you remind me to](purpose) [play guitar](task)
+      - [I would](purpose) [play football](task)
+      - [remind me](purpose)  to [do a magic trick](task)
+      - [I have to](purpose) [take my pills](task)
+      - [I must](purpose) [call my wife](task)
+      - [please add to the to-do list](purpose) [close the window](task) and add to [personal](category)
+      - [open the box](task), set as [home](category)
+      - Sign as (hobby)[category] [add to the list](purpose) [go to stadium](task)
+      - [I must](purpose) [go to the stadium](task) and attach to [sport](category) list
+      - [remind to](purpose) [send an email to prof](task) and attach to [work](category)
+      - [add to the list](purpose) [send an email to prof](task) and add to [work](category)
+      - [Add to the to-do list](purpose) [send an email to prof](task), add to [work](category)
+      - [I need you to remind me](purpose) [send an email to housemate](task) and add to [work](category)
+      - [I need a reminder for](purpose) [mailing my colleague](task) and add to [work](category)
+      - [mailing email to prof](task) and add to [office](category)
+      - [remind me to](purpose) [send an email to prof](task) and add to [work](category)
+      - [add](purpose) [send an email to prof](task) to [work](category) category
+      - in [home](category) [I must](purpose) [cook the lunch](task)
+      - in [hobby](category) [meet the journalist](task)
+      - set as [house](category) to [clean the garden](task)
+      - [Sign to](purpose) [repair the door](task) at [home](category)
+      - [I have to](purpose) [cut my hair](task) and add in [personal](category)
+      - Add in my [free time](category) to [play guitar](task)
+      - [I'd like](purpose) [go to the bank](task), add to [private](category)
+      - [add to the list](purpose) [send an email to Mike](task) and add to [work]{"entity": "category", "value": "category-work"}
+      - [clean the bathroom](task), set as [private](category)
+      - [sign to](purpose) [go to gym](task) as [sport](category)
+      - [I must](purpose) [bring my children at home](task) and attach in [personal](category)
+      - [work](category), [meet the boss](task)
+      - [can you add to](purpose) [studio](category) that I'd like [to play the piano](task) for the party?
+      - [please add to the to-do list](purpose) [close the window](task) at 20:30
+      - [open the box](task) at eleven o' clock
+      - [can you remind me to](purpose) [play piano](task) at eleven to twenty
+      - [could you remind me to](purpose) [go at the gym](task) at ten to nine
+      - [check if the garage is closed](task) at midnight
+      - at five to eleven [sign](purpose) to [go to gym](task)
+      - at three past six [I must](purpose) [bring my children at home](task)
+      - [remind me to](purpose) [send an email to prof](task) at midnight
+      - [Remind to](purpose) [send an email to prof](task) at ten to twenty
+      - [add to the list](purpose) [send an email to prof](task) at eleven
+      - [Add to the to-do list](purpose) [send an email to prof](task) at eleven to twenty
+      - [I need you to remind me](purpose) [send an email to prof](task) at 10:10
+      - [I need a reminder](purpose) for [send an email to prof](task) at [eleven to twenty
+      - please [add a reminder](purpose) for [go to the gym](task) at 15:00
+      - [can you add](purpose) to the to do list [go to the bank](task) at 16
+      - [i want a reminder](purpose) for [buy groceries](task) at 19:30
+      - [remind me](purpose) to [go to church](task) at eleven to twenty
+      - could you please [add a reminder](purpose) for [checking my bank account](task) at 12:55
+      - [i want to add](purpose) in my to do list a reminder for [play guitar](task) at noontime
+      - at five to eleven please [sign](purpose) to [make a cake](task)
+      - please at 2 o'clock [i would like](purpose) to [go swimming](task)
+      - [could you remind](purpose) me at midday to [brush my teeth](task)
+      - [i want a reminder](purpose) at 2:30 to [go to the gym](task)
+      - remind me to [clean the dishes](task) at 14:00 for [home](category)
+      - [I must](purpose) [post a story on Instagram](task) at seven o'clock
+      - [I need to](purpose) [call Jane](task) at 3:00 for [office](category)
+      - at 9:00 [I go to](purpose) [buy a new shirt](task)
+      - [I should](purpose) [invite John to the party](task)
+      - [Remind to](purpose) [plan my uncle's party](task)
+      - [I need you to remind me](purpose) [clean the dishes](task)
+      - [Remind me to] [send a message to Emily](task) for [work](category)
+      - At 9:00 [I have to](purpose) [send a message to Emily](task) and add to [work]{"entity": "category", "value": "category-work"}
+      - [i want to add](purpose) [making a call](task) at 12:00 
+      - [I should](purpose) [doing laundry](task)
+      - [Add to the to-do list](purpose) [posting a tweet](task) at 9:17 and add to [work]{"entity": "category", "value": "category-work"}
+      - Could you [add in the list](purpose) [calling Mary](task) and insert it in [personal](category)
+      - Please [add in the list](purpose) [playing guitar](task)
+      - [Add in the list](purpose) [searching keys](task) at 9:00 and attach in [personal](category)
+      - [Insert](purpose) [having supper](task) at 21:30 
+      - Please [insert](purpose) [running a marathon](task) at 14:00
+      - [Insert](purpose) [finding my old shoes](task) at 13:25 and attach in [personal](category)
+      - [Insert](purpose) [closing all the windows in my house](task) and attach in [house](category)
+      - [remind me to]{"entity": "purpose", "value": "purpose-add"} [turn off the pc](task) at 23:00 for [work]{"entity": "category", "value": "category-work"}
+      - [modify]{"entity": "purpose", "value": "purpose-update"} [turn off the pc](task) at 23:00 for [work]{"entity": "category", "value": "category-work"}
+      - at 14:19
+      - at 23:59
+      - at two to ten
+      - at 4 o'clock
+      - [delete]{"entity": "purpose", "value": "purpose-del"} [turn off the pc](task) at 14:19 for [office]{"entity": "category", "value": "category-work"}
+      - [remind me to]{"entity": "purpose", "value": "purpose-add"} [send an email to Jim](task) at 23:00 for [work]{"entity": "category", "value": "category-work"}
+      - [update]{"entity": "purpose", "value": "purpose-update"} [add a book in my library](task) at 13:10 for [work]{"entity": "category", "value": "category-work"}
+      - add to [home]{"entity": "category", "value": "category-home"}
+      - [delete]{"entity": "purpose", "value": "purpose-del"} [add a book in my library](task) at 13:10 for [home]{"entity": "category", "value": "category-home"}
+      - [remind me to]{"entity": "purpose", "value": "purpose-add"} [call Ronnie](task) at 14:12 for [hobby]{"entity": "category", "value": "category-free"}
+      - [remind me to]{"entity": "purpose", "value": "purpose-add"} [make the nativity scene](task) at 16:00 for [home]{"entity": "category", "value": "category-home"}
+      - [i must]{"entity": "purpose", "value": "purpose-add"} [build a toy for the children in the house](task) before the 22:00 and add to [work]{"entity": "category", "value": "category-work"}
+      - [i have to]{"entity": "purpose", "value": "purpose-add"} [do cognitive robot project](task) at 15 o'clock for [home]{"entity": "category", "value": "category-home"}
+      - [remind me to]{"entity": "purpose", "value": "purpose-add"} [go to gym](task) at 14:39
+      - add to [work]{"entity": "category", "value": "category-work"}
+      - [remind me to]{"entity": "purpose", "value": "purpose-add"} [meet the player](task)
+      - add to [office]{"entity": "category", "value": "category-work"}
+      - at 14 past nine
+
+  - synonym: category-home
+    examples: |
+      - home 
+      - house
+
+  - synonym: category-work
+    examples: |
+      - office 
+      - work
+      - studio
+
+  - synonym: category-free
+    examples: |
+      - hobby
+      - free time
+      - freetime
+
+  - synonym: category-priv
+    examples: |
+      - personal
+      - private
+
+  - synonym: purpose-add
+    examples: |
+      - I'd like to add
+      - I need remind that I
+      - remember me to
+      - remember me at
+      - remember me for
+      - remind me to
+      - remind me at
+      - remind me for
+      - could you remind me to
+      - could you remind me at
+      - could you remind me for
+      - could you add 
+      - could you insert
+      - could you append
+      - could you attach
+      - could you put in
+      - could you remember me to
+      - could you please add a reminder for
+      - could you please insert in the ti do list
+      - could you please append to the list
+      - please add to the to do list
+      - please add to the to-do list
+      - please add to the todo list
+      - please add in the 
+      - please remind me of
+      - please remind me to
+      - please insert
+      - please append
+      - please attach
+      - please put in
+      - please sign to
+      - please sign at
+      - please sign for
+      - please remember me to
+      - remind to
+      - remind at
+      - remind for
+      - I need a reminder for
+      - I need you to remind me
+      - I need to add in the todo list
+      - I need to append in the to do list
+      - I need to insert in the to-do list
+      - i want a reminder for
+      - i want a reminder at
+      - I want to add
+      - I want to insert
+      - I want to append
+      - I want to remember to
+      - i would like to add in the list
+      - I would like to insert in the list
+      - I'd like to insert
+      - I would like to append in the list
+      - I'd like to append
+      - I would like to add a reminder in the list
+      - I have to add
+      - I have to insert
+      - I have to attach
+      - I have to put in
+      - I have to remember to
+      - I have to append to the list
+      - I must add
+      - I must add at
+      - I must add for
+      - I must insert in the todo list
+      - I must append to the list
+      - I must remember to 
+      - can you remind
+      - can you remind me to 
+      - Can you add
+      - Can you add to 
+      - Can you add at
+      - Can you add to the to do list
+      - Can you insert
+      - Can you put in
+      - Can you append
+      - add
+      - insert
+      - append
+      - remind me
+      - put in
+      - attach
+      - remind
+      - attach to the list
+      - add to the list
+      - put in the list
+      - append to the list
+      - insert in the list
+      - Add in my todo list
+      - Insert in my list
+      - Append in my to do list
+      - Put in my to-do list
+      - Attach in my list
+      - sign to
+      - sign at
+      - sign for
+      - add to the list
+      - Add to the to-do list
+      - I have to
+      - set at
+      - I must
+      - add something
+      - insert something
+      - append something
+      - remind me something
+      - remind something
+      - sign something
+      - I should
+
+  - synonym: purpose-update
+    examples: |
+      - Modify
+      - Update
+      - upgrade
+      - Change
+      - Edit
+      - Alter
+      - Correct
+      - Revise
+      - Please modify
+      - Please change
+      - Please edit
+      - Please update
+      - Please upgrade
+      - Please alter
+      - Please correct
+      - Please revise
+      - I must modify
+      - I must update
+      - I must upgrade
+      - I must change
+      - I must edit
+      - I must alter
+      - I must correct
+      - I must revise
+      - I have to modify
+      - I have to update
+      - I have to upgrade
+      - I have to change
+      - I have to edit
+      - I have to alter
+      - I have to correct
+      - I have to revise
+      - Could you modify
+      - Could you change
+      - Could you edit
+      - Could you update
+      - Could you upgrade
+      - Could you alter
+      - Could you correct
+      - Could you revise
+      - I'd like to change
+      - I'd like to modify
+      - I'd like to update
+      - I'd like to upgrade
+      - I'd like to edit
+      - I'd like to alter
+      - I'd like to correct
+      - I'd like to revise
+      - change something
+      - modify something
+      - update something
+      - upgrade something
+      - edit something
+      - alter something
+      - correct something
+      - revise something
+
+  - synonym: purpose-del
+    examples: |
+      - Delete
+      - Cancel
+      - Zap
+      - Eliminate
+      - Remove
+      - Stamp out
+      - Dele
+      - Kill
+      - Nullish
+      - Unpublish
+      - Take out
+      - I don't want anymore
+      - Cut out
+      - Burn the following task
+      - Erase
+      - Please delete
+      - Please cancel
+      - Please zap
+      - Please eliminate
+      - Please remove
+      - Please stamp out
+      - Please dele
+      - Please kill
+      - Please nullish
+      - Please unpublish
+      - Please take out
+      - Please cut out
+      - Please burn the following task
+      - Please erase
+      - I must delete
+      - I must cancel
+      - I must zap
+      - I must eliminate
+      - I must remove
+      - I must stamp out
+      - I must dele
+      - I must kill
+      - I must nullish
+      - I must unpublish
+      - I must take out
+      - I must cut out
+      - I must burn the following task
+      - I must erase
+      - I have to delete
+      - I have to cancel
+      - I have to zap
+      - I have to eliminate
+      - I have to remove
+      - I have to stamp out
+      - I have to dele
+      - I have to kill
+      - I have to nullish
+      - I have to unpublish
+      - I have to take out
+      - I have to cut out
+      - I have to erase
+      - Could you delete
+      - Could you cancel
+      - Could you zap
+      - Could you eliminate
+      - Could you remove
+      - Could you stamp out
+      - Could you dele
+      - Could you kill
+      - Could you nullish
+      - Could you unpublish
+      - Could you take out
+      - Could you cut out
+      - Could you erase
+      - I'd like to delete
+      - I'd like to cancel
+      - I'd like to zap
+      - I'd like to eliminate
+      - I'd like to remove
+      - I'd like to stamp out
+      - I'd like to dele
+      - I'd like to kill
+      - I'd like to nullish
+      - I'd like to unpublish
+      - I'd like to take out
+      - I'd like to cut out
+      - I'd like to erase
+      - Could you delete the insertion of
+      - Could you cancel the insertion of
+      - Could you zap the insertion of
+      - Could you eliminate the insertion of
+      - Could you remove the insertion of
+      - Could you stamp out the insertion of
+      - Could you dele the insertion of
+      - Could you kill the insertion of
+      - Could you nullish the insertion of
+      - Could you unpublish the insertion of
+      - Could you take out the insertion of
+      - Could you cut out the insertion of
+      - Could you erase the insertion of
+      - delete something
+      - cancel something
+      - zap something
+      - eliminate something
+      - remove something
+      - stamp out something
+      - dele something
+      - kill something
+      - nullish something
+      - unpublish something
+      - take out something
+      - cut out something
+      - erase something

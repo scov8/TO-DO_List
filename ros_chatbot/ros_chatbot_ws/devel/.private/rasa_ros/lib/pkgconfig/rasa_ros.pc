@@ -1,0 +1,8 @@
+prefix=/media/psf/TO-DO_List/ros_chatbot/ros_chatbot_ws/devel/.private/rasa_ros
+
+Name: rasa_ros
+Description: Description of rasa_ros
+Version: 0.0.0
+Cflags: -I/media/psf/TO-DO_List/ros_chatbot/ros_chatbot_ws/devel/.private/rasa_ros/include
+Libs: -L${prefix}/lib 
+Requires: 

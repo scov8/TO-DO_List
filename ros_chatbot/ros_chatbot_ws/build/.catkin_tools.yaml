@@ -1,0 +1,6 @@
+devel_space: /media/psf/TO-DO_List/ros_chatbot/ros_chatbot_ws/devel
+install: false
+install_space: /media/psf/TO-DO_List/ros_chatbot/ros_chatbot_ws/install
+profile: default
+source_space: /media/psf/TO-DO_List/ros_chatbot/ros_chatbot_ws/src
+workspace: /media/psf/TO-DO_List/ros_chatbot/ros_chatbot_ws
