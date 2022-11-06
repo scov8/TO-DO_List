@@ -18,6 +18,7 @@ stories:
     steps:
       - intent: change_person
       - action: person_form
+      - action: action_change_person
       - action: utter_hello_user
 
   # ADD area
@@ -190,6 +191,7 @@ stories:
       - action: utter_greet
       - intent: inform_person
       - action: person_form
+      - action: action_change_person
       - action: utter_hello_user
       - intent: manage_task
       - slot_was_set:
@@ -214,6 +216,7 @@ stories:
       - action: utter_greet
       - intent: inform_person
       - action: person_form
+      - action: action_change_person
       - action: utter_hello_user
       - intent: manage_task
       - slot_was_set:
@@ -238,6 +241,7 @@ stories:
       - action: utter_greet
       - intent: inform_person
       - action: person_form
+      - action: action_change_person
       - action: utter_hello_user
       - intent: view_task
       - action: action_view_list
@@ -264,6 +268,7 @@ stories:
       - action: utter_greet
       - intent: inform_person
       - action: person_form
+      - action: action_change_person
       - action: utter_hello_user
       - intent: view_task
       - action: action_view_list
@@ -290,6 +295,7 @@ stories:
       - action: utter_greet
       - intent: inform_person
       - action: person_form
+      - action: action_change_person
       - action: utter_hello_user
       - intent: view_task
       - action: action_view_list
@@ -316,6 +322,7 @@ stories:
       - action: utter_greet
       - intent: inform_person
       - action: person_form
+      - action: action_change_person
       - action: utter_hello_user
       - intent: view_task
       - action: action_view_list
@@ -344,11 +351,13 @@ stories:
       - action: utter_greet
       - intent: inform_person
       - action: person_form
+      - action: action_change_person
       - action: utter_hello_user
       - intent: view_task
       - action: action_view_list
       - intent: change_person
       - action: person_form
+      - action: action_change_person
       - action: utter_hello_user
       - intent: view_task
       - action: action_view_list
@@ -363,6 +372,7 @@ stories:
       - action: utter_greet
       - intent: inform_person
       - action: person_form
+      - action: action_change_person
       - action: utter_hello_user
 
   - story: interactive_story_1
@@ -379,6 +389,7 @@ stories:
       - slot_was_set:
           - requested_slot: null
       - active_loop: null
+      - action: action_change_person
       - action: utter_hello_user
       - intent: view_task
       - action: action_view_list
@@ -596,6 +607,7 @@ stories:
       - slot_was_set:
           - requested_slot: null
       - active_loop: null
+      - action: action_change_person
       - action: utter_hello_user
       - intent: view_task
       - action: action_view_list
@@ -759,6 +771,7 @@ stories:
       - slot_was_set:
           - requested_slot: null
       - active_loop: null
+      - action: action_change_person
       - action: utter_hello_user
       - intent: manage_task
         entities:
@@ -903,6 +916,7 @@ stories:
       - slot_was_set:
           - requested_slot: null
       - active_loop: null
+      - action: action_change_person
       - action: utter_hello_user
       - intent: change_person
         entities:
@@ -916,6 +930,7 @@ stories:
       - slot_was_set:
           - requested_slot: null
       - active_loop: null
+      - action: action_change_person
       - action: utter_hello_user
       - intent: change_person
         entities:
@@ -929,6 +944,7 @@ stories:
       - slot_was_set:
           - requested_slot: null
       - active_loop: null
+      - action: action_change_person
       - action: utter_hello_user
       - intent: change_person
         entities:
@@ -942,6 +958,7 @@ stories:
       - slot_was_set:
           - requested_slot: null
       - active_loop: null
+      - action: action_change_person
       - action: utter_hello_user
       - intent: change_person
         entities:
@@ -955,6 +972,7 @@ stories:
       - slot_was_set:
           - requested_slot: null
       - active_loop: null
+      - action: action_change_person
       - action: utter_hello_user
       - intent: change_person
         entities:
@@ -968,6 +986,7 @@ stories:
       - slot_was_set:
           - requested_slot: null
       - active_loop: null
+      - action: action_change_person
       - action: utter_hello_user
       - intent: change_person
         entities:
@@ -981,6 +1000,7 @@ stories:
       - slot_was_set:
           - requested_slot: null
       - active_loop: null
+      - action: action_change_person
       - action: utter_hello_user
       - intent: manage_task
         entities:
@@ -1041,6 +1061,7 @@ stories:
       - slot_was_set:
           - requested_slot: null
       - active_loop: null
+      - action: action_change_person
       - action: utter_hello_user
       - intent: view_task
       - action: action_view_list
@@ -1056,6 +1077,130 @@ stories:
       - slot_was_set:
           - requested_slot: null
       - active_loop: null
+      - action: action_change_person
       - action: utter_hello_user
       - intent: goodbye
       - action: utter_goodbye
+
+  - story: interactive_story_5
+    steps:
+      - intent: greet
+      - action: utter_greet
+      - intent: mood_great
+      - action: utter_happy
+      - intent: view_task
+      - action: action_view_list
+      - intent: change_person
+        entities:
+          - PERSON: Mike
+      - action: person_form
+      - active_loop: person_form
+      - slot_was_set:
+          - PERSON: Mike
+      - slot_was_set:
+          - requested_slot: null
+      - active_loop: null
+      - action: action_change_person
+      - action: utter_hello_user
+      - intent: view_task
+      - action: action_view_list
+      - intent: mood_great
+      - action: utter_happy
+      - intent: bot_challenge
+      - action: utter_iamabot
+      - intent: change_person
+        entities:
+          - PERSON: Jane
+      - action: person_form
+      - active_loop: person_form
+      - slot_was_set:
+          - PERSON: Mike
+      - slot_was_set:
+          - PERSON: Jane
+      - slot_was_set:
+          - requested_slot: null
+      - active_loop: null
+      - action: action_change_person
+      - action: utter_hello_user
+      - intent: view_task
+      - action: action_view_list
+      - intent: manage_task
+        entities:
+          - purpose: purpose-add
+          - task: meet the player
+      - slot_was_set:
+          - task: meet the player
+      - slot_was_set:
+          - purpose: purpose-add
+      - action: task_form
+      - active_loop: task_form
+      - slot_was_set:
+          - task: meet the player
+      - slot_was_set:
+          - purpose: purpose-add
+      - slot_was_set:
+          - task: meet the player
+      - slot_was_set:
+          - purpose: purpose-add
+      - slot_was_set:
+          - requested_slot: category
+      - slot_was_set:
+          - category: category-work
+      - slot_was_set:
+          - category: category-work
+      - slot_was_set:
+          - requested_slot: time
+      - slot_was_set:
+          - time: "2022-11-06T09:14:00.000-08:00"
+      - slot_was_set:
+          - time: "2022-11-06T09:14:00.000-08:00"
+      - slot_was_set:
+          - requested_slot: null
+      - active_loop: null
+      - action: task_submit
+      - intent: affirm
+      - action: action_affirm
+      - intent: deny
+      - action: action_reset_slot
+      - slot_was_set:
+          - task: null
+      - slot_was_set:
+          - category: null
+      - slot_was_set:
+          - time: null
+      - slot_was_set:
+          - purpose: null
+      - intent: view_task
+      - action: action_view_list
+      - intent: view_task
+      - action: action_view_list
+      - intent: view_task
+      - action: action_view_list
+      - intent: change_person
+        entities:
+          - PERSON: Ciro
+      - action: person_form
+      - active_loop: person_form
+      - slot_was_set:
+          - PERSON: Jane
+      - slot_was_set:
+          - PERSON: Ciro
+      - slot_was_set:
+          - requested_slot: null
+      - active_loop: null
+      - action: action_change_person
+      - action: utter_hello_user
+      - intent: change_person
+        entities:
+          - PERSON: Pio
+      - action: person_form
+      - active_loop: person_form
+      - slot_was_set:
+          - PERSON: Ciro
+      - slot_was_set:
+          - PERSON: Pio
+      - slot_was_set:
+          - requested_slot: null
+      - active_loop: null
+      - action: action_change_person
+      - action: utter_hello_user

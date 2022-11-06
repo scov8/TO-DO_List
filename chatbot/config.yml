@@ -37,7 +37,7 @@ pipeline:
     constrain_similarities: True
     model_confidence: linear_norm # without this his default is softmax
   - name: FallbackClassifier
-    threshold: 0.3
+    threshold: 0.2
     ambiguity_threshold: 0.1
 
 # Configuration for Rasa Core.

@@ -264,3 +264,14 @@ class Affirm(Action):
             addReminder.run(dispatcher, tracker, domain)
         return []
 
+class ChangePerson(Action):
+    """
+    """
+    def name(self):
+        return "action_change_person"
+
+    def run(self, dispatcher, tracker, domain):
+        user = tracker.get_slot("PERSON")
+        if isinstance(user, list):
+            user = user[0]
+            SlotSet("PERSON", user)

@@ -547,7 +547,6 @@ nlu:
   - intent: inform_person
     examples: |
       - [Pio](PERSON)
-      - [Ciro](PERSON)
       - [Alessia](PERSON)
       - [Antonio](PERSON)
       - [Luca](PERSON)
@@ -590,6 +589,10 @@ nlu:
       - switch to user Michel
       - user to Mike
       - please change to  Luigi
+      - I'm Mike
+      - change to Jane
+      - I'm [Ciro](PERSON)
+      - change to [Pio](PERSON)
 
   - intent: view_task
     examples: |
@@ -615,6 +618,11 @@ nlu:
       - let me see what I have to do
       - i should do something?
       - what i do today?
+      - please show my list
+      - show all
+      - what do I have in my to-do list?
+      - what do I have on my to do list?
+      - what have I in my to-do list?
 
   - intent: manage_task
     examples: |
@@ -751,6 +759,9 @@ nlu:
       - [i have to]{"entity": "purpose", "value": "purpose-add"} [do cognitive robot project](task) at 15 o'clock for [home]{"entity": "category", "value": "category-home"}
       - [remind me to]{"entity": "purpose", "value": "purpose-add"} [go to gym](task) at 14:39
       - add to [work]{"entity": "category", "value": "category-work"}
+      - [remind me to]{"entity": "purpose", "value": "purpose-add"} [meet the player](task)
+      - add to [office]{"entity": "category", "value": "category-work"}
+      - at 14 past nine
 
   - synonym: category-home
     examples: |

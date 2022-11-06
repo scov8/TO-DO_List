@@ -54,6 +54,7 @@ rules:
       - active_loop: null
       - slot_was_set:
           - requested_slot: null
+      - action: action_change_person
       - action: utter_hello_user
 
   - rule: Clean the slots every time the user deny the task

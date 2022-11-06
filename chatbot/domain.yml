@@ -28,9 +28,10 @@ actions:
   - task_submit
   - action_reset_slot
   - action_affirm
-  - action_add_to_db # funzione per la gestione dei task
-  - action_view_list # funzione per vedere l'elenco dei task
-  - action_add_reminder # funzione per attivare il reminder
+  - action_add_to_db # Function to handle tasks
+  - action_view_list # Function to see the tasks' list
+  - action_add_reminder # Function to activate the reminder
+  - action_change_person # Function to handle multiple PERSON extraction
   - utter_greet
   - utter_goodbye
   - utter_noworries
