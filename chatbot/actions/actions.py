@@ -264,6 +264,9 @@ class Affirm(Action):
             addReminder.run(dispatcher, tracker, domain)
         return []
 
+# We used this contrivance because although the PERSON slot is text type, it is filled in as a list.
+# The problem has not yet been solved by RASA, as can be seen from the following topic:
+# https://github.com/RasaHQ/rasa/issues/10188
 class ChangePerson(Action):
     """
     """
@@ -273,5 +276,6 @@ class ChangePerson(Action):
     def run(self, dispatcher, tracker, domain):
         user = tracker.get_slot("PERSON")
         if isinstance(user, list):
-            user = user[0]
-            SlotSet("PERSON", user)
+            return[SlotSet("PERSON", user[0])]
+        
+        return[]
