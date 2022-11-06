@@ -16,6 +16,11 @@ rules:
       - intent: greet
       - action: utter_greet
 
+  - rule: feel sorry for the mood of the user
+    steps:
+      - intent: mood_unhappy
+      - action: utter_unhappy
+
   # nlu fallback
   - rule: Ask to repeat every time doesn't understand
     steps:

@@ -1064,7 +1064,3 @@ nlu:
       - take out something
       - cut out something
       - erase something
-
-  - regex: time
-    examples: |
-      - ([0-1]?[0-9]|2[0-3])(| )(:|to|past)(| )[0-5][0-9]

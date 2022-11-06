@@ -269,6 +269,7 @@ class Affirm(Action):
 # https://github.com/RasaHQ/rasa/issues/10188
 class ChangePerson(Action):
     """
+    A class for manage a name, to fix a bug of Rasa
     """
     def name(self):
         return "action_change_person"

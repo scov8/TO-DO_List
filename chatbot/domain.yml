@@ -38,6 +38,7 @@ actions:
   - utter_did_that_help
   - utter_cheer_up
   - utter_happy
+  - utter_unhappy
   - utter_iamabot
   - utter_get_started
   - utter_hello_user
@@ -99,6 +100,9 @@ responses:
 
   utter_happy:
     - text: "Great, carry on!"
+
+  utter_unhappy:
+    - text: "I'm sorry :(!"
 
   utter_goodbye:
     - text: "Bye {PERSON}"
