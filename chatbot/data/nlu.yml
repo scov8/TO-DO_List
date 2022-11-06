@@ -32,6 +32,8 @@ nlu:
       - see you around
       - bye bye
       - bye-bye
+      - bye-bye!
+      - bye bye!
       - see you later
 
   - intent: affirm
