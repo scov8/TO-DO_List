@@ -10,3 +10,37 @@ Symlinking /media/psf/TO-DO_List/ros_chatbot/ros_chatbot_ws/devel/./cmake.lock
 Symlinking /media/psf/TO-DO_List/ros_chatbot/ros_chatbot_ws/devel/lib/pkgconfig/catkin_tools_prebuild.pc
 Symlinking /media/psf/TO-DO_List/ros_chatbot/ros_chatbot_ws/devel/share/catkin_tools_prebuild/cmake/catkin_tools_prebuildConfig-version.cmake
 Symlinking /media/psf/TO-DO_List/ros_chatbot/ros_chatbot_ws/devel/share/catkin_tools_prebuild/cmake/catkin_tools_prebuildConfig.cmake
+Cleaning: (/media/psf/TO-DO_List/cogrob/cogrob_ws/devel/.private/catkin_tools_prebuild/setup.sh, /media/psf/TO-DO_List/cogrob/cogrob_ws/devel/./setup.sh)
+Cleaning: (/media/psf/TO-DO_List/cogrob/cogrob_ws/devel/.private/catkin_tools_prebuild/setup.zsh, /media/psf/TO-DO_List/cogrob/cogrob_ws/devel/./setup.zsh)
+Cleaning: (/media/psf/TO-DO_List/cogrob/cogrob_ws/devel/.private/catkin_tools_prebuild/local_setup.sh, /media/psf/TO-DO_List/cogrob/cogrob_ws/devel/./local_setup.sh)
+Cleaning: (/media/psf/TO-DO_List/cogrob/cogrob_ws/devel/.private/catkin_tools_prebuild/local_setup.zsh, /media/psf/TO-DO_List/cogrob/cogrob_ws/devel/./local_setup.zsh)
+Cleaning: (/media/psf/TO-DO_List/cogrob/cogrob_ws/devel/.private/catkin_tools_prebuild/_setup_util.py, /media/psf/TO-DO_List/cogrob/cogrob_ws/devel/./_setup_util.py)
+Cleaning: (/media/psf/TO-DO_List/cogrob/cogrob_ws/devel/.private/catkin_tools_prebuild/env.sh, /media/psf/TO-DO_List/cogrob/cogrob_ws/devel/./env.sh)
+Cleaning: (/media/psf/TO-DO_List/cogrob/cogrob_ws/devel/.private/catkin_tools_prebuild/setup.bash, /media/psf/TO-DO_List/cogrob/cogrob_ws/devel/./setup.bash)
+Cleaning: (/media/psf/TO-DO_List/cogrob/cogrob_ws/devel/.private/catkin_tools_prebuild/local_setup.bash, /media/psf/TO-DO_List/cogrob/cogrob_ws/devel/./local_setup.bash)
+Cleaning: (/media/psf/TO-DO_List/cogrob/cogrob_ws/devel/.private/catkin_tools_prebuild/cmake.lock, /media/psf/TO-DO_List/cogrob/cogrob_ws/devel/./cmake.lock)
+Cleaning: (/media/psf/TO-DO_List/cogrob/cogrob_ws/devel/.private/catkin_tools_prebuild/lib/pkgconfig/catkin_tools_prebuild.pc, /media/psf/TO-DO_List/cogrob/cogrob_ws/devel/lib/pkgconfig/catkin_tools_prebuild.pc)
+Cleaning: (/media/psf/TO-DO_List/cogrob/cogrob_ws/devel/.private/catkin_tools_prebuild/share/catkin_tools_prebuild/cmake/catkin_tools_prebuildConfig-version.cmake, /media/psf/TO-DO_List/cogrob/cogrob_ws/devel/share/catkin_tools_prebuild/cmake/catkin_tools_prebuildConfig-version.cmake)
+Cleaning: (/media/psf/TO-DO_List/cogrob/cogrob_ws/devel/.private/catkin_tools_prebuild/share/catkin_tools_prebuild/cmake/catkin_tools_prebuildConfig.cmake, /media/psf/TO-DO_List/cogrob/cogrob_ws/devel/share/catkin_tools_prebuild/cmake/catkin_tools_prebuildConfig.cmake)
+Unlinking: /media/psf/TO-DO_List/cogrob/cogrob_ws/devel/./setup.sh
+Already unlinked: {}
+Unlinking: /media/psf/TO-DO_List/cogrob/cogrob_ws/devel/./setup.zsh
+Already unlinked: {}
+Unlinking: /media/psf/TO-DO_List/cogrob/cogrob_ws/devel/./local_setup.sh
+Already unlinked: {}
+Unlinking: /media/psf/TO-DO_List/cogrob/cogrob_ws/devel/./local_setup.zsh
+Already unlinked: {}
+Unlinking: /media/psf/TO-DO_List/cogrob/cogrob_ws/devel/./_setup_util.py
+Already unlinked: {}
+Unlinking: /media/psf/TO-DO_List/cogrob/cogrob_ws/devel/./env.sh
+Already unlinked: {}
+Unlinking: /media/psf/TO-DO_List/cogrob/cogrob_ws/devel/./setup.bash
+Already unlinked: {}
+Unlinking: /media/psf/TO-DO_List/cogrob/cogrob_ws/devel/./local_setup.bash
+Already unlinked: {}
+Unlinking: /media/psf/TO-DO_List/cogrob/cogrob_ws/devel/lib/pkgconfig/catkin_tools_prebuild.pc
+Already unlinked: {}
+Unlinking: /media/psf/TO-DO_List/cogrob/cogrob_ws/devel/share/catkin_tools_prebuild/cmake/catkin_tools_prebuildConfig-version.cmake
+Already unlinked: {}
+Unlinking: /media/psf/TO-DO_List/cogrob/cogrob_ws/devel/share/catkin_tools_prebuild/cmake/catkin_tools_prebuildConfig.cmake
+Already unlinked: {}
