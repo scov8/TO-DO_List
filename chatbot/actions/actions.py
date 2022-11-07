@@ -87,7 +87,7 @@ class ResetSlot(Action):
             dispatcher.utter_message("What?")
 
         UPDATE = False
-        ASKREMINDER=False
+        ASKREMINDER = False
 
         return [SlotSet("task", None),SlotSet("category", None),SlotSet("time", None),SlotSet("purpose", None)]
     

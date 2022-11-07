@@ -1,1 +1,0 @@
-/media/psf/TO-DO_List/ros_chatbot/ros_chatbot_ws/devel/.private/ros_chatbot/share/ros_chatbot/cmake/ros_chatbotConfig-version.cmake
