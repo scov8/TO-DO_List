@@ -16,8 +16,8 @@
 [ 28%] [34m[1mGenerating Lisp code from rasa_ros/Dialogue.srv[0m
 [ 28%] Built target rasa_ros_generate_messages_lisp
 [35m[1mScanning dependencies of target rasa_ros_generate_messages_nodejs[0m
-[ 42%] [34m[1mGenerating Python srv __init__.py for rasa_ros[0m
-[ 57%] [34m[1mGenerating Javascript code from rasa_ros/Dialogue.srv[0m
+[ 42%] [34m[1mGenerating Javascript code from rasa_ros/Dialogue.srv[0m
+[ 57%] [34m[1mGenerating Python srv __init__.py for rasa_ros[0m
 [ 57%] Built target rasa_ros_generate_messages_nodejs
 [35m[1mScanning dependencies of target rasa_ros_generate_messages_cpp[0m
 [ 71%] [34m[1mGenerating C++ code from rasa_ros/Dialogue.srv[0m
