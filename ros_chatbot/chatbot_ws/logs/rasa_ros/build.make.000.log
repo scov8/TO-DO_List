@@ -24,8 +24,8 @@
 [ 71%] Built target rasa_ros_generate_messages_py
 [35m[1mScanning dependencies of target rasa_ros_generate_messages_eus[0m
 [ 85%] [34m[1mGenerating EusLisp code from rasa_ros/Dialogue.srv[0m
+[ 85%] Built target rasa_ros_generate_messages_cpp
 [100%] [34m[1mGenerating EusLisp manifest code for rasa_ros[0m
-[100%] Built target rasa_ros_generate_messages_cpp
 [100%] Built target rasa_ros_generate_messages_eus
 [35m[1mScanning dependencies of target rasa_ros_generate_messages[0m
 [100%] Built target rasa_ros_generate_messages
