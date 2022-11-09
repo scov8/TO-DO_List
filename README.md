@@ -30,5 +30,5 @@ For convenience, we use the duckling container on **Docker**; once downloaded vi
 4. Take the Duckling container;
 5. Launch the project.
 
-#aggiungere i passaggi dalle slide (esempio catkin build)
-#ricordare di far cambiare il percorso per la cartella
+# aggiungere i passaggi dalle slide (esempio catkin build)
+# icordare di far cambiare il percorso per la cartella
