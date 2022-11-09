@@ -22,7 +22,8 @@ We provide a **_setup.bash_** with which the packages of interest concerning **S
 We use SQLite to store all the information about tasks and users, meanwhile Duckling is an extractor used for date and time.<br />
 For convenience, we use the duckling container on **Docker**; once downloaded via setup.bash, and launched the project, Duckling will start automatically.
 <br />
-### Steps of the setup.bash:
+### Steps of the setup.bash
+- 'chmod u+x deploy.sh'
 1. First, install or update SQLite;
 2. Check whether an old/obsolete version of Docker is present and if so delete;
 3. Download Docker;
