@@ -1,1 +1,0 @@
-/media/psf/TO-DO_List/ros_chatbot/ros_chatbot_ws/devel/.private/catkin_tools_prebuild/share/catkin_tools_prebuild/cmake/catkin_tools_prebuildConfig.cmake
