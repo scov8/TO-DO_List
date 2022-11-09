@@ -17,7 +17,7 @@
 - Update an activity in the to do list
 
 # HOW TO RUN
-In order to launch the project, there are a number of steps to be taken.
+In order to launch the project, there are a number of steps to be taken.<br />
 First of all, we provide a setup.bash with which the packages of interest concerning **SQLite** and **Duckling** are installed.
 We use SQLite to store all the information about tasks and users, meanwhile Duckling is an extractor used for date and time.
 For convenience, we use the duckling container on **docker**; once downloaded via setup.bash, and launched the project, Duckling will start automatically.
