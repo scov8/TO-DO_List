@@ -7,7 +7,7 @@ from typing import Any, Text, Dict, List
 
 from rasa_sdk import Action, Tracker
 from rasa_sdk.executor import CollectingDispatcher
-from rasa_sdk.events import SlotSet  # , ReminderScheduled, ReminderCancelled
+from rasa_sdk.events import SlotSet, SessionStarted, ActionExecuted  # , ReminderScheduled, ReminderCancelled
 from dateutil.parser import parse
 
 import sqlite3
@@ -303,7 +303,7 @@ class DeleteAll(Action):
         conn.commit()
         conn.close()
 
-        dispatcher.utter_message(text=f"Ok, i deleted your list:\n")
+        dispatcher.utter_message(text=f"Ok, i deleted your list\n")
 
         return []
 

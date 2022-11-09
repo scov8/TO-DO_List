@@ -803,6 +803,29 @@ nlu:
       - [remind me to]{"entity": "purpose", "value": "purpose-add"} [meet the player](task)
       - add to [office]{"entity": "category", "value": "category-work"}
       - at 14 past nine
+      - I want to [delete](purpose) [playing guitar](task) in [hobby](category)
+      - [delete](purpose) [cooking the pasta](task) and add in [house](category)
+      - Please [remove](purpose) [watch the Serie A match](task) at 20:45 added in [freetime](category)
+      - Can you [nullish](purpose) [clean the bathroom](task) in [home](category)?
+      - [remove](purpose) from [work](category) to [go to cut my hair](task) at 11 o'clock
+      - [delete](purpose) from [house](category) to [water the plants](task)
+      - I want to [zap](purpose) [wash clothes](task) in [free time](category)
+      - I have to [cut out](purpose) from [office](category)
+      - Please [eliminate](purpose) [set up my new pc](task) from my [hobby](category) list
+      - [update](purpose) [go to gym](task) for [work](category) 
+      - [modify](purpose) [play football](task) for [house](category)
+      - please, [update](purpose) [play guitar](task) at 4:31 
+      - could you [update](purpose) [send an email](task) for [work](category)
+      - can I [edit](purpose) [call mum](task) for [house](category)
+      - can you [modify](purpose) [call prof](task) for [work](category)
+      - Could you [modify](purpose) [tennis match](task) in [sport](category)
+      - [I want to delete](purpose) [doctor's appointment](task) for [private](category)
+      - I have to [update](purpose) [my math lesson](task) for [studio](category)
+      - [Alter](purpose) [do my homework](task) for [house](category) 
+      - [book the hotel](task) for [free time](category) [modify](purpose)
+      - [I don't want anymore](purpose) [go to the gym](task) task for [sport](category)
+      - [Change the task](purpose) [send an email](task) for [office](category)
+      - [erase](purpose) [my appointment](task) from [hobby](category)
 
   - synonym: category-home
     examples: |
