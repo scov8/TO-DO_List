@@ -27,4 +27,5 @@ For convenience, we use the duckling container on **Docker**; once downloaded vi
 1. First, install or update SQLite;
 2. Check whether an old/obsolete version of Docker is present and if so delete;
 3. Download Docker;
-4. Take the Duckling container.
+4. Take the Duckling container;
+5. Launch the project.
