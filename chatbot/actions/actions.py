@@ -15,17 +15,12 @@ import sqlite3
 """
 Global variable used for:
 - UPDATE:       It is needed to understand whether the user has initiated an update, then to get the user to insert the new data for the change
-- ASK_REMINDER:  It is needed to ask the user if they want the reminder after an insert or update
-- OLD_TIME:     When an update is in progress the old value of time is saved
-- OLD_CATEGORY: When an update is in progress the old value of category is saved
+- ASK_REMINDER: It is needed to ask the user if they want the reminder after an insert or update
 - OLD_TASK:     When an update is in progress the old value of task is saved
 """
 UPDATE = False
 ASK_REMINDER = False
-OLD_TIME = None
-OLD_CATEGORY = None
 OLD_TASK = None
-
 
 class TaskSubmit(Action):
     """
@@ -128,7 +123,6 @@ class AddToDb(Action):
 
         curs = conn.cursor()
         if (UPDATE is True):  # the parameters, if we are updating the task, are different
-            global OLD_TIME, OLD_CATEGORY, OLD_TASK
             curs.execute(query, [task, time, category, user,
                          OLD_TASK])
         else:
@@ -180,9 +174,7 @@ class AddToDb(Action):
             else:
                 dispatcher.utter_message("Ok I deleted your task.")
         elif (purpose == "purpose-update" and UPDATE is False):
-            global OLD_TIME, OLD_CATEGORY, OLD_TASK
-            OLD_TIME = time
-            OLD_CATEGORY = category
+            global OLD_TASK
             OLD_TASK = task
             UPDATE = True
             dispatcher.utter_message(
@@ -228,8 +220,6 @@ class AddReminder(Action):
         print("Connection to db:", conn)
 
         user = tracker.get_slot("PERSON")
-        time = tracker.get_slot("time")
-        category = tracker.get_slot("category")
         task = tracker.get_slot("task")
 
         query = 'UPDATE ToDoList SET reminder=True WHERE task=:1 AND USER=:2'
@@ -342,8 +332,6 @@ class Affirm(Action):
 # We used this contrivance because although the PERSON slot is text type, it is filled in as a list.
 # The problem has not yet been solved by RASA, as can be seen from the following topic:
 # https://github.com/RasaHQ/rasa/issues/10188
-
-
 class ChangePerson(Action):
     """
     A class for manage a name, to fix a bug of Rasa
