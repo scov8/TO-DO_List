@@ -20,10 +20,10 @@
 In order to launch the project, there are a number of steps to be taken.<br />
 We provide a **_setup.bash_** with which the packages of interest concerning **SQLite** and **Duckling** are installed.
 We use SQLite to store all the information about tasks and users, meanwhile Duckling is an extractor used for date and time.<br />
-For convenience, we use the duckling container on **docker**; once downloaded via setup.bash, and launched the project, Duckling will start automatically.
+For convenience, we use the duckling container on **Docker**; once downloaded via setup.bash, and launched the project, Duckling will start automatically.
 <br />
 ### Steps of the setup.bash:
 1. First, install or update SQLite;
-2. Check whether an old/obsolete version of docker is present and if so delete;
-3. Download docker;
+2. Check whether an old/obsolete version of Docker is present and if so delete;
+3. Download Docker;
 4. Take the Duckling container.
