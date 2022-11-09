@@ -624,6 +624,47 @@ nlu:
       - what do I have on my to do list?
       - what have I in my to-do list?
 
+  - intent: delete_all
+    examples: |
+      - i want to delete all tasks
+      - i want to delete all
+      - i want to erase all
+      - please delete all
+      - please erase all
+      - can you delete all?
+      - can i delete all?
+      - delete my whole list
+      - erase whole list
+      - delete the to do list
+      - clear my to do list
+      - cancel all my tasks
+      - delete all tasks
+      - empty my list
+      - empty the to-do list
+      - please cancel all my tasks in the todo list
+      - could you delete all tasks?
+      - please empty my to do list
+      - could you empty my list?
+
+  - intent: who_am_i
+    examples: |
+      - who am I?
+      - what is my name?
+      - do you know my name?
+      - my name is?
+      - tell me my name
+      - please tell me my name
+      - what is my name?
+      - say my name
+      - write my name
+      - could you tell me my name?
+      - which user is logged?
+      - call me by my name
+      - which user?
+      - user logged
+      - could you tell me the user logged name?
+      - user logged name
+
   - intent: manage_task
     examples: |
       - [remind me to](purpose) [send an email to prof](task) at eleven to twenty and add to [work](category)

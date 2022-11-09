@@ -16,6 +16,8 @@ intents:
   - view_task
   - inform_person
   - change_person
+  - delete_all
+  - who_am_i
 
 entities:
   - task
@@ -32,6 +34,7 @@ actions:
   - action_view_list # Function to see the tasks' list
   - action_add_reminder # Function to activate the reminder
   - action_change_person # Function to handle multiple PERSON extraction
+  - action_delete_all
   - utter_greet
   - utter_goodbye
   - utter_noworries

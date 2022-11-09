@@ -76,3 +76,13 @@ rules:
     steps:
       - intent: view_task
       - action: action_view_list
+
+  - rule: delete all tasks
+    steps:
+      - intent: delete_all
+      - action: action_delete_all
+
+  - rule: who am I
+    steps:
+      - intent: who_am_i
+      - action: utter_hello_user

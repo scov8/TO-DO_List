@@ -244,6 +244,33 @@ class ViewList(Action):
 
         return []
 
+class DeleteAll(Action):
+    """
+    A class to delete the whole list
+    """
+    def name(self):
+        return "action_delete_all"
+
+    def run(self, dispatcher, tracker, domain):
+        conn = sqlite3.connect('../chatbot.db')
+        print("Connection to db:", conn)
+
+        user = tracker.get_slot("PERSON")
+
+        if(user is None):
+            dispatcher.utter_message(text = f"You must tell me first your name!") 
+            return []
+
+        query = 'DELETE FROM ToDoList WHERE user=:1'
+        curs = conn.cursor()
+        curs.execute(query, [user])
+        conn.commit()
+        conn.close()
+
+        dispatcher.utter_message(text = f"Ok, i deleted your list:\n") 
+
+        return []
+
 class Affirm(Action):
     """
     A class for manage the action "affirm"

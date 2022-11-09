@@ -185,6 +185,18 @@ stories:
       - intent: view_task
       - action: action_view_list
 
+    # delete all
+  - story: delete all task
+    steps:
+      - intent: delete_all
+      - action: action_delete_all
+
+    # show who am i
+  - story: who am I
+    steps:
+      - intent: who_am_i
+      - action: utter_hello_user
+
   - story: full conversation n1 # reminder on
     steps:
       - intent: greet
