@@ -15,13 +15,13 @@ import sqlite3
 """
 Global variable used for:
 - UPDATE:       It is needed to understand whether the user has initiated an update, then to get the user to insert the new data for the change
-- ASKREMINDER:  It is needed to ask the user if they want the reminder after an insert or update
+- ASK_REMINDER:  It is needed to ask the user if they want the reminder after an insert or update
 - OLD_TIME:     When an update is in progress the old value of time is saved
 - OLD_CATEGORY: When an update is in progress the old value of category is saved
 - OLD_TASK:     When an update is in progress the old value of task is saved
 """
 UPDATE = False      
-ASKREMINDER = False 
+ASK_REMINDER = False 
 OLD_TIME = None     
 OLD_CATEGORY = None 
 OLD_TASK = None     
@@ -75,7 +75,7 @@ class ResetSlot(Action):
         return "action_reset_slot"
 
     def run(self, dispatcher, tracker, domain):
-        global UPDATE, ASKREMINDER
+        global UPDATE, ASK_REMINDER
 
         time = tracker.get_slot("time")
         category = tracker.get_slot("category")
@@ -87,7 +87,7 @@ class ResetSlot(Action):
             dispatcher.utter_message("What?")
 
         UPDATE = False
-        ASKREMINDER=False
+        ASK_REMINDER = False
 
         return [SlotSet("task", None),SlotSet("category", None),SlotSet("time", None),SlotSet("purpose", None)]
     
@@ -125,7 +125,7 @@ class AddToDb(Action):
         Private method used to split the different operation that the DB can do, based on 
         the different kind of purpose send by the user
         """
-        global UPDATE, ASKREMINDER
+        global UPDATE, ASK_REMINDER
 
         query = ""
         if (UPDATE is True):
@@ -136,12 +136,12 @@ class AddToDb(Action):
                 dispatcher.utter_message("Oh no, you insert a non-existing entry.")
             else:
                 dispatcher.utter_message("Ok, I modified your task, do you want a reminder?")
-                ASKREMINDER=True
+                ASK_REMINDER=True
         elif (purpose == "purpose-add"):
             query = 'INSERT INTO ToDoList (user, task, time, category)VALUES (:1, :2, :3, :4)'
             curs = self.__execute_query(conn, query, task=task, time=time, category=category, user=user)
             dispatcher.utter_message("Ok i added your task, do you want a reminder?")
-            ASKREMINDER=True
+            ASK_REMINDER=True
         elif (purpose == "purpose-del"):
             query = 'DELETE FROM ToDoList WHERE user=:1 AND task=:2 AND time=:3 AND category=:4'
             curs = self.__execute_query(conn, query, task=task, time=time, category=category, user=user)
@@ -279,14 +279,14 @@ class Affirm(Action):
         return "action_affirm"
 
     def run(self, dispatcher, tracker, domain):
-        global ASKREMINDER
+        global ASK_REMINDER
 
         # If the reminder addition is not to be made then process the addition to the db, otherwise we add the reminder to the added/updated task
-        if (ASKREMINDER is False):
+        if (ASK_REMINDER is False):
             addToDb = AddToDb()
             addToDb.run(dispatcher, tracker, domain)
         else:
-            ASKREMINDER = False
+            ASK_REMINDER = False
             addReminder = AddReminder()
             addReminder.run(dispatcher, tracker, domain)
         return []
