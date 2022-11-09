@@ -61,6 +61,7 @@ slots:
     influence_conversation: false # se un VALORE influenza la conversazione bisogna inserire una storia
   time:
     type: any
+    initial_value: null
     influence_conversation: false
   purpose:
     type: text
