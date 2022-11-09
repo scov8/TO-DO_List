@@ -136,12 +136,14 @@ class AddToDb(Action):
                 dispatcher.utter_message("Oh no, you insert a non-existing entry.")
             else:
                 dispatcher.utter_message("Ok, I modified your task, do you want a reminder?")
-                ASK_REMINDER=True
+                if(time != "null"):
+                    ASK_REMINDER=True
         elif (purpose == "purpose-add"):
             query = 'INSERT INTO ToDoList (user, task, time, category)VALUES (:1, :2, :3, :4)'
             curs = self.__execute_query(conn, query, task=task, time=time, category=category, user=user)
             dispatcher.utter_message("Ok i added your task, do you want a reminder?")
-            ASK_REMINDER=True
+            if(time != "null"):
+                ASK_REMINDER=True
         elif (purpose == "purpose-del"):
             query = 'DELETE FROM ToDoList WHERE user=:1 AND task=:2 AND time=:3 AND category=:4'
             curs = self.__execute_query(conn, query, task=task, time=time, category=category, user=user)
