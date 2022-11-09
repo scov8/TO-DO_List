@@ -5,17 +5,19 @@ digraph  {
 2 [class=active, fontsize=12, label=person_form];
 3 [class=active, fontsize=12, label=action_change_person];
 4 [class=active, fontsize=12, label=utter_hello_user];
-5 [class=active, fontsize=12, label=utter_greet];
-6 [class="intent dashed active", label="  ?  ", shape=rect];
-7 [class="intent active", fillcolor=lightblue, label="i'm Ciro", shape=rect, style=filled];
-8 [class="intent active", fillcolor=lightblue, label=hi, shape=rect, style=filled];
+5 [class=active, fontsize=12, label=task_form];
+6 [class=active, fontsize=12, label=task_submit];
+7 [class="intent dashed active", label="  ?  ", shape=rect];
+8 [class="intent active", fillcolor=lightblue, label="i'm mike", shape=rect, style=filled];
+9 [class="intent active", fillcolor=lightblue, label="remind me to send an email for work", shape=rect, style=filled];
 0 -> "-1"  [class="", key=NONE, label=""];
 0 -> 1  [class=active, key=NONE, label=""];
-1 -> 7  [class=active, key=0];
+1 -> 8  [class=active, key=0];
 2 -> 3  [class=active, key=NONE, label=""];
 3 -> 4  [class=active, key=NONE, label=""];
-4 -> 8  [class=active, key=0];
+4 -> 9  [class=active, key=0];
 5 -> 6  [class=active, key=NONE, label=""];
-7 -> 2  [class=active, key=0];
-8 -> 5  [class=active, key=0];
+6 -> 7  [class=active, key=NONE, label=""];
+8 -> 2  [class=active, key=0];
+9 -> 5  [class=active, key=0];
 }

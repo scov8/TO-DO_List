@@ -47,8 +47,9 @@ class TaskSubmit(Action):
         task = tracker.get_slot("task")
         purpose = tracker.get_slot("purpose")
         user = tracker.get_slot("PERSON")
-        hour = str(parse(str(time)).time())
-        date = str(parse(str(time)).date())
+        if (time!="null"):
+            hour = str(parse(str(time)).time())
+            date = str(parse(str(time)).date())
 
         # If the user want to manage a task but did not tell his own name
         if(user is None):
@@ -57,14 +58,18 @@ class TaskSubmit(Action):
 
         # based on the action to be taken the corresponding message will be sent to chat to notify the user of the action to be taken
         if (purpose == "purpose-add"):
-            dispatcher.utter_message(
-                text=f"Thanks, you want to add a new task, and the task is: \"{task}\" at {hour} of {date} in the category \"{category}\"\nWould you like to confirm?")
+            if (time!="null"):
+                dispatcher.utter_message(
+                    text=f"Thanks, you want to add a new task, and the task is: \"{task}\" at {hour} of {date} in the category \"{category}\"\nWould you like to confirm?")
+            else:
+                 dispatcher.utter_message(
+                    text=f"Thanks, you want to add a new task, and the task is: \"{task}\" in the category \"{category}\"\nWould you like to confirm?")
         elif (purpose == "purpose-del"):
             dispatcher.utter_message(
-                text=f"Oh no, you want to delete a task, and the task is: \"{task}\" at {hour} of {date}  in the category \"{category}\"\nWould you like to confirm?")
+                text=f"Oh no, you want to delete a task, and the task is: \"{task}\"\nWould you like to confirm?")
         elif (purpose == "purpose-update"):
             dispatcher.utter_message(
-                text=f"Ok, you want to modify a task, and the task is: \"{task}\" at {hour} of {date}  in the category \"{category}\"\nWould you like to confirm?")
+                text=f"Ok, you want to modify a task, and the task is: \"{task}\"\"\nWould you like to confirm?")
         else:
             # If a purpose is extracted but is not traceable to any synonym
             dispatcher.utter_message(
@@ -125,7 +130,7 @@ class AddToDb(Action):
         if (UPDATE is True):  # the parameters, if we are updating the task, are different
             global OLD_TIME, OLD_CATEGORY, OLD_TASK
             curs.execute(query, [task, time, category, user,
-                         OLD_TASK, OLD_TIME, OLD_CATEGORY])
+                         OLD_TASK])
         else:
             curs.execute(query, [user, task, time, category])
         conn.commit()
@@ -140,7 +145,7 @@ class AddToDb(Action):
 
         query = ""
         if (UPDATE is True):
-            query = 'UPDATE ToDoList SET task=:1, time=:2, category=:3, reminder=False WHERE USER=:4 AND task=:5 AND time=:6 AND category=:7'
+            query = 'UPDATE ToDoList SET task=:1, time=:2, category=:3, reminder=False WHERE USER=:4 AND task=:5'
             curs = self.__execute_query(
                 conn, query, task=task, time=time, category=category, user=user)
             UPDATE = False
@@ -149,21 +154,26 @@ class AddToDb(Action):
                     "Oh no, you insert a non-existing entry.")
             else:
                 dispatcher.utter_message(
-                    "Ok, I modified your task, do you want a reminder?")
-                if(time != "null"):
-                    ASK_REMINDER = True
-        elif (purpose == "purpose-add"):
-            query = 'INSERT INTO ToDoList (user, task, time, category)VALUES (:1, :2, :3, :4)'
-            curs = self.__execute_query(
-                conn, query, task=task, time=time, category=category, user=user)
-            dispatcher.utter_message(
-                "Ok i added your task, do you want a reminder?")
+                    "Ok, I modified your task")
             if(time != "null"):
+                dispatcher.utter_message("Do you want a reminder?")
                 ASK_REMINDER = True
+        elif (purpose == "purpose-add"):
+            try:
+                query = 'INSERT INTO ToDoList (user, task, time, category)VALUES (:1, :2, :3, :4)'
+                curs = self.__execute_query(
+                    conn, query, task=task, time=time, category=category, user=user)
+                dispatcher.utter_message("Ok i added your task")
+                if(time != "null"):
+                    dispatcher.utter_message("Do you want a reminder?")
+                    ASK_REMINDER = True
+            except:
+                dispatcher.utter_message("This entry already exist")
         elif (purpose == "purpose-del"):
-            query = 'DELETE FROM ToDoList WHERE user=:1 AND task=:2 AND time=:3 AND category=:4'
-            curs = self.__execute_query(
-                conn, query, task=task, time=time, category=category, user=user)
+            query = 'DELETE FROM ToDoList WHERE user=:1 AND task=:2'
+            curs = conn.cursor()
+            curs.execute(query, [user,task])
+            conn.commit()
             if(curs.rowcount == 0):
                 dispatcher.utter_message(
                     "Oh no, you insert a non-existing entry.")
@@ -199,7 +209,7 @@ class AddToDb(Action):
                             time, category, user, conn)
 
         conn.close()
-        if (purpose == 'purpose-update' or purpose == 'purpose-insert'):
+        if ((purpose == 'purpose-update' or purpose == 'purpose-insert') and ASK_REMINDER == True):
             return []
         else:
             return [SlotSet("task", None), SlotSet("category", None), SlotSet("time", "null"), SlotSet("purpose", None)]
@@ -222,9 +232,9 @@ class AddReminder(Action):
         category = tracker.get_slot("category")
         task = tracker.get_slot("task")
 
-        query = 'UPDATE ToDoList SET reminder=True WHERE task=:1 AND time=:2 AND category=:3 AND USER=:4'
+        query = 'UPDATE ToDoList SET reminder=True WHERE task=:1 AND USER=:2'
         curs = conn.cursor()
-        curs.execute(query, [task, time, category, user])
+        curs.execute(query, [task, user])
         conn.commit()
 
         conn.close()
@@ -263,11 +273,17 @@ class ViewList(Action):
         dispatcher.utter_message(
             text=f"Ok, there are {len(selectResult)} {tmp} in your To-Do List:\n")
         for ii in selectResult:
-            out = "- " + str(ii[0]) + " at " + str(parse(str(ii[1])).time())
-            out += " of " + str(parse(str(ii[1])).date())
-            out += " for " + str(ii[2])
-            out += " and the reminder is ON " if (
-                ii[3] == 1 or ii[3] is True) else " and the reminder is OFF"
+            if((ii[1]!="null")):
+                out = "- " + str(ii[0]) + " at " + str(parse(str(ii[1])).time())
+                out += " of " + str(parse(str(ii[1])).date())
+                out += " for " + str(ii[2])
+                out += " and the reminder is ON " if (
+                    ii[3] == 1 or ii[3] is True) else " and the reminder is OFF"
+            else:
+                out = "- " + str(ii[0])
+                out += " for " + str(ii[2])
+                out += " and the reminder is ON " if (
+                    ii[3] == 1 or ii[3] is True) else " and the reminder is OFF"
             dispatcher.utter_message(text=f"{out}\n")
 
         return []
@@ -338,7 +354,9 @@ class ChangePerson(Action):
 
     def run(self, dispatcher, tracker, domain):
         user = tracker.get_slot("PERSON")
-        if isinstance(user, list):
-            return[SlotSet("PERSON", user[0])]
 
-        return[]
+
+        if isinstance(user, list):
+            return[SlotSet("PERSON", user[0]), SlotSet("time", "null")]
+
+        return[SlotSet("time", "null")]
