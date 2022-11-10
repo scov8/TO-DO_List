@@ -44,7 +44,7 @@ For convenience, we use the duckling container on **Docker**; once downloaded vi
 
 ### Run to execute the bot
 
-To run the command below, move in the TO-DO_List
+To run the command below, move in the TO-DO_List folder
 
       sudo bash execute.sh
 
