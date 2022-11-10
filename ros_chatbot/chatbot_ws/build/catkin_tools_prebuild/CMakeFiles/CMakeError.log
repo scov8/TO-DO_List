@@ -1,27 +1,28 @@
 Performing C SOURCE FILE Test CMAKE_HAVE_LIBC_PTHREAD failed with the following output:
 Change Dir: /media/psf/TO-DO_List/ros_chatbot/chatbot_ws/build/catkin_tools_prebuild/CMakeFiles/CMakeTmp
 
-Run Build Command(s):/usr/bin/make cmTC_33c01/fast && /usr/bin/make -f CMakeFiles/cmTC_33c01.dir/build.make CMakeFiles/cmTC_33c01.dir/build
+Run Build Command(s):/usr/bin/make -f Makefile cmTC_c063d/fast && /usr/bin/make  -f CMakeFiles/cmTC_c063d.dir/build.make CMakeFiles/cmTC_c063d.dir/build
 make[1]: Entering directory '/media/psf/TO-DO_List/ros_chatbot/chatbot_ws/build/catkin_tools_prebuild/CMakeFiles/CMakeTmp'
-Building C object CMakeFiles/cmTC_33c01.dir/src.c.o
-/usr/bin/cc   -DCMAKE_HAVE_LIBC_PTHREAD   -o CMakeFiles/cmTC_33c01.dir/src.c.o   -c /media/psf/TO-DO_List/ros_chatbot/chatbot_ws/build/catkin_tools_prebuild/CMakeFiles/CMakeTmp/src.c
-Linking C executable cmTC_33c01
-/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_33c01.dir/link.txt --verbose=1
-/usr/bin/cc  -DCMAKE_HAVE_LIBC_PTHREAD    -rdynamic CMakeFiles/cmTC_33c01.dir/src.c.o  -o cmTC_33c01 
-/usr/bin/ld: CMakeFiles/cmTC_33c01.dir/src.c.o: in function `main':
+Building C object CMakeFiles/cmTC_c063d.dir/src.c.o
+/usr/bin/cc -DCMAKE_HAVE_LIBC_PTHREAD   -o CMakeFiles/cmTC_c063d.dir/src.c.o -c /media/psf/TO-DO_List/ros_chatbot/chatbot_ws/build/catkin_tools_prebuild/CMakeFiles/CMakeTmp/src.c
+Linking C executable cmTC_c063d
+/usr/local/bin/cmake -E cmake_link_script CMakeFiles/cmTC_c063d.dir/link.txt --verbose=1
+/usr/bin/cc -rdynamic CMakeFiles/cmTC_c063d.dir/src.c.o -o cmTC_c063d 
+/usr/bin/ld: CMakeFiles/cmTC_c063d.dir/src.c.o: in function `main':
 src.c:(.text+0x46): undefined reference to `pthread_create'
 /usr/bin/ld: src.c:(.text+0x52): undefined reference to `pthread_detach'
-/usr/bin/ld: src.c:(.text+0x63): undefined reference to `pthread_join'
+/usr/bin/ld: src.c:(.text+0x5e): undefined reference to `pthread_cancel'
+/usr/bin/ld: src.c:(.text+0x6f): undefined reference to `pthread_join'
 collect2: error: ld returned 1 exit status
-make[1]: *** [CMakeFiles/cmTC_33c01.dir/build.make:87: cmTC_33c01] Error 1
+make[1]: *** [CMakeFiles/cmTC_c063d.dir/build.make:99: cmTC_c063d] Error 1
 make[1]: Leaving directory '/media/psf/TO-DO_List/ros_chatbot/chatbot_ws/build/catkin_tools_prebuild/CMakeFiles/CMakeTmp'
-make: *** [Makefile:121: cmTC_33c01/fast] Error 2
+make: *** [Makefile:127: cmTC_c063d/fast] Error 2
 
 
 Source file was:
 #include <pthread.h>
 
-void* test_func(void* data)
+static void* test_func(void* data)
 {
   return data;
 }
@@ -31,6 +32,7 @@ int main(void)
   pthread_t thread;
   pthread_create(&thread, NULL, test_func, NULL);
   pthread_detach(thread);
+  pthread_cancel(thread);
   pthread_join(thread, NULL);
   pthread_atfork(NULL, NULL, NULL);
   pthread_exit(NULL);
@@ -41,18 +43,18 @@ int main(void)
 Determining if the function pthread_create exists in the pthreads failed with the following output:
 Change Dir: /media/psf/TO-DO_List/ros_chatbot/chatbot_ws/build/catkin_tools_prebuild/CMakeFiles/CMakeTmp
 
-Run Build Command(s):/usr/bin/make cmTC_2aa22/fast && /usr/bin/make -f CMakeFiles/cmTC_2aa22.dir/build.make CMakeFiles/cmTC_2aa22.dir/build
+Run Build Command(s):/usr/bin/make -f Makefile cmTC_ec252/fast && /usr/bin/make  -f CMakeFiles/cmTC_ec252.dir/build.make CMakeFiles/cmTC_ec252.dir/build
 make[1]: Entering directory '/media/psf/TO-DO_List/ros_chatbot/chatbot_ws/build/catkin_tools_prebuild/CMakeFiles/CMakeTmp'
-Building C object CMakeFiles/cmTC_2aa22.dir/CheckFunctionExists.c.o
-/usr/bin/cc   -DCHECK_FUNCTION_EXISTS=pthread_create   -o CMakeFiles/cmTC_2aa22.dir/CheckFunctionExists.c.o   -c /usr/share/cmake-3.16/Modules/CheckFunctionExists.c
-Linking C executable cmTC_2aa22
-/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_2aa22.dir/link.txt --verbose=1
-/usr/bin/cc  -DCHECK_FUNCTION_EXISTS=pthread_create    -rdynamic CMakeFiles/cmTC_2aa22.dir/CheckFunctionExists.c.o  -o cmTC_2aa22  -lpthreads 
+Building C object CMakeFiles/cmTC_ec252.dir/CheckFunctionExists.c.o
+/usr/bin/cc   -DCHECK_FUNCTION_EXISTS=pthread_create -o CMakeFiles/cmTC_ec252.dir/CheckFunctionExists.c.o -c /usr/local/share/cmake-3.20/Modules/CheckFunctionExists.c
+Linking C executable cmTC_ec252
+/usr/local/bin/cmake -E cmake_link_script CMakeFiles/cmTC_ec252.dir/link.txt --verbose=1
+/usr/bin/cc  -DCHECK_FUNCTION_EXISTS=pthread_create -rdynamic CMakeFiles/cmTC_ec252.dir/CheckFunctionExists.c.o -o cmTC_ec252  -lpthreads 
 /usr/bin/ld: cannot find -lpthreads
 collect2: error: ld returned 1 exit status
-make[1]: *** [CMakeFiles/cmTC_2aa22.dir/build.make:87: cmTC_2aa22] Error 1
+make[1]: *** [CMakeFiles/cmTC_ec252.dir/build.make:99: cmTC_ec252] Error 1
 make[1]: Leaving directory '/media/psf/TO-DO_List/ros_chatbot/chatbot_ws/build/catkin_tools_prebuild/CMakeFiles/CMakeTmp'
-make: *** [Makefile:121: cmTC_2aa22/fast] Error 2
+make: *** [Makefile:127: cmTC_ec252/fast] Error 2
 
 
 

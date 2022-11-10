@@ -99,7 +99,7 @@ if(NOT "/media/psf/TO-DO_List/ros_chatbot/chatbot_ws/devel/.private/rasa_ros/inc
   elseif(NOT " " STREQUAL " ")
     set(_report "Check the website '' for information and consider reporting the problem.")
   else()
-    set(_report "Report the problem to the maintainer 'mivia <mivia@todo.todo>' and request to fix the problem.")
+    set(_report "Report the problem to the maintainer 'Gruppo08 <l.scovotto1@studenti.unisa.it>' and request to fix the problem.")
   endif()
   foreach(idir ${_include_dirs})
     if(IS_ABSOLUTE ${idir} AND IS_DIRECTORY ${idir})

@@ -1,6 +1,6 @@
 set(_CATKIN_CURRENT_PACKAGE "rasa_ros")
 set(rasa_ros_VERSION "0.0.0")
-set(rasa_ros_MAINTAINER "mivia <mivia@todo.todo>")
+set(rasa_ros_MAINTAINER "Gruppo08 <l.scovotto1@studenti.unisa.it>")
 set(rasa_ros_PACKAGE_FORMAT "2")
 set(rasa_ros_BUILD_DEPENDS "message_generation" "rosconsole" "rospy" "std_msgs")
 set(rasa_ros_BUILD_EXPORT_DEPENDS "message_generation" "rosconsole" "rospy" "std_msgs")
