@@ -31,9 +31,7 @@
 
 
 import rospy
-from std_msgs.msg import String
 from rasa_ros.srv import Dialogue, DialogueResponse
-
 
 class TerminalInterface:
     '''Class implementing a terminal i/o interface. 
@@ -44,26 +42,10 @@ class TerminalInterface:
 
     '''
 
-    """def get_text(self):
+    def get_text(self):
         return input("[IN]:  ") 
 
     def set_text(self,text):
-        print("[OUT]:",text)"""
-
-    def __init__(self, pub):
-        self.pub = pub
-
-    def get_text(self):
-        print("Waiting")
-        txt = rospy.wait_for_message("voice_txt", String)
-        print("[IN]: ", txt.data)
-        return str(txt.data)
-        # return input("[IN]: ")
-
-    def set_text(self,text):
-        data_to_send = String()
-        data_to_send.data = text
-        self.pub.publish(data_to_send)
         print("[OUT]:",text)
 
 def main():
@@ -71,8 +53,7 @@ def main():
     rospy.wait_for_service('dialogue_server')
     dialogue_service = rospy.ServiceProxy('dialogue_server', Dialogue)
 
-    pub = rospy.Publisher('bot_answer', String, queue_size=10)
-    terminal = TerminalInterface(pub)
+    terminal = TerminalInterface()
 
     while not rospy.is_shutdown():
         message = terminal.get_text()

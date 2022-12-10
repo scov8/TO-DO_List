@@ -30,62 +30,44 @@
 #     along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
 
-import rospy
-from std_msgs.msg import String
 from rasa_ros.srv import Dialogue, DialogueResponse
 
+import rospy
+import requests
 
-class TerminalInterface:
-    '''Class implementing a terminal i/o interface. 
 
-    Methods
-    - get_text(self): return a string read from the terminal
-    - set_text(self, text): prints the text on the terminal
+def handle_service(req):
+    input_text = req.input_text   
 
-    '''
+    # Get answer        
+    get_answer_url = 'http://localhost:5002/webhooks/rest/webhook'
+    message = {
+        "sender": 'bot',
+        "message": input_text
+    }
 
-    """def get_text(self):
-        return input("[IN]:  ") 
+    r = requests.post(get_answer_url, json=message)
+    response = DialogueResponse()
+    response.answer = ""
+    for i in r.json():
+        response.answer += i['text'] + ' ' if 'text' in i else ''
 
-    def set_text(self,text):
-        print("[OUT]:",text)"""
-
-    def __init__(self, pub):
-        self.pub = pub
-
-    def get_text(self):
-        print("Waiting")
-        txt = rospy.wait_for_message("voice_txt", String)
-        print("[IN]: ", txt.data)
-        return str(txt.data)
-        # return input("[IN]: ")
-
-    def set_text(self,text):
-        data_to_send = String()
-        data_to_send.data = text
-        self.pub.publish(data_to_send)
-        print("[OUT]:",text)
+    return response
 
 def main():
-    rospy.init_node('writing')
-    rospy.wait_for_service('dialogue_server')
-    dialogue_service = rospy.ServiceProxy('dialogue_server', Dialogue)
 
-    pub = rospy.Publisher('bot_answer', String, queue_size=10)
-    terminal = TerminalInterface(pub)
+    # Server Initialization
+    rospy.init_node('dialogue_service')
 
-    while not rospy.is_shutdown():
-        message = terminal.get_text()
-        if message == 'exit': 
-            break
-        try:
-            bot_answer = dialogue_service(message)
-            terminal.set_text(bot_answer.answer)
-        except rospy.ServiceException as e:
-            print("Service call failed: %s"%e)
+    s = rospy.Service('dialogue_server',
+                        Dialogue, handle_service)
+
+    rospy.logdebug('Dialogue server READY.')
+    rospy.spin()
+
 
 if __name__ == '__main__':
     try: 
         main()
-    except rospy.ROSInterruptException:
+    except rospy.ROSInterruptException as e:
         pass
