@@ -1,0 +1,8 @@
+prefix=/media/psf/TO-DO_List/ros_chatbot/chatbot_ws/install
+
+Name: ros_audio_pkg
+Description: Description of ros_audio_pkg
+Version: 0.0.0
+Cflags: 
+Libs: -L${prefix}/lib 
+Requires: 
