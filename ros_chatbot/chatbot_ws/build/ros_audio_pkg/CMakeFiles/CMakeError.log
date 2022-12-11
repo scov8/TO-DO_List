@@ -1,21 +1,21 @@
 Performing C SOURCE FILE Test CMAKE_HAVE_LIBC_PTHREAD failed with the following output:
 Change Dir: /media/psf/TO-DO_List/ros_chatbot/chatbot_ws/build/ros_audio_pkg/CMakeFiles/CMakeTmp
 
-Run Build Command(s):/usr/bin/make cmTC_e6949/fast && /usr/bin/make -f CMakeFiles/cmTC_e6949.dir/build.make CMakeFiles/cmTC_e6949.dir/build
+Run Build Command(s):/usr/bin/make cmTC_8236b/fast && /usr/bin/make -f CMakeFiles/cmTC_8236b.dir/build.make CMakeFiles/cmTC_8236b.dir/build
 make[1]: Entering directory '/media/psf/TO-DO_List/ros_chatbot/chatbot_ws/build/ros_audio_pkg/CMakeFiles/CMakeTmp'
-Building C object CMakeFiles/cmTC_e6949.dir/src.c.o
-/usr/bin/cc   -DCMAKE_HAVE_LIBC_PTHREAD   -o CMakeFiles/cmTC_e6949.dir/src.c.o   -c /media/psf/TO-DO_List/ros_chatbot/chatbot_ws/build/ros_audio_pkg/CMakeFiles/CMakeTmp/src.c
-Linking C executable cmTC_e6949
-/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_e6949.dir/link.txt --verbose=1
-/usr/bin/cc  -DCMAKE_HAVE_LIBC_PTHREAD    -rdynamic CMakeFiles/cmTC_e6949.dir/src.c.o  -o cmTC_e6949 
-/usr/bin/ld: CMakeFiles/cmTC_e6949.dir/src.c.o: in function `main':
+Building C object CMakeFiles/cmTC_8236b.dir/src.c.o
+/usr/bin/cc   -DCMAKE_HAVE_LIBC_PTHREAD   -o CMakeFiles/cmTC_8236b.dir/src.c.o   -c /media/psf/TO-DO_List/ros_chatbot/chatbot_ws/build/ros_audio_pkg/CMakeFiles/CMakeTmp/src.c
+Linking C executable cmTC_8236b
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_8236b.dir/link.txt --verbose=1
+/usr/bin/cc  -DCMAKE_HAVE_LIBC_PTHREAD    -rdynamic CMakeFiles/cmTC_8236b.dir/src.c.o  -o cmTC_8236b 
+/usr/bin/ld: CMakeFiles/cmTC_8236b.dir/src.c.o: in function `main':
 src.c:(.text+0x46): undefined reference to `pthread_create'
 /usr/bin/ld: src.c:(.text+0x52): undefined reference to `pthread_detach'
 /usr/bin/ld: src.c:(.text+0x63): undefined reference to `pthread_join'
 collect2: error: ld returned 1 exit status
-make[1]: *** [CMakeFiles/cmTC_e6949.dir/build.make:87: cmTC_e6949] Error 1
+make[1]: *** [CMakeFiles/cmTC_8236b.dir/build.make:87: cmTC_8236b] Error 1
 make[1]: Leaving directory '/media/psf/TO-DO_List/ros_chatbot/chatbot_ws/build/ros_audio_pkg/CMakeFiles/CMakeTmp'
-make: *** [Makefile:121: cmTC_e6949/fast] Error 2
+make: *** [Makefile:121: cmTC_8236b/fast] Error 2
 
 
 Source file was:
@@ -41,18 +41,18 @@ int main(void)
 Determining if the function pthread_create exists in the pthreads failed with the following output:
 Change Dir: /media/psf/TO-DO_List/ros_chatbot/chatbot_ws/build/ros_audio_pkg/CMakeFiles/CMakeTmp
 
-Run Build Command(s):/usr/bin/make cmTC_670da/fast && /usr/bin/make -f CMakeFiles/cmTC_670da.dir/build.make CMakeFiles/cmTC_670da.dir/build
+Run Build Command(s):/usr/bin/make cmTC_624b5/fast && /usr/bin/make -f CMakeFiles/cmTC_624b5.dir/build.make CMakeFiles/cmTC_624b5.dir/build
 make[1]: Entering directory '/media/psf/TO-DO_List/ros_chatbot/chatbot_ws/build/ros_audio_pkg/CMakeFiles/CMakeTmp'
-Building C object CMakeFiles/cmTC_670da.dir/CheckFunctionExists.c.o
-/usr/bin/cc   -DCHECK_FUNCTION_EXISTS=pthread_create   -o CMakeFiles/cmTC_670da.dir/CheckFunctionExists.c.o   -c /usr/share/cmake-3.16/Modules/CheckFunctionExists.c
-Linking C executable cmTC_670da
-/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_670da.dir/link.txt --verbose=1
-/usr/bin/cc  -DCHECK_FUNCTION_EXISTS=pthread_create    -rdynamic CMakeFiles/cmTC_670da.dir/CheckFunctionExists.c.o  -o cmTC_670da  -lpthreads 
+Building C object CMakeFiles/cmTC_624b5.dir/CheckFunctionExists.c.o
+/usr/bin/cc   -DCHECK_FUNCTION_EXISTS=pthread_create   -o CMakeFiles/cmTC_624b5.dir/CheckFunctionExists.c.o   -c /usr/share/cmake-3.16/Modules/CheckFunctionExists.c
+Linking C executable cmTC_624b5
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_624b5.dir/link.txt --verbose=1
+/usr/bin/cc  -DCHECK_FUNCTION_EXISTS=pthread_create    -rdynamic CMakeFiles/cmTC_624b5.dir/CheckFunctionExists.c.o  -o cmTC_624b5  -lpthreads 
 /usr/bin/ld: cannot find -lpthreads
 collect2: error: ld returned 1 exit status
-make[1]: *** [CMakeFiles/cmTC_670da.dir/build.make:87: cmTC_670da] Error 1
+make[1]: *** [CMakeFiles/cmTC_624b5.dir/build.make:87: cmTC_624b5] Error 1
 make[1]: Leaving directory '/media/psf/TO-DO_List/ros_chatbot/chatbot_ws/build/ros_audio_pkg/CMakeFiles/CMakeTmp'
-make: *** [Makefile:121: cmTC_670da/fast] Error 2
+make: *** [Makefile:121: cmTC_624b5/fast] Error 2
 
 
 

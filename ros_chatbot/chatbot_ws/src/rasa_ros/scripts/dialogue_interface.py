@@ -31,7 +31,7 @@
 
 
 import rospy
-from std_msgs.msg import String
+from std_msgs.msg import String, Bool
 from rasa_ros.srv import Dialogue, DialogueResponse
 
 
@@ -43,38 +43,67 @@ class TerminalInterface:
     - set_text(self, text): prints the text on the terminal
 
     '''
-
-    """def get_text(self):
-        return input("[IN]:  ") 
-
-    def set_text(self,text):
-        print("[OUT]:",text)"""
-
-    def __init__(self, pub):
+    def __init__(self, pub, sub_rec, sub_det, new_person):
         self.pub = pub
+        self.sub_rec = sub_rec
+        self.sub_det = sub_det
+        self.name = None
+        self.new_person = new_person
 
     def get_text(self):
-        print("Waiting")
+        print("Waiting the speech")
         txt = rospy.wait_for_message("voice_txt", String)
         print("[IN]: ", txt.data)
         return str(txt.data)
-        # return input("[IN]: ")
 
     def set_text(self,text):
         data_to_send = String()
         data_to_send.data = text
         self.pub.publish(data_to_send)
-        print("[OUT]:",text)
+        print("[OUT]:", text)
+    
+    def set_name(self):
+        name = rospy.wait_for_message("recognition", String)
+        msg = String()
+        if name.data != '000#@':
+            self.name = name.data
+            # msg.data = 'Hi ' + name + ' happy to see you again!'
+            self.pub.publish(name)
+            print("[OUT]: Hi", name.data)
+        else:
+            self.name = None
+            msg.data = 'I do not recognize you. Please, can tell me your name?'
+            self.pub.publish(msg)
+            self.new_person.publish(self.get_text())
+            print("[OUT]:", msg.data)
+        print('END STARTUP')
+    
+    def there_is_someone(self):
+        global START_UP
+        print('IN THERE IS SOMEONE')
+        detect  = rospy.wait_for_message("detection", Bool)
+        if not START_UP:
+            START_UP = True 
+        return detect.data
 
+START_UP = True
 def main():
+    global START_UP
     rospy.init_node('writing')
     rospy.wait_for_service('dialogue_server')
     dialogue_service = rospy.ServiceProxy('dialogue_server', Dialogue)
 
     pub = rospy.Publisher('bot_answer', String, queue_size=10)
-    terminal = TerminalInterface(pub)
+    sub_rec = rospy.Subscriber('recognition', String, queue_size=10)
+    sub_det = rospy.Subscriber('detection', Bool, queue_size=10)
+    new_person = rospy.Publisher('new_person', String, queue_size=10)
 
+    terminal = TerminalInterface(pub, sub_rec, sub_det, new_person)
+    
     while not rospy.is_shutdown():
+        if START_UP:
+            terminal.set_name()
+            START_UP = False
         message = terminal.get_text()
         if message == 'exit': 
             break
@@ -82,7 +111,9 @@ def main():
             bot_answer = dialogue_service(message)
             terminal.set_text(bot_answer.answer)
         except rospy.ServiceException as e:
-            print("Service call failed: %s"%e)
+            print("Service call failed: %s" % e)
+        
+        terminal.there_is_someone()
 
 if __name__ == '__main__':
     try: 
