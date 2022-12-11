@@ -47,11 +47,10 @@ class TerminalInterface:
         self.pub = pub
         self.sub_rec = sub_rec
         self.sub_det = sub_det
-        self.name = None
         self.new_person = new_person
 
     def get_text(self):
-        print("Waiting the speech")
+        print("Waiting the speech...")
         txt = rospy.wait_for_message("voice_txt", String)
         print("[IN]: ", txt.data)
         return str(txt.data)
@@ -66,16 +65,17 @@ class TerminalInterface:
         name = rospy.wait_for_message("recognition", String)
         msg = String()
         if name.data != '000#@':
-            self.name = name.data
-            # msg.data = 'Hi ' + name + ' happy to see you again!'
+            # self.name = name.data
             self.pub.publish(name)
-            print("[OUT]: Hi", name.data)
         else:
-            self.name = None
+            # self.name = None
             msg.data = 'I do not recognize you. Please, can tell me your name?'
             self.pub.publish(msg)
-            self.new_person.publish(self.get_text())
             print("[OUT]:", msg.data)
+            name = String(self.get_text())
+            self.new_person.publish(name)
+            # aspetta il rilascio del mutex
+        print("[OUT]: Hi", name.data)
         print('END STARTUP')
     
     def there_is_someone(self):
@@ -94,9 +94,10 @@ def main():
     dialogue_service = rospy.ServiceProxy('dialogue_server', Dialogue)
 
     pub = rospy.Publisher('bot_answer', String, queue_size=10)
+    new_person = rospy.Publisher('new_person', String, queue_size=10)
+
     sub_rec = rospy.Subscriber('recognition', String, queue_size=10)
     sub_det = rospy.Subscriber('detection', Bool, queue_size=10)
-    new_person = rospy.Publisher('new_person', String, queue_size=10)
 
     terminal = TerminalInterface(pub, sub_rec, sub_det, new_person)
     

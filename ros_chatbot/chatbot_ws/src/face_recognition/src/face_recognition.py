@@ -41,24 +41,26 @@ class Face_Recognition():
 
     def add_training_data(self, bbox):
         print("In training data")
+        self.there_is_someone(bbox)
         tmp = rospy.wait_for_message("new_person", String)
-        print("Cosa arriva a sto cazzzoooo "+tmp)
+        print(tmp.data)
         user = tmp.data
         # user = input("Enter the name of the person \n")
         id = self.people_dict.get(user)
         max = len(self.people_dict)
         if id is None:
             id = self.people_dict[user] =  max + 1
-        if not os.path.exists("dataset/training/" + str(id)):
-            os.makedirs("dataset/training/" + str(id))
+        if not os.path.exists(self.dataset_path + "dataset/training/" + str(id)):
+            os.makedirs(self.dataset_path + "dataset/training/" + str(id))
         # Check success
         if not self._webcam.isOpened():
             raise Exception("Could not open video device")
         # Read picture. ret === True on success
         for i in range(20):
+            print(i)
             frame = self._webcam.read()[1]
             face = self.get_face_jpg(bbox, frame)[0]
-            cv2.imwrite("dataset/training/"+ str(id) + "/image" + str(random.randint(1, 1000)) + str(i) + ".jpg", face)
+            cv2.imwrite(self.dataset_path + "dataset/training/"+ str(id) + "/image" + str(random.randint(1, 1000)) + str(i) + ".jpg", face)
             sleep(0.2)
 
         with open('dict.pkl', 'wb') as f:
@@ -205,7 +207,7 @@ class Face_Recognition():
                     print('Name', person)
                     while(self.there_is_someone(bboxes)):
                         bboxes = self.get_face_box(frame)[1]
-                        sleep(0.5)
+                        print(self.there_is_someone(bboxes))
             else:
                 self.there_is_someone(bboxes)
                 self._pub_rec.publish(String('000#@'))
