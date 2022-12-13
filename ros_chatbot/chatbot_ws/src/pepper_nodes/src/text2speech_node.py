@@ -15,8 +15,8 @@ class Text2SpeechNode:
     def __init__(self, ip, port):
         self.ip = ip
         self.port = port
-        """self.session = Session(ip, port)
-        self.tts = self.session.get_service("ALTextToSpeech")"""
+        self.session = Session(ip, port)
+        self.tts = self.session.get_service("ALTextToSpeech")
      
     '''
     Rececives a Text2Speech message and call the ALTextToSpeech service.
@@ -24,14 +24,12 @@ class Text2SpeechNode:
     '''
     def say(self, msg):
         print(msg)
-        """
         try:
             self.tts.say(msg.speech)
         except:
             self.session.reconnect()
             self.tts = self.session.get_service("ALTextToSpeech")
             self.tts.say(msg.speech)
-        """
         return "ACK"
         
     

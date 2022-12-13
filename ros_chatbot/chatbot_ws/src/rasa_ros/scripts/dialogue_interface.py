@@ -62,28 +62,34 @@ class TerminalInterface:
         print("[OUT]:", text)
     
     def set_name(self):
+        # print('START STARTUP')
         name = rospy.wait_for_message("recognition", String)
         msg = String()
-        if name.data != '000#@':
+        if name.data != 'unkn0wn':
             # self.name = name.data
             self.pub.publish(name)
-        else:
+        elif self.there_is_someone() and name.data == 'unkn0wn':
             # self.name = None
             msg.data = 'I do not recognize you. Please, can tell me your name?'
             self.pub.publish(msg)
             print("[OUT]:", msg.data)
             name = String(self.get_text())
             self.new_person.publish(name)
-            # aspetta il rilascio del mutex
-        print("[OUT]: Hi", name.data)
-        print('END STARTUP')
+        else:
+            print("nessuno")
+        # print('END STARTUP')
+        return str(name.data)
+        # print("[OUT]: Hi", name.data)
     
     def there_is_someone(self):
         global START_UP
-        print('IN THERE IS SOMEONE')
+        # print('IN THERE IS SOMEONE')
+        #dead
         detect  = rospy.wait_for_message("detection", Bool)
-        if not START_UP:
-            START_UP = True 
+        if not START_UP and not detect.data:
+            # print('inside if THERE IS SOMEONE')
+            START_UP = True
+        # print('END THERE IS SOMEONE')
         return detect.data
 
 START_UP = True
@@ -103,7 +109,9 @@ def main():
     
     while not rospy.is_shutdown():
         if START_UP:
-            terminal.set_name()
+            name = terminal.set_name()
+            bot_answer = dialogue_service(name)
+            terminal.set_text(bot_answer.answer)
             START_UP = False
         message = terminal.get_text()
         if message == 'exit': 

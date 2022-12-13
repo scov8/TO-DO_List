@@ -38,11 +38,11 @@ import requests
 
 def handle_service(req):
     input_text = req.input_text   
-
-    # Get answer        
+    print('INPUT', input_text)
+    # Get answer
     get_answer_url = 'http://localhost:5002/webhooks/rest/webhook'
     message = {
-        "sender": 'bot',
+        "sender": 'bot', # prima era '1' # usato per gestire i multiutenti
         "message": input_text
     }
 
@@ -51,11 +51,10 @@ def handle_service(req):
     response.answer = ""
     for i in r.json():
         response.answer += i['text'] + ' ' if 'text' in i else ''
-
+    print('RESPONSE', response.answer)
     return response
 
 def main():
-
     # Server Initialization
     rospy.init_node('dialogue_service')
 

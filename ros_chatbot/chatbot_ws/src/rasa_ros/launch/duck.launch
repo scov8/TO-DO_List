@@ -1,4 +1,0 @@
-
-<launch>
-   <node pkg="rasa_ros" name="rasa_duckling" type="rasa_duckling.sh" output="screen"/>
-</launch>

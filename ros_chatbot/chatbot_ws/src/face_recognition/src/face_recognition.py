@@ -24,7 +24,7 @@ class Face_Recognition():
         self._sub = rospy.Subscriber('new_person', String, queue_size=10)
         self._pub_rec = rospy.Publisher('recognition', String, queue_size=10)
         self._pub_det = rospy.Publisher('detection', Bool, queue_size=10)
-        self._webcam = cv2.VideoCapture(0)
+        self._webcam = cv2.VideoCapture(2) #0 is mac
         self.means = means
         self.input_size = input_size
         self.dataset_path = "/media/psf/TO-DO_List/ros_chatbot/chatbot_ws/src/face_recognition/src/"
@@ -168,50 +168,58 @@ class Face_Recognition():
 
     def there_is_someone(self, bboxes):
         x = Bool()
-        x.data = y = True if enumerate(bboxes) != 0 else False
+        i=0
+        for i, bbox in enumerate(bboxes):
+            i=i+1
+        x.data = y = True if i >= 1 else False
         self._pub_det.publish(x)
         return y
 
     def run(self):
         results = []
-        old_person, person = None, None
+        old_person, person = None, 'unkn0wn'
         while True:
             # Read frame 
             frame = self._webcam.read()[1]
             frameFace, bboxes = self.get_face_box(frame)     # Get face
             ret = 0
-            for i, bbox in enumerate(bboxes):
-                face, w, h = self.get_face_jpg(bbox, frame)
-                # blob = np.array([resized_face.astype(float)-MEANS])
-                # Predict
-                distance_calc = self.evaluate_distance(self.model, face, self.dataset_feature)
-                results.append(distance_calc[0])
-                if len(results)==10:
-                    ret = self.counter(results)
-                    print(ret)
-                    results.clear()
-                    print("Prima dell'if ret == 0'")
-                    if ret == 0:
-                        print("Prima della chiamata a training data")
-                        self.add_training_data(bbox)
-                        print("Dopo della chiamata a training data")
-                    print("Dopo dell'if ret == 0'")
-                # Draw
-                cv2.putText(frameFace, str(distance_calc[0]), (bbox[0]+w//20, bbox[1]+h//20), cv2.FONT_HERSHEY_SIMPLEX, 0.8, (0, 255, 0), 2, cv2.LINE_AA)
-            # pubblica sul topic il nome dell'utente riconosciuto
-            if ret != 0:
-                person = list(self.people_dict.keys())[list(self.people_dict.values()).index(ret)]
-                if(person != old_person):
-                    self._pub_rec.publish(String(person))
+            if self.there_is_someone(bboxes):
+                for i, bbox in enumerate(bboxes):
+                    face, w, h = self.get_face_jpg(bbox, frame)
+                    # blob = np.array([resized_face.astype(float)-MEANS])
+                    # Predict
+                    distance_calc = self.evaluate_distance(self.model, face, self.dataset_feature)
+                    results.append(distance_calc[0])
+                    if len(results)==10:
+                        ret = self.counter(results)
+                        #print(ret)
+                        results.clear()
+                        #print("Prima dell'if ret == 0'")
+                        if ret == 0:
+                            #print("Prima della chiamata a training data")
+                            self.add_training_data(bbox)
+                            #print("Dopo della chiamata a training data")
+                        #print("Dopo dell'if ret == 0'")
+                    # Draw
+                    cv2.putText(frameFace, str(distance_calc[0]), (bbox[0]+w//20, bbox[1]+h//20), cv2.FONT_HERSHEY_SIMPLEX, 0.8, (0, 255, 0), 2, cv2.LINE_AA)
+                # pubblica sul topic il nome dell'utente riconosciuto
+                if ret != 0:
+                    person = list(self.people_dict.keys())[list(self.people_dict.values()).index(ret)]
+                    if(person != old_person):
+                        self._pub_rec.publish(String(person))
+                        old_person = person
+                        #print('Name', person)
+                        while(self.there_is_someone(bboxes)):
+                            frame = self._webcam.read()[1]
+                            frameFace,bboxes = self.get_face_box(frame)
+                            print(self.there_is_someone(bboxes))
+                            cv2.imshow("Demo", frameFace)
+                            cv2.waitKey(1)
+                else:
+                    self.there_is_someone(bboxes)
+                    #print('NAMEEEEE mocc')
+                    self._pub_rec.publish(String('unkn0wn'))
                     old_person = person
-                    print('Name', person)
-                    while(self.there_is_someone(bboxes)):
-                        bboxes = self.get_face_box(frame)[1]
-                        print(self.there_is_someone(bboxes))
-            else:
-                self.there_is_someone(bboxes)
-                self._pub_rec.publish(String('000#@'))
-                old_person = person
 
             cv2.imshow("Demo", frameFace)
             cv2.waitKey(1)
