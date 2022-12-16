@@ -24,7 +24,7 @@ class Face_Recognition():
         self._sub = rospy.Subscriber('new_person', String, queue_size=10)
         self._pub_rec = rospy.Publisher('recognition', String, queue_size=10)
         self._pub_det = rospy.Publisher('detection', Bool, queue_size=10)
-        self._webcam = cv2.VideoCapture(2) #0 is mac
+        self._webcam = cv2.VideoCapture(0) #2 is pepper
         self.means = means
         self.input_size = input_size
         self.dataset_path = "/media/psf/TO-DO_List/ros_chatbot/chatbot_ws/src/face_recognition/src/"
