@@ -53,7 +53,15 @@ class TerminalInterface:
 
     def get_text(self):
         print("Waiting the speech...")
-        txt = rospy.wait_for_message("voice_txt", String)
+        txt = None
+        while txt is None:
+            print("Aspettando messaggio")
+            try:
+                txt = rospy.wait_for_message("voice_txt", String, timeout=1)
+            except:
+                pass
+            if not self.there_is_someone():
+                return "noPerson"
         print("[IN]: ", txt.data)
         return str(txt.data)
 
@@ -93,7 +101,9 @@ class TerminalInterface:
         global START_UP
         # print('IN THERE IS SOMEONE')
         #dead
+        print("prima detection")
         detect  = rospy.wait_for_message("detection", Bool)
+        print("dopo detection")
         if not START_UP and not detect.data:
             # print('inside if THERE IS SOMEONE')
             START_UP = True
@@ -116,8 +126,8 @@ def main():
 
     pub = rospy.Publisher('bot_answer', String, queue_size=10)
     new_person = rospy.Publisher('new_person', String, queue_size=10)
-    sub_rec = rospy.Subscriber('recognition', String, queue_size=10)
-    sub_det = rospy.Subscriber('detection', Bool, queue_size=10)
+    sub_rec = rospy.Subscriber('recognition', String, queue_size=1)
+    sub_det = rospy.Subscriber('detection', Bool, queue_size=1)
 
     terminal = TerminalInterface(pub, sub_rec, sub_det, new_person) # passare ,tablet_execute_js,tablet_load_url
     
@@ -139,13 +149,14 @@ def main():
         message = terminal.get_text()
         if message == 'exit': 
             break
-        try:
-            bot_answer = dialogue_service(message)
-            terminal.set_text(bot_answer.answer)
-        except rospy.ServiceException as e:
-            print("Service call failed: %s" % e)
-        
-        terminal.there_is_someone()
+        if message != "noPerson":
+            try:
+                bot_answer = dialogue_service(message)
+                terminal.set_text(bot_answer.answer)
+            except rospy.ServiceException as e:
+                print("Service call failed: %s" % e)
+            
+            terminal.there_is_someone()
 
 if __name__ == '__main__':
     try: 

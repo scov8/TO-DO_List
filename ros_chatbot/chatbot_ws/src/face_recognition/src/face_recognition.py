@@ -40,9 +40,15 @@ class Face_Recognition():
 
 
     def add_training_data(self, bbox):
-        self._pub_rec.publish(String('unkn0wn'))
-        self.there_is_someone(bbox)
-        tmp = rospy.wait_for_message("new_person", String)
+        print("in trainig")
+        tmp = None
+        while tmp is None:
+            self._pub_rec.publish(String('unkn0wn'))
+            self.there_is_someone(bbox)
+            try:
+                tmp = rospy.wait_for_message("new_person", String, timeout=1)
+            except:
+                pass
         user = tmp.data
         # user = input("Enter the name of the person \n")
         id = self.people_dict.get(user)
@@ -203,6 +209,7 @@ class Face_Recognition():
                 self.add_training_data(bbox)
             else:
                 person = list(self.people_dict.keys())[list(self.people_dict.values()).index(ret)]
+                print(person)
                 self._pub_rec.publish(String(person))
                 #print('Name', person)
                 while(self.there_is_someone(bboxes)):
