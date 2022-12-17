@@ -218,7 +218,7 @@ class AddToDb(Action):
         otherwise return an empty list
         """
         global UPDATE
-        conn = sqlite3.connect('../chatbot.db')
+        conn = sqlite3.connect('../sito/chatbot.db')
         print("Connection to db:", conn)
 
         user = tracker.get_slot("PERSON")
@@ -246,7 +246,7 @@ class AddReminder(Action):
         return "action_add_reminder"
 
     def run(self, dispatcher, tracker, domain):
-        conn = sqlite3.connect('../chatbot.db')
+        conn = sqlite3.connect('../sito/chatbot.db')
         print("Connection to db:", conn)
 
         user = tracker.get_slot("PERSON")
@@ -273,7 +273,7 @@ class ViewList(Action):
         return "action_view_list"
 
     def run(self, dispatcher, tracker, domain):
-        conn = sqlite3.connect('../chatbot.db')
+        conn = sqlite3.connect('../sito/chatbot.db')
         print("Connection to db:", conn)
 
         user = tracker.get_slot("PERSON")
@@ -318,7 +318,7 @@ class DeleteAll(Action):
         return "action_delete_all"
 
     def run(self, dispatcher, tracker, domain):
-        conn = sqlite3.connect('../chatbot.db')
+        conn = sqlite3.connect('../sito/chatbot.db')
         print("Connection to db:", conn)
 
         user = tracker.get_slot("PERSON")
