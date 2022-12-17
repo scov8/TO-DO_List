@@ -22,8 +22,8 @@ class Face_Recognition():
     def __init__(self, means=np.array([131.0912, 103.8827, 91.4953]), input_size=(224,224)) -> None:
         rospy.init_node('face_recognition', anonymous=True)
         self._sub = rospy.Subscriber('new_person', String, queue_size=10)
-        self._pub_rec = rospy.Publisher('recognition', String, queue_size=10)
-        self._pub_det = rospy.Publisher('detection', Bool, queue_size=10)
+        self._pub_rec = rospy.Publisher('recognition', String, queue_size=1)
+        self._pub_det = rospy.Publisher('detection', Bool, queue_size=1)
         self._webcam = cv2.VideoCapture(0) #2 is pepper
         self.means = means
         self.input_size = input_size
@@ -175,7 +175,7 @@ class Face_Recognition():
 
     def run(self):
         results = []
-        old_person, person = None, 'unkn0wn'
+        person = 'unkn0wn'
         while True:
             # Read frame
             ii=0
@@ -199,22 +199,20 @@ class Face_Recognition():
             results.clear()
             if ret == 0:
                 self._pub_rec.publish(String('unkn0wn'))
-                old_person = person
                 self.there_is_someone(bboxes)
                 self.add_training_data(bbox)
             else:
                 person = list(self.people_dict.keys())[list(self.people_dict.values()).index(ret)]
-                if(person != old_person):
+                self._pub_rec.publish(String(person))
+                #print('Name', person)
+                while(self.there_is_someone(bboxes)):
+                    frame = self._webcam.read()[1]
+                    frameFace,bboxes = self.get_face_box(frame)
                     self._pub_rec.publish(String(person))
-                    old_person = person
-                    #print('Name', person)
-                    while(self.there_is_someone(bboxes)):
-                        frame = self._webcam.read()[1]
-                        frameFace,bboxes = self.get_face_box(frame)
-                        print(self.there_is_someone(bboxes))
-                        cv2.putText(frameFace, str(distance_calc[0]), (bbox[0]+w//20, bbox[1]+h//20), cv2.FONT_HERSHEY_SIMPLEX, 0.8, (0, 255, 0), 2, cv2.LINE_AA)
-                        cv2.imshow("Demo", frameFace)
-                        cv2.waitKey(1)
+                    print(self.there_is_someone(bboxes))
+                    cv2.putText(frameFace, str(distance_calc[0]), (bbox[0]+w//20, bbox[1]+h//20), cv2.FONT_HERSHEY_SIMPLEX, 0.8, (0, 255, 0), 2, cv2.LINE_AA)
+                    cv2.imshow("Demo", frameFace)
+                    cv2.waitKey(1)
 
 r = Face_Recognition()
 r.run()

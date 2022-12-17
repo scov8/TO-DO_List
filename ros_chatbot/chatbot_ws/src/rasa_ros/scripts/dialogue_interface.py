@@ -48,6 +48,8 @@ class TerminalInterface:
         self.sub_rec = sub_rec
         self.sub_det = sub_det
         self.new_person = new_person
+        #self.tablet_execute_js = tablet_execute_js
+        #self.tablet_load_url = tablet_load_url
 
     def get_text(self):
         print("Waiting the speech...")
@@ -83,9 +85,9 @@ class TerminalInterface:
             print("[OUT]:", msg.data)
             name = String(self.get_text())
             self.new_person.publish(name)
-        # print('END STARTUP')
+        #jsFunc ="goToUser('"+ str(name.data) +"')"
+        #self.tablet_execute_js(jsFunc)
         return str(name.data)
-        # print("[OUT]: Hi", name.data)
     
     def there_is_someone(self):
         global START_UP
@@ -100,21 +102,31 @@ class TerminalInterface:
 
 START_UP = True
 def main():
-    print("inizio")
     global START_UP
     rospy.init_node('writing')
     rospy.wait_for_service('dialogue_server')
     dialogue_service = rospy.ServiceProxy('dialogue_server', Dialogue)
 
+    """
+    rospy.wait_for_service('execute_js')
+    tablet_execute_js = rospy.ServiceProxy('execute_js', Dialogue)
+    rospy.wait_for_service('load_url')
+    tablet_load_url = rospy.ServiceProxy('load_url', Dialogue)
+    """
+
     pub = rospy.Publisher('bot_answer', String, queue_size=10)
     new_person = rospy.Publisher('new_person', String, queue_size=10)
-    print("prima di sub")
     sub_rec = rospy.Subscriber('recognition', String, queue_size=10)
     sub_det = rospy.Subscriber('detection', Bool, queue_size=10)
 
-    terminal = TerminalInterface(pub, sub_rec, sub_det, new_person)
+    terminal = TerminalInterface(pub, sub_rec, sub_det, new_person) # passare ,tablet_execute_js,tablet_load_url
     
+    msg = String()
+    msg.data = "Hello world!"
+    pub.publish(msg)
+
     print("prima del while")
+    #tablet_load_url("google.com")
     while not rospy.is_shutdown():
         print("dentro al while")
         if START_UP:
