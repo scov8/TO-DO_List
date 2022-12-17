@@ -63,11 +63,15 @@ class TerminalInterface:
     
     def set_name(self):
         # print('START STARTUP')
+        msg = String()
+        msg.data = "There is somebody?"
+        self.pub.publish(msg)
         name = rospy.wait_for_message("recognition", String)
         msg = String()
         if name.data != 'unkn0wn':
-            # self.name = name.data
-            self.pub.publish(name)
+            msg.data = 'We already know! ' + name.data 
+            #self.pub.publish(name)
+            self.pub.publish(msg)
         elif self.there_is_someone() and name.data == 'unkn0wn':
             # self.name = None
             msg.data = 'I do not recognize you. Please, can tell me your name?'
@@ -76,7 +80,8 @@ class TerminalInterface:
             name = String(self.get_text())
             self.new_person.publish(name)
         else:
-            print("nessuno")
+            msg.data = "Oh damn, I can't see nobody"
+            self.pub.publish(msg)
         # print('END STARTUP')
         return str(name.data)
         # print("[OUT]: Hi", name.data)

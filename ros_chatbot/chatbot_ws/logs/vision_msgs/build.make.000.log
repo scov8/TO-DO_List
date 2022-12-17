@@ -1,11 +1,11 @@
-[35m[1mScanning dependencies of target _vision_msgs_generate_messages_check_deps_Classification2D[0m
 [35m[1mScanning dependencies of target _vision_msgs_generate_messages_check_deps_VisionInfo[0m
+[35m[1mScanning dependencies of target _vision_msgs_generate_messages_check_deps_Classification2D[0m
 [  0%] Built target _vision_msgs_generate_messages_check_deps_Classification2D
 [  0%] Built target _vision_msgs_generate_messages_check_deps_VisionInfo
-[35m[1mScanning dependencies of target _vision_msgs_generate_messages_check_deps_ObjectHypothesisWithPose[0m
 [35m[1mScanning dependencies of target _vision_msgs_generate_messages_check_deps_Detection3D[0m
-[  0%] Built target _vision_msgs_generate_messages_check_deps_ObjectHypothesisWithPose
+[35m[1mScanning dependencies of target _vision_msgs_generate_messages_check_deps_ObjectHypothesisWithPose[0m
 [  0%] Built target _vision_msgs_generate_messages_check_deps_Detection3D
+[  0%] Built target _vision_msgs_generate_messages_check_deps_ObjectHypothesisWithPose
 [35m[1mScanning dependencies of target _vision_msgs_generate_messages_check_deps_Detection3DArray[0m
 [35m[1mScanning dependencies of target _vision_msgs_generate_messages_check_deps_Detection2D[0m
 [  0%] Built target _vision_msgs_generate_messages_check_deps_Detection3DArray
@@ -38,16 +38,16 @@
 [  0%] Built target sensor_msgs_generate_messages_py
 [35m[1mScanning dependencies of target sensor_msgs_generate_messages_cpp[0m
 [35m[1mScanning dependencies of target std_msgs_generate_messages_cpp[0m
-[  0%] Built target sensor_msgs_generate_messages_cpp
 [  0%] Built target std_msgs_generate_messages_cpp
-[35m[1mScanning dependencies of target geometry_msgs_generate_messages_cpp[0m
+[  0%] Built target sensor_msgs_generate_messages_cpp
 [35m[1mScanning dependencies of target sensor_msgs_generate_messages_eus[0m
-[  0%] Built target geometry_msgs_generate_messages_cpp
+[35m[1mScanning dependencies of target geometry_msgs_generate_messages_cpp[0m
 [  0%] Built target sensor_msgs_generate_messages_eus
-[35m[1mScanning dependencies of target std_msgs_generate_messages_eus[0m
+[  0%] Built target geometry_msgs_generate_messages_cpp
 [35m[1mScanning dependencies of target geometry_msgs_generate_messages_eus[0m
-[  0%] Built target std_msgs_generate_messages_eus
+[35m[1mScanning dependencies of target std_msgs_generate_messages_eus[0m
 [  0%] Built target geometry_msgs_generate_messages_eus
+[  0%] Built target std_msgs_generate_messages_eus
 [35m[1mScanning dependencies of target std_msgs_generate_messages_lisp[0m
 [35m[1mScanning dependencies of target geometry_msgs_generate_messages_lisp[0m
 [  0%] Built target std_msgs_generate_messages_lisp
@@ -73,12 +73,12 @@
 [ 22%] [34m[1mGenerating Javascript code from vision_msgs/Detection3D.msg[0m
 [ 23%] [34m[1mGenerating Python from MSG vision_msgs/Classification3D[0m
 [ 25%] [34m[1mGenerating Javascript code from vision_msgs/ObjectHypothesis.msg[0m
-[ 26%] [34m[1mGenerating Python from MSG vision_msgs/Detection2DArray[0m
-[ 28%] [34m[1mGenerating Javascript code from vision_msgs/ObjectHypothesisWithPose.msg[0m
+[ 26%] [34m[1mGenerating Javascript code from vision_msgs/ObjectHypothesisWithPose.msg[0m
+[ 28%] [34m[1mGenerating Python from MSG vision_msgs/Detection2DArray[0m
 [ 29%] [34m[1mGenerating Javascript code from vision_msgs/VisionInfo.msg[0m
 [ 29%] Built target vision_msgs_generate_messages_nodejs
-[ 31%] [34m[1mGenerating Python from MSG vision_msgs/Detection2D[0m
 [35m[1mScanning dependencies of target vision_msgs_generate_messages_cpp[0m
+[ 31%] [34m[1mGenerating Python from MSG vision_msgs/Detection2D[0m
 [ 32%] [34m[1mGenerating C++ code from vision_msgs/BoundingBox2D.msg[0m
 [ 34%] [34m[1mGenerating Python from MSG vision_msgs/Detection3DArray[0m
 [ 35%] [34m[1mGenerating C++ code from vision_msgs/BoundingBox2DArray.msg[0m
@@ -94,8 +94,8 @@
 [ 50%] [34m[1mGenerating C++ code from vision_msgs/Detection2DArray.msg[0m
 [ 50%] Built target vision_msgs_generate_messages_py
 [35m[1mScanning dependencies of target vision_msgs_generate_messages_eus[0m
-[ 52%] [34m[1mGenerating EusLisp code from vision_msgs/BoundingBox2D.msg[0m
-[ 53%] [34m[1mGenerating C++ code from vision_msgs/Detection2D.msg[0m
+[ 52%] [34m[1mGenerating C++ code from vision_msgs/Detection2D.msg[0m
+[ 53%] [34m[1mGenerating EusLisp code from vision_msgs/BoundingBox2D.msg[0m
 [ 55%] [34m[1mGenerating EusLisp code from vision_msgs/BoundingBox2DArray.msg[0m
 [ 56%] [34m[1mGenerating C++ code from vision_msgs/Detection3DArray.msg[0m
 [ 58%] [34m[1mGenerating EusLisp code from vision_msgs/BoundingBox3D.msg[0m
@@ -110,11 +110,11 @@
 [ 71%] [34m[1mGenerating C++ code from vision_msgs/VisionInfo.msg[0m
 [ 73%] [34m[1mGenerating EusLisp code from vision_msgs/Detection3DArray.msg[0m
 [ 73%] Built target vision_msgs_generate_messages_cpp
-[ 74%] [34m[1mGenerating EusLisp code from vision_msgs/Detection3D.msg[0m
 [35m[1mScanning dependencies of target vision_msgs_generate_messages_lisp[0m
+[ 74%] [34m[1mGenerating EusLisp code from vision_msgs/Detection3D.msg[0m
 [ 76%] [34m[1mGenerating Lisp code from vision_msgs/BoundingBox2D.msg[0m
-[ 77%] [34m[1mGenerating EusLisp code from vision_msgs/ObjectHypothesis.msg[0m
-[ 79%] [34m[1mGenerating Lisp code from vision_msgs/BoundingBox2DArray.msg[0m
+[ 77%] [34m[1mGenerating Lisp code from vision_msgs/BoundingBox2DArray.msg[0m
+[ 79%] [34m[1mGenerating EusLisp code from vision_msgs/ObjectHypothesis.msg[0m
 [ 80%] [34m[1mGenerating Lisp code from vision_msgs/BoundingBox3D.msg[0m
 [ 82%] [34m[1mGenerating EusLisp code from vision_msgs/ObjectHypothesisWithPose.msg[0m
 [ 83%] [34m[1mGenerating Lisp code from vision_msgs/BoundingBox3DArray.msg[0m

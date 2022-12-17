@@ -1,6 +1,7 @@
 <launch>
     <arg name="node_start_delay" default="70.0" /> <!-- era 100 -->
     <node pkg="rasa_ros" name="rasa_duckling" type="rasa_duckling.sh" output="screen"/>
+    <node pkg="rasa_ros" name="rasa_webserver" type="rasa_webserver.sh" output="screen"/>
     <node pkg="rasa_ros" name="rasa_action" type="rasa_action.sh" output="screen"/>
     <node pkg="rasa_ros" name="rasa_server" type="rasa_server.sh" output="screen"/> 
     <node pkg="rasa_ros" name="dialogue_server" type="dialogue_server.py" output="screen" launch-prefix="bash -c 'sleep $(arg node_start_delay); $0 $@' "/>

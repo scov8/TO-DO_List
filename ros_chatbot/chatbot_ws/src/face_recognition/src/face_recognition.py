@@ -192,14 +192,9 @@ class Face_Recognition():
                     results.append(distance_calc[0])
                     if len(results)==10:
                         ret = self.counter(results)
-                        #print(ret)
                         results.clear()
-                        #print("Prima dell'if ret == 0'")
                         if ret == 0:
-                            #print("Prima della chiamata a training data")
                             self.add_training_data(bbox)
-                            #print("Dopo della chiamata a training data")
-                        #print("Dopo dell'if ret == 0'")
                     # Draw
                     cv2.putText(frameFace, str(distance_calc[0]), (bbox[0]+w//20, bbox[1]+h//20), cv2.FONT_HERSHEY_SIMPLEX, 0.8, (0, 255, 0), 2, cv2.LINE_AA)
                 # pubblica sul topic il nome dell'utente riconosciuto
@@ -213,11 +208,11 @@ class Face_Recognition():
                             frame = self._webcam.read()[1]
                             frameFace,bboxes = self.get_face_box(frame)
                             print(self.there_is_someone(bboxes))
+                            cv2.putText(frameFace, str(distance_calc[0]), (bbox[0]+w//20, bbox[1]+h//20), cv2.FONT_HERSHEY_SIMPLEX, 0.8, (0, 255, 0), 2, cv2.LINE_AA)
                             cv2.imshow("Demo", frameFace)
                             cv2.waitKey(1)
                 else:
                     self.there_is_someone(bboxes)
-                    #print('NAMEEEEE mocc')
                     self._pub_rec.publish(String('unkn0wn'))
                     old_person = person
 
