@@ -31,19 +31,18 @@ class Face_Recognition():
         self.model = VGGFace(model='resnet50', include_top=False, pooling='avg')
         self.people_dict = dict()
         try:
-            with open('dict.pkl', 'rb') as f:
+            with open('./dizionario.pkl', 'rb') as f:
                 self.people_dict = pickle.load(f)
                 f.close()
         except:
-            raise 'EOF exception'
+            print('EOF exception')
         self.dataset_feature = self.train_feature(self.model)
 
 
     def add_training_data(self, bbox):
-        print("In training data")
+        self._pub_rec.publish(String('unkn0wn'))
         self.there_is_someone(bbox)
         tmp = rospy.wait_for_message("new_person", String)
-        print(tmp.data)
         user = tmp.data
         # user = input("Enter the name of the person \n")
         id = self.people_dict.get(user)
@@ -57,13 +56,12 @@ class Face_Recognition():
             raise Exception("Could not open video device")
         # Read picture. ret === True on success
         for i in range(20):
-            print(i)
             frame = self._webcam.read()[1]
             face = self.get_face_jpg(bbox, frame)[0]
             cv2.imwrite(self.dataset_path + "dataset/training/"+ str(id) + "/image" + str(random.randint(1, 1000)) + str(i) + ".jpg", face)
             sleep(0.2)
 
-        with open('dict.pkl', 'wb') as f:
+        with open('./dizionario.pkl', 'wb') as f:
             pickle.dump(self.people_dict, f)
             f.close()
 
@@ -149,7 +147,7 @@ class Face_Recognition():
         max_result = np.amax(count)
         max_result_index = np.where(count == max_result)
 
-        if(max_result > 7):
+        if(max_result > 3):
             return max_result_index[0][0]
         else:
             return 0
@@ -179,45 +177,44 @@ class Face_Recognition():
         results = []
         old_person, person = None, 'unkn0wn'
         while True:
-            # Read frame 
-            frame = self._webcam.read()[1]
-            frameFace, bboxes = self.get_face_box(frame)     # Get face
-            ret = 0
-            if self.there_is_someone(bboxes):
-                for i, bbox in enumerate(bboxes):
-                    face, w, h = self.get_face_jpg(bbox, frame)
-                    # blob = np.array([resized_face.astype(float)-MEANS])
-                    # Predict
-                    distance_calc = self.evaluate_distance(self.model, face, self.dataset_feature)
-                    results.append(distance_calc[0])
-                    if len(results)==10:
-                        ret = self.counter(results)
-                        results.clear()
-                        if ret == 0:
-                            self.add_training_data(bbox)
-                    # Draw
+            # Read frame
+            ii=0
+            while(ii<10):
+                frame = self._webcam.read()[1]
+                frameFace, bboxes = self.get_face_box(frame)     # Get face
+                ret = 0 # quando ci sta uno swap di persona 
+                if self.there_is_someone(bboxes):
+                    for i, bbox in enumerate(bboxes):
+                        face, w, h = self.get_face_jpg(bbox, frame)
+                        # blob = np.array([resized_face.astype(float)-MEANS])
+                        # Predict
+                        distance_calc = self.evaluate_distance(self.model, face, self.dataset_feature)
+                        results.append(distance_calc[0])
+                    ii=ii+1
                     cv2.putText(frameFace, str(distance_calc[0]), (bbox[0]+w//20, bbox[1]+h//20), cv2.FONT_HERSHEY_SIMPLEX, 0.8, (0, 255, 0), 2, cv2.LINE_AA)
-                # pubblica sul topic il nome dell'utente riconosciuto
-                if ret != 0:
-                    person = list(self.people_dict.keys())[list(self.people_dict.values()).index(ret)]
-                    if(person != old_person):
-                        self._pub_rec.publish(String(person))
-                        old_person = person
-                        #print('Name', person)
-                        while(self.there_is_someone(bboxes)):
-                            frame = self._webcam.read()[1]
-                            frameFace,bboxes = self.get_face_box(frame)
-                            print(self.there_is_someone(bboxes))
-                            cv2.putText(frameFace, str(distance_calc[0]), (bbox[0]+w//20, bbox[1]+h//20), cv2.FONT_HERSHEY_SIMPLEX, 0.8, (0, 255, 0), 2, cv2.LINE_AA)
-                            cv2.imshow("Demo", frameFace)
-                            cv2.waitKey(1)
-                else:
-                    self.there_is_someone(bboxes)
-                    self._pub_rec.publish(String('unkn0wn'))
+                cv2.imshow("Demo", frameFace)
+                cv2.waitKey(1)
+            ret = self.counter(results)
+            print(ret)
+            results.clear()
+            if ret == 0:
+                self._pub_rec.publish(String('unkn0wn'))
+                old_person = person
+                self.there_is_someone(bboxes)
+                self.add_training_data(bbox)
+            else:
+                person = list(self.people_dict.keys())[list(self.people_dict.values()).index(ret)]
+                if(person != old_person):
+                    self._pub_rec.publish(String(person))
                     old_person = person
-
-            cv2.imshow("Demo", frameFace)
-            cv2.waitKey(1)
+                    #print('Name', person)
+                    while(self.there_is_someone(bboxes)):
+                        frame = self._webcam.read()[1]
+                        frameFace,bboxes = self.get_face_box(frame)
+                        print(self.there_is_someone(bboxes))
+                        cv2.putText(frameFace, str(distance_calc[0]), (bbox[0]+w//20, bbox[1]+h//20), cv2.FONT_HERSHEY_SIMPLEX, 0.8, (0, 255, 0), 2, cv2.LINE_AA)
+                        cv2.imshow("Demo", frameFace)
+                        cv2.waitKey(1)
 
 r = Face_Recognition()
 r.run()

@@ -66,22 +66,23 @@ class TerminalInterface:
         msg = String()
         msg.data = "There is somebody?"
         self.pub.publish(msg)
+        print("prima di recognition")
         name = rospy.wait_for_message("recognition", String)
-        msg = String()
+        print("dopo di recognition")
+        print(name)
         if name.data != 'unkn0wn':
+            print("diverso da ukn")
             msg.data = 'We already know! ' + name.data 
             #self.pub.publish(name)
             self.pub.publish(msg)
-        elif self.there_is_someone() and name.data == 'unkn0wn':
+        else:
             # self.name = None
+            print("uguale ad ukn ")
             msg.data = 'I do not recognize you. Please, can tell me your name?'
             self.pub.publish(msg)
             print("[OUT]:", msg.data)
             name = String(self.get_text())
             self.new_person.publish(name)
-        else:
-            msg.data = "Oh damn, I can't see nobody"
-            self.pub.publish(msg)
         # print('END STARTUP')
         return str(name.data)
         # print("[OUT]: Hi", name.data)
@@ -99,6 +100,7 @@ class TerminalInterface:
 
 START_UP = True
 def main():
+    print("inizio")
     global START_UP
     rospy.init_node('writing')
     rospy.wait_for_service('dialogue_server')
@@ -106,15 +108,19 @@ def main():
 
     pub = rospy.Publisher('bot_answer', String, queue_size=10)
     new_person = rospy.Publisher('new_person', String, queue_size=10)
-
+    print("prima di sub")
     sub_rec = rospy.Subscriber('recognition', String, queue_size=10)
     sub_det = rospy.Subscriber('detection', Bool, queue_size=10)
 
     terminal = TerminalInterface(pub, sub_rec, sub_det, new_person)
     
+    print("prima del while")
     while not rospy.is_shutdown():
+        print("dentro al while")
         if START_UP:
+            print("prima di set name")
             name = terminal.set_name()
+            print("dopo di set name")
             bot_answer = dialogue_service(name)
             terminal.set_text(bot_answer.answer)
             START_UP = False

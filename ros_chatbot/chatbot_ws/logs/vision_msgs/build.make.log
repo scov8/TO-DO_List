@@ -5,8 +5,8 @@
 [  0%] Built target _vision_msgs_generate_messages_check_deps_Detection3DArray
 [  0%] Built target _vision_msgs_generate_messages_check_deps_Detection2D
 [  0%] Built target _vision_msgs_generate_messages_check_deps_Classification3D
-[  0%] Built target _vision_msgs_generate_messages_check_deps_BoundingBox3D
 [  0%] Built target sensor_msgs_generate_messages_nodejs
+[  0%] Built target _vision_msgs_generate_messages_check_deps_BoundingBox3D
 [  0%] Built target geometry_msgs_generate_messages_nodejs
 [  0%] Built target std_msgs_generate_messages_nodejs
 [  0%] Built target _vision_msgs_generate_messages_check_deps_BoundingBox2D
