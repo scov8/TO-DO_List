@@ -23,3 +23,20 @@ apt-get update
 sudo apt-get install docker-ce docker-ce-cli containerd.io docker-compose-plugin
 
 python3 -m spacy download en_core_web_md
+
+sudo apt install apache2 -y
+sudo apt install php libapache2-mod-php php-mysql -y
+apt install php7.4-sqlite3
+apt install php-sqlite3
+
+chmod u+x ros_chatbot/chatbot_ws/src/rasa_ros/scripts/rasa_webserver.sh
+chmod u+x ros_chatbot/chatbot_ws/src/rasa_ros/launch/*
+chmod u+x ros_chatbot/chatbot_ws/src/rasa_ros/scripts/*
+chmod u+x ros_chatbot/chatbot_ws/src/face_recognition/src/launch/face_recognition.launch
+chmod u+x ros_chatbot/chatbot_ws/src/face_recognition/src/*
+chmod u+x ros_chatbot/chatbot_ws/src/pepper_nodes/launch/pepper_bringup.launch
+chmod u+x ros_chatbot/chatbot_ws/src/pepper_nodes/launch/tts.launch
+chmod u+x ros_chatbot/chatbot_ws/src/pepper_nodes/src/*
+chmod u+x ros_chatbot/chatbot_ws/src/ros_audio_pkg/launch/speech_recognition.launch
+chmod u+x ros_chatbot/chatbot_ws/src/ros_audio_pkg/src/*
+chmod u+x ros_chatbot/chatbot_ws/src/vision_msgs/*

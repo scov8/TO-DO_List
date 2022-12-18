@@ -16,5 +16,3 @@ gnome-terminal -- bash -c "source $PROJECT_DIR/devel/setup.bash; roslaunch --wai
 gnome-terminal -- bash -c "source $PROJECT_DIR/devel/setup.bash; roslaunch --wait ros_audio_pkg speech_recognition.launch; read"
 gnome-terminal -- bash -c "source $PROJECT_DIR/devel/setup.bash; roslaunch --wait face_recognition face_recognition.launch; read"
 gnome-terminal -- bash -c "source $PROJECT_DIR/devel/setup.bash; roslaunch --wait rasa_ros dialogue.xml; read"
-
-# roslaunch rasa_ros dialogue.xml
