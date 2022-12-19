@@ -30,6 +30,8 @@ class Face_Recognition():
         self.dataset_path = "/media/psf/TO-DO_List/ros_chatbot/chatbot_ws/src/face_recognition/src/"
         self.model = VGGFace(model='resnet50', include_top=False, pooling='avg')
         self.people_dict = dict()
+        # try opening a dictionary, in which the id-person-name pair are present;
+        # the id represents the name of the training folder of a specific person
         try:
             with open('./dizionario.pkl', 'rb') as f:
                 self.people_dict = pickle.load(f)
@@ -40,7 +42,11 @@ class Face_Recognition():
 
 
     def add_training_data(self, bbox):
-        print("in trainig")
+        """
+        A method that take a sequential picture of the person, calculate the distance and add the new person in the 
+        dataset.
+        """
+        print("Start the training")
         tmp = None
         while tmp is None:
             self._pub_rec.publish(String('unkn0wn'))
@@ -50,7 +56,6 @@ class Face_Recognition():
             except:
                 pass
         user = tmp.data
-        # user = input("Enter the name of the person \n")
         id = self.people_dict.get(user)
         max = len(self.people_dict)
         if id is None:
@@ -87,6 +92,9 @@ class Face_Recognition():
         return feature_vector
     
     def get_face_box(self, frame, conf_threshold=0.8):
+        """
+        Method to take the bounding box of the face and return the bboxes of the faces and the frame with the rectangle draw
+        """
         # Initialize detector
         faceProto = self.dataset_path + "opencv_face_detector.pbtxt"
         faceModel = self.dataset_path + "opencv_face_detector_uint8.pb"
@@ -118,6 +126,10 @@ class Face_Recognition():
         return frameOpencvDnn, bboxes
 
     def train_feature(self,model, number_of_training_images_per_person = 20):
+        """
+        Method that, with the net model and the number of images per person, performs 
+        feature training and saves the results into a list, called database. Then, It returns the list.
+        """
         number_of_known_people = self._count_person_dataset()
         database = []
         training_path = os.path.join(self.dataset_path, 'dataset', 'training')
@@ -136,6 +148,9 @@ class Face_Recognition():
         return database
 
     def evaluate_distance(self, face_reco_model, resized_face, dataset_feature):
+        """
+        Method that from the input face do the face recognition
+        """
         rejection_threshold = 0.5
 
         feature_vector = self.extract_features(face_reco_model, resized_face)
@@ -159,6 +174,9 @@ class Face_Recognition():
             return 0
         
     def get_face_jpg(self, bbox, frame):
+        """
+        In this method we pass the bounding box of the face and the frame, it will crop the face from the frame
+        """
         padding = 0.2
         # Adjust crop
         w = bbox[2]-bbox[0]
@@ -171,10 +189,13 @@ class Face_Recognition():
         return resized_face,w,h
 
     def there_is_someone(self, bboxes):
+        """
+        Method to check if inside the frame is a person
+        """
         x = Bool()
         i=0
-        for i, bbox in enumerate(bboxes):
-            i=i+1
+        for i, _ in enumerate(bboxes):
+            pass
         x.data = y = True if i >= 1 else False
         self._pub_det.publish(x)
         return y
