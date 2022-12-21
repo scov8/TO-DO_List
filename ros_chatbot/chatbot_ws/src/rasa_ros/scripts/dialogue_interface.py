@@ -33,6 +33,7 @@
 import rospy
 from std_msgs.msg import String, Bool
 from rasa_ros.srv import Dialogue, DialogueResponse
+from pepper_nodes.srv import LoadUrl, ExecuteJS, LoadUrlRequest, LoadUrlResponse
 
 
 class TerminalInterface:
@@ -48,8 +49,8 @@ class TerminalInterface:
         self.sub_rec = sub_rec
         self.sub_det = sub_det
         self.new_person = new_person
-        #self.tablet_execute_js = tablet_execute_js
-        #self.tablet_load_url = tablet_load_url
+        self.tablet_execute_js = rospy.ServiceProxy('execute_js', ExecuteJS)
+        self.tablet_load_url = rospy.ServiceProxy('load_url', LoadUrl)
 
     def get_text(self):
         print("Waiting the speech...")
@@ -110,6 +111,12 @@ class TerminalInterface:
         # print('END THERE IS SOMEONE')
         return detect.data
 
+    def load_url(self, url):
+        msg = LoadUrlRequest()
+        msg.url = url
+        resp = self.tablet_service(msg)
+        rospy.loginfo(resp.ack)
+
 START_UP = True
 def main():
     global START_UP
@@ -117,26 +124,22 @@ def main():
     rospy.wait_for_service('dialogue_server')
     dialogue_service = rospy.ServiceProxy('dialogue_server', Dialogue)
 
-    """
-    rospy.wait_for_service('execute_js')
-    tablet_execute_js = rospy.ServiceProxy('execute_js', Dialogue)
-    rospy.wait_for_service('load_url')
-    tablet_load_url = rospy.ServiceProxy('load_url', Dialogue)
-    """
-
     pub = rospy.Publisher('bot_answer', String, queue_size=10)
     new_person = rospy.Publisher('new_person', String, queue_size=10)
     sub_rec = rospy.Subscriber('recognition', String, queue_size=1)
     sub_det = rospy.Subscriber('detection', Bool, queue_size=1)
 
-    terminal = TerminalInterface(pub, sub_rec, sub_det, new_person) # passare ,tablet_execute_js,tablet_load_url
+    terminal = TerminalInterface(pub, sub_rec, sub_det, new_person) 
     
     msg = String()
     msg.data = "Hello world!"
     pub.publish(msg)
 
     print("prima del while")
-    #tablet_load_url("google.com")
+    
+    url = r"https://www.diem.unisa.it/"
+    terminal.load_url(url)
+
     while not rospy.is_shutdown():
         print("dentro al while")
         if START_UP:
