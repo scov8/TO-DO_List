@@ -1,7 +1,7 @@
 [  0%] Built target _vision_msgs_generate_messages_check_deps_Classification2D
 [  0%] Built target _vision_msgs_generate_messages_check_deps_VisionInfo
-[  0%] Built target _vision_msgs_generate_messages_check_deps_Detection3D
 [  0%] Built target _vision_msgs_generate_messages_check_deps_ObjectHypothesisWithPose
+[  0%] Built target _vision_msgs_generate_messages_check_deps_Detection3D
 [  0%] Built target _vision_msgs_generate_messages_check_deps_Detection3DArray
 [  0%] Built target _vision_msgs_generate_messages_check_deps_Detection2D
 [  0%] Built target _vision_msgs_generate_messages_check_deps_Classification3D

@@ -195,7 +195,7 @@ class Face_Recognition():
         x = Bool()
         i=0
         for i, _ in enumerate(bboxes):
-            pass
+            i=i+1
         x.data = y = True if i >= 1 else False
         self._pub_det.publish(x)
         return y

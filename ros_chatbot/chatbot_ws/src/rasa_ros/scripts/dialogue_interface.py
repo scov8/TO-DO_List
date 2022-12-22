@@ -49,8 +49,8 @@ class TerminalInterface:
         self.sub_rec = sub_rec
         self.sub_det = sub_det
         self.new_person = new_person
-        self.tablet_execute_js = rospy.ServiceProxy('execute_js', ExecuteJS)
-        self.tablet_load_url = rospy.ServiceProxy('load_url', LoadUrl)
+        #self.tablet_execute_js = rospy.ServiceProxy('execute_js', ExecuteJS)
+        #self.tablet_load_url = rospy.ServiceProxy('load_url', LoadUrl)
 
     def get_text(self):
         print("Waiting the speech...")
@@ -114,7 +114,7 @@ class TerminalInterface:
     def load_url(self, url):
         msg = LoadUrlRequest()
         msg.url = url
-        resp = self.tablet_service(msg)
+        resp = self.tablet_load_url(msg)
         rospy.loginfo(resp.ack)
 
 START_UP = True
@@ -137,7 +137,7 @@ def main():
 
     print("prima del while")
     
-    url = r"https://www.diem.unisa.it/"
+    url = r"10.0.1.250:80/sito/"
     terminal.load_url(url)
 
     while not rospy.is_shutdown():
