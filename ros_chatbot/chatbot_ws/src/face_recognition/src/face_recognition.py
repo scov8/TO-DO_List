@@ -22,9 +22,11 @@ class Face_Recognition():
     def __init__(self, means=np.array([131.0912, 103.8827, 91.4953]), input_size=(224,224)) -> None:
         rospy.init_node('face_recognition', anonymous=True)
         self._sub = rospy.Subscriber('new_person', String, queue_size=10)
+        self._sub_start = rospy.Subscriber('start', Bool, queue_size=1)
         self._pub_rec = rospy.Publisher('recognition', String, queue_size=1)
         self._pub_det = rospy.Publisher('detection', Bool, queue_size=1)
-        self._webcam = cv2.VideoCapture(0) #2 is pepper
+        self.pub = rospy.Publisher('bot_answer', String, queue_size=10)
+        self._webcam = cv2.VideoCapture(2) #2 is pepper, 0 mio
         self.means = means
         self.input_size = input_size
         self.dataset_path = "/media/psf/TO-DO_List/ros_chatbot/chatbot_ws/src/face_recognition/src/"
@@ -56,6 +58,11 @@ class Face_Recognition():
             except:
                 pass
         user = tmp.data
+
+        data_to_send = String()
+        data_to_send.data = "Move the head, i'm going to capture your face"
+        self.pub.publish(data_to_send)
+
         id = self.people_dict.get(user)
         max = len(self.people_dict)
         if id is None:
@@ -203,7 +210,8 @@ class Face_Recognition():
     def run(self):
         results = []
         person = 'unkn0wn'
-        while True:
+        start = rospy.wait_for_message("start", Bool)
+        while True and start:
             # Read frame
             ii=0
             while(ii<10):

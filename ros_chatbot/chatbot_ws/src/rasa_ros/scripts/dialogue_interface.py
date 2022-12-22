@@ -49,14 +49,14 @@ class TerminalInterface:
         self.sub_rec = sub_rec
         self.sub_det = sub_det
         self.new_person = new_person
-        #self.tablet_execute_js = rospy.ServiceProxy('execute_js', ExecuteJS)
-        #self.tablet_load_url = rospy.ServiceProxy('load_url', LoadUrl)
+        self.tablet_execute_js = rospy.ServiceProxy('execute_js', ExecuteJS)
+        self.tablet_load_url = rospy.ServiceProxy('load_url', LoadUrl)
 
     def get_text(self):
         print("Waiting the speech...")
         txt = None
         while txt is None:
-            print("Aspettando messaggio")
+            #print("Aspettando messaggio")
             try:
                 txt = rospy.wait_for_message("voice_txt", String, timeout=1)
             except:
@@ -64,6 +64,8 @@ class TerminalInterface:
             if not self.there_is_someone():
                 return "noPerson"
         print("[IN]: ", txt.data)
+        jsFunc ="refresh()"
+        self.tablet_execute_js(jsFunc)
         return str(txt.data)
 
     def set_text(self,text):
@@ -77,34 +79,34 @@ class TerminalInterface:
         msg = String()
         msg.data = "There is somebody?"
         self.pub.publish(msg)
-        print("prima di recognition")
+        #print("prima di recognition")
         name = rospy.wait_for_message("recognition", String)
-        print("dopo di recognition")
+        #print("dopo di recognition")
         print(name)
         if name.data != 'unkn0wn':
             print("diverso da ukn")
-            msg.data = 'We already know! ' + name.data 
+            #msg.data = 'We already know! ' + name.data 
             #self.pub.publish(name)
-            self.pub.publish(msg)
+            #self.pub.publish(msg)
         else:
             # self.name = None
-            print("uguale ad ukn ")
+            #print("uguale ad ukn ")
             msg.data = 'I do not recognize you. Please, can tell me your name?'
             self.pub.publish(msg)
             print("[OUT]:", msg.data)
             name = String(self.get_text())
             self.new_person.publish(name)
-        #jsFunc ="goToUser('"+ str(name.data) +"')"
-        #self.tablet_execute_js(jsFunc)
+        jsFunc ="goToUser('"+ str(name.data) +"')"
+        self.tablet_execute_js(jsFunc)
         return str(name.data)
     
     def there_is_someone(self):
         global START_UP
         # print('IN THERE IS SOMEONE')
         #dead
-        print("prima detection")
+        #print("prima detection")
         detect  = rospy.wait_for_message("detection", Bool)
-        print("dopo detection")
+        #print("dopo detection")
         if not START_UP and not detect.data:
             # print('inside if THERE IS SOMEONE')
             START_UP = True
@@ -124,8 +126,11 @@ def main():
     rospy.wait_for_service('dialogue_server')
     dialogue_service = rospy.ServiceProxy('dialogue_server', Dialogue)
 
+    # Publisher
     pub = rospy.Publisher('bot_answer', String, queue_size=10)
     new_person = rospy.Publisher('new_person', String, queue_size=10)
+    pub_rec = rospy.Publisher('start', Bool, queue_size=1)
+    # Subscribe
     sub_rec = rospy.Subscriber('recognition', String, queue_size=1)
     sub_det = rospy.Subscriber('detection', Bool, queue_size=1)
 
@@ -137,15 +142,18 @@ def main():
 
     print("prima del while")
     
-    url = r"10.0.1.250:80/sito/"
+    url = r"http://10.0.1.250/sito/"
     terminal.load_url(url)
+    x = Bool()
+    x.data = True
+    pub_rec.publish(x)
 
     while not rospy.is_shutdown():
         print("dentro al while")
         if START_UP:
-            print("prima di set name")
+            #print("prima di set name")
             name = terminal.set_name()
-            print("dopo di set name")
+            #print("dopo di set name")
             bot_answer = dialogue_service(name)
             terminal.set_text(bot_answer.answer)
             START_UP = False

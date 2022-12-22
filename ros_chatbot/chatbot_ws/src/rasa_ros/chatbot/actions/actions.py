@@ -37,10 +37,26 @@ from typing import Any, Text, Dict, List
 
 from rasa_sdk import Action, Tracker
 from rasa_sdk.executor import CollectingDispatcher
-from rasa_sdk.events import SlotSet, SessionStarted, ActionExecuted  # , ReminderScheduled, ReminderCancelled
+from rasa_sdk.events import SlotSet #, SessionStarted, ActionExecuted  # , ReminderScheduled, ReminderCancelled
 from dateutil.parser import parse
 
 import sqlite3
+# from utils import correct_category, correct_time
+def correct_time(original_time):
+    # tomorrow at 8pm --> 2020–09–28T20:00:00.000–07:00
+    tmp = original_time.split('T')
+    data, time = tmp[0], tmp[1]
+    # data = 2020–09–28 
+    # time 20:00:00.000–07:00
+    tmp = time.split('-')
+    time = tmp[0]
+    gmt = tmp[1]
+    tmp = time.split(':')
+    time = tmp[0] + ':' + tmp[1]
+    return data, time, gmt
+
+def correct_category(original_cat):
+    return original_cat.split('-')[-1]
 
 """
 Global variable used for:
@@ -166,6 +182,11 @@ class AddToDb(Action):
         the different kind of purpose send by the user
         """
         global UPDATE, ASK_REMINDER
+
+        data, c_time, gmt = correct_time(time)
+        category = correct_category(category)
+
+        time = data + " " + c_time
 
         query = ""
         if (UPDATE is True):

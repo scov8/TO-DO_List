@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 import rospy
-from std_msgs.msg import Int16MultiArray, String
+from std_msgs.msg import Int16MultiArray, String, Bool
 import numpy as np
 
 from speech_recognition import AudioData
@@ -14,16 +14,21 @@ rospy.init_node('speech_recognition', anonymous=True)
 pub1 = rospy.Publisher('voice_data', Int16MultiArray, queue_size=10)
 pub2 = rospy.Publisher('voice_txt', String, queue_size=10)
 
+sub_syn_speech = rospy.Subscriber('parlando', Bool, queue_size=10)
+
 # this is called from the background thread
 def callback(audio):
     data = np.array(audio.data,dtype=np.int16)
     audio_data = AudioData(data.tobytes(), 16000, 2)
 
     try:
-        spoken_text= r.recognize_google(audio_data, language='it-IT') # en-GB
+        spoken_text= r.recognize_google(audio_data, language='en-GB') # en-GB
         print("Google Speech Recognition pensa tu abbia detto: " + spoken_text)
-        pub1.publish(audio) # Publish audio only if it contains words
-        pub2.publish(spoken_text)
+        tmp = rospy.wait_for_message("parlando", Bool)
+        if not tmp.data:
+            print("dentro l'iffff")
+            pub1.publish(audio) # Publish audio only if it contains words
+            pub2.publish(spoken_text)
     except sr.UnknownValueError:
         print("Google Speech Recognition non riesce a capire da questo file audio")
     except sr.RequestError as e:
