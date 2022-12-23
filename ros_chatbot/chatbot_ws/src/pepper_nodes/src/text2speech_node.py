@@ -19,6 +19,10 @@ class Text2SpeechNode:
         self.port = port
         self.session = Session(ip, port)
         self.tts = self.session.get_service("ALTextToSpeech")
+        self.motion_proxy = self.session.get_service("ALMotion")
+        self.posture_proxy = self.session.get_service("ALRobotPosture")
+        self.tracker_service = self.session.get_service("ALTracker")
+        self.animation_player_service = self.session.get_service("ALAnimationPlayer")
         self._syn_speech = rospy.Publisher('parlando', Bool, queue_size=1)
      
     '''
@@ -31,6 +35,7 @@ class Text2SpeechNode:
         try:
             x.data = True 
             self._syn_speech.publish(x)
+            self.animation_player_service.run("animations/Stand/Gestures/BodyTalk_10", _async=True)#Explain_8
             self.tts.say(msg.speech)
         except:
             self.session.reconnect()

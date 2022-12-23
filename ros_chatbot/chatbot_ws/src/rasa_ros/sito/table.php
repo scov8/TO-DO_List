@@ -37,7 +37,15 @@ $numTasks = count($tasks);
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <link href="./bootstrap.min.css" rel="stylesheet" />
-  <script src="./script.js" type="text/javascript"></script>
+  <script type="text/javascript">
+    function goToUser(user) {
+      window.location.href = "http://10.0.1.213:80/sito/table.php/?username=" + user;
+    }
+
+    function refresh() {
+      location.reload();
+    }
+  </script>
   <script src="./bootstrap.bundle.min.js"></script>
   <script>
     function reload() {

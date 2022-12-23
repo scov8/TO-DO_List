@@ -44,11 +44,12 @@ class TerminalInterface:
     - set_text(self, text): prints the text on the terminal
 
     '''
-    def __init__(self, pub, sub_rec, sub_det, new_person):
+    def __init__(self, pub, ip):
+        self.ip = ip
         self.pub = pub
-        self.sub_rec = sub_rec
-        self.sub_det = sub_det
-        self.new_person = new_person
+        self.sub_rec = rospy.Subscriber('recognition', String, queue_size=1)
+        self.sub_det = rospy.Subscriber('detection', Bool, queue_size=1)
+        self.new_person = rospy.Publisher('new_person', String, queue_size=10)
         self.tablet_execute_js = rospy.ServiceProxy('execute_js', ExecuteJS)
         self.tablet_load_url = rospy.ServiceProxy('load_url', LoadUrl)
 
@@ -64,8 +65,7 @@ class TerminalInterface:
             if not self.there_is_someone():
                 return "noPerson"
         print("[IN]: ", txt.data)
-        jsFunc ="refresh()"
-        self.tablet_execute_js(jsFunc)
+        self.tablet_execute_js("location.reload()")
         return str(txt.data)
 
     def set_text(self,text):
@@ -96,7 +96,7 @@ class TerminalInterface:
             print("[OUT]:", msg.data)
             name = String(self.get_text())
             self.new_person.publish(name)
-        jsFunc ="goToUser('"+ str(name.data) +"')"
+        jsFunc ="goToUser('"+ str(name.data) +"', '"+ str(self.ip) +"')"
         self.tablet_execute_js(jsFunc)
         return str(name.data)
     
@@ -129,13 +129,15 @@ def main():
 
     # Publisher
     pub = rospy.Publisher('bot_answer', String, queue_size=10)
-    new_person = rospy.Publisher('new_person', String, queue_size=10)
+    # new_person = rospy.Publisher('new_person', String, queue_size=10)
     pub_rec = rospy.Publisher('start', Bool, queue_size=1)
     # Subscribe
-    sub_rec = rospy.Subscriber('recognition', String, queue_size=1)
-    sub_det = rospy.Subscriber('detection', Bool, queue_size=1)
+    # sub_rec = rospy.Subscriber('recognition', String, queue_size=1)
+    #sub_det = rospy.Subscriber('detection', Bool, queue_size=1)
 
-    terminal = TerminalInterface(pub, sub_rec, sub_det, new_person) 
+    ip = "10.0.1.213"
+
+    terminal = TerminalInterface(pub, ip) 
     
     msg = String()
     msg.data = "Hello world!"

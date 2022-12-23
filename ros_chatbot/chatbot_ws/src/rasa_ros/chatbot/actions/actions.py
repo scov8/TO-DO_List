@@ -41,9 +41,10 @@ from rasa_sdk.events import SlotSet #, SessionStarted, ActionExecuted  # , Remin
 from dateutil.parser import parse
 
 import sqlite3
-# from utils import correct_category, correct_time
+
 def correct_time(original_time):
     # tomorrow at 8pm --> 2020–09–28T20:00:00.000–07:00
+    original_time = str(original_time)
     tmp = original_time.split('T')
     data, time = tmp[0], tmp[1]
     # data = 2020–09–28 
@@ -88,9 +89,10 @@ class TaskSubmit(Action):
         task = tracker.get_slot("task")
         purpose = tracker.get_slot("purpose")
         user = tracker.get_slot("PERSON")
-        if (time!="null"):
-            hour = str(parse(str(time)).time())
-            date = str(parse(str(time)).date())
+        
+        # if (time!="null"):
+        #     hour = str(parse(str(time)).time())
+        #     date = str(parse(str(time)).date())
 
         # If the user want to manage a task but did not tell his own name
         if(user is None):
@@ -99,11 +101,13 @@ class TaskSubmit(Action):
 
         # based on the action to be taken the corresponding message will be sent to chat to notify the user of the action to be taken
         if (purpose == "purpose-add"):
+            category = correct_category(category)
             if (time!="null"):
+                date, hour, gmt = correct_time(time)
                 dispatcher.utter_message(
                     text=f"Thanks, you want to add a new task, and the task is: \"{task}\" at {hour} of {date} in the category \"{category}\"\nWould you like to confirm?")
             else:
-                 dispatcher.utter_message(
+                dispatcher.utter_message(
                     text=f"Thanks, you want to add a new task, and the task is: \"{task}\" in the category \"{category}\"\nWould you like to confirm?")
         elif (purpose == "purpose-del"):
             dispatcher.utter_message(
@@ -182,12 +186,6 @@ class AddToDb(Action):
         the different kind of purpose send by the user
         """
         global UPDATE, ASK_REMINDER
-
-        data, c_time, gmt = correct_time(time)
-        category = correct_category(category)
-
-        time = data + " " + c_time
-
         query = ""
         if (UPDATE is True):
             query = 'UPDATE ToDoList SET task=:1, time=:2, category=:3, reminder=False WHERE USER=:4 AND task=:5'
@@ -239,7 +237,7 @@ class AddToDb(Action):
         otherwise return an empty list
         """
         global UPDATE
-        conn = sqlite3.connect('../../sito/chatbot.db')
+        conn = sqlite3.connect('../sito/chatbot.db')
         print("Connection to db:", conn)
 
         user = tracker.get_slot("PERSON")
@@ -267,7 +265,7 @@ class AddReminder(Action):
         return "action_add_reminder"
 
     def run(self, dispatcher, tracker, domain):
-        conn = sqlite3.connect('../../sito/chatbot.db')
+        conn = sqlite3.connect('../sito/chatbot.db')
         print("Connection to db:", conn)
 
         user = tracker.get_slot("PERSON")
@@ -294,7 +292,7 @@ class ViewList(Action):
         return "action_view_list"
 
     def run(self, dispatcher, tracker, domain):
-        conn = sqlite3.connect('../../sito/chatbot.db')
+        conn = sqlite3.connect('../sito/chatbot.db')
         print("Connection to db:", conn)
 
         user = tracker.get_slot("PERSON")
@@ -339,7 +337,7 @@ class DeleteAll(Action):
         return "action_delete_all"
 
     def run(self, dispatcher, tracker, domain):
-        conn = sqlite3.connect('../../sito/chatbot.db')
+        conn = sqlite3.connect('../sito/chatbot.db')
         print("Connection to db:", conn)
 
         user = tracker.get_slot("PERSON")

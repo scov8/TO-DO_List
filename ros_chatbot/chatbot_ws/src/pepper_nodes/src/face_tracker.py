@@ -23,6 +23,7 @@ class TrackerNode:
         self.motion_proxy = self.session.get_service("ALMotion")
         self.posture_proxy = self.session.get_service("ALRobotPosture")
         self.tracker_service = self.session.get_service("ALTracker")
+        self.animation_player_service = self.session.get_service("ALAnimationPlayer")
     
     '''
     This method calls the ALMotion service and sets the robot to rest position
@@ -54,6 +55,7 @@ class TrackerNode:
             self.motion_proxy = self.session.get_service("ALMotion")
             self.posture_proxy = self.session.get_service("ALRobotPosture")
             self.tracker_service = self.session.get_service("ALTracker") 
+            self.animation_player_service = self.session.get_service("ALAnimationPlayer")
 
         return "ACK"   
     
