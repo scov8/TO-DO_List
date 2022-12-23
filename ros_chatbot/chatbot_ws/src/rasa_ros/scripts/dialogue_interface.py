@@ -118,6 +118,7 @@ class TerminalInterface:
         msg.url = url
         resp = self.tablet_load_url(msg)
         rospy.loginfo(resp.ack)
+        print(resp)
 
 START_UP = True
 def main():
@@ -142,11 +143,12 @@ def main():
 
     print("prima del while")
     
-    url = r"http://10.0.1.250/sito/"
+    url = r"http://10.0.1.213:80/sito"
     terminal.load_url(url)
     x = Bool()
     x.data = True
     pub_rec.publish(x)
+    print("dopo pub rec")
 
     while not rospy.is_shutdown():
         print("dentro al while")

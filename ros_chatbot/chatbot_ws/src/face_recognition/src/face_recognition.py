@@ -26,7 +26,7 @@ class Face_Recognition():
         self._pub_rec = rospy.Publisher('recognition', String, queue_size=1)
         self._pub_det = rospy.Publisher('detection', Bool, queue_size=1)
         self.pub = rospy.Publisher('bot_answer', String, queue_size=10)
-        self._webcam = cv2.VideoCapture(2) #2 is pepper, 0 mio
+        self._webcam = cv2.VideoCapture(0) #2 is pepper, 0 mio
         self.means = means
         self.input_size = input_size
         self.dataset_path = "/media/psf/TO-DO_List/ros_chatbot/chatbot_ws/src/face_recognition/src/"
@@ -211,7 +211,7 @@ class Face_Recognition():
         results = []
         person = 'unkn0wn'
         start = rospy.wait_for_message("start", Bool)
-        while True and start:
+        while start.data:
             # Read frame
             ii=0
             while(ii<10):
