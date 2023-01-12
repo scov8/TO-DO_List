@@ -9,11 +9,11 @@ import speech_recognition as sr
 pub = rospy.Publisher('mic_data', Int16MultiArray, queue_size=10)
 rospy.init_node('voice_detection_node', anonymous=True)
 
-'''
+''''''
 # Subscribe
 # If the bot speech
 sub = rospy.Subscriber('parlando', Bool, queue_size=10)
-'''
+''''''
 # this is called from the background thread
 def callback(recognizer, audio):
     data = np.frombuffer(audio.get_raw_data(), dtype=np.int16)
