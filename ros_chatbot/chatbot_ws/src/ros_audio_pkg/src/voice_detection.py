@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 import rospy
-from std_msgs.msg import Int16MultiArray
+from std_msgs.msg import Int16MultiArray, Bool
 import numpy as np
 
 import time
@@ -9,6 +9,11 @@ import speech_recognition as sr
 pub = rospy.Publisher('mic_data', Int16MultiArray, queue_size=10)
 rospy.init_node('voice_detection_node', anonymous=True)
 
+'''
+# Subscribe
+# If the bot speech
+sub = rospy.Subscriber('parlando', Bool, queue_size=10)
+'''
 # this is called from the background thread
 def callback(recognizer, audio):
     data = np.frombuffer(audio.get_raw_data(), dtype=np.int16)
@@ -37,4 +42,10 @@ print("Calibration finished")
 print("Recording...")
 stop_listening = r.listen_in_background(m, callback)
 
+'''try:
+    stopper = rospy.wait_for_message("parlando", Bool, timeout=1)
+    stop_listening(stopper.data)
+except:
+    pass
+'''
 rospy.spin()

@@ -135,7 +135,7 @@ def main():
     # sub_rec = rospy.Subscriber('recognition', String, queue_size=1)
     #sub_det = rospy.Subscriber('detection', Bool, queue_size=1)
 
-    ip = "10.0.1.213"
+    ip = "10.0.1.234"
 
     terminal = TerminalInterface(pub, ip) 
     
@@ -145,7 +145,7 @@ def main():
 
     print("prima del while")
     
-    url = r"http://10.0.1.213:80/sito"
+    url = r"http://10.0.1.234:80/sito"
     terminal.load_url(url)
     x = Bool()
     x.data = True

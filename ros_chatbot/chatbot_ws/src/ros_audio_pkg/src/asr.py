@@ -16,20 +16,22 @@ pub2 = rospy.Publisher('voice_txt', String, queue_size=10)
 
 sub_syn_speech = rospy.Subscriber('parlando', Bool, queue_size=10)
 
+tmp = Bool()
+tmp.data = False
+
 # this is called from the background thread
 def callback(audio):
+    global tmp
     data = np.array(audio.data,dtype=np.int16)
     audio_data = AudioData(data.tobytes(), 16000, 2)
 
     try:
         spoken_text= r.recognize_google(audio_data, language='en-GB') # en-GB
         print("Google Speech Recognition pensa tu abbia detto: " + spoken_text)
-        tmp = Bool()
-        tmp.data = False
         try:
             tmp = rospy.wait_for_message("parlando", Bool, timeout=1)
         except:
-            pass
+           pass
         print("tmp   "+str(tmp.data))
         if not tmp.data:
             print("dentro l'iffff")

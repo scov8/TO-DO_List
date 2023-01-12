@@ -26,7 +26,7 @@ class Face_Recognition():
         self._pub_rec = rospy.Publisher('recognition', String, queue_size=1)
         self._pub_det = rospy.Publisher('detection', Bool, queue_size=1)
         self.pub = rospy.Publisher('bot_answer', String, queue_size=10)
-        self._webcam = cv2.VideoCapture(2) #2 is pepper, 0 mio
+        self._webcam = cv2.VideoCapture(0) #2 is pepper, 0 mio
         self.means = means
         self.input_size = input_size
         self.dataset_path = "/media/psf/TO-DO_List/ros_chatbot/chatbot_ws/src/face_recognition/src/"
@@ -35,7 +35,7 @@ class Face_Recognition():
         # try opening a dictionary, in which the id-person-name pair are present;
         # the id represents the name of the training folder of a specific person
         try:
-            with open('./dizionario1.pkl', 'rb') as f:
+            with open('./dizionario2.pkl', 'rb') as f:
                 self.people_dict = pickle.load(f)
                 f.close()
         except:
@@ -79,7 +79,7 @@ class Face_Recognition():
             cv2.imwrite(self.dataset_path + "dataset/training/"+ str(id) + "/image" + str(random.randint(1, 1000)) + str(i) + ".jpg", face)
             sleep(0.2)
 
-        with open('./dizionario1.pkl', 'wb') as f:
+        with open('./dizionario2.pkl', 'wb') as f:
             pickle.dump(self.people_dict, f)
             f.close()
 
