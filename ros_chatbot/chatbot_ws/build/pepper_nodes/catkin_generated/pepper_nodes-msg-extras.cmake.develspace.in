@@ -1,2 +1,0 @@
-set(pepper_nodes_MESSAGE_FILES "")
-set(pepper_nodes_SERVICE_FILES "/media/psf/TO-DO_List/ros_chatbot/chatbot_ws/src/pepper_nodes/srv/ExecuteJS.srv;/media/psf/TO-DO_List/ros_chatbot/chatbot_ws/src/pepper_nodes/srv/LoadUrl.srv;/media/psf/TO-DO_List/ros_chatbot/chatbot_ws/src/pepper_nodes/srv/Rest.srv;/media/psf/TO-DO_List/ros_chatbot/chatbot_ws/src/pepper_nodes/srv/Text2Speech.srv;/media/psf/TO-DO_List/ros_chatbot/chatbot_ws/src/pepper_nodes/srv/WakeUp.srv")

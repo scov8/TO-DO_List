@@ -23,7 +23,7 @@ class Text2SpeechNode:
         self.posture_proxy = self.session.get_service("ALRobotPosture")
         self.tracker_service = self.session.get_service("ALTracker")
         self.animation_player_service = self.session.get_service("ALAnimationPlayer")
-        self._syn_speech = rospy.Publisher('parlando', Bool, queue_size=1)
+        self._syn_speech = rospy.Publisher('parlando', Bool, queue_size=1)        
      
     '''
     Rececives a Text2Speech message and call the ALTextToSpeech service.
@@ -32,9 +32,9 @@ class Text2SpeechNode:
     def say(self, msg):
         print(msg)
         x = Bool()
+        x.data = True 
+        self._syn_speech.publish(x)
         try:
-            x.data = True 
-            self._syn_speech.publish(x)
             self.animation_player_service.run("animations/Stand/Gestures/BodyTalk_10", _async=True)#Explain_8
             self.tts.say(msg.speech)
         except:
@@ -59,7 +59,7 @@ if __name__ == "__main__":
     import time
     time.sleep(3)
     parser = OptionParser()
-    parser.add_option("--ip", dest="ip", default="10.0.1.230")
+    parser.add_option("--ip", dest="ip", default="10.0.1.207")
     parser.add_option("--port", dest="port", default=9559)
     (options, args) = parser.parse_args()
 

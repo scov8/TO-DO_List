@@ -1,1 +1,0 @@
-/media/psf/TO-DO_List/ros_chatbot/chatbot_ws/devel/.private/rasa_ros/lib/python3/dist-packages/rasa_ros/srv/_Dialogue.py
