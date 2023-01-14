@@ -1,0 +1,8 @@
+prefix=/media/psf/TO-DO_List/ros_chatbot/chatbot_ws/install
+
+Name: rasa_ros
+Description: Description of rasa_ros
+Version: 0.0.0
+Cflags: -I${prefix}/include
+Libs: -L${prefix}/lib 
+Requires: 

@@ -65,7 +65,11 @@ class TerminalInterface:
             if not self.there_is_someone():
                 return "noPerson"
         print("[IN]: ", txt.data)
-        self.tablet_execute_js("location.reload()")
+        
+        try:
+            self.tablet_execute_js("location.reload()")
+        except:
+            pass
         return str(txt.data)
 
     def set_text(self,text):
@@ -97,7 +101,10 @@ class TerminalInterface:
             name = String(self.get_text())
             self.new_person.publish(name)
         jsFunc ="goToUser('"+ str(name.data) +"', '"+ str(self.ip) +"')"
-        self.tablet_execute_js(jsFunc)
+        try:
+            self.tablet_execute_js(jsFunc)
+        except:
+            pass
         return str(name.data)
     
     def there_is_someone(self):
@@ -146,9 +153,13 @@ def main():
     print("prima del while")
     
     url = r"http://10.0.1.234:80/sito"
-    terminal.load_url(url)
+    try:
+        terminal.load_url(url)
+    except:
+        pass
     x = Bool()
     x.data = True
+    while pub_rec.get_num_connections()<1:continue
     pub_rec.publish(x)
     print("dopo pub rec")
 

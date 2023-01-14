@@ -1,0 +1,268 @@
+#   If you develop a new program, and you want it to be of the greatest
+# possible use to the public, the best way to achieve this is to make it
+# free software which everyone can redistribute and change under these terms.
+
+#   To do so, attach the following notices to the program.  It is safest
+# to attach them to the start of each source file to most effectively
+# state the exclusion of warranty; and each file should have at least
+# the "copyright" line and a pointer to where the full notice is found.
+
+#        TO-DO List chat bot.
+#        Copyright (C) 2022 - All Rights Reserved
+#        Group:
+#            Faiella Ciro              0622701816  c.faiella8@studenti.unisa.it
+#            Giannino Pio Roberto      0622701713  p.giannino@studenti.unisa.it
+#            Scovotto Luigi            0622701702  l.scovotto1@studenti.unisa.it
+#            Tortora Francesco         0622701700  f.tortora21@studenti.unisa.it
+
+#     This program is free software: you can redistribute it and/or modify
+#     it under the terms of the GNU General Public License as published by
+#     the Free Software Foundation, either version 3 of the License, or
+#     (at your option) any later version.
+
+#     This program is distributed in the hope that it will be useful,
+#     but WITHOUT ANY WARRANTY; without even the implied warranty of
+#     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#     GNU General Public License for more details.
+
+#     You should have received a copy of the GNU General Public License
+#     along with this program.  If not, see <https://www.gnu.org/licenses/>.
+
+#### This file contains tests to evaluate that your bot behaves as expected.
+#### If you want to learn more, please see the docs: https://rasa.com/docs/rasa/testing-your-assistant
+
+stories:
+  - story: happy path 1
+    steps:
+      - user: |
+          hello there!
+        intent: greet
+      - action: utter_greet
+      - user: |
+          amazing
+        intent: mood_great
+      - action: utter_happy
+
+  - story: happy path 2
+    steps:
+      - user: |
+          hello there!
+        intent: greet
+      - action: utter_greet
+      - user: |
+          amazing
+        intent: mood_great
+      - action: utter_happy
+      - user: |
+          bye-bye!
+        intent: goodbye
+      - action: utter_goodbye
+
+  - story: say goodbye
+    steps:
+      - user: |
+          bye-bye!
+        intent: goodbye
+      - action: utter_goodbye
+
+  - story: bot challenge
+    steps:
+      - user: |
+          are you a bot?
+        intent: bot_challenge
+      - action: utter_iamabot
+
+  - story: presentation
+    steps:
+      - user: |
+          I'm  Mike
+        intent: change_person
+      - action: person_form
+      - action: utter_hello_user
+
+  - story: add task
+    steps:
+      - user: |
+          I'm  Mike
+        intent: change_person
+      - action: person_form
+      - action: utter_hello_user
+      - user: |
+          remind me to [send an email to mum]{"entity": "task"} at [12:00]{"entity": "time"} for [work]{"entity": "category"}
+        intent: manage_task
+      - action: task_form
+      - action: task_submit
+      - user: |
+          yes
+        intent: affirm
+      - action: action_affirm
+      - user: |
+          y
+        intent: affirm
+      - action: action_affirm
+
+  - story: create a task but don't add it
+    steps:
+      - user: |
+          I'm  Jane
+        intent: change_person
+      - action: person_form
+      - action: utter_hello_user
+      - user: |
+          remind me to [go to gym]{"entity": "task"} at [12 o'clock]{"entity": "time"} for [home]{"entity": "category"}
+        intent: manage_task
+      - action: task_form
+      - action: task_submit
+      - user: |
+          no
+        intent: deny
+      - action: action_reset_slot
+
+  - story: update a task
+    steps:
+      - user: |
+          I'm  Jane
+        intent: change_person
+      - action: person_form
+      - action: utter_hello_user
+      - user: |
+          modify [send an email to mum]{"entity": "task"} at [12]{"entity": "time"} for [work]{"entity": "category"}
+        intent: manage_task
+      - action: task_form
+      - action: task_submit
+      - user: |
+          yes
+        intent: affirm
+      - action: action_affirm
+      - user: |
+          at [13:00]{"entity": "time"}
+        intent: manage_task
+      - action: task_form
+      - action: task_submit
+      - user: |
+          y
+        intent: affirm
+      - action: action_affirm
+      - user: |
+          y
+        intent: affirm
+      - action: action_affirm
+
+  - story: update a task and deny reminder
+    steps:
+      - user: |
+          I'm  Jane
+        intent: change_person
+      - action: person_form
+      - action: utter_hello_user
+      - user: |
+          modify [send an email to mum]{"entity": "task"} at [12]{"entity": "time"} for [work]{"entity": "category"}
+        intent: manage_task
+      - action: task_form
+      - action: task_submit
+      - user: |
+          yes
+        intent: affirm
+      - action: action_affirm
+      - user: |
+          at [13:00]{"entity": "time"}
+        intent: manage_task
+      - action: task_form
+      - action: task_submit
+      - user: |
+          y
+        intent: affirm
+      - action: action_affirm
+      - user: |
+          n
+        intent: deny
+      - action: action_reset_slot
+
+  - story: update a task, set the new update but deny the modify
+    steps:
+      - user: |
+          I'm  Jane
+        intent: change_person
+      - action: person_form
+      - action: utter_hello_user
+      - user: |
+          modify [send an email to mum]{"entity": "task"} at [six o'clock]{"entity": "time"} for [work]{"entity": "category"}
+        intent: manage_task
+      - action: task_form
+      - action: task_submit
+      - user: |
+          yes
+        intent: affirm
+      - action: action_affirm
+      - user: |
+          at [ten to ten]{"entity": "time"}
+        intent: manage_task
+      - action: task_form
+      - action: task_submit
+      - user: |
+          n
+        intent: deny
+      - action: action_reset_slot
+
+  - story: update a task but deny the modify
+    steps:
+      - user: |
+          I'm  Jane
+        intent: change_person
+      - action: person_form
+      - action: utter_hello_user
+      - user: |
+          modify [send an email to mum]{"entity": "task"} at [six past ten]{"entity": "time"} for [work]{"entity": "category"}
+        intent: manage_task
+      - action: task_form
+      - action: task_submit
+      - user: |
+          n
+        intent: deny
+      - action: action_reset_slot
+
+  - story: delete a story
+    steps:
+      - user: |
+          I am Luigi
+        intent: change_person
+      - action: person_form
+      - action: utter_hello_user
+      - user: |
+          delete [send an email to mum]{"entity": "task"} at [six past ten]{"entity": "time"} for [work]{"entity": "category"}
+        intent: manage_task
+      - action: task_form
+      - action: task_submit
+      - user: |
+          yes
+        intent: affirm
+      - action: action_affirm
+
+  - story: delete a story and deny it
+    steps:
+      - user: |
+          I am Luigi
+        intent: change_person
+      - action: person_form
+      - action: utter_hello_user
+      - user: |
+          delete [send an email to mum]{"entity": "task"} at [six past ten]{"entity": "time"} for [work]{"entity": "category"}
+        intent: manage_task
+      - action: task_form
+      - action: task_submit
+      - user: |
+          no
+        intent: deny
+      - action: action_reset_slot
+
+  - story: show all task
+    steps:
+      - user: |
+          I am Mike
+        intent: change_person
+      - action: person_form
+      - action: utter_hello_user
+      - user: |
+          Show all
+        intent: view_task
+      - action: action_view_list

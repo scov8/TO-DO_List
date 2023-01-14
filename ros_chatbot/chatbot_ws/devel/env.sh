@@ -1,0 +1,1 @@
+/media/psf/TO-DO_List/ros_chatbot/chatbot_ws/devel/.private/catkin_tools_prebuild/env.sh

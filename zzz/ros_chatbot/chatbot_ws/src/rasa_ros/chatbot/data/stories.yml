@@ -1,0 +1,1248 @@
+#   If you develop a new program, and you want it to be of the greatest
+# possible use to the public, the best way to achieve this is to make it
+# free software which everyone can redistribute and change under these terms.
+
+#   To do so, attach the following notices to the program.  It is safest
+# to attach them to the start of each source file to most effectively
+# state the exclusion of warranty; and each file should have at least
+# the "copyright" line and a pointer to where the full notice is found.
+
+#        TO-DO List chat bot.
+#        Copyright (C) 2022 - All Rights Reserved
+#        Group:
+#            Faiella Ciro              0622701816  c.faiella8@studenti.unisa.it
+#            Giannino Pio Roberto      0622701713  p.giannino@studenti.unisa.it
+#            Scovotto Luigi            0622701702  l.scovotto1@studenti.unisa.it
+#            Tortora Francesco         0622701700  f.tortora21@studenti.unisa.it
+
+#     This program is free software: you can redistribute it and/or modify
+#     it under the terms of the GNU General Public License as published by
+#     the Free Software Foundation, either version 3 of the License, or
+#     (at your option) any later version.
+
+#     This program is distributed in the hope that it will be useful,
+#     but WITHOUT ANY WARRANTY; without even the implied warranty of
+#     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#     GNU General Public License for more details.
+
+#     You should have received a copy of the GNU General Public License
+#     along with this program.  If not, see <https://www.gnu.org/licenses/>.
+
+version: "2.0"
+
+stories:
+  - story: happy path
+    steps:
+      - intent: greet
+      - action: utter_greet
+      - intent: mood_great
+      - action: utter_happy
+
+  - story: story_thankyou
+    steps:
+      - intent: thankyou
+      - action: utter_noworries
+
+  # CHANGE user
+  - story: change user
+    steps:
+      - intent: change_person
+      - action: person_form
+      - action: action_change_person
+      - action: utter_hello_user
+
+  # ADD area
+  - story: add task, confirm adding and add a reminder
+    steps:
+      - intent: manage_task
+      - slot_was_set:
+          - task
+          - time
+          - category
+          - purpose: purpose-add
+      - action: task_form
+      - action: task_submit
+      - intent: affirm
+      - action: action_affirm
+      - intent: affirm
+      - action: action_affirm
+
+  - story: add task, confirm adding but doesn't want a reminder
+    steps:
+      - intent: manage_task
+      - slot_was_set:
+          - task
+          - time
+          - category
+          - purpose: purpose-add
+      - action: task_form
+      - action: task_submit
+      - intent: affirm
+      - action: action_affirm
+      - intent: deny
+      - action: action_reset_slot
+
+  - story: add task and reject
+    steps:
+      - intent: manage_task
+      - slot_was_set:
+          - task
+          - time
+          - category
+          - purpose: purpose-add
+      - action: task_form
+      - action: task_submit
+      - intent: deny
+      - action: action_reset_slot
+
+  # UPDATE area
+  - story: update task, confirm starter task, confirm modify and add reminder
+    steps:
+      - intent: manage_task
+      - slot_was_set:
+          - task
+          - time
+          - category
+          - purpose: purpose-update
+      - action: task_form
+      - action: task_submit
+      - intent: affirm
+      - action: action_affirm
+      - intent: manage_task
+      - slot_was_set:
+          - task
+          - time
+          - category
+          - purpose: purpose-update
+      - action: task_form
+      - action: task_submit
+      - intent: affirm
+      - action: action_affirm
+      - intent: affirm
+      - action: action_affirm
+
+  - story: update task, confirm starter task, confirm modify but not a reminder
+    steps:
+      - intent: manage_task
+      - slot_was_set:
+          - task
+          - time
+          - category
+          - purpose: purpose-update
+      - action: task_form
+      - action: task_submit
+      - intent: affirm
+      - action: action_affirm
+      - intent: manage_task
+      - slot_was_set:
+          - task
+          - time
+          - category
+          - purpose: purpose-update
+      - action: task_form
+      - action: task_submit
+      - intent: affirm
+      - action: action_affirm
+      - intent: deny
+      - action: action_reset_slot
+
+  - story: update task, confirm start and deny the modify
+    steps:
+      - intent: manage_task
+      - slot_was_set:
+          - task
+          - time
+          - category
+          - purpose: purpose-update
+      - action: task_form
+      - action: task_submit
+      - intent: affirm
+      - action: action_affirm
+      - intent: manage_task
+      - slot_was_set:
+          - task
+          - time
+          - category
+          - purpose: purpose-update
+      - action: task_form
+      - action: task_submit
+      - intent: deny
+      - action: action_reset_slot
+
+  - story: update task but deny start
+    steps:
+      - intent: manage_task
+      - slot_was_set:
+          - task
+          - time
+          - category
+          - purpose: purpose-update
+      - action: task_form
+      - action: task_submit
+      - intent: deny
+      - action: action_reset_slot
+
+  # DEL area
+  - story: del task and confirm
+    steps:
+      - intent: manage_task
+      - slot_was_set:
+          - task
+          - time
+          - category
+          - purpose: purpose-del
+      - action: task_form
+      - action: task_submit
+      - intent: affirm
+      - action: action_affirm
+
+  - story: del task and reject
+    steps:
+      - intent: manage_task
+      - slot_was_set:
+          - task
+          - time
+          - category
+          - purpose: purpose-del
+      - action: task_form
+      - action: task_submit
+      - intent: deny
+      - action: action_reset_slot
+
+  # VIEW area
+  - story: view tasks
+    steps:
+      - intent: view_task
+      - action: action_view_list
+
+    # delete all
+  - story: delete all task
+    steps:
+      - intent: delete_all
+      - action: action_delete_all
+
+    # show who am i
+  - story: who am I
+    steps:
+      - intent: who_am_i
+      - action: utter_hello_user
+
+  - story: full conversation n1 # reminder on
+    steps:
+      - intent: greet
+      - action: utter_greet
+      - intent: inform_person
+      - action: person_form
+      - action: action_change_person
+      - action: utter_hello_user
+      - intent: manage_task
+      - slot_was_set:
+          - task
+          - time
+          - category
+          - purpose: purpose-add
+      - action: task_form
+      - action: task_submit
+      - intent: affirm
+      - action: action_affirm
+      - intent: affirm
+      - action: action_affirm
+      - intent: thankyou
+      - action: utter_noworries
+      - intent: goodbye
+      - action: utter_goodbye
+
+  - story: full conversation n2 # reminder off
+    steps:
+      - intent: greet
+      - action: utter_greet
+      - intent: inform_person
+      - action: person_form
+      - action: action_change_person
+      - action: utter_hello_user
+      - intent: manage_task
+      - slot_was_set:
+          - task
+          - time
+          - category
+          - purpose: purpose-add
+      - action: task_form
+      - action: task_submit
+      - intent: affirm
+      - action: action_affirm
+      - intent: deny
+      - action: action_reset_slot
+      - intent: thankyou
+      - action: utter_noworries
+      - intent: goodbye
+      - action: utter_goodbye
+
+  - story: full conversation n3 # show task and add reminder on
+    steps:
+      - intent: greet
+      - action: utter_greet
+      - intent: inform_person
+      - action: person_form
+      - action: action_change_person
+      - action: utter_hello_user
+      - intent: view_task
+      - action: action_view_list
+      - intent: manage_task
+      - slot_was_set:
+          - task
+          - time
+          - category
+          - purpose: purpose-add
+      - action: task_form
+      - action: task_submit
+      - intent: affirm
+      - action: action_affirm
+      - intent: affirm
+      - action: action_affirm
+      - intent: thankyou
+      - action: utter_noworries
+      - intent: goodbye
+      - action: utter_goodbye
+
+  - story: full conversation n4 # show task and add reminder off
+    steps:
+      - intent: greet
+      - action: utter_greet
+      - intent: inform_person
+      - action: person_form
+      - action: action_change_person
+      - action: utter_hello_user
+      - intent: view_task
+      - action: action_view_list
+      - intent: manage_task
+      - slot_was_set:
+          - task
+          - time
+          - category
+          - purpose: purpose-add
+      - action: task_form
+      - action: task_submit
+      - intent: affirm
+      - action: action_affirm
+      - intent: deny
+      - action: action_reset_slot
+      - intent: thankyou
+      - action: utter_noworries
+      - intent: goodbye
+      - action: utter_goodbye
+
+  - story: full conversation n5 # update, show, confirm, activate reminder
+    steps:
+      - intent: greet
+      - action: utter_greet
+      - intent: inform_person
+      - action: person_form
+      - action: action_change_person
+      - action: utter_hello_user
+      - intent: view_task
+      - action: action_view_list
+      - intent: manage_task
+      - slot_was_set:
+          - task
+          - time
+          - category
+          - purpose: purpose-update
+      - action: task_form
+      - action: task_submit
+      - intent: affirm
+      - action: action_affirm
+      - intent: affirm
+      - action: action_affirm
+      - intent: thankyou
+      - action: utter_noworries
+      - intent: goodbye
+      - action: utter_goodbye
+
+  - story: full conversation n6 # update, show, confirm, deactivate reminder
+    steps:
+      - intent: greet
+      - action: utter_greet
+      - intent: inform_person
+      - action: person_form
+      - action: action_change_person
+      - action: utter_hello_user
+      - intent: view_task
+      - action: action_view_list
+      - intent: manage_task
+      - slot_was_set:
+          - task
+          - time
+          - category
+          - purpose: purpose-update
+      - action: task_form
+      - action: task_submit
+      - intent: view_task
+      - action: action_view_list
+      - intent: affirm
+      - action: action_affirm
+      - intent: deny
+      - action: action_reset_slot
+      - intent: thankyou
+      - action: utter_noworries
+      - intent: goodbye
+      - action: utter_goodbye
+
+  - story: full conversation n1 # change person and view
+    steps:
+      - intent: greet
+      - action: utter_greet
+      - intent: inform_person
+      - action: person_form
+      - action: action_change_person
+      - action: utter_hello_user
+      - intent: view_task
+      - action: action_view_list
+      - intent: change_person
+      - action: person_form
+      - action: action_change_person
+      - action: utter_hello_user
+      - intent: view_task
+      - action: action_view_list
+      - intent: thankyou
+      - action: utter_noworries
+      - intent: goodbye
+      - action: utter_goodbye
+
+  - story: Presentation
+    steps:
+      - intent: greet
+      - action: utter_greet
+      - intent: inform_person
+      - action: person_form
+      - action: action_change_person
+      - action: utter_hello_user
+
+  - story: interactive_story_1
+    steps:
+      - intent: greet
+      - action: utter_greet
+      - intent: change_person
+        entities:
+          - PERSON: Mike
+      - action: person_form
+      - active_loop: person_form
+      - slot_was_set:
+          - PERSON: Mike
+      - slot_was_set:
+          - requested_slot: null
+      - active_loop: null
+      - action: action_change_person
+      - action: utter_hello_user
+      - intent: view_task
+      - action: action_view_list
+      - intent: manage_task
+        entities:
+          - purpose: purpose-add
+          - task: turn off the pc
+          - category: category-work
+          - time: "2022-11-04T23:00:00.000-07:00"
+      - slot_was_set:
+          - task: turn off the pc
+      - slot_was_set:
+          - category: category-work
+      - slot_was_set:
+          - time: "2022-11-04T23:00:00.000-07:00"
+      - slot_was_set:
+          - purpose: purpose-add
+      - action: task_form
+      - active_loop: task_form
+      - slot_was_set:
+          - task: turn off the pc
+      - slot_was_set:
+          - category: category-work
+      - slot_was_set:
+          - purpose: purpose-add
+      - slot_was_set:
+          - time: "2022-11-04T23:00:00.000-07:00"
+      - slot_was_set:
+          - task: turn off the pc
+      - slot_was_set:
+          - category: category-work
+      - slot_was_set:
+          - purpose: purpose-add
+      - slot_was_set:
+          - time: "2022-11-04T23:00:00.000-07:00"
+      - slot_was_set:
+          - requested_slot: null
+      - active_loop: null
+      - action: task_submit
+      - intent: affirm
+      - action: action_affirm
+      - intent: affirm
+      - action: action_affirm
+      - intent: view_task
+      - action: action_view_list
+      - intent: manage_task
+        entities:
+          - purpose: purpose-update
+          - task: turn off the pc
+          - time: "2022-11-04T23:00:00.000-07:00"
+          - category: category-work
+      - slot_was_set:
+          - task: turn off the pc
+      - slot_was_set:
+          - category: category-work
+      - slot_was_set:
+          - time: "2022-11-04T23:00:00.000-07:00"
+      - slot_was_set:
+          - purpose: purpose-update
+      - action: task_form
+      - active_loop: task_form
+      - slot_was_set:
+          - task: turn off the pc
+      - slot_was_set:
+          - category: category-work
+      - slot_was_set:
+          - purpose: purpose-update
+      - slot_was_set:
+          - time: "2022-11-04T23:00:00.000-07:00"
+      - slot_was_set:
+          - task: turn off the pc
+      - slot_was_set:
+          - category: category-work
+      - slot_was_set:
+          - purpose: purpose-update
+      - slot_was_set:
+          - time: "2022-11-04T23:00:00.000-07:00"
+      - slot_was_set:
+          - requested_slot: null
+      - active_loop: null
+      - action: task_submit
+      - intent: affirm
+      - action: action_affirm
+      - intent: manage_task
+        entities:
+          - time: "2022-11-04T14:19:00.000-07:00"
+      - slot_was_set:
+          - time: "2022-11-04T14:19:00.000-07:00"
+      - action: task_form
+      - active_loop: task_form
+      - slot_was_set:
+          - task: turn off the pc
+      - slot_was_set:
+          - category: category-work
+      - slot_was_set:
+          - purpose: purpose-update
+      - slot_was_set:
+          - time: "2022-11-04T14:19:00.000-07:00"
+      - slot_was_set:
+          - time: "2022-11-04T14:19:00.000-07:00"
+      - slot_was_set:
+          - requested_slot: null
+      - active_loop: null
+      - action: task_submit
+      - intent: affirm
+      - action: action_affirm
+      - intent: deny
+      - action: action_reset_slot
+      - slot_was_set:
+          - task: null
+      - slot_was_set:
+          - category: null
+      - slot_was_set:
+          - time: null
+      - slot_was_set:
+          - purpose: null
+      - intent: view_task
+      - action: action_view_list
+      - intent: manage_task
+        entities:
+          - purpose: purpose-del
+          - task: turn off the pc
+          - time: "2022-11-04T14:19:00.000-07:00"
+          - category: category-work
+      - slot_was_set:
+          - task: turn off the pc
+      - slot_was_set:
+          - category: category-work
+      - slot_was_set:
+          - time: "2022-11-04T14:19:00.000-07:00"
+      - slot_was_set:
+          - purpose: purpose-del
+      - action: task_form
+      - active_loop: task_form
+      - slot_was_set:
+          - task: turn off the pc
+      - slot_was_set:
+          - category: category-work
+      - slot_was_set:
+          - purpose: purpose-del
+      - slot_was_set:
+          - time: "2022-11-04T14:19:00.000-07:00"
+      - slot_was_set:
+          - task: turn off the pc
+      - slot_was_set:
+          - category: category-work
+      - slot_was_set:
+          - purpose: purpose-del
+      - slot_was_set:
+          - time: "2022-11-04T14:19:00.000-07:00"
+      - slot_was_set:
+          - requested_slot: null
+      - active_loop: null
+      - action: task_submit
+      - intent: affirm
+      - action: action_affirm
+      - intent: view_task
+      - action: action_view_list
+      - intent: goodbye
+      - action: utter_goodbye
+
+  - story: interactive_story_2
+    steps:
+      - intent: manage_task
+        entities:
+          - purpose: purpose-add
+          - task: send an email to Jim
+          - time: "2022-11-05T23:00:00.000-07:00"
+          - category: category-work
+      - slot_was_set:
+          - task: send an email to Jim
+      - slot_was_set:
+          - category: category-work
+      - slot_was_set:
+          - time: "2022-11-05T23:00:00.000-07:00"
+      - slot_was_set:
+          - purpose: purpose-add
+      - action: task_form
+      - active_loop: task_form
+      - slot_was_set:
+          - task: send an email to Jim
+      - slot_was_set:
+          - category: category-work
+      - slot_was_set:
+          - purpose: purpose-add
+      - slot_was_set:
+          - time: "2022-11-05T23:00:00.000-07:00"
+      - slot_was_set:
+          - task: send an email to Jim
+      - slot_was_set:
+          - category: category-work
+      - slot_was_set:
+          - purpose: purpose-add
+      - slot_was_set:
+          - time: "2022-11-05T23:00:00.000-07:00"
+      - slot_was_set:
+          - requested_slot: null
+      - active_loop: null
+      - action: task_submit
+      - slot_was_set:
+          - task: null
+      - slot_was_set:
+          - category: null
+      - slot_was_set:
+          - time: null
+      - slot_was_set:
+          - purpose: null
+      - intent: change_person
+        entities:
+          - PERSON: Mike
+      - action: person_form
+      - active_loop: person_form
+      - slot_was_set:
+          - PERSON: Mike
+      - slot_was_set:
+          - requested_slot: null
+      - active_loop: null
+      - action: action_change_person
+      - action: utter_hello_user
+      - intent: view_task
+      - action: action_view_list
+      - intent: manage_task
+        entities:
+          - purpose: purpose-update
+          - task: add a book in my library
+          - category: category-work
+          - time: "2022-11-05T13:10:00.000-07:00"
+      - slot_was_set:
+          - task: add a book in my library
+      - slot_was_set:
+          - category: category-work
+      - slot_was_set:
+          - time: "2022-11-05T13:10:00.000-07:00"
+      - slot_was_set:
+          - purpose: purpose-update
+      - action: task_form
+      - active_loop: task_form
+      - slot_was_set:
+          - task: add a book in my library
+      - slot_was_set:
+          - category: category-work
+      - slot_was_set:
+          - purpose: purpose-update
+      - slot_was_set:
+          - time: "2022-11-05T13:10:00.000-07:00"
+      - slot_was_set:
+          - task: add a book in my library
+      - slot_was_set:
+          - category: category-work
+      - slot_was_set:
+          - purpose: purpose-update
+      - slot_was_set:
+          - time: "2022-11-05T13:10:00.000-07:00"
+      - slot_was_set:
+          - requested_slot: null
+      - active_loop: null
+      - action: task_submit
+      - intent: affirm
+      - action: action_affirm
+      - intent: manage_task
+        entities:
+          - category: category-home
+      - slot_was_set:
+          - category: category-home
+      - action: task_form
+      - active_loop: task_form
+      - slot_was_set:
+          - task: add a book in my library
+      - slot_was_set:
+          - category: category-home
+      - slot_was_set:
+          - purpose: purpose-update
+      - slot_was_set:
+          - time: "2022-11-05T13:10:00.000-07:00"
+      - slot_was_set:
+          - category: category-home
+      - slot_was_set:
+          - requested_slot: null
+      - active_loop: null
+      - action: task_submit
+      - intent: affirm
+      - action: action_affirm
+      - intent: affirm
+      - action: action_affirm
+      - intent: view_task
+      - action: action_view_list
+      - intent: manage_task
+        entities:
+          - purpose: purpose-del
+          - task: add a book in my library
+          - category: category-home
+          - time: "2022-11-05T13:10:00.000-07:00"
+      - slot_was_set:
+          - task: add a book in my library
+      - slot_was_set:
+          - category: category-home
+      - slot_was_set:
+          - time: "2022-11-05T13:10:00.000-07:00"
+      - slot_was_set:
+          - purpose: purpose-del
+      - action: task_form
+      - active_loop: task_form
+      - slot_was_set:
+          - task: add a book in my library
+      - slot_was_set:
+          - category: category-home
+      - slot_was_set:
+          - purpose: purpose-del
+      - slot_was_set:
+          - time: "2022-11-05T13:10:00.000-07:00"
+      - slot_was_set:
+          - task: add a book in my library
+      - slot_was_set:
+          - category: category-home
+      - slot_was_set:
+          - purpose: purpose-del
+      - slot_was_set:
+          - time: "2022-11-05T13:10:00.000-07:00"
+      - slot_was_set:
+          - requested_slot: null
+      - active_loop: null
+      - action: task_submit
+      - intent: affirm
+      - action: action_affirm
+      - intent: view_task
+      - action: action_view_list
+      - intent: manage_task
+        entities:
+          - purpose: purpose-add
+          - task: call Ronnie
+          - time: "2022-11-05T14:12:00.000-07:00"
+          - category: category-free
+      - slot_was_set:
+          - task: call Ronnie
+      - slot_was_set:
+          - category: category-free
+      - slot_was_set:
+          - time: "2022-11-05T14:12:00.000-07:00"
+      - slot_was_set:
+          - purpose: purpose-add
+      - action: task_form
+      - active_loop: task_form
+      - slot_was_set:
+          - task: call Ronnie
+      - slot_was_set:
+          - category: category-free
+      - slot_was_set:
+          - purpose: purpose-add
+      - slot_was_set:
+          - time: "2022-11-05T14:12:00.000-07:00"
+      - slot_was_set:
+          - task: call Ronnie
+      - slot_was_set:
+          - category: category-free
+      - slot_was_set:
+          - purpose: purpose-add
+      - slot_was_set:
+          - time: "2022-11-05T14:12:00.000-07:00"
+      - slot_was_set:
+          - requested_slot: null
+      - active_loop: null
+      - action: task_submit
+      - intent: affirm
+      - action: action_affirm
+      - intent: view_task
+      - action: action_view_list
+
+  - story: interactive_story_3
+    steps:
+      - intent: greet
+      - action: utter_greet
+      - intent: change_person
+        entities:
+          - PERSON: Luigi
+      - action: person_form
+      - active_loop: person_form
+      - slot_was_set:
+          - PERSON: Luigi
+      - slot_was_set:
+          - requested_slot: null
+      - active_loop: null
+      - action: action_change_person
+      - action: utter_hello_user
+      - intent: manage_task
+        entities:
+          - purpose: purpose-add
+          - task: make the nativity scene
+          - category: category-home
+          - time: "2022-11-05T16:00:00.000-07:00"
+      - slot_was_set:
+          - task: make the nativity scene
+      - slot_was_set:
+          - category: category-home
+      - slot_was_set:
+          - time: "2022-11-05T16:00:00.000-07:00"
+      - slot_was_set:
+          - purpose: purpose-add
+      - action: task_form
+      - active_loop: task_form
+      - slot_was_set:
+          - task: make the nativity scene
+      - slot_was_set:
+          - category: category-home
+      - slot_was_set:
+          - purpose: purpose-add
+      - slot_was_set:
+          - time: "2022-11-05T16:00:00.000-07:00"
+      - slot_was_set:
+          - task: make the nativity scene
+      - slot_was_set:
+          - category: category-home
+      - slot_was_set:
+          - purpose: purpose-add
+      - slot_was_set:
+          - time: "2022-11-05T16:00:00.000-07:00"
+      - slot_was_set:
+          - requested_slot: null
+      - active_loop: null
+      - action: task_submit
+      - intent: affirm
+      - action: action_affirm
+      - intent: deny
+      - action: action_reset_slot
+      - slot_was_set:
+          - task: null
+      - slot_was_set:
+          - category: null
+      - slot_was_set:
+          - time: null
+      - slot_was_set:
+          - purpose: null
+      - intent: manage_task
+        entities:
+          - purpose: purpose-add
+          - task: build a toy for the children in the house
+          - time: "2022-11-05T22:00:00.000-07:00"
+          - category: category-work
+      - slot_was_set:
+          - task: build a toy for the children in the house
+      - slot_was_set:
+          - category: category-work
+      - slot_was_set:
+          - time: "2022-11-05T22:00:00.000-07:00"
+      - slot_was_set:
+          - purpose: purpose-add
+      - action: task_form
+      - active_loop: task_form
+      - slot_was_set:
+          - task: build a toy for the children in the house
+      - slot_was_set:
+          - category: category-work
+      - slot_was_set:
+          - purpose: purpose-add
+      - slot_was_set:
+          - time: "2022-11-05T22:00:00.000-07:00"
+      - slot_was_set:
+          - task: build a toy for the children in the house
+      - slot_was_set:
+          - category: category-work
+      - slot_was_set:
+          - purpose: purpose-add
+      - slot_was_set:
+          - time: "2022-11-05T22:00:00.000-07:00"
+      - slot_was_set:
+          - requested_slot: null
+      - active_loop: null
+      - action: task_submit
+      - intent: affirm
+      - action: action_affirm
+      - intent: affirm
+      - action: action_affirm
+      - intent: manage_task
+        entities:
+          - purpose: purpose-add
+          - task: do cognitive robot project
+          - time: "2022-11-05T15:00:00.000-07:00"
+          - category: category-home
+      - slot_was_set:
+          - task: do cognitive robot project
+      - slot_was_set:
+          - category: category-home
+      - slot_was_set:
+          - time: "2022-11-05T15:00:00.000-07:00"
+      - slot_was_set:
+          - purpose: purpose-add
+      - action: task_form
+      - active_loop: task_form
+      - slot_was_set:
+          - task: do cognitive robot project
+      - slot_was_set:
+          - category: category-home
+      - slot_was_set:
+          - purpose: purpose-add
+      - slot_was_set:
+          - time: "2022-11-05T15:00:00.000-07:00"
+      - slot_was_set:
+          - task: do cognitive robot project
+      - slot_was_set:
+          - category: category-home
+      - slot_was_set:
+          - purpose: purpose-add
+      - slot_was_set:
+          - time: "2022-11-05T15:00:00.000-07:00"
+      - slot_was_set:
+          - requested_slot: null
+      - active_loop: null
+      - action: task_submit
+      - intent: affirm
+      - action: action_affirm
+      - intent: affirm
+      - action: action_affirm
+
+  - story: interactive_story_4
+    steps:
+      - intent: greet
+      - action: utter_greet
+      - intent: change_person
+        entities:
+          - PERSON: Luigi
+      - action: person_form
+      - active_loop: person_form
+      - slot_was_set:
+          - PERSON: Luigi
+      - slot_was_set:
+          - requested_slot: null
+      - active_loop: null
+      - action: action_change_person
+      - action: utter_hello_user
+      - intent: change_person
+        entities:
+          - PERSON: Mike
+      - action: person_form
+      - active_loop: person_form
+      - slot_was_set:
+          - PERSON: Luigi
+      - slot_was_set:
+          - PERSON: Mike
+      - slot_was_set:
+          - requested_slot: null
+      - active_loop: null
+      - action: action_change_person
+      - action: utter_hello_user
+      - intent: change_person
+        entities:
+          - PERSON: Nicholas
+      - action: person_form
+      - active_loop: person_form
+      - slot_was_set:
+          - PERSON: Mike
+      - slot_was_set:
+          - PERSON: Nicholas
+      - slot_was_set:
+          - requested_slot: null
+      - active_loop: null
+      - action: action_change_person
+      - action: utter_hello_user
+      - intent: change_person
+        entities:
+          - PERSON: Francesco
+      - action: person_form
+      - active_loop: person_form
+      - slot_was_set:
+          - PERSON: Nicholas
+      - slot_was_set:
+          - PERSON: Francesco
+      - slot_was_set:
+          - requested_slot: null
+      - active_loop: null
+      - action: action_change_person
+      - action: utter_hello_user
+      - intent: change_person
+        entities:
+          - PERSON: Alfred
+      - action: person_form
+      - active_loop: person_form
+      - slot_was_set:
+          - PERSON: Francesco
+      - slot_was_set:
+          - PERSON: Alfred
+      - slot_was_set:
+          - requested_slot: null
+      - active_loop: null
+      - action: action_change_person
+      - action: utter_hello_user
+      - intent: change_person
+        entities:
+          - PERSON: Luigi
+      - action: person_form
+      - active_loop: person_form
+      - slot_was_set:
+          - PERSON: Alfred
+      - slot_was_set:
+          - PERSON: Luigi
+      - slot_was_set:
+          - requested_slot: null
+      - active_loop: null
+      - action: action_change_person
+      - action: utter_hello_user
+      - intent: change_person
+        entities:
+          - PERSON: Michel
+      - action: person_form
+      - active_loop: person_form
+      - slot_was_set:
+          - PERSON: Luigi
+      - slot_was_set:
+          - PERSON: Michel
+      - slot_was_set:
+          - requested_slot: null
+      - active_loop: null
+      - action: action_change_person
+      - action: utter_hello_user
+      - intent: manage_task
+        entities:
+          - purpose: purpose-add
+          - task: go to gym
+          - time: "2022-11-05T14:39:00.000-07:00"
+      - slot_was_set:
+          - task: go to gym
+      - slot_was_set:
+          - time: "2022-11-05T14:39:00.000-07:00"
+      - slot_was_set:
+          - purpose: purpose-add
+      - action: task_form
+      - active_loop: task_form
+      - slot_was_set:
+          - task: go to gym
+      - slot_was_set:
+          - purpose: purpose-add
+      - slot_was_set:
+          - time: "2022-11-05T14:39:00.000-07:00"
+      - slot_was_set:
+          - task: go to gym
+      - slot_was_set:
+          - purpose: purpose-add
+      - slot_was_set:
+          - time: "2022-11-05T14:39:00.000-07:00"
+      - slot_was_set:
+          - requested_slot: category
+      - slot_was_set:
+          - category: category-work
+      - slot_was_set:
+          - category: category-work
+      - slot_was_set:
+          - requested_slot: null
+      - active_loop: null
+      - action: task_submit
+      - intent: affirm
+      - action: action_affirm
+      - intent: deny
+      - action: action_reset_slot
+      - slot_was_set:
+          - task: null
+      - slot_was_set:
+          - category: null
+      - slot_was_set:
+          - time: null
+      - slot_was_set:
+          - purpose: null
+      - intent: change_person
+        entities:
+          - PERSON: Mike
+      - action: person_form
+      - active_loop: person_form
+      - slot_was_set:
+          - PERSON: Michel
+      - slot_was_set:
+          - PERSON: Mike
+      - slot_was_set:
+          - requested_slot: null
+      - active_loop: null
+      - action: action_change_person
+      - action: utter_hello_user
+      - intent: view_task
+      - action: action_view_list
+      - intent: change_person
+        entities:
+          - PERSON: Luigi
+      - action: person_form
+      - active_loop: person_form
+      - slot_was_set:
+          - PERSON: Mike
+      - slot_was_set:
+          - PERSON: Luigi
+      - slot_was_set:
+          - requested_slot: null
+      - active_loop: null
+      - action: action_change_person
+      - action: utter_hello_user
+      - intent: goodbye
+      - action: utter_goodbye
+
+  - story: interactive_story_5
+    steps:
+      - intent: greet
+      - action: utter_greet
+      - intent: mood_great
+      - action: utter_happy
+      - intent: view_task
+      - action: action_view_list
+      - intent: change_person
+        entities:
+          - PERSON: Mike
+      - action: person_form
+      - active_loop: person_form
+      - slot_was_set:
+          - PERSON: Mike
+      - slot_was_set:
+          - requested_slot: null
+      - active_loop: null
+      - action: action_change_person
+      - action: utter_hello_user
+      - intent: view_task
+      - action: action_view_list
+      - intent: mood_great
+      - action: utter_happy
+      - intent: bot_challenge
+      - action: utter_iamabot
+      - intent: change_person
+        entities:
+          - PERSON: Jane
+      - action: person_form
+      - active_loop: person_form
+      - slot_was_set:
+          - PERSON: Mike
+      - slot_was_set:
+          - PERSON: Jane
+      - slot_was_set:
+          - requested_slot: null
+      - active_loop: null
+      - action: action_change_person
+      - action: utter_hello_user
+      - intent: view_task
+      - action: action_view_list
+      - intent: manage_task
+        entities:
+          - purpose: purpose-add
+          - task: meet the player
+      - slot_was_set:
+          - task: meet the player
+      - slot_was_set:
+          - purpose: purpose-add
+      - action: task_form
+      - active_loop: task_form
+      - slot_was_set:
+          - task: meet the player
+      - slot_was_set:
+          - purpose: purpose-add
+      - slot_was_set:
+          - task: meet the player
+      - slot_was_set:
+          - purpose: purpose-add
+      - slot_was_set:
+          - requested_slot: category
+      - slot_was_set:
+          - category: category-work
+      - slot_was_set:
+          - category: category-work
+      - slot_was_set:
+          - requested_slot: time
+      - slot_was_set:
+          - time: "2022-11-06T09:14:00.000-08:00"
+      - slot_was_set:
+          - time: "2022-11-06T09:14:00.000-08:00"
+      - slot_was_set:
+          - requested_slot: null
+      - active_loop: null
+      - action: task_submit
+      - intent: affirm
+      - action: action_affirm
+      - intent: deny
+      - action: action_reset_slot
+      - slot_was_set:
+          - task: null
+      - slot_was_set:
+          - category: null
+      - slot_was_set:
+          - time: null
+      - slot_was_set:
+          - purpose: null
+      - intent: view_task
+      - action: action_view_list
+      - intent: view_task
+      - action: action_view_list
+      - intent: view_task
+      - action: action_view_list
+      - intent: change_person
+        entities:
+          - PERSON: Ciro
+      - action: person_form
+      - active_loop: person_form
+      - slot_was_set:
+          - PERSON: Jane
+      - slot_was_set:
+          - PERSON: Ciro
+      - slot_was_set:
+          - requested_slot: null
+      - active_loop: null
+      - action: action_change_person
+      - action: utter_hello_user
+      - intent: change_person
+        entities:
+          - PERSON: Pio
+      - action: person_form
+      - active_loop: person_form
+      - slot_was_set:
+          - PERSON: Ciro
+      - slot_was_set:
+          - PERSON: Pio
+      - slot_was_set:
+          - requested_slot: null
+      - active_loop: null
+      - action: action_change_person
+      - action: utter_hello_user

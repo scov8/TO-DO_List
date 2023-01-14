@@ -1,0 +1,1 @@
+/media/psf/TO-DO_List/ros_chatbot/chatbot_ws/devel/.private/rasa_ros/share/rasa_ros/cmake/rasa_rosConfig.cmake

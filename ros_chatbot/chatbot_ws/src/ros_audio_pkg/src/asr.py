@@ -30,6 +30,7 @@ def callback(audio):
         #spoken_text= r.recognize_google(audio_data, language='en-GB') # en-GB
         #print("Google Speech Recognition pensa tu abbia detto: " + spoken_text)
         '''
+        #l'abbiamo messa sotto 
         try:
             tmp = rospy.wait_for_message("parlando", Bool, timeout=1)
         except:
@@ -38,7 +39,7 @@ def callback(audio):
         print("tmp   "+str(tmp.data))
         if not tmp.data:
             spoken_text= r.recognize_google(audio_data, language='en-GB') # en-GB
-            print("dentro l'if")
+            print("Ecco cosa ha capito google, mo lo pubblico: " + spoken_text)
             pub1.publish(audio) # Publish audio only if it contains words
             pub2.publish(spoken_text)
         else:

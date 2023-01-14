@@ -210,7 +210,9 @@ class Face_Recognition():
     def run(self):
         results = []
         person = 'unkn0wn'
+        print("prestart")
         start = rospy.wait_for_message("start", Bool)
+        print("cio")
         while start.data:
             # Read frame
             ii=0
