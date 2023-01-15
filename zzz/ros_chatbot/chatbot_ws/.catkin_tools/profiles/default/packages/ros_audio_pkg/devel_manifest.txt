@@ -1,5 +1,0 @@
-ros_audio_pkg
-/media/psf/TO-DO_List/ros_chatbot/chatbot_ws/devel/.private/ros_audio_pkg/cmake.lock /media/psf/TO-DO_List/ros_chatbot/chatbot_ws/devel/./cmake.lock
-/media/psf/TO-DO_List/ros_chatbot/chatbot_ws/devel/.private/ros_audio_pkg/lib/pkgconfig/ros_audio_pkg.pc /media/psf/TO-DO_List/ros_chatbot/chatbot_ws/devel/lib/pkgconfig/ros_audio_pkg.pc
-/media/psf/TO-DO_List/ros_chatbot/chatbot_ws/devel/.private/ros_audio_pkg/share/ros_audio_pkg/cmake/ros_audio_pkgConfig.cmake /media/psf/TO-DO_List/ros_chatbot/chatbot_ws/devel/share/ros_audio_pkg/cmake/ros_audio_pkgConfig.cmake
-/media/psf/TO-DO_List/ros_chatbot/chatbot_ws/devel/.private/ros_audio_pkg/share/ros_audio_pkg/cmake/ros_audio_pkgConfig-version.cmake /media/psf/TO-DO_List/ros_chatbot/chatbot_ws/devel/share/ros_audio_pkg/cmake/ros_audio_pkgConfig-version.cmake

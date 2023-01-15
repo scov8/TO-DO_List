@@ -1,1 +1,0 @@
-/media/psf/TO-DO_List/ros_chatbot/chatbot_ws/devel/.private/pepper_nodes/share/roseus/ros/pepper_nodes/srv/LoadUrl.l

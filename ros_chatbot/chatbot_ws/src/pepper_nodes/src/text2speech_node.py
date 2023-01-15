@@ -3,8 +3,7 @@ from utils import Session
 from pepper_nodes.srv import Text2Speech
 from optparse import OptionParser
 import rospy
-
-from std_msgs.msg import Bool
+import time
 
 '''
 This class implements a ROS node able to call the Text to speech service of the robot
@@ -23,29 +22,21 @@ class Text2SpeechNode:
         self.posture_proxy = self.session.get_service("ALRobotPosture")
         self.tracker_service = self.session.get_service("ALTracker")
         self.animation_player_service = self.session.get_service("ALAnimationPlayer")
-        self._syn_speech = rospy.Publisher('parlando', Bool, queue_size=1)        
      
     '''
     Rececives a Text2Speech message and call the ALTextToSpeech service.
     The robot will play the text of the message
     '''
     def say(self, msg):
-        print(msg)
-        x = Bool()
-        x.data = True 
-        self._syn_speech.publish(x)
         try:
-            self.animation_player_service.run("animations/Stand/Gestures/BodyTalk_10", _async=True)#Explain_8
+            self.animation_player_service.run("animations/Stand/Gestures/BodyTalk_10", _async=True) # Explain_8
             self.tts.say(msg.speech)
         except:
             self.session.reconnect()
             self.tts = self.session.get_service("ALTextToSpeech")
             self.tts.say(msg.speech)
-        x.data = False 
-        self._syn_speech.publish(x)
         return "ACK"
         
-    
     '''
     Starts the node and create the tts service
     '''
@@ -59,7 +50,7 @@ if __name__ == "__main__":
     import time
     time.sleep(3)
     parser = OptionParser()
-    parser.add_option("--ip", dest="ip", default="192.168.1.18")
+    parser.add_option("--ip", dest="ip", default="192.168.1.65")
     parser.add_option("--port", dest="port", default=9559)
     (options, args) = parser.parse_args()
 

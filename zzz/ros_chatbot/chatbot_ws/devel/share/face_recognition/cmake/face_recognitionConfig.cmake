@@ -1,1 +1,0 @@
-/media/psf/TO-DO_List/ros_chatbot/chatbot_ws/devel/.private/face_recognition/share/face_recognition/cmake/face_recognitionConfig.cmake

@@ -1,1 +1,0 @@
-/media/psf/TO-DO_List/ros_chatbot/chatbot_ws/devel/.private/vision_msgs/include/vision_msgs/ObjectHypothesis.h

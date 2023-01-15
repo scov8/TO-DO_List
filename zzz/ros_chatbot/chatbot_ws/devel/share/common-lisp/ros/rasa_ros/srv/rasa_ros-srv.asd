@@ -1,1 +1,0 @@
-/media/psf/TO-DO_List/ros_chatbot/chatbot_ws/devel/.private/rasa_ros/share/common-lisp/ros/rasa_ros/srv/rasa_ros-srv.asd
