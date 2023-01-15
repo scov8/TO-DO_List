@@ -1,0 +1,34 @@
+[
+  {
+    "text": "nopeee",
+    "intent": "deny",
+    "intent_prediction": {
+      "name": "inform_person",
+      "confidence": 0.42299785153037467
+    }
+  },
+  {
+    "text": "Correct",
+    "intent": "inform_action",
+    "intent_prediction": {
+      "name": "affirm",
+      "confidence": 0.5546476270467531
+    }
+  },
+  {
+    "text": "Nullish",
+    "intent": "inform_action",
+    "intent_prediction": {
+      "name": "inform_person",
+      "confidence": 0.42299785153037467
+    }
+  },
+  {
+    "text": "Unpublish",
+    "intent": "inform_action",
+    "intent_prediction": {
+      "name": "inform_person",
+      "confidence": 0.42299785153037467
+    }
+  }
+]

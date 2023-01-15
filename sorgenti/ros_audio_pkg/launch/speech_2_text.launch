@@ -1,0 +1,7 @@
+<launch>
+        <node pkg="ros_audio_pkg" type="speech.py" name="speech" output="screen"/>
+        <node pkg="ros_audio_pkg" type="speech_2_text.py" name="speech_2_text" output="screen"/>
+</launch>
+
+
+
