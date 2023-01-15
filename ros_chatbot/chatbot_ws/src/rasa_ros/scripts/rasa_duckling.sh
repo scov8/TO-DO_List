@@ -29,5 +29,4 @@
 #     You should have received a copy of the GNU General Public License
 #     along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
-PWD="Appl310!"
-echo $PWD | sudo -S docker run -p 8000:8000 rasa/duckling 
+echo $PSW | sudo -S docker run -p 8000:8000 rasa/duckling 

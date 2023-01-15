@@ -37,7 +37,7 @@ from typing import Any, Text, Dict, List
 
 from rasa_sdk import Action, Tracker
 from rasa_sdk.executor import CollectingDispatcher
-from rasa_sdk.events import SlotSet #, SessionStarted, ActionExecuted  # , ReminderScheduled, ReminderCancelled
+from rasa_sdk.events import SlotSet
 from dateutil.parser import parse
 
 import sqlite3
@@ -53,7 +53,7 @@ def correct_time(original_time):
     time = tmp[0]
     gmt = tmp[1]
     tmp = time.split(':')
-    time = tmp[0] + ':' + tmp[1]
+    time = tmp[0] + ':' + tmp[1] # otherwise swap ':' with ' '
     return data, time, gmt
 
 def correct_category(original_cat):
@@ -95,14 +95,14 @@ class TaskSubmit(Action):
         #     date = str(parse(str(time)).date())
 
         # If the user want to manage a task but did not tell his own name
-        if(user is None):
+        if (user is None):
             dispatcher.utter_message(text=f"You must tell me first your name!")
             return [SlotSet("task", None), SlotSet("category", None), SlotSet("time", "null"), SlotSet("purpose", None)]
 
         # based on the action to be taken the corresponding message will be sent to chat to notify the user of the action to be taken
         if (purpose == "purpose-add"):
             category = correct_category(category)
-            if (time!="null"):
+            if (time != "null"):
                 date, hour, gmt = correct_time(time)
                 dispatcher.utter_message(
                     text=f"Thanks, you want to add a new task, and the task is: \"{task}\" at {hour} of {date} in the category \"{category}\"\nWould you like to confirm?")
@@ -120,7 +120,6 @@ class TaskSubmit(Action):
             dispatcher.utter_message(
                 text=f"I don't understand the purpose, please can you tell me now?")
             return [SlotSet("purpose", None)]
-
         return []
 
 
@@ -198,7 +197,7 @@ class AddToDb(Action):
             else:
                 dispatcher.utter_message(
                     "Ok, I modified your task")
-            if(time != "null"):
+            if (time != "null"):
                 dispatcher.utter_message("Do you want a reminder?")
                 ASK_REMINDER = True
         elif (purpose == "purpose-add"):
@@ -217,7 +216,7 @@ class AddToDb(Action):
             curs = conn.cursor()
             curs.execute(query, [user,task])
             conn.commit()
-            if(curs.rowcount == 0):
+            if (curs.rowcount == 0):
                 dispatcher.utter_message(
                     "Oh no, you insert a non-existing entry.")
             else:
@@ -297,7 +296,7 @@ class ViewList(Action):
 
         user = tracker.get_slot("PERSON")
 
-        if(user is None):
+        if (user is None):
             dispatcher.utter_message(text=f"You must tell me first your name!")
             return []
 
@@ -324,7 +323,6 @@ class ViewList(Action):
                 out += " and the reminder is ON " if (
                     ii[3] == 1 or ii[3] is True) else " and the reminder is OFF"
             dispatcher.utter_message(text=f"{out}\n")
-
         return []
 
 
@@ -353,7 +351,6 @@ class DeleteAll(Action):
         conn.close()
 
         dispatcher.utter_message(text=f"Ok, i deleted your list\n")
-
         return []
 
 
@@ -392,8 +389,6 @@ class ChangePerson(Action):
     def run(self, dispatcher, tracker, domain):
         user = tracker.get_slot("PERSON")
 
-
-        if isinstance(user, list):
+        if (isinstance(user, list)):
             return[SlotSet("PERSON", user[0]), SlotSet("time", "null")]
-
         return[SlotSet("time", "null")]

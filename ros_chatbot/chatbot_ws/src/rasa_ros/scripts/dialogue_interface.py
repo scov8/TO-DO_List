@@ -29,11 +29,10 @@
 #     You should have received a copy of the GNU General Public License
 #     along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
-
 import rospy
 from std_msgs.msg import String, Bool
-from rasa_ros.srv import Dialogue, DialogueResponse
-from pepper_nodes.srv import LoadUrl, ExecuteJS, LoadUrlRequest, LoadUrlResponse
+from rasa_ros.srv import Dialogue
+from pepper_nodes.srv import LoadUrl, ExecuteJS, LoadUrlRequest
 
 
 class TerminalInterface:
@@ -44,9 +43,9 @@ class TerminalInterface:
     - set_text(self, text): prints the text on the terminal
 
     '''
-    def __init__(self, pub, ip):
+    def __init__(self, ip):
         self.ip = ip
-        self.pub = pub
+        self.pub = rospy.Publisher('bot_answer', String, queue_size=10) # Publisher of the RASA answer
         self.sub_rec = rospy.Subscriber('recognition', String, queue_size=1)
         self.sub_det = rospy.Subscriber('detection', Bool, queue_size=1)
         self.new_person = rospy.Publisher('new_person', String, queue_size=10)
@@ -57,19 +56,17 @@ class TerminalInterface:
         print("Waiting the speech...")
         txt = None
         while txt is None:
-            #print("Aspettando messaggio")
             try:
                 txt = rospy.wait_for_message("voice_txt", String, timeout=1)
             except:
                 pass
             if not self.there_is_someone():
                 return "noPerson"
-        print("[IN]: ", txt.data)
-        
         try:
             self.tablet_execute_js("location.reload()")
         except:
             pass
+        print("[IN]:", txt.data)
         return str(txt.data)
 
     def set_text(self,text):
@@ -79,22 +76,17 @@ class TerminalInterface:
         print("[OUT]:", text)
     
     def set_name(self):
-        # print('START STARTUP')
+        '''
+        Function to allow to take in input the name of the unknown person
+        '''
         msg = String()
         msg.data = "There is somebody?"
         self.pub.publish(msg)
-        #print("prima di recognition")
         name = rospy.wait_for_message("recognition", String)
-        #print("dopo di recognition")
         print(name)
-        if name.data != 'unkn0wn':
-            print("diverso da ukn")
-            #msg.data = 'We already know! ' + name.data 
-            #self.pub.publish(name)
-            #self.pub.publish(msg)
-        else:
-            # self.name = None
-            #print("uguale ad ukn ")
+        # if name.data != 'unkn0wn':
+        #     print("diverso da ukn")
+        if name.data == 'unkn0wn':
             msg.data = 'I do not recognize you. Please, can tell me your name?'
             self.pub.publish(msg)
             print("[OUT]:", msg.data)
@@ -108,16 +100,13 @@ class TerminalInterface:
         return str(name.data)
     
     def there_is_someone(self):
+        '''
+        Method to check if inside the frame is a person and 
+        '''
         global START_UP
-        # print('IN THERE IS SOMEONE')
-        #dead
-        #print("prima detection")
         detect  = rospy.wait_for_message("detection", Bool)
-        #print("dopo detection")
         if not START_UP and not detect.data:
-            # print('inside if THERE IS SOMEONE')
             START_UP = True
-        # print('END THERE IS SOMEONE')
         return detect.data
 
     def load_url(self, url):
@@ -128,47 +117,33 @@ class TerminalInterface:
         print(resp)
 
 START_UP = True
+
 def main():
     global START_UP
     rospy.init_node('writing')
     rospy.wait_for_service('dialogue_server')
     dialogue_service = rospy.ServiceProxy('dialogue_server', Dialogue)
 
-    # Publisher
-    pub = rospy.Publisher('bot_answer', String, queue_size=10)
-    # new_person = rospy.Publisher('new_person', String, queue_size=10)
     pub_rec = rospy.Publisher('start', Bool, queue_size=1)
-    # Subscribe
-    # sub_rec = rospy.Subscriber('recognition', String, queue_size=1)
-    #sub_det = rospy.Subscriber('detection', Bool, queue_size=1)
 
-    ip = "10.0.1.234"
+    ip = "10.0.1.234" # ip of the machine with web server
 
-    terminal = TerminalInterface(pub, ip) 
+    terminal = TerminalInterface(ip)
     
-    msg = String()
-    msg.data = "Hello world!"
-    pub.publish(msg)
-
-    print("prima del while")
+    terminal.pub.publish("Hello world!")
     
     url = r"http://10.0.1.234:80/sito"
     try:
         terminal.load_url(url)
     except:
         pass
-    x = Bool()
-    x.data = True
-    while pub_rec.get_num_connections()<1:continue
-    pub_rec.publish(x)
-    print("dopo pub rec")
+    
+    while pub_rec.get_num_connections() < 1: continue
+    pub_rec.publish(True)
 
     while not rospy.is_shutdown():
-        print("dentro al while")
         if START_UP:
-            #print("prima di set name")
             name = terminal.set_name()
-            #print("dopo di set name")
             bot_answer = dialogue_service(name)
             terminal.set_text(bot_answer.answer)
             START_UP = False
@@ -181,7 +156,6 @@ def main():
                 terminal.set_text(bot_answer.answer)
             except rospy.ServiceException as e:
                 print("Service call failed: %s" % e)
-            
             terminal.there_is_someone()
 
 if __name__ == '__main__':

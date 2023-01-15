@@ -29,9 +29,6 @@
 #     You should have received a copy of the GNU General Public License
 #     along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
-# BOT_DIR="/media/psf/TO-DO_List/ros_chatbot/chatbot_ws/src/rasa_ros/chatbot"
-
-#cd $BOT_DIR
 PROJECT_DIR="$( cd "$( dirname "$0" )" && pwd )"
 cd "$PROJECT_DIR/../chatbot"
 

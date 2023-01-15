@@ -29,7 +29,4 @@
 #     You should have received a copy of the GNU General Public License
 #     along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
-#BOT_DIR="/media/psf/TO-DO_List/ros_chatbot/chatbot_ws/src/rasa_ros/chatbot"
-
-PWD="Appl310!"
-echo $PWD | sudo -S systemctl start apache2
+echo $PSW | sudo -S systemctl start apache2

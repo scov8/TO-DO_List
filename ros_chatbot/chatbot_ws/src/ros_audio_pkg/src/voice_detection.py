@@ -32,14 +32,12 @@
 import rospy
 from std_msgs.msg import Int16MultiArray, Bool
 import numpy as np
-
-import time
 import speech_recognition as sr
 
 pub = rospy.Publisher('mic_data', Int16MultiArray, queue_size=10)
 rospy.init_node('voice_detection_node', anonymous=True)
 
-def callback_semaforo(data):
+def callback_semaphore(data):
     global m
     with m as source:
         audio = r.listen(source)
@@ -50,13 +48,12 @@ def callback_semaforo(data):
 
 # Initialize a Recognizer
 r = sr.Recognizer()
-
 # Audio source
 m = sr.Microphone(device_index=None,
                     sample_rate=16000,
                     chunk_size=1024)
 
-sub = rospy.Subscriber('speaking', Bool, callback_semaforo, queue_size=1)  ## test with # If the bot speech
+sub = rospy.Subscriber('speaking', Bool, callback_semaphore, queue_size=1) # If the bot speech
 
 # Calibration within the environment
 # we only need to calibrate once, before we start listening
