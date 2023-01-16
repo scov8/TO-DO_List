@@ -38,24 +38,27 @@ from typing import Any, Text, Dict, List
 from rasa_sdk import Action, Tracker
 from rasa_sdk.executor import CollectingDispatcher
 from rasa_sdk.events import SlotSet
-from dateutil.parser import parse
+# from dateutil.parser import parse
 
 import sqlite3
 
 def correct_time(original_time):
-    # tomorrow at 8pm --> 2020–09–28T20:00:00.000–07:00
+    # tomorrow at 8pm --> 2020-09-28T20:00:00.000-07:00
+    # output --> ('8 10 2020', '1 and 1 minutes', '07:00')
     original_time = str(original_time)
     tmp = original_time.split('T')
     data, time = tmp[0], tmp[1]
-    # data = 2020–09–28
-    # time 20:00:00.000–07:00
     tmp = data.split('-')
+    tmp[1] = tmp[1][1] if tmp[1][0] == '0' and tmp[1][1] != '0' else tmp[1]
+    tmp[2] = tmp[2][1] if tmp[2][0] == '0' and tmp[2][1] != '0' else tmp[2]
     data = tmp[2] + " " + tmp[1] + " " + tmp[0] 
     tmp = time.split('-')
     time = tmp[0]
     gmt = tmp[1]
     tmp = time.split(':')
-    time = tmp[0] + ' and ' + tmp[1] + ' minutes' # otherwise swap ':' with ' '
+    tmp[0] = tmp[0] if tmp[0][0] != '0' else tmp[0][1]
+    tmp[1] = tmp[1][1] if tmp[1][0] == '0' and tmp[1][1] != '0' else tmp[1]
+    time = tmp[0] + ' and ' + tmp[1] + ' minutes'
     return data, time, gmt
 
 def correct_category(original_cat):
@@ -317,12 +320,12 @@ class ViewList(Action):
                 date, hour, gmt = correct_time(str(ii[1]))
                 out = "- " + str(ii[0]) + " at " + str(hour)
                 out += " of " + str(date)
-                out += " for " + str(ii[2])
+                out += " for " + str(correct_category(ii[2]))
                 out += " and the reminder is ON " if (
                     ii[3] == 1 or ii[3] is True) else " and the reminder is OFF"
             else:
                 out = "- " + str(ii[0])
-                out += " for " + str(ii[2])
+                out += " for " + str(correct_category(ii[2]))
                 out += " and the reminder is ON " if (
                     ii[3] == 1 or ii[3] is True) else " and the reminder is OFF"
             dispatcher.utter_message(text=f"{out}\n")

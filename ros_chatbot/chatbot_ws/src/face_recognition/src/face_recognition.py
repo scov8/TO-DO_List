@@ -65,7 +65,7 @@ class Face_Recognition():
         # try opening a dictionary, in which the id-person-name pair are present;
         # the id represents the name of the training folder of a specific person
         try:
-            with open('./dizionario3.pkl', 'rb') as f:
+            with open('./dizionario4.pkl', 'rb') as f:
                 self.people_dict = pickle.load(f)
                 f.close()
         except:
@@ -110,7 +110,7 @@ class Face_Recognition():
             cv2.imwrite(self.dataset_path + "dataset/training/"+ str(id) + "/image" + str(random.randint(1, 1000)) + str(i) + ".jpg", face)
             sleep(0.2)
 
-        with open('./dizionario3.pkl', 'wb') as f:
+        with open('./dizionario4.pkl', 'wb') as f:
             pickle.dump(self.people_dict, f)
             f.close()
         self.dataset_feature = self.train_feature(self.model)
