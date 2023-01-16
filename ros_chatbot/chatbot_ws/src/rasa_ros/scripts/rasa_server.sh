@@ -29,5 +29,5 @@
 #     You should have received a copy of the GNU General Public License
 #     along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
-cd "$PROJECT_DIR/../chatbot"
+cd "$PROJECT_DIR/src/rasa_ros/chatbot"
 rasa run -m models --endpoints endpoints.yml --port 5002 --credentials credentials.yml --enable-api

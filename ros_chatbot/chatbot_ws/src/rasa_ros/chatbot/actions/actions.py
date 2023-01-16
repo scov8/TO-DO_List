@@ -47,13 +47,15 @@ def correct_time(original_time):
     original_time = str(original_time)
     tmp = original_time.split('T')
     data, time = tmp[0], tmp[1]
-    # data = 2020–09–28 
+    # data = 2020–09–28
     # time 20:00:00.000–07:00
+    tmp = data.split('-')
+    data = tmp[2] + " " + tmp[1] + " " + tmp[0] 
     tmp = time.split('-')
     time = tmp[0]
     gmt = tmp[1]
     tmp = time.split(':')
-    time = tmp[0] + ':' + tmp[1] # otherwise swap ':' with ' '
+    time = tmp[0] + ' and ' + tmp[1] + ' minutes' # otherwise swap ':' with ' '
     return data, time, gmt
 
 def correct_category(original_cat):
@@ -312,8 +314,9 @@ class ViewList(Action):
             text=f"Ok, there are {len(selectResult)} {tmp} in your To-Do List:\n")
         for ii in selectResult:
             if((ii[1]!="null")):
-                out = "- " + str(ii[0]) + " at " + str(parse(str(ii[1])).time())
-                out += " of " + str(parse(str(ii[1])).date())
+                date, hour, gmt = correct_time(str(ii[1]))
+                out = "- " + str(ii[0]) + " at " + str(hour)
+                out += " of " + str(date)
                 out += " for " + str(ii[2])
                 out += " and the reminder is ON " if (
                     ii[3] == 1 or ii[3] is True) else " and the reminder is OFF"
