@@ -126,13 +126,13 @@ def main():
 
     pub_rec = rospy.Publisher('start', Bool, queue_size=1)
 
-    ip = "192.168.1.14" # ip of the machine with web server 10.0.1.234
+    ip = "192.168.1.237" # ip of the machine with web server 192.168.1.237
 
     terminal = TerminalInterface(ip)
     
     terminal.pub.publish("Hello world!")
     
-    url = r"http://192.168.1.14:80/sito"
+    url = r"http://192.168.1.237:8888"
     try:
         terminal.load_url(url)
     except:

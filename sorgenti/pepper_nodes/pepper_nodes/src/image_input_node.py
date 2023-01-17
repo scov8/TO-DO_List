@@ -94,7 +94,7 @@ class ImageInputNode:
 
 if __name__ == "__main__":
     parser = OptionParser()
-    parser.add_option("--ip", dest="ip", default="10.0.1.207")
+    parser.add_option("--ip", dest="ip", default="192.168.1.65")
     parser.add_option("--port", dest="port", default=9559)
     (options, args) = parser.parse_args()
     try:

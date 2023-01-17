@@ -39,6 +39,7 @@ rospy.init_node('voice_detection_node', anonymous=True)
 
 def callback_semaphore(data):
     global m
+    print("Recording...")
     with m as source:
         audio = r.listen(source)
     data = np.frombuffer(audio.get_raw_data(), dtype=np.int16)
@@ -53,7 +54,7 @@ m = sr.Microphone(device_index=None,
                     sample_rate=16000,
                     chunk_size=1024)
 
-sub = rospy.Subscriber('speaking', Bool, callback_semaphore, queue_size=1) # If the bot speech
+sub = rospy.Subscriber('speaking', Bool, callback=callback_semaphore) # If the bot speech
 
 # Calibration within the environment
 # we only need to calibrate once, before we start listening
@@ -64,14 +65,5 @@ print("Calibration finished")
 
 # start listening in the background
 # `stop_listening` is now a function that, when called, stops background listening
-print("Recording...")
-
-with m as source:
-    audio = r.listen(source)
-
-data = np.frombuffer(audio.get_raw_data(), dtype=np.int16)
-data_to_send = Int16MultiArray()
-data_to_send.data = data
-pub.publish(data_to_send)
 
 rospy.spin()
