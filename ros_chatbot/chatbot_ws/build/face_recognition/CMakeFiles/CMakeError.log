@@ -1,21 +1,21 @@
 Performing C SOURCE FILE Test CMAKE_HAVE_LIBC_PTHREAD failed with the following output:
 Change Dir: /media/psf/TO-DO_List/ros_chatbot/chatbot_ws/build/face_recognition/CMakeFiles/CMakeTmp
 
-Run Build Command(s):/usr/bin/make cmTC_8d4ea/fast && /usr/bin/make -f CMakeFiles/cmTC_8d4ea.dir/build.make CMakeFiles/cmTC_8d4ea.dir/build
+Run Build Command(s):/usr/bin/make cmTC_f9aad/fast && /usr/bin/make -f CMakeFiles/cmTC_f9aad.dir/build.make CMakeFiles/cmTC_f9aad.dir/build
 make[1]: Entering directory '/media/psf/TO-DO_List/ros_chatbot/chatbot_ws/build/face_recognition/CMakeFiles/CMakeTmp'
-Building C object CMakeFiles/cmTC_8d4ea.dir/src.c.o
-/usr/bin/cc   -DCMAKE_HAVE_LIBC_PTHREAD   -o CMakeFiles/cmTC_8d4ea.dir/src.c.o   -c /media/psf/TO-DO_List/ros_chatbot/chatbot_ws/build/face_recognition/CMakeFiles/CMakeTmp/src.c
-Linking C executable cmTC_8d4ea
-/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_8d4ea.dir/link.txt --verbose=1
-/usr/bin/cc  -DCMAKE_HAVE_LIBC_PTHREAD    -rdynamic CMakeFiles/cmTC_8d4ea.dir/src.c.o  -o cmTC_8d4ea 
-/usr/bin/ld: CMakeFiles/cmTC_8d4ea.dir/src.c.o: in function `main':
+Building C object CMakeFiles/cmTC_f9aad.dir/src.c.o
+/usr/bin/cc   -DCMAKE_HAVE_LIBC_PTHREAD   -o CMakeFiles/cmTC_f9aad.dir/src.c.o   -c /media/psf/TO-DO_List/ros_chatbot/chatbot_ws/build/face_recognition/CMakeFiles/CMakeTmp/src.c
+Linking C executable cmTC_f9aad
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_f9aad.dir/link.txt --verbose=1
+/usr/bin/cc  -DCMAKE_HAVE_LIBC_PTHREAD    -rdynamic CMakeFiles/cmTC_f9aad.dir/src.c.o  -o cmTC_f9aad 
+/usr/bin/ld: CMakeFiles/cmTC_f9aad.dir/src.c.o: in function `main':
 src.c:(.text+0x46): undefined reference to `pthread_create'
 /usr/bin/ld: src.c:(.text+0x52): undefined reference to `pthread_detach'
 /usr/bin/ld: src.c:(.text+0x63): undefined reference to `pthread_join'
 collect2: error: ld returned 1 exit status
-make[1]: *** [CMakeFiles/cmTC_8d4ea.dir/build.make:87: cmTC_8d4ea] Error 1
+make[1]: *** [CMakeFiles/cmTC_f9aad.dir/build.make:87: cmTC_f9aad] Error 1
 make[1]: Leaving directory '/media/psf/TO-DO_List/ros_chatbot/chatbot_ws/build/face_recognition/CMakeFiles/CMakeTmp'
-make: *** [Makefile:121: cmTC_8d4ea/fast] Error 2
+make: *** [Makefile:121: cmTC_f9aad/fast] Error 2
 
 
 Source file was:
@@ -41,18 +41,18 @@ int main(void)
 Determining if the function pthread_create exists in the pthreads failed with the following output:
 Change Dir: /media/psf/TO-DO_List/ros_chatbot/chatbot_ws/build/face_recognition/CMakeFiles/CMakeTmp
 
-Run Build Command(s):/usr/bin/make cmTC_c7e70/fast && /usr/bin/make -f CMakeFiles/cmTC_c7e70.dir/build.make CMakeFiles/cmTC_c7e70.dir/build
+Run Build Command(s):/usr/bin/make cmTC_3b8bf/fast && /usr/bin/make -f CMakeFiles/cmTC_3b8bf.dir/build.make CMakeFiles/cmTC_3b8bf.dir/build
 make[1]: Entering directory '/media/psf/TO-DO_List/ros_chatbot/chatbot_ws/build/face_recognition/CMakeFiles/CMakeTmp'
-Building C object CMakeFiles/cmTC_c7e70.dir/CheckFunctionExists.c.o
-/usr/bin/cc   -DCHECK_FUNCTION_EXISTS=pthread_create   -o CMakeFiles/cmTC_c7e70.dir/CheckFunctionExists.c.o   -c /usr/share/cmake-3.16/Modules/CheckFunctionExists.c
-Linking C executable cmTC_c7e70
-/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_c7e70.dir/link.txt --verbose=1
-/usr/bin/cc  -DCHECK_FUNCTION_EXISTS=pthread_create    -rdynamic CMakeFiles/cmTC_c7e70.dir/CheckFunctionExists.c.o  -o cmTC_c7e70  -lpthreads 
+Building C object CMakeFiles/cmTC_3b8bf.dir/CheckFunctionExists.c.o
+/usr/bin/cc   -DCHECK_FUNCTION_EXISTS=pthread_create   -o CMakeFiles/cmTC_3b8bf.dir/CheckFunctionExists.c.o   -c /usr/share/cmake-3.16/Modules/CheckFunctionExists.c
+Linking C executable cmTC_3b8bf
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_3b8bf.dir/link.txt --verbose=1
+/usr/bin/cc  -DCHECK_FUNCTION_EXISTS=pthread_create    -rdynamic CMakeFiles/cmTC_3b8bf.dir/CheckFunctionExists.c.o  -o cmTC_3b8bf  -lpthreads 
 /usr/bin/ld: cannot find -lpthreads
 collect2: error: ld returned 1 exit status
-make[1]: *** [CMakeFiles/cmTC_c7e70.dir/build.make:87: cmTC_c7e70] Error 1
+make[1]: *** [CMakeFiles/cmTC_3b8bf.dir/build.make:87: cmTC_3b8bf] Error 1
 make[1]: Leaving directory '/media/psf/TO-DO_List/ros_chatbot/chatbot_ws/build/face_recognition/CMakeFiles/CMakeTmp'
-make: *** [Makefile:121: cmTC_c7e70/fast] Error 2
+make: *** [Makefile:121: cmTC_3b8bf/fast] Error 2
 
 
 

@@ -59,7 +59,7 @@ class TerminalInterface:
             try:
                 txt = rospy.wait_for_message("voice_txt", String, timeout=1)
             except:
-                pass
+                print('Exception')
             if not self.there_is_someone():
                 return "noPerson"
         try:
@@ -126,13 +126,13 @@ def main():
 
     pub_rec = rospy.Publisher('start', Bool, queue_size=1)
 
-    ip = "192.168.1.237" # ip of the machine with web server 192.168.1.237
+    ip = "10.0.1.236" # ip of the machine with web server 10.0.1.236
 
     terminal = TerminalInterface(ip)
     
     terminal.pub.publish("Hello world!")
     
-    url = r"http://192.168.1.237:8888"
+    url = r"http://10.0.1.236:80/sito"
     try:
         terminal.load_url(url)
     except:

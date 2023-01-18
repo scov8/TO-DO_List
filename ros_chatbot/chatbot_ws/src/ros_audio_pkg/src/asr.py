@@ -53,7 +53,7 @@ def callback(audio):
         print("Here's what google understood, I'm posting it: " + spoken_text)
         pub2.publish(spoken_text)
     except sr.UnknownValueError:
-        pub3.publish("Can you repeat?")
+        pub3.publish("")
         print("Google Speech Recognition cannot understand from this audio file")
     except sr.RequestError as e:
         pub3.publish("I'm offline")

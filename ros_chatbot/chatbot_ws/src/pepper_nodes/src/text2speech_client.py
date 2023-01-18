@@ -44,9 +44,8 @@ def main():
 
     while not rospy.is_shutdown():
         txt = rospy.wait_for_message("bot_answer", String)
-        if txt.data!="Can you repeat?":
-            tts_service(txt.data)
-            time.sleep(1)
+        tts_service(txt.data)
+        time.sleep(1)
         syn_speech.publish(False)
 
 if __name__ == '__main__':

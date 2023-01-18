@@ -1,6 +1,5 @@
 function goToUser(user) {
-  window.location.href =
-    "http://192.168.1.237:8888/table.php/?username=" + user;
+  window.location.href = "http://10.0.1.236:80/sito/table.php/?username=" + user;
 }
 
 function refresh() {
