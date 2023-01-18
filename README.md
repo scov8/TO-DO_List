@@ -46,6 +46,8 @@ For convenience, we use the duckling container on **Docker**; once downloaded vi
 
 To run the command below, move in the TO-DO_List folder
 
+*_(CHANGE THE CURRENT PSW WITH THE OWN USER PASSWORD)_*
+
       sudo bash execute.sh
 
 1. Execute: catkin clean, then re-init and build;
