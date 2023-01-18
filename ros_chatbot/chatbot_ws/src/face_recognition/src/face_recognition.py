@@ -56,7 +56,7 @@ class Face_Recognition():
         self._pub_rec = rospy.Publisher('recognition', String, queue_size=1)
         self._pub_det = rospy.Publisher('detection', Bool, queue_size=1)
         self.pub = rospy.Publisher('bot_answer', String, queue_size=10)
-        self._webcam = cv2.VideoCapture(2) # 0 camera mia, 2 usb esterna
+        self._webcam = cv2.VideoCapture(0) # 0 camera mia, 2 usb esterna
         self.means = means
         self.input_size = input_size
         self.dataset_path = os.getenv("PROJECT_DIR", default='/media/psf/TO-DO_List/ros_chatbot/chatbot_ws') + "/src/face_recognition/src/"

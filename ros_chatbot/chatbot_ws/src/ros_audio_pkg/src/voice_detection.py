@@ -67,3 +67,17 @@ print("Calibration finished")
 # `stop_listening` is now a function that, when called, stops background listening
 
 rospy.spin()
+
+'''
+#rospy.spin()
+#sub = rospy.Subscriber('speaking', Bool, callback=callback_semaphore) # If the bot speech
+while not rospy.is_shutdown():
+    rospy.wait_for_message('speaking', Bool)
+    print("Recording...")
+    with m as source:
+        audio = r.listen(source)
+    data = np.frombuffer(audio.get_raw_data(), dtype=np.int16)
+    data_to_send = Int16MultiArray()
+    data_to_send.data = data
+    pub.publish(data_to_send)
+'''
