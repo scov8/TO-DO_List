@@ -56,7 +56,7 @@ class Face_Recognition():
         self._pub_rec = rospy.Publisher('recognition', String, queue_size=1)
         self._pub_det = rospy.Publisher('detection', Bool, queue_size=1)
         self.pub = rospy.Publisher('bot_answer', String, queue_size=10)
-        self._webcam = cv2.VideoCapture(2) # 0 camera mia, 2 usb esterna
+        self._webcam = cv2.VideoCapture(2)
         self.means = means
         self.input_size = input_size
         self.dataset_path = os.getenv("PROJECT_DIR", default='/media/psf/TO-DO_List/ros_chatbot/chatbot_ws') + "/src/face_recognition/src/"
@@ -140,11 +140,6 @@ class Face_Recognition():
         frameHeight     = frameOpencvDnn.shape[0]
         frameWidth      = frameOpencvDnn.shape[1]
         
-        #swapRB =True
-        # flag which indicates that swap first and last channels in 3-channel image is necessary.
-        #crop = False
-        # flag which indicates whether image will be cropped after resize or not
-        # If crop is false, direct resize without cropping and preserving aspect ratio is performed
         blob = cv2.dnn.blobFromImage(frameOpencvDnn, 1.0, (300, 300), [104, 117, 123], True, False)
 
         net.setInput(blob)
@@ -263,7 +258,6 @@ class Face_Recognition():
                 cv2.imshow("Demo", frameFace)
                 cv2.waitKey(1)
             ret = self.counter(results)
-            # print(ret)
             results.clear()
             if ret == 0:
                 self._pub_rec.publish(String('unkn0wn'))

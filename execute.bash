@@ -1,6 +1,6 @@
 #!/bin/bash
 # get current dir
-export PSW="Appl310!"
+export PSW="Appl310!" # <--- CHANGE IT!
 export PROJECT_DIR="$( cd "$( dirname "$0" )" && pwd )"
 cd "$PROJECT_DIR/"
 # move in chatbot_ws and build with catkin

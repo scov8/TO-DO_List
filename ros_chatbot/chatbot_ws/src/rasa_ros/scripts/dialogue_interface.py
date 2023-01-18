@@ -84,8 +84,6 @@ class TerminalInterface:
         self.pub.publish(msg)
         name = rospy.wait_for_message("recognition", String)
         print(name)
-        # if name.data != 'unkn0wn':
-        #     print("diverso da ukn")
         if name.data == 'unkn0wn':
             msg.data = 'I do not recognize you. Please, can tell me your name?'
             self.pub.publish(msg)

@@ -38,6 +38,9 @@ pub = rospy.Publisher('mic_data', Int16MultiArray, queue_size=10)
 rospy.init_node('voice_detection_node', anonymous=True)
 
 def callback_semaphore(data):
+    """
+    This callback activate the audio only when the parameter data change.
+    """
     global m
     print("Recording...")
     with m as source:
@@ -63,21 +66,4 @@ with m as source:
     r.adjust_for_ambient_noise(source,duration=3)  
 print("Calibration finished")
 
-# start listening in the background
-# `stop_listening` is now a function that, when called, stops background listening
-
 rospy.spin()
-
-'''
-#rospy.spin()
-#sub = rospy.Subscriber('speaking', Bool, callback=callback_semaphore) # If the bot speech
-while not rospy.is_shutdown():
-    rospy.wait_for_message('speaking', Bool)
-    print("Recording...")
-    with m as source:
-        audio = r.listen(source)
-    data = np.frombuffer(audio.get_raw_data(), dtype=np.int16)
-    data_to_send = Int16MultiArray()
-    data_to_send.data = data
-    pub.publish(data_to_send)
-'''

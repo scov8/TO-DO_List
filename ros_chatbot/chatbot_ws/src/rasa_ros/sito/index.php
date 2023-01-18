@@ -7,7 +7,7 @@ $pdo = (new SQLiteConnection())->connect();
 if ($pdo == null)
   echo 'Whoops, could not connect to the SQLite database!';
 
-$query = 'SELECT user FROM ToDoList ORDER BY user ASC';
+$query = 'SELECT user FROM ToDoList GROUP BY user ORDER BY user ASC';
 $stmt = $pdo->query($query);
 $user = [];
 while ($row = $stmt->fetch(\PDO::FETCH_ASSOC)) {

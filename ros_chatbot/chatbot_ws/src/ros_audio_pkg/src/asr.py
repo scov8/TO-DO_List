@@ -45,9 +45,12 @@ pub3 = rospy.Publisher('bot_answer', String, queue_size=10)
 
 # this is called from the background thread
 def callback(audio):
+    """
+    This callback takes as input the audio track and sends it to google recognizer to
+    extract the sentence.
+    """
     data = np.array(audio.data, dtype=np.int16)
     audio_data = AudioData(data.tobytes(), 16000, 2)
-
     try:
         spoken_text = r.recognize_google(audio_data, language='en-GB') # en-GB
         print("Here's what google understood, I'm posting it: " + spoken_text)
@@ -60,6 +63,10 @@ def callback(audio):
         print("Could not request results from Google Speech Recognition service; {0}".format(e))
 
 def listener():
+    """
+    This function when 'mic_data' topic publish something, the callback is activated passing as input the
+    Int16MultiArray which represent the audio track
+    """
     rospy.Subscriber("mic_data", Int16MultiArray, callback)
     rospy.spin()
 

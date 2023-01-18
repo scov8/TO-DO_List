@@ -38,13 +38,17 @@ from typing import Any, Text, Dict, List
 from rasa_sdk import Action, Tracker
 from rasa_sdk.executor import CollectingDispatcher
 from rasa_sdk.events import SlotSet
-# from dateutil.parser import parse
 
 import sqlite3
 
 def correct_time(original_time):
-    # tomorrow at 8pm --> 2020-09-28T20:00:00.000-07:00
-    # output --> ('8 10 2020', '1 and 1 minutes', '07:00')
+    """
+    This function convert the input time in a more readable one.
+    Returns a tuple with data, time and gmt.
+    example:
+        input  --> tomorrow at 8pm --> 2020-09-28T20:00:00.000-07:00
+        output --> ('8 10 2020', '1 and 0 minutes', '07:00')
+    """
     original_time = str(original_time)
     tmp = original_time.split('T')
     data, time = tmp[0], tmp[1]
@@ -62,6 +66,10 @@ def correct_time(original_time):
     return data, time, gmt
 
 def correct_category(original_cat):
+    """
+    Takes as input    --> "purpose-work"
+    Returns as output --> "work"
+    """
     return original_cat.split('-')[-1]
 
 """
@@ -88,16 +96,11 @@ class TaskSubmit(Action):
         """
         Return the initialized slots after if the user make an update, delete or add
         """
-
         time = tracker.get_slot("time")
         category = tracker.get_slot("category")
         task = tracker.get_slot("task")
         purpose = tracker.get_slot("purpose")
         user = tracker.get_slot("PERSON")
-        
-        # if (time!="null"):
-        #     hour = str(parse(str(time)).time())
-        #     date = str(parse(str(time)).date())
 
         # If the user want to manage a task but did not tell his own name
         if (user is None):
@@ -211,7 +214,8 @@ class AddToDb(Action):
                 curs = self.__execute_query(
                     conn, query, task=task, time=time, category=category, user=user)
                 dispatcher.utter_message("Ok i added your task")
-                if(time != "null"):
+                
+                if (time != "null"):
                     dispatcher.utter_message("Do you want a reminder?")
                     ASK_REMINDER = True
             except:
